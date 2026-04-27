@@ -79,7 +79,7 @@
 			any direction.</description>
 		<graphicData>
 			<texPath>Things/Building/LaserDrill/LaserDrill</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
+			<graphicClass>Graphic_Multi</graphicClass>
 		</graphicData>
 		<statBases>
 			<AccuracyTouch>0.77</AccuracyTouch>

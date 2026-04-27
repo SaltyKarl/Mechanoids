@@ -13,7 +13,7 @@
 			<ControlTakingTime MayRequire="Ludeon.RimWorld.Biotech">18</ControlTakingTime>
 		</statBases>
 		<race>
-			<body>Pikeman</body>
+			<body>APM_Dynamo</body>
 			<baseBodySize>3.0</baseBodySize>
 			<baseHealthScale>3.0</baseHealthScale>
 			<lifeStageAges Inherit="False">

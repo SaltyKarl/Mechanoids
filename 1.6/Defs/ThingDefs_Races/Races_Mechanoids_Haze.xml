@@ -29,7 +29,7 @@
 			</li>
 		</tools>
 		<race>
-			<body>APM_Ravager</body>
+			<body>APM_Haze</body>
 			<baseBodySize>3</baseBodySize>
 			<baseHealthScale>6.2</baseHealthScale>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>

@@ -40,7 +40,7 @@
 			</li>
 		</tools>
 		<race>
-			<body>APM_Vassal</body>
+			<body>APM_Satellite</body>
 			<baseHealthScale>1</baseHealthScale>
 			<hediffGiverSets>
 				<li>

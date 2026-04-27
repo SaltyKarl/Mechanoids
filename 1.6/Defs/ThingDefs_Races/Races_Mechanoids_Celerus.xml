@@ -41,7 +41,7 @@
 			</li>
 		</tools>
 		<race>
-			<body>APM_Vassal</body>
+			<body>APM_Celerus</body>
 			<baseHealthScale>1</baseHealthScale>
 			<detritusLeavings>
 				<li>

@@ -46,7 +46,7 @@
 			</li>
 		</tools>
 		<race>
-			<body>Lancer</body>
+			<body>APM_Maul</body>
 			<baseBodySize>2.0</baseBodySize>
 			<baseHealthScale>3.5</baseHealthScale>
 			<detritusLeavings>

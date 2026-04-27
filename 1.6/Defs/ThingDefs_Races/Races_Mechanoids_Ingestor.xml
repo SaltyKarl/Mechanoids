@@ -32,6 +32,7 @@
 			</li>
 		</tools>
 		<race>
+			<body>APM_Ingestor</body>
 			<baseHealthScale>3.0</baseHealthScale>
 		</race>
 	</ThingDef>
