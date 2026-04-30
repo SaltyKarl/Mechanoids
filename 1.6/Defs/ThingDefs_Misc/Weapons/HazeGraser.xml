@@ -16,7 +16,7 @@
 		</mote>
 		<drawOffscreen>true</drawOffscreen>
 		<graphicData>
-			<texPath>Things/Mote/GraserBeam</texPath>
+			<texPath>Things/Projectile/HazeBeamWitherer</texPath>
 			<graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
 			<shaderType>MoteBeam</shaderType>
 			<shaderParameters>
