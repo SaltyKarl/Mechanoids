@@ -26,7 +26,6 @@
 			<texPath>Things/Item/Equipment/WeaponRanged/MaulHeavyChargeSuppressor</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<soundInteract>Interact_ChargeBlaster</soundInteract>
 		<destroyOnDrop>true</destroyOnDrop>
 		<tradeability>None</tradeability>
 		<statBases>

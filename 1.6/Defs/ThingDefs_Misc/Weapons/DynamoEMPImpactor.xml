@@ -10,7 +10,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1.2</drawSize>
 		</graphicData>
-		<soundInteract>Interact_GrenadeLauncher</soundInteract>
+		<soundInteract>Interact_Rifle</soundInteract>
 		<destroyOnDrop>true</destroyOnDrop>
 		<tradeability>None</tradeability>
 		<statBases>
@@ -37,7 +37,7 @@
 				<range>28.9</range>
 				<burstShotCount>1</burstShotCount>
 				<forcedMissRadius>1.5</forcedMissRadius>
-				<soundCast>Shot_GrenadeLauncher</soundCast>
+				<soundCast>Shot_IncendiaryLauncher</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>10</muzzleFlashScale>
 				<targetParams>
@@ -72,8 +72,10 @@
 		<label>EMP impactor projectile</label>
 		<thingClass>Projectile_Explosive</thingClass>
 		<graphicData>
-			<texPath>Things/Projectile/GrenadeEMP</texPath>
+			<texPath>Things/Projectile/LauncherShot</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<color>(68,150,215)</color>
 		</graphicData>
 		<projectile>
 			<damageDef>EMP</damageDef>

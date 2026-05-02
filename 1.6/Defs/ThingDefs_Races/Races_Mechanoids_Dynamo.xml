@@ -12,6 +12,19 @@
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
 			<ControlTakingTime MayRequire="Ludeon.RimWorld.Biotech">18</ControlTakingTime>
 		</statBases>
+		<tools>
+			<li>
+				<label>head</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>8.5</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+				<chanceFactor>0.2</chanceFactor>
+			</li>
+		</tools>
 		<race>
 			<body>APM_Dynamo</body>
 			<baseBodySize>3.0</baseBodySize>
@@ -73,6 +86,7 @@
 				<hitPoints>600</hitPoints>
 				<hitPointsRestoreInstantlyAfterCharge>true</hitPointsRestoreInstantlyAfterCharge>
 				<chargeDurationTicks>5400</chargeDurationTicks>
+				<rechargeHitPointsIntervalTicks>120</rechargeHitPointsIntervalTicks>
 				<!-- 90s -->
 				<drawWithNoSelection>True</drawWithNoSelection>
 				<disarmedByEmpForTicks>1500</disarmedByEmpForTicks>
@@ -104,7 +118,7 @@
 		<combatPower>150</combatPower>
 		<allowInMechClusters>false</allowInMechClusters>
 		<lifeStages>
-			<li>
+			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
 					<texPath>Things/Pawn/Mechanoid/Dynamo/Dynamo</texPath>
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Dynamo/Mech_Dynamo</maskPath>
