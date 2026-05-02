@@ -40,7 +40,7 @@
 			</li>
 		</tools>
 		<race>
-			<body>APM_Vassal</body>
+			<body>APM_Siren</body>
 			<baseHealthScale>1</baseHealthScale>
 			<detritusLeavings>
 				<li>

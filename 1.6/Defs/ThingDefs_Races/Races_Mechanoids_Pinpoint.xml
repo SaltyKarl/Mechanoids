@@ -25,7 +25,7 @@
 			</li>
 		</tools>
 		<race>
-			<body>Mech_Light</body>
+			<body>APM_Pinpoint</body>
 			<intelligence>ToolUser</intelligence>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
 			<baseBodySize>0.7</baseBodySize>

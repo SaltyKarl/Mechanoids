@@ -45,7 +45,7 @@
 			</li>
 		</tools>
 		<race>
-			<body>Pikeman</body>
+			<body>APM_Frostivus</body>
 			<baseBodySize>3.0</baseBodySize>
 			<baseHealthScale>3.0</baseHealthScale>
 			<lifeStageAges Inherit="False">
