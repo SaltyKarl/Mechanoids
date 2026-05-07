@@ -94,7 +94,7 @@
 		</weaponTags>
 		<abilities>
 			<li>LongjumpMech</li>
-			<!--<li>APM_PulseWave</li>-->
+			<li>APM_PulseWave</li>
 		</abilities>
 	</PawnKindDef>
 </Defs>

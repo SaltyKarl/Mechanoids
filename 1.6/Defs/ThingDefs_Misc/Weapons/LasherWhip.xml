@@ -48,7 +48,7 @@
 				<warmupTime>0</warmupTime>
 				<range>6.9</range>
 				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
-				<soundCast>Shot_MiniFlameblaster</soundCast>
+				<soundCast>APM_Whip</soundCast>
 				<muzzleFlashScale>0</muzzleFlashScale>
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>

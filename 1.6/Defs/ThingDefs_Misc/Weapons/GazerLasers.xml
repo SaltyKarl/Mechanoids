@@ -35,7 +35,7 @@
     </comps>
     <verbs>
       <li>
-        <verbClass>Verb_ShootBeam</verbClass>
+        <verbClass>ApexMechanoids.Verb_ShootSunBeam</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <warmupTime>1.0</warmupTime>
         <range>24.9</range>
@@ -48,7 +48,7 @@
         <beamDamageDef>MegaBeam</beamDamageDef>
         <soundCastTail>GunTail_Medium</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
-        <soundCastBeam>BeamGraser_Shooting</soundCastBeam>
+        <soundCastBeam>APM_SunRayCast</soundCastBeam>
         <beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
         <beamFleckChancePerTick>0.32</beamFleckChancePerTick>
         <beamMaxDeviation>1.5</beamMaxDeviation>
@@ -141,7 +141,7 @@
     <cooldownTicksRange>9000</cooldownTicksRange>
     <canUseAoeToGetTargets>false</canUseAoeToGetTargets>
     <verbProperties>
-      <verbClass>Verb_ShootBeam</verbClass>
+      <verbClass>ApexMechanoids.Verb_ShootSunBeam</verbClass>
       <hasStandardCommand>true</hasStandardCommand>
       <warmupTime>1.0</warmupTime>
       <range>24.9</range>
@@ -154,7 +154,7 @@
       <beamDamageDef>Beam</beamDamageDef>
       <soundCastTail>GunTail_Medium</soundCastTail>
       <muzzleFlashScale>9</muzzleFlashScale>
-      <soundCastBeam>BeamGraser_Shooting</soundCastBeam>
+      <soundCastBeam>APM_SunRayCast</soundCastBeam>
       <beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
       <beamFleckChancePerTick>0.32</beamFleckChancePerTick>
       <beamMaxDeviation>1.5</beamMaxDeviation>

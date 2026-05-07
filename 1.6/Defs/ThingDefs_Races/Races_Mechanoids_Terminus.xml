@@ -101,6 +101,7 @@
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<abilities>
 			<li>SeveringEdge</li>
+			<li>APM_Overdrive</li>
 		</abilities>
 	</PawnKindDef>
 	<PawnKindDef ParentName="BaseMechanoidKind">
@@ -142,6 +143,7 @@
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<abilities>
 			<li>SeveringEdge</li>
+			<li>APM_Overdrive</li>
 		</abilities>
 	</PawnKindDef>
 
@@ -157,7 +159,7 @@
 			<verbClass>Verb_CastAbility</verbClass>
 			<range>4.9</range>
 			<warmupTime>0.3</warmupTime>
-			<soundCast>PiercingSpine_Launch</soundCast>
+			<soundCast>APM_SeveringEdge</soundCast>
 			<targetParams>
 				<canTargetLocations>true</canTargetLocations>
 			</targetParams>
