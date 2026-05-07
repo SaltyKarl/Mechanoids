@@ -159,7 +159,7 @@
 			<verbClass>Verb_CastAbility</verbClass>
 			<range>4.9</range>
 			<warmupTime>0.3</warmupTime>
-			<soundCast>PiercingSpine_Launch</soundCast>
+			<soundCast>APM_SeveringEdge</soundCast>
 			<targetParams>
 				<canTargetLocations>true</canTargetLocations>
 			</targetParams>

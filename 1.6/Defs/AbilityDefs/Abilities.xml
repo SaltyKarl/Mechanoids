@@ -357,6 +357,7 @@
 			<range>9.9</range>
 			<warmupTime>0.5</warmupTime>
 			<requireLineOfSight>true</requireLineOfSight>
+			<soundCast>APM_ShieldCharge</soundCast>
 			<targetParams>
 				<canTargetSelf>False</canTargetSelf>
 				<canTargetBuildings>False</canTargetBuildings>
@@ -398,6 +399,7 @@
 			<range>9.9</range>
 			<warmupTime>0.5</warmupTime>
 			<requireLineOfSight>true</requireLineOfSight>
+			<soundCast>APM_Bladehopp</soundCast>
 			<targetParams>
 				<canTargetSelf>False</canTargetSelf>
 				<canTargetBuildings>False</canTargetBuildings>

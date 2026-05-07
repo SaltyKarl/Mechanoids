@@ -231,6 +231,7 @@
 			<warmupTime>1</warmupTime>
 			<range>12.9</range>
 			<drawAimPie>false</drawAimPie>
+			<soundCast>APM_UltimateSacrifice</soundCast>
 			<targetParams>
 				<canTargetSelf>true</canTargetSelf>
 			</targetParams>
