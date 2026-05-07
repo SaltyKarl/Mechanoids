@@ -101,6 +101,7 @@
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<abilities>
 			<li>SeveringEdge</li>
+			<li>APM_Overdrive</li>
 		</abilities>
 	</PawnKindDef>
 	<PawnKindDef ParentName="BaseMechanoidKind">
@@ -142,6 +143,7 @@
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<abilities>
 			<li>SeveringEdge</li>
+			<li>APM_Overdrive</li>
 		</abilities>
 	</PawnKindDef>
 

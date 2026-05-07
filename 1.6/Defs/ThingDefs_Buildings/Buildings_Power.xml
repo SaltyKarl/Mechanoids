@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<ThingDef ParentName="BuildingBase">
 		<defName>APM_DynamoPoweredGenerator</defName>
@@ -99,7 +99,7 @@
 		</comps>
 		<verbs>
 			<li>
-				<verbClass>Verb_ShootBeam</verbClass>
+				<verbClass>ApexMechanoids.Verb_ShootSunBeam</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>1.0</warmupTime>
 				<range>24.9</range>
@@ -112,7 +112,7 @@
 				<beamDamageDef>MegaBeam</beamDamageDef>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
-				<soundCastBeam>BeamGraser_Shooting</soundCastBeam>
+				<soundCastBeam>APM_GazerBeamLoop</soundCastBeam>
 				<beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
 				<beamFleckChancePerTick>0.32</beamFleckChancePerTick>
 				<beamMaxDeviation>1.5</beamMaxDeviation>

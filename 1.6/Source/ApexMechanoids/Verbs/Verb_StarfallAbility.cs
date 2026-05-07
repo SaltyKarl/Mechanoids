@@ -1,22 +1,17 @@
+using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 
 namespace ApexMechanoids
 {
-    public class Verb_StarfallAbility : Verb_LaunchProjectile
+    public class Verb_StarfallAbility : Verb_CastAbility
     {
-        private const int CooldownTicks = 18000;
-        private int lastCastTickInternal = -99999;
-
         private static readonly ProjectileHitFlags HitFlags = ProjectileHitFlags.IntendedTarget | ProjectileHitFlags.NonTargetPawns;
 
-        public override ThingDef Projectile => DefDatabase<ThingDef>.GetNamed("APM_ArtilleryProjectile");
+        private ThingDef ProjectileDef => DefDatabase<ThingDef>.GetNamed("APM_ArtilleryProjectile");
 
-        public override bool Available()
-        {
-            if (!base.Available()) return false;
-            return Find.TickManager.TicksGame - lastCastTickInternal >= CooldownTicks;
-        }
+        private int BurstCount => verbProps.burstShotCount > 0 ? verbProps.burstShotCount : 3;
 
         public override bool TryCastShot()
         {
@@ -24,26 +19,29 @@ namespace ApexMechanoids
                 return false;
 
             IntVec3 dest = currentTarget.Cell;
-            float angle = Rand.Range(0f, 360f);
-            float dist = Rand.Range(0f, verbProps.forcedMissRadius > 0f ? verbProps.forcedMissRadius : 8.9f);
-            IntVec3 scattered = dest + new IntVec3(
-                Mathf.RoundToInt(Mathf.Cos(angle * Mathf.Deg2Rad) * dist),
-                0,
-                Mathf.RoundToInt(Mathf.Sin(angle * Mathf.Deg2Rad) * dist)
-            );
-            if (!scattered.InBounds(caster.Map))
-                scattered = dest;
 
-            Projectile proj = (Projectile)GenSpawn.Spawn(Projectile, caster.Position, caster.Map);
-            proj.Launch(caster, new LocalTargetInfo(scattered), new LocalTargetInfo(scattered), HitFlags);
+            for (int i = 0; i < BurstCount; i++)
+            {
+                float angle = Rand.Range(0f, 360f);
+                float dist = Rand.Range(0f, verbProps.forcedMissRadius > 0f ? verbProps.forcedMissRadius : 8.9f);
+                IntVec3 scattered = dest + new IntVec3(
+                    Mathf.RoundToInt(Mathf.Cos(angle * Mathf.Deg2Rad) * dist),
+                    0,
+                    Mathf.RoundToInt(Mathf.Sin(angle * Mathf.Deg2Rad) * dist)
+                );
+                if (!scattered.InBounds(caster.Map))
+                    scattered = dest;
+
+                Projectile proj = (Projectile)GenSpawn.Spawn(ProjectileDef, caster.Position, caster.Map);
+                proj.Launch(caster, new LocalTargetInfo(scattered), new LocalTargetInfo(scattered), HitFlags);
+            }
 
             if (CasterPawn != null)
-                CasterPawn.rotationTracker.FaceCell(scattered);
+                CasterPawn.rotationTracker.FaceCell(dest);
 
-            if (burstShotsLeft == ShotsPerBurst)
-                lastCastTickInternal = Find.TickManager.TicksGame;
+            SoundDef.Named("Starfall").PlayOneShot(new TargetInfo(dest, caster.Map));
 
-            lastShotTick = Find.TickManager.TicksGame;
+            base.TryCastShot();
             return true;
         }
     }

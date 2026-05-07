@@ -127,7 +127,7 @@
 			<beamDamageDef>APM_SunRay</beamDamageDef>
 			<soundCastTail>GunTail_Medium</soundCastTail>
 			<muzzleFlashScale>35</muzzleFlashScale>
-			<soundCastBeam>BeamGraser_Shooting</soundCastBeam>
+			<soundCastBeam>APM_SunRayCast</soundCastBeam>
 			<beamGroundFleckDef>APM_Fleck_SunRay_Burn</beamGroundFleckDef>
 			<beamFleckChancePerTick>0.5</beamFleckChancePerTick>
 			<beamMaxDeviation>1.5</beamMaxDeviation>
@@ -160,22 +160,48 @@
 		</verbProperties>
 	</AbilityDef>
 
+	<!-- "pulse wave" for pulse mech -->
+	<AbilityDef>
+		<defName>APM_PulseWave</defName>
+		<label>Pulse Wave</label>
+		<description>Emit a powerful pulse wave, stunning and knocking back all nearby enemies.</description>
+		<iconPath>UI/Icons/Starfall</iconPath>
+		<cooldownTicksRange>3600</cooldownTicksRange><!-- 1 minute -->
+		<hostile>true</hostile>
+		<writeCombatLog>true</writeCombatLog>
+		<aiCanUse>true</aiCanUse>
+		<targetRequired>false</targetRequired>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<range>0.1</range>
+			<warmupTime>1</warmupTime>
+			<requireLineOfSight>false</requireLineOfSight>
+			<soundCast>APM_PulseWave</soundCast>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetBuildings>false</canTargetBuildings>
+			</targetParams>
+		</verbProperties>
+	</AbilityDef>
+
 	<!-- "targeting" for pinpoint mech -->
 	<AbilityDef>
 		<defName>APM_Ability_GiveAccuracyHediff</defName>
 		<label>Mark Target</label>
 		<description>Mark target and share live location info to allies, make hitting said target eaiser.</description>
 		<iconPath>UI/Targeting</iconPath>
-		<cooldownTicksRange>1200</cooldownTicksRange>
+		<cooldownTicksRange>3600</cooldownTicksRange><!-- 1 minute -->
 		<hostile>true</hostile>
 		<writeCombatLog>true</writeCombatLog>
 		<aiCanUse>true</aiCanUse>
+		<warmupStartSound>APM_Targeting</warmupStartSound>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
 			<range>12.9</range>
-			<warmupTime>0.5</warmupTime>
+			<warmupTime>5</warmupTime>
 			<requireLineOfSight>False</requireLineOfSight>
-			<soundCast>Pawn_Cat_Call</soundCast>
+			<soundCast>APM_Targeting</soundCast>
 			<targetParams>
 				<canTargetBuildings>false</canTargetBuildings>
 			</targetParams>
@@ -565,6 +591,7 @@
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
+			<soundCast>APM_SteelDiscipline_Cast</soundCast>
 			<warmupTime>1.5</warmupTime>
 			<range>0.1</range>
 			<requireLineOfSight>false</requireLineOfSight>
@@ -612,5 +639,29 @@
 				<gasAmount>1</gasAmount>
 			</li>
 		</comps>
+	</AbilityDef>
+
+	<AbilityDef>
+		<defName>APM_Overdrive</defName>
+		<label>Overdrive</label>
+		<description>Terminus pushes its systems to the limit, temporarily boosting its movement and melee attack speed.</description>
+		<iconPath>UI/Icons/Overdrive</iconPath>
+		<cooldownTicksRange>9000</cooldownTicksRange>
+		<aiCanUse>true</aiCanUse>
+		<hostile>false</hostile>
+		<targetRequired>false</targetRequired>
+		<writeCombatLog>true</writeCombatLog>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<warmupTime>3</warmupTime>
+			<range>0.1</range>
+			<requireLineOfSight>false</requireLineOfSight>
+			<soundCast>APM_Overdrive</soundCast>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetBuildings>false</canTargetBuildings>
+			</targetParams>
+		</verbProperties>
 	</AbilityDef>
 </Defs>

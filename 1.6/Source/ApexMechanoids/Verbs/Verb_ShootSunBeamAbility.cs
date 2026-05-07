@@ -143,6 +143,10 @@ namespace ApexMechanoids
             lastShotTick = Find.TickManager.TicksGame;
             ticksToNextPathStep = base.TicksBetweenBurstShots;
             IntVec3 targetCell = InterpolatedPosition.Yto0().ToIntVec3();
+            if (burstShotsLeft == 1)
+            {
+                SoundDef.Named("APM_SunRayStop").PlayOneShot(SoundInfo.InMap(caster, MaintenanceType.PerTick));
+            }
             if (!ability.Activate(currentTarget, currentDestination))
             {
                 return false;
@@ -299,7 +303,10 @@ namespace ApexMechanoids
                     }
                 }
             }
-            sustainer?.Maintain();
+            if (sustainer != null && !sustainer.Ended)
+            {
+                sustainer.Maintain();
+            }
         }
 
         public override void WarmupComplete()
@@ -313,6 +320,7 @@ namespace ApexMechanoids
             {
                 mote = MoteMaker.MakeInteractionOverlay(verbProps.beamMoteDef, caster, new TargetInfo(path[0].ToIntVec3(), caster.Map));
             }
+            SoundDef.Named("APM_SunRayStart").PlayOneShot(SoundInfo.InMap(caster, MaintenanceType.PerTick));
             TryCastNextBurstShot();
             ticksToNextPathStep = base.TicksBetweenBurstShots;
             endEffecter?.Cleanup();
@@ -321,6 +329,8 @@ namespace ApexMechanoids
                 sustainer = verbProps.soundCastBeam.TrySpawnSustainer(SoundInfo.InMap(caster, MaintenanceType.PerTick));
             }
         }
+
+
 
         private void CalculatePath(Vector3 target, List<Vector3> pathList, HashSet<IntVec3> pathCellsList, bool addRandomOffset = true)
         {

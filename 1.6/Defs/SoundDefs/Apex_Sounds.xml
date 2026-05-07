@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<SoundDef>
 		<defName>APM_Dual</defName>
 		<context>MapOnly</context>
@@ -76,4 +75,234 @@
 		</subSounds>
 	</SoundDef>
 
+	<SoundDef>
+		<defName>APM_Overdrive</defName>
+		<context>MapOnly</context>
+		<maxVoices>4</maxVoices>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>Overdrive</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>75</min>
+					<max>85</max>
+				</volumeRange>
+				<pitchRange>
+					<min>0.95</min>
+					<max>1.05</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>APM_GazerBeamLoop</defName>
+		<sustain>true</sustain>
+		<priorityMode>PrioritizeExisting</priorityMode>
+		<context>MapOnly</context>
+		<maxVoices>4</maxVoices>
+		<maxSimultaneous>2</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>SunRay_Cast</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>50</min>
+					<max>60</max>
+				</volumeRange>
+				<pitchRange>
+					<min>1.1</min>
+					<max>1.2</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<!-- Sun Ray Sounds -->
+	<SoundDef>
+		<defName>APM_SunRayStart</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxVoices>4</maxVoices>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>SunRay_Start</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>75</min>
+					<max>85</max>
+				</volumeRange>
+				<pitchRange>
+					<min>0.95</min>
+					<max>1.05</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>APM_SunRayCast</defName>
+		<sustain>true</sustain>
+		<priorityMode>PrioritizeExisting</priorityMode>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxVoices>4</maxVoices>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>SunRay_Cast</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>75</min>
+					<max>85</max>
+				</volumeRange>
+				<pitchRange>
+					<min>0.95</min>
+					<max>1.05</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>APM_SunRayStop</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxVoices>4</maxVoices>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>SunRay_Stop</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>75</min>
+					<max>85</max>
+				</volumeRange>
+				<pitchRange>
+					<min>0.95</min>
+					<max>1.05</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<!-- PulseWave Ability Sound -->
+	<SoundDef>
+		<defName>APM_PulseWave</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxVoices>4</maxVoices>
+		<maxSimultaneous>2</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>PulseWave</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>75</min>
+					<max>85</max>
+				</volumeRange>
+				<pitchRange>
+					<min>0.95</min>
+					<max>1.05</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<!-- Targeting Ability Sound -->
+	<SoundDef>
+		<defName>APM_Targeting</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxVoices>4</maxVoices>
+		<maxSimultaneous>2</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>Targeting</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>75</min>
+					<max>85</max>
+				</volumeRange>
+				<pitchRange>
+					<min>0.95</min>
+					<max>1.05</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<!-- SteelDiscipline Ability Sound -->
+	<SoundDef>
+		<defName>APM_SteelDiscipline_Cast</defName>
+		<context>MapOnly</context>
+		<maxVoices>4</maxVoices>
+		<maxSimultaneous>2</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>SteelDiscipline</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>75</min>
+					<max>85</max>
+				</volumeRange>
+				<pitchRange>
+					<min>0.95</min>
+					<max>1.05</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<!-- Starfall Ability Sound -->
+	<SoundDef>
+		<defName>Starfall</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxVoices>4</maxVoices>
+		<maxSimultaneous>2</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>Starfall</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>75</min>
+					<max>85</max>
+				</volumeRange>
+				<pitchRange>
+					<min>0.95</min>
+					<max>1.05</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
 </Defs>

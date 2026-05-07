@@ -30,7 +30,7 @@
 		</weaponTags>
 		<verbs>
 			<li>
-				<verbClass>Verb_ShootBeam</verbClass>
+				<verbClass>ApexMechanoids.Verb_ShootSunBeam</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>1.0</warmupTime>
 				<range>24.9</range>
@@ -43,7 +43,7 @@
 				<beamDamageDef>APM_GazerBeam</beamDamageDef>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
-				<soundCastBeam>BeamGraser_Shooting</soundCastBeam>
+				<soundCastBeam>APM_GazerBeamLoop</soundCastBeam>
 				<beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
 				<beamFleckChancePerTick>0.32</beamFleckChancePerTick>
 				<beamMaxDeviation>1.5</beamMaxDeviation>
@@ -107,7 +107,7 @@
 				<beamDamageDef>APM_SunRayGun</beamDamageDef>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>32</muzzleFlashScale>
-				<soundCastBeam>BeamGraser_Shooting</soundCastBeam>
+				<soundCastBeam>APM_SunRayCast</soundCastBeam>
 				<beamGroundFleckDef>APM_Fleck_SunRay_Burn</beamGroundFleckDef>
 				<beamFleckChancePerTick>0.5</beamFleckChancePerTick>
 				<beamMaxDeviation>1.5</beamMaxDeviation>
