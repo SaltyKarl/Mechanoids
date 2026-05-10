@@ -95,8 +95,8 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-		<weaponMoney>999~1001</weaponMoney>
-		<weaponTags Inherit="False">
+		<weaponMoney>99999~99999</weaponMoney>
+		<weaponTags>
 			<li>APM_WeaponHazeGraser</li>
 		</weaponTags>
 		<abilities>
