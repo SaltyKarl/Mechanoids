@@ -60,10 +60,7 @@
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="CompProperties_Breakdownable" />
-			<li Class="ApexMechanoids.CompProperties_RemoteControlUplink" />
-			<li Class="ApexMechanoids.CompProperties_RemoteMechCasketAbilities">
-
-			</li>
+			<li Class="ApexMechanoids.CompProperties_RemoteMechCasketAbilities" />
 		</comps>
 		<placeWorkers>
 			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
