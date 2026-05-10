@@ -8,7 +8,7 @@ namespace ApexMechanoids
     {
         public static void Postfix(Bill_Mech __instance, ref float __result) 
         {
-            float factor = __instance?.Gestator?.GetStatValue(ApexDefsOf.MechGestationSpeedFactor) ?? 1f;
+            float factor = __instance?.Gestator?.GetStatValue(ApexDefsOf.APM_GestationFactor) ?? 1f;
 
             __result *= factor;
         }
