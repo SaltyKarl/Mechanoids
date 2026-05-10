@@ -52,6 +52,7 @@
 		<tradeability>None</tradeability>
 		<destroyOnDrop>true</destroyOnDrop>
 		<relicChance>0</relicChance>
+		<generateCommonality>1</generateCommonality>
 		<statBases>
 			<MarketValue>1000</MarketValue>
 			<WorkToMake>47000</WorkToMake>

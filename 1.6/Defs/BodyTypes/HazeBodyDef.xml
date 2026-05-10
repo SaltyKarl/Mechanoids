@@ -11,6 +11,9 @@
 			<def>APM_HazeBody</def>
 			<height>Middle</height>
 			<depth>Outside</depth>
+			<groups>
+				<li>Torso</li>
+			</groups>
 			<parts>
 				<li>
 					<def>MechanicalNeck</def>
@@ -141,15 +144,18 @@
 		</corePart>
 	</BodyDef>
 
-	<BodyPartDef>
+	<BodyPartDef ParentName="MechanicalThorax">
 		<defName>APM_HazeBody</defName>
 		<label>body</label>
-		<hitPoints>100</hitPoints>
+		<hitPoints>45</hitPoints>
 		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
 		<skinCovered>false</skinCovered>
 		<solid>true</solid>
 		<alive>false</alive>
 		<bleedRate>0</bleedRate>
+		<tags>
+			<li>ManipulationLimbCore</li>
+		</tags>
 	</BodyPartDef>
 
 	<BodyPartDef>
