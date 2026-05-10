@@ -48,7 +48,6 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1.2</drawSize>
 		</graphicData>
-		<uiIconPath>UI/Light</uiIconPath>
 		<techLevel>Spacer</techLevel>
 		<tradeability>None</tradeability>
 		<destroyOnDrop>true</destroyOnDrop>

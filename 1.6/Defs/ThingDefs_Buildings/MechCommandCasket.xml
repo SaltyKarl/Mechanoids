@@ -6,6 +6,7 @@
 		<label>mech command casket</label>
 		<description>The mech command casket is a fusion of mechlink and cryptosleep casket technology, allowing the enclosed user to control their mechanoids from the relative safety of the casket. The signal boosting capabilities of this machine allow the mechanitor to control their mechs even when world tiles away from them.</description>
 		<tickerType>Normal</tickerType>
+		<thingClass>ApexMechanoids.Building_MechCommandCasket</thingClass>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/MechCommandCasket/MechCommandCasket</texPath>

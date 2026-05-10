@@ -56,7 +56,7 @@
 					<APM_GestationFactor>0.2</APM_GestationFactor>	<!-- 0.2 = 20% faster, 1.0 = 100% faster = takes half the time  | multiple amplifier add to each other, the result gets multiplied with the mechanitors gestation speed -->
 				</statOffsets>
 				<maxSimultaneous>2</maxSimultaneous>
-				<maxDistance>2</maxDistance>	<!-- 2 is adjacent  -->
+				<mustBePlacedAdjacent>true</mustBePlacedAdjacent>	<!-- 2 is adjacent  -->
 			</li>
 		</comps>
 		<placeWorkers>
