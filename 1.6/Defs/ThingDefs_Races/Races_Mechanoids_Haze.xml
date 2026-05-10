@@ -27,6 +27,26 @@
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
 				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
 			</li>
+			<li>
+				<label>front left paw</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>20.5</power>
+				<cooldownTime>2.9</cooldownTime>
+				<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+			</li>
+			<li>
+				<label>front right paw</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>20.5</power>
+				<cooldownTime>2.9</cooldownTime>
+				<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+			</li>
 		</tools>
 		<race>
 			<body>APM_Haze</body>
@@ -99,6 +119,8 @@
 		<weaponTags>
 			<li>APM_WeaponHazeGraser</li>
 		</weaponTags>
+		<techHediffsChance>1</techHediffsChance>
+		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<abilities>
 			<li>APM_Ability_ToxicMist</li>
 		</abilities>
