@@ -116,8 +116,8 @@
 			</li>
 		</lifeStages>
 		<weaponMoney>9999~9999</weaponMoney>
-		<weaponTags>
-			<li>APM_WeaponHazeGraser</li>
+		<weaponTags Inherit="False">
+			<li>APM_HazeGraserTag</li>
 		</weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
