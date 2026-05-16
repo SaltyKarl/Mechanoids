@@ -71,26 +71,40 @@
       </li>
     </comps>
   </AbilityDef>
-  <AbilityDef ParentName="PsycastBaseSkip">
+  <AbilityDef>
     <defName>APM_CelerusBlink</defName>
-    <label>blink</label>
-    <description>WIP.</description>
-    <level>4</level>
     <iconPath>UI/Blink</iconPath>
+    <cooldownTicksRange>300</cooldownTicksRange>
     <writeCombatLog>True</writeCombatLog>
+    <aiCanUse>true</aiCanUse>
+    <showCastingProgressBar>true</showCastingProgressBar>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
     <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
     <verbProperties>
-      <warmupTime>0.25</warmupTime>
-      <range>27.9</range>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>0.15</warmupTime>
+      <range>17.9</range>
+      <requireLineOfSight>true</requireLineOfSight>
       <targetParams>
-        <canTargetSelf>True</canTargetSelf>
-        <canTargetAnimals>True</canTargetAnimals>
-        <canTargetItems>True</canTargetItems>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetPawns>false</canTargetPawns>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetAnimals>false</canTargetAnimals>
+        <canTargetItems>false</canTargetItems>
+        <canTargetLocations>true</canTargetLocations>
       </targetParams>
     </verbProperties>
     <comps>
-      <li Class="CompProperties_AbilityTeleport">
-        <compClass>CompAbilityEffect_Teleport</compClass>
+      <li Class="ApexMechanoids.CompProperties_BlinkWarmupVisuals">
+        <pillarMoteDef>APM_Mote_Blink_WarmupPillar</pillarMoteDef>
+        <ringMoteDef>APM_Mote_Blink_Ring</ringMoteDef>
+        <rayMoteDef>APM_Mote_Blink_WarmupRay</rayMoteDef>
+        <sparkleMoteDef>APM_Mote_Blink_Sparkle</sparkleMoteDef>
+        <spawnIntervalTicks>20</spawnIntervalTicks>
+        <sparklesPerPulse>2</sparklesPerPulse>
+      </li>
+      <li Class="ApexMechanoids.CompProperties_BlinkTeleport">
         <destination>Selected</destination>
         <requiresLineOfSight>True</requiresLineOfSight>
         <range>17.9</range>
@@ -98,6 +112,19 @@
         <clamorRadius>10</clamorRadius>
         <destClamorType>Ability</destClamorType>
         <destClamorRadius>10</destClamorRadius>
+        <ringMoteDef>APM_Mote_Blink_Ring</ringMoteDef>
+        <starAMoteDef>APM_Mote_Blink_StarA</starAMoteDef>
+        <starBMoteDef>APM_Mote_Blink_StarB</starBMoteDef>
+        <sparkleMoteDef>APM_Mote_Blink_Sparkle</sparkleMoteDef>
+        <arrivalPillarMoteDef>APM_Mote_Blink_WarmupPillar</arrivalPillarMoteDef>
+        <arrivalRayMoteDef>APM_Mote_Blink_WarmupRay</arrivalRayMoteDef>
+        <darkFragmentMoteDefs>
+          <li>APM_Mote_Blink_DarkFragment_A</li>
+          <li>APM_Mote_Blink_DarkFragment_B</li>
+          <li>APM_Mote_Blink_DarkFragment_C</li>
+          <li>APM_Mote_Blink_DarkFragment_D</li>
+        </darkFragmentMoteDefs>
+        <darkFragmentCount>1~1</darkFragmentCount>
       </li>
     </comps>
   </AbilityDef>
