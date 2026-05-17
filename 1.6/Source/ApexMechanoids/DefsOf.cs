@@ -21,5 +21,12 @@ namespace ApexMechanoids
         public static ThingDef APM_PawnFlyer_Hooked;
         public static ThingDef APM_Projectile_Hook;
         public static ThingDef APM_Mote_HookRope;
+        public static JobDef APM_LasherTame;
+        public static JobDef APM_LasherTrain;
+        public static JobDef APM_LasherMilk;
+        public static JobDef APM_LasherShear;
+        public static JobDef APM_LasherSlaughter;
+        public static JobDef APM_LasherReleaseToWild;
+        public static JobDef APM_SirenChatWithPrisoner;
     }
 }

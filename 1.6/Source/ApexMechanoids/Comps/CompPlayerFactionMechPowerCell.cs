@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
@@ -13,6 +14,17 @@ namespace ApexMechanoids
 
     public class CompPlayerFactionMechPowerCell : CompMechPowerCell
     {
+        public override IEnumerable<Gizmo> CompGetGizmosExtra()
+        {
+            if (parent is Pawn pawn && pawn.Faction == Faction.OfPlayer)
+            {
+                foreach (Gizmo gizmo in base.CompGetGizmosExtra())
+                {
+                    yield return gizmo;
+                }
+            }
+        }
+
         public override void CompTick()
         {
             if (parent is Pawn pawn && pawn.Faction == Faction.OfPlayer)

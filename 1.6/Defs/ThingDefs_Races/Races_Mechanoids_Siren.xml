@@ -41,7 +41,11 @@
 			</li>
 		</tools>
 		<race>
-			<body>APM_Vassal</body>
+			<body>APM_Siren</body>
+			<mechEnabledWorkTypes>
+				<li>APM_SirenWarden</li>
+			</mechEnabledWorkTypes>
+			<mechFixedSkillLevel>10</mechFixedSkillLevel>
 			<baseHealthScale>1</baseHealthScale>
 			<detritusLeavings>
 				<li>

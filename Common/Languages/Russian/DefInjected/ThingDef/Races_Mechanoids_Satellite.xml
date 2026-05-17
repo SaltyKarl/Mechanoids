@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
   <APM_Mech_Satellite.label>Сателлит</APM_Mech_Satellite.label>
@@ -6,12 +6,5 @@
   <APM_Mech_Satellite.tools.0.label>левая кисть</APM_Mech_Satellite.tools.0.label>
   <APM_Mech_Satellite.tools.1.label>правая кисть</APM_Mech_Satellite.tools.1.label>
   <APM_Mech_Satellite.tools.2.label>голова</APM_Mech_Satellite.tools.2.label>
-
-  <APM_Mech_Satellite_Summoned.label>Сателлит</APM_Mech_Satellite_Summoned.label>
-  <APM_Mech_Satellite_Summoned.description>Оснащённый ховерпаком, этот штурмовой механоид может с лёгкостью перемещаться по любой местности. Сателлитов можно увидеть призываемыми из упаковки мехамастера для помощи союзникам или сопровождающими командиров механоидов в бою.</APM_Mech_Satellite_Summoned.description>
-  <APM_Mech_Satellite_Summoned.tools.0.label>левая кисть</APM_Mech_Satellite_Summoned.tools.0.label>
-  <APM_Mech_Satellite_Summoned.tools.1.label>правая кисть</APM_Mech_Satellite_Summoned.tools.1.label>
-  <APM_Mech_Satellite_Summoned.tools.2.label>голова</APM_Mech_Satellite_Summoned.tools.2.label>
-
 
 </LanguageData>

@@ -42,8 +42,9 @@
 		</tools>
 		<race>
 			<body>Lancer</body>
+			<mechFixedSkillLevel>10</mechFixedSkillLevel>
 			<mechEnabledWorkTypes>
-				<li>Handling</li>
+				<li>APM_LasherHandling</li>
 			</mechEnabledWorkTypes>
 			<baseHealthScale>1</baseHealthScale>
 			<detritusLeavings>

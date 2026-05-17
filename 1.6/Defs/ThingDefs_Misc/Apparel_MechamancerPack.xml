@@ -42,7 +42,7 @@
     <modExtensions>
       <li Class="ApexMechanoids.DefModExtension_MechPack">
         <maxNum>2</maxNum>
-        <spawnedKind>APM_Mech_Satellite_Summoned</spawnedKind>
+        <spawnedKind>APM_Mech_Satellite</spawnedKind>
       </li>
     </modExtensions>
     <recipeMaker>
