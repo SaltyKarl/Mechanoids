@@ -82,7 +82,13 @@
 					<spawnChance>0.5</spawnChance>
 				</li>
 			</detritusLeavings>
+			<mechEnabledWorkTypes>
+				<li>APM_FrostivusFoodPreservation</li>
+			</mechEnabledWorkTypes>
 		</race>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_FrostivusFoodPreservation" />
+		</comps>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
