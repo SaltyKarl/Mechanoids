@@ -2,17 +2,18 @@
 <Defs>
   <AbilityDef>
     <defName>APM_Absorb</defName>
-    <label>absorb</label>
+    <label>Recycle Biomess</label>
     <jobDef>CastAbilityOnThingMelee</jobDef>
-    <description>PLACEHOLDER</description>
+    <description>Grind up target corpse, and slowly process them into chem fuel.</description>
     <iconPath>UI/Absorb</iconPath>
-    <cooldownTicksRange>90000</cooldownTicksRange>
-    <!-- 1.5 days -->
+    <cooldownTicksRange>30000</cooldownTicksRange>
+    <!-- 0.5 days -->
     <targetRequired>true</targetRequired>
     <hostile>false</hostile>
     <showCastingProgressBar>true</showCastingProgressBar>
     <displayGizmoWhileUndrafted>True</displayGizmoWhileUndrafted>
     <disableGizmoWhileUndrafted>False</disableGizmoWhileUndrafted>
+    <aiCanUse>true</aiCanUse>
     <verbProperties>
       <verbClass>Verb_CastAbilityTouch</verbClass>
       <warmupTime>1</warmupTime>

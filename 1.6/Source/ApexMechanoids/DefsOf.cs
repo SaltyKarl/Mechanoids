@@ -7,6 +7,8 @@ namespace ApexMechanoids
     public static class ApexDefsOf
     {
         public static ThingDef APM_Mech_Frostivus;
+        public static ThingDef APM_Mech_Ingestor;
+        public static AbilityDef APM_Absorb;
         public static HediffDef APM_Hediff_TerminusOverdrive;
         public static BodyPartGroupDef APM_LeftAegisShield;
         public static BodyPartGroupDef APM_RightAegisShield;
