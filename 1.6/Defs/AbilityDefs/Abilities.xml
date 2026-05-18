@@ -625,7 +625,7 @@
 		<description>Similar to a tox pack, the haze releases tox gas around itself, enveloping the surrounding area in a toxic cloud.</description>
 		<iconPath>UI/Icons/ToxicMist</iconPath>
 		<cooldownTicksRange>18000</cooldownTicksRange><!-- 5 hours -->
-		<hostile>true</hostile>
+		<hostile>false</hostile>
 		<writeCombatLog>true</writeCombatLog>
 		<aiCanUse>true</aiCanUse>
 		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
@@ -637,7 +637,7 @@
 			<requireLineOfSight>false</requireLineOfSight>
 			<targetParams>
 				<canTargetSelf>true</canTargetSelf>
-				<canTargetPawns>false</canTargetPawns>
+				<canTargetPawns>true</canTargetPawns>
 				<canTargetBuildings>false</canTargetBuildings>
 			</targetParams>
 		</verbProperties>

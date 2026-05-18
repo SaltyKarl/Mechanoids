@@ -142,7 +142,8 @@
 			<range>2.9</range>
 			<warmupTime>1.5</warmupTime>
 			<requireLineOfSight>True</requireLineOfSight>
-			<soundCast><!--TODO--></soundCast>
+			<soundCast><!--TODO-->
+			</soundCast>
 			<targetParams>
 				<canTargetSelf>False</canTargetSelf>
 				<canTargetPawns>True</canTargetPawns>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
 	<FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
@@ -67,7 +67,7 @@
 			</li>
 		</randomGraphics>
 	</FleckDef>
-	
+
 	<FleckDef ParentName="FleckBase_Thrown">
 		<defName>APM_AirPuffGreen</defName>
 		<graphicData>

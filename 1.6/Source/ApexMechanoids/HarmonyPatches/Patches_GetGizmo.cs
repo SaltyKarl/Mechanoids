@@ -9,38 +9,36 @@ namespace ApexMechanoids
 {
     [HarmonyPatch(typeof(Pawn))]
     [HarmonyPatch("GetGizmos")]
-    public static class AddOnlyOverseerResurrectionGizmo
+    public static class AddRemoteMechCasketAbilities
     {
         [HarmonyPostfix]
         public static void GetGizmos(ref IEnumerable<Gizmo> __result, Pawn __instance)
         {
-
-            if (__instance?.CurJob != null)
+            if(Utils.IsUplinkActiveFor(__instance, out Building_MechCommandCasket casket))
             {
-                Job job = __instance?.CurJob;
-
-                if (job.def == ApexDefsOf.APM_RemoteControlUplink)
+                if(casket == null)
                 {
-                    Thing buildingThing = job.GetTarget(TargetIndex.A).Thing;
-                    if (buildingThing != null)
-                    {
-                        CompRemoteMechCasketAbilities comp = buildingThing.TryGetComp<CompRemoteMechCasketAbilities>();
-                        if (comp != null)
-                        {
-                            List<Gizmo> list = __result.ToList();
+                    return;
+                }
 
-                            foreach (Gizmo gizmo in comp.GetGizmos())
-                            {
-                                if (gizmo != null)
-                                {
-                                    list.Add(gizmo);
-                                }
-                            }
-                            __result = list;
+                List<Gizmo> list = __result.ToList();
+
+                CompRemoteMechCasketAbilities comp = casket.TryGetComp<CompRemoteMechCasketAbilities>();
+                if (comp != null)
+                {
+                    foreach (Gizmo gizmo in comp.GetGizmos())
+                    {
+                        if (gizmo != null)
+                        {
+                            list.Add(gizmo);
                         }
                     }
                 }
+
+                IEnumerable<Gizmo> enumerable = list;
+                __result = enumerable;
             }
+
         }
     }
 }

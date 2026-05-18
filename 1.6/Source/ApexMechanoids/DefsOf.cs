@@ -24,7 +24,7 @@ namespace ApexMechanoids
         public static ThingDef APM_Projectile_Hook;
         public static ThingDef APM_Mote_HookRope;
         public static StatDef APM_GestationFactor;
-        public static JobDef APM_RemoteControlUplink;
+        public static ThingDef APM_MechCommandCasket;
 
         public static HediffDef RemoteRepairerImplant;  //from Biotech
         public static HediffDef RemoteShielderImplant;  //from Biotech

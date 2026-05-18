@@ -63,7 +63,7 @@
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
 		</statBases>
 		<modExtensions>
-			<li Class="ApexMechanoids.GestatorExtension"/>
+			<li Class="ApexMechanoids.GestatorExtension" />
 		</modExtensions>
 	</ThingDef>
 

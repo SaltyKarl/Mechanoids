@@ -4,8 +4,6 @@ namespace ApexMechanoids
 {
     public class CompProperties_RemoteMechCasketAbilities : CompProperties
     {
-
-
         public CompProperties_RemoteMechCasketAbilities()
         {
             compClass = typeof(CompRemoteMechCasketAbilities);
@@ -28,6 +26,8 @@ namespace ApexMechanoids
         public string textpath_Shield = "UI/Gizmos/APM_ShieldMech";
 
         public string textpath_ShieldCooldown = "UI/Gizmos/APM_ShieldMechCooldown";
+
+        public string labelShort = "Casket";
 
     }
 }

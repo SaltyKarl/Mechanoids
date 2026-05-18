@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
 	<ThingDef ParentName="MoteBase">
@@ -134,7 +134,7 @@
 			<drawSize>(8, 8)</drawSize>
 		</graphicData>
 	</ThingDef>
-	
+
 	<ThingDef ParentName="MoteBase">
 		<defName>APM_ElectricArcA</defName>
 		<thingClass>MoteAttached</thingClass>
@@ -176,5 +176,5 @@
 			<ticksPerFrame>5</ticksPerFrame>
 		</graphicData>
 	</ThingDef>
-  
+
 </Defs>
