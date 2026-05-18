@@ -29,17 +29,15 @@ namespace ApexMechanoids
                         {
                             List<Gizmo> list = __result.ToList();
 
-                            IEnumerable<Gizmo> enumerable = list;
-
                             foreach (Gizmo gizmo in comp.GetGizmos())
                             {
-                                if(gizmo != null)
+                                if (gizmo != null)
                                 {
                                     list.Add(gizmo);
                                 }
                             }
-                            __result = enumerable;
-                        }   
+                            __result = list;
+                        }
                     }
                 }
             }

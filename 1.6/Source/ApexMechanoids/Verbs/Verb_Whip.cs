@@ -174,8 +174,8 @@ namespace ApexMechanoids
 				moteDef = DefDatabase<ThingDef>.GetNamed("APM_Mote_Whip");
 			}
 			float whipAngle = caster.TrueCenter().AngleToFlat(target.CenterVector3);
-			Vector3 vec = new Vector3(1.5f, 0f, 0f).RotatedBy(whipAngle);
-			Mote whipMote = MoteMaker.MakeInteractionOverlay(moteDef, caster, new TargetInfo(target.Cell, map), vec * 0.5f, vec);
+				Vector3 vec = new Vector3(0.5f, 0f, 0f).RotatedBy(whipAngle);
+				Mote whipMote = MoteMaker.MakeInteractionOverlay(moteDef, caster, new TargetInfo(target.Cell, map), Vector3.zero, vec);
 			if (whipMote is Mote_Whip moteWhip)
 			{
 				moteWhip.flipped = whipAngle >= 180f;

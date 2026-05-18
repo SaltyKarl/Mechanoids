@@ -22,7 +22,7 @@
         <description>A compact pulse-charged rapid-fire blaster for area suppressive fire in tight spaces. Even better at area denial than its larger, more common sibling, the heavy charge blaster, at the cost of range and damage.</description>
         <techLevel>Spacer</techLevel>
         <graphicData>
-            <texPath>Things/Item/Equipment/WeaponRanged/MaulHeavyChargeSuppressor</texPath>
+            <texPath>Things/Item/Equipment/WeaponRanged/SatelliteLightChargeSuppressor</texPath>
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
         <soundInteract>Interact_ChargeBlaster</soundInteract>

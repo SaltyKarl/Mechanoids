@@ -430,4 +430,29 @@
 			</li>
 		</subSounds>
 	</SoundDef>
+
+	<SoundDef>
+		<defName>APM_CelerusBlink</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxVoices>4</maxVoices>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>Blink</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>75</min>
+					<max>85</max>
+				</volumeRange>
+				<pitchRange>
+					<min>0.95</min>
+					<max>1.05</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
 </Defs>

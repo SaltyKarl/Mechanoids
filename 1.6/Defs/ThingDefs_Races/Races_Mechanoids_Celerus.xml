@@ -59,6 +59,12 @@
 		<statBases>
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
 		</statBases>
+		<comps>
+			<li MayRequire="Ludeon.RimWorld.Biotech" Class="ApexMechanoids.CompProperties_MechanitorRangeExtender">
+				<maxRange>30</maxRange>
+				<minRange>0</minRange>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
@@ -94,6 +100,10 @@
 		</lifeStages>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
+		<abilities>
+			<li>APM_CelerusBlink</li>
+			<li>APM_Ability_SmokeScreen</li>
+		</abilities>
 	</PawnKindDef>
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Celerus</defName>
@@ -128,6 +138,10 @@
 		</lifeStages>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
+		<abilities>
+			<li>APM_CelerusBlink</li>
+			<li>APM_Ability_SmokeScreen</li>
+		</abilities>
 	</PawnKindDef>
 
 </Defs>

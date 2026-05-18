@@ -7,6 +7,10 @@ namespace ApexMechanoids
     {
         public float radius = 5f;
         public float gasAmount = 1f;
+        // Total ticks over which to spread gas emission (default: 300 ticks = 5s)
+        public int spreadTicks = 300;
+        // How often (in ticks) to emit a batch of gas
+        public int emitIntervalTicks = 5;
 
         public CompProperties_AbilitySpawnToxGas()
         {
@@ -28,13 +32,22 @@ namespace ApexMechanoids
                 return;
             }
             IntVec3 center = pawn.Position;
-            foreach (IntVec3 cell in GenRadial.RadialCellsAround(center, Props.radius, useCenter: true))
+            if (!center.InBounds(map))
             {
-                if (cell.InBounds(map))
-                {
-                    GasUtility.AddGas(cell, map, GasType.ToxGas, Props.gasAmount);
-                }
+                return;
             }
+            MapComponent_GradualGasEmitter emitter = map.GetComponent<MapComponent_GradualGasEmitter>();
+            if (emitter == null)
+            {
+                return;
+            }
+            emitter.AddEmission(new GradualGasEmission(
+                center,
+                GasType.ToxGas,
+                Props.gasAmount,
+                Props.spreadTicks,
+                Props.emitIntervalTicks
+            ));
         }
     }
 }
