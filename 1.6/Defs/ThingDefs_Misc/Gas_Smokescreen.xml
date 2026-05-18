@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="APM_BaseGas">
 		<defName>APM_Smokescreen</defName>
 		<label>smokescreen gas</label>
@@ -34,5 +33,4 @@
 			</li>
 		</modExtensions>
 	</ThingDef>
-
 </Defs>

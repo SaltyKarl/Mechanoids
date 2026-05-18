@@ -1,5 +1,4 @@
 <Defs>
-
 	<HediffDef ParentName="DiseaseBase">
 		<defName>APM_CelerusSmokescreenBuff</defName>
 		<label>Smokescreen</label>
@@ -29,5 +28,4 @@
 			</li>
 		</stages>
 	</HediffDef>
-
 </Defs>

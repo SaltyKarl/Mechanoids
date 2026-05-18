@@ -52,7 +52,7 @@
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
-			<warmupTime>40</warmupTime>
+			<warmupTime>5</warmupTime>
 			<range>0.48</range>
 			<requireLineOfSight>False</requireLineOfSight>
 			<targetParams>
@@ -71,27 +71,33 @@
 		</comps>
 	</AbilityDef>
 
-	<AbilityDef ParentName="PsycastBaseSkip">
+	<AbilityDef>
 		<defName>APM_CelerusBlink</defName>
 		<label>"Blink"</label>
 		<description>Active onboard "blink" micro skip drive, skip to target loction.</description>
-		<level>4</level>
 		<iconPath>UI/Blink</iconPath>
 		<writeCombatLog>True</writeCombatLog>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<warmupStartSound>APM_CelerusBlink</warmupStartSound>
 		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
 			<warmupTime>0.25</warmupTime>
+			<soundCast>APM_CelerusBlink</soundCast>
 			<range>27.9</range>
+			<requireLineOfSight>True</requireLineOfSight>
 			<targetParams>
-				<canTargetSelf>True</canTargetSelf>
-				<canTargetAnimals>True</canTargetAnimals>
-				<canTargetItems>True</canTargetItems>
+				<canTargetSelf>False</canTargetSelf>
+				<canTargetAnimals>False</canTargetAnimals>
+				<canTargetItems>False</canTargetItems>
+				<canTargetPawns>False</canTargetPawns>
+				<canTargetBuildings>False</canTargetBuildings>
+				<mapObjectTargetsMustBeAutoAttackable>False</mapObjectTargetsMustBeAutoAttackable>
 			</targetParams>
 		</verbProperties>
 		<comps>
 			<li Class="CompProperties_AbilityTeleport">
 				<compClass>CompAbilityEffect_Teleport</compClass>
-				<destination>Selected</destination>
+				<destination>Caster</destination>
 				<requiresLineOfSight>True</requiresLineOfSight>
 				<range>17.9</range>
 				<clamorType>Ability</clamorType>
@@ -370,7 +376,7 @@
 				<jobFactor>10</jobFactor>
 				<!--Stun damage amount-->
 				<job>APM_BashStun</job>
-				<moveSpeed>0.05</moveSpeed>
+				<moveSpeed>0.015</moveSpeed>
 			</li>
 		</comps>
 	</AbilityDef>
@@ -637,8 +643,9 @@
 		</verbProperties>
 		<comps>
 			<li Class="ApexMechanoids.CompProperties_AbilitySpawnToxGas">
-				<radius>5</radius>
-				<gasAmount>1</gasAmount>
+				<gasAmount>30</gasAmount>
+				<spreadTicks>600</spreadTicks>
+				<emitIntervalTicks>5</emitIntervalTicks>
 			</li>
 		</comps>
 	</AbilityDef>
@@ -665,5 +672,38 @@
 				<canTargetBuildings>false</canTargetBuildings>
 			</targetParams>
 		</verbProperties>
+	</AbilityDef>
+	<AbilityDef>
+		<defName>APM_Ability_SmokeScreen</defName>
+		<label>Smokescreen</label>
+		<description>Release a dense smokescreen, shrouding the Celerus and nearby allies in obscuring gas that hinders enemy perception and grants the Celerus combat bonuses while hidden.</description>
+		<iconPath>UI/Icons/Starfall</iconPath>
+		<cooldownTicksRange>3600</cooldownTicksRange><!-- 1 minute -->
+		<hostile>false</hostile>
+		<targetRequired>false</targetRequired>
+		<aiCanUse>true</aiCanUse>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<warmupStartSound>APM_SmokeScreen</warmupStartSound>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<warmupTime>1</warmupTime>
+			<range>0.48</range>
+			<requireLineOfSight>false</requireLineOfSight>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetBuildings>false</canTargetBuildings>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_AbilitySpawnSmokescreen">
+				<gasDef>APM_Smokescreen</gasDef>
+				<radius>5</radius>
+				<maxRadius>15</maxRadius>
+				<spreadIntervalTicks>15</spreadIntervalTicks>
+			</li>
+		</comps>
 	</AbilityDef>
 </Defs>
