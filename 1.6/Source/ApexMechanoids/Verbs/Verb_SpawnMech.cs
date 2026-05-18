@@ -52,6 +52,11 @@ namespace ApexMechanoids
                         Pawn spawnedOne = PawnGenerator.GeneratePawn(modExtension.spawnedKind);
                         spawnedOne.SetFaction(Caster.Faction);
                         GenSpawn.Spawn(spawnedOne, CurrentTarget.Cell, Caster.MapHeld);
+                        CompUnity compUnity = spawnedOne.TryGetComp<CompUnity>();
+                        if (compUnity != null)
+                        {
+                            compUnity.ForceUpdateNow();
+                        }
                         spawnedThing.Add(spawnedOne);
                         return true;
                     }

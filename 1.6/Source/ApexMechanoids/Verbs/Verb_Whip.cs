@@ -31,6 +31,7 @@ namespace ApexMechanoids
 					GraphicData data = new GraphicData();
 					data.CopyFrom(def.graphicData);
 					data.texPath = data.texPath.Remove(data.texPath.Length - 1) + num.ToString();
+					data.drawSize = new Vector2(def.graphicData.drawSize.x, flipped ? -def.graphicData.drawSize.y : def.graphicData.drawSize.y);
 					graphicInt = data.GraphicColoredFor(this);
 				}
 				return graphicInt;
@@ -38,6 +39,7 @@ namespace ApexMechanoids
 		}
 
 		public bool flag = false;
+		public bool flipped = false;
 
 		public override void Tick()
 		{
@@ -58,6 +60,8 @@ namespace ApexMechanoids
 	{
 		public override DamageWorker.DamageResult ApplyMeleeDamageToTarget(LocalTargetInfo target)
 		{
+			if (CasterPawn != null)
+				CasterPawn.rotationTracker.FaceCell(target.Cell);
 			Verb_Whip.Cast(Caster, target, out var result, EquipmentSource, tool);
 			return result;
 		}
@@ -153,7 +157,8 @@ namespace ApexMechanoids
 			{
 				return false;
 			}
-			IntVec3 position = caster.Position;
+			if (CasterPawn != null)
+				CasterPawn.rotationTracker.FaceCell(currentTarget.Cell);
 			Cast(Caster, currentTarget, out var _, EquipmentSource, EquipmentSource.def.tools.FirstOrDefault((x)=>x.capacities.Any((y)=>y.defName == "APM_Whip")));
 			lastShotTick = Find.TickManager.TicksGame;
 			return true;
@@ -168,8 +173,13 @@ namespace ApexMechanoids
 			{
 				moteDef = DefDatabase<ThingDef>.GetNamed("APM_Mote_Whip");
 			}
-			Vector3 vec = new Vector3(1.5f, 0f, 0f).RotatedBy(caster.TrueCenter().AngleToFlat(target.CenterVector3));
-			MoteMaker.MakeInteractionOverlay(moteDef, caster, new TargetInfo(target.Cell, map), vec * 0.5f, vec);
+			float whipAngle = caster.TrueCenter().AngleToFlat(target.CenterVector3);
+			Vector3 vec = new Vector3(1.5f, 0f, 0f).RotatedBy(whipAngle);
+			Mote whipMote = MoteMaker.MakeInteractionOverlay(moteDef, caster, new TargetInfo(target.Cell, map), vec * 0.5f, vec);
+			if (whipMote is Mote_Whip moteWhip)
+			{
+				moteWhip.flipped = whipAngle >= 180f;
+			}
 			result = null;
 			if (target.HasThing)
 			{

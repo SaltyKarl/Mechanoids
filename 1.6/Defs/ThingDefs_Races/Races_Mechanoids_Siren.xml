@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Siren</defName>
 		<label>Siren</label>
@@ -41,7 +40,7 @@
 			</li>
 		</tools>
 		<race>
-			<body>APM_Vassal</body>
+			<body>APM_Siren</body>
 			<baseHealthScale>1</baseHealthScale>
 			<detritusLeavings>
 				<li>
@@ -94,17 +93,24 @@
 		</lifeStages>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
+		<weaponMoney>99999~99999</weaponMoney>
+		<weaponTags>
+			<li>APM_WeaponSirenChargeEmitter</li>
+		</weaponTags>
 		<abilities>
-			<li>APM_SirenSong</li>
+			<li>APM_Ability_SirenSong</li>
+			<li>APM_Ability_SirenLure</li>
 		</abilities>
 	</PawnKindDef>
 
+	<!-- Abilities -->
 	<AbilityDef>
-		<defName>APM_SirenSong</defName>
+		<defName>APM_Ability_SirenSong</defName>
 		<label>siren's song</label>
 		<description>Siren's Song - grants recreation buffs</description>
 		<iconPath>UI/SirenSong</iconPath>
-		<cooldownTicksRange>900000</cooldownTicksRange> <!-- 15 days -->
+		<cooldownTicksRange>900000</cooldownTicksRange>
+		<!-- 15 days -->
 		<targetRequired>false</targetRequired>
 		<hostile>false</hostile>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
@@ -136,7 +142,43 @@
 			</li>
 		</comps>
 	</AbilityDef>
+	<AbilityDef>
+		<defName>APM_Ability_SirenLure</defName>
+		<label>Aluring Song</label>
+		<description>Sing a aluring song to compel the target pawn to walk towards the caster.</description>
+		<iconPath>UI/Call</iconPath>
+		<cooldownTicksRange>600</cooldownTicksRange>
+		<hostile>true</hostile>
+		<writeCombatLog>true</writeCombatLog>
+		<aiCanUse>true</aiCanUse>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<range>29.9</range>
+			<warmupTime>0.5</warmupTime>
+			<requireLineOfSight>False</requireLineOfSight>
+			<soundCast>Pawn_Cat_Call</soundCast>
+			<targetParams>
+				<canTargetSelf>False</canTargetSelf>
+				<canTargetBuildings>False</canTargetBuildings>
+				<canTargetLocations>False</canTargetLocations>
+				<canTargetAnimals>False</canTargetAnimals>
+			</targetParams>
+		</verbProperties>
+		<statBases>
+			<Ability_Duration>10</Ability_Duration>
+			<Ability_EffectRadius>0.9</Ability_EffectRadius>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_AbilityForceJob">
+				<compClass>CompAbilityEffect_ForceJob</compClass>
+				<jobDef>GotoMindControlled</jobDef>
+				<destination>Caster</destination>
+				<range>0.9</range>
+			</li>
+		</comps>
+	</AbilityDef>
 
+	<!-- Effects from abilities -->
 	<HediffDef>
 		<defName>APM_Hediff_SirenSong</defName>
 		<label>siren's song</label>
@@ -146,7 +188,7 @@
 			<li Class="HediffCompProperties_Disappears">
 				<showRemainingTime>True</showRemainingTime>
 			</li>
-			<li Class="HediffCompProperties_DisappearsOnDeath" />
+			<li Class="HediffCompProperties_DisappearsOnDeath"></li>
 		</comps>
 		<isBad>false</isBad>
 		<stages>
@@ -164,7 +206,6 @@
 			</li>
 		</stages>
 	</HediffDef>
-
 	<ThoughtDef>
 		<defName>APM_Thought_SirenSong</defName>
 		<workerClass>ThoughtWorker_Hediff</workerClass>
@@ -179,5 +220,4 @@
 			</li>
 		</stages>
 	</ThoughtDef>
-
 </Defs>

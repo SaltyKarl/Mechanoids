@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef Name="APM_Mech_Pinpoint" ParentName="BaseMechanoid">
 		<defName>APM_Mech_Pinpoint</defName>
 		<label>Pinpoint</label>
@@ -26,7 +25,7 @@
 			</li>
 		</tools>
 		<race>
-			<body>Mech_Light</body>
+			<body>APM_Pinpoint</body>
 			<intelligence>ToolUser</intelligence>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
 			<baseBodySize>0.7</baseBodySize>
@@ -51,6 +50,12 @@
 		<butcherProducts>
 			<Steel>10</Steel>
 		</butcherProducts>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_TrueSight">
+				<radius>12</radius>
+				<interval>60</interval>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
@@ -91,8 +96,7 @@
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<abilities>
-
+			<li>APM_Ability_GiveAccuracyHediff</li>
 		</abilities>
 	</PawnKindDef>
-
 </Defs>

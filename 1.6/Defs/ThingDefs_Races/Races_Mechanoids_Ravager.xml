@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BaseMechanoid">
 		<defName>APM_Mech_Ravager</defName>
 		<label>Ravager</label>
@@ -100,6 +99,8 @@
 		<weaponTags Inherit="False">
 			<li>APM_WeaponRavagerArtillery</li>
 		</weaponTags>
+		<abilities>
+			<li>APM_Starfall</li>
+		</abilities>
 	</PawnKindDef>
-
 </Defs>

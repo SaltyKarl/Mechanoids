@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef Abstract="True" Name="APM_Mech_ConquerorBase" ParentName="BaseMechanoidWalker">
 		<tools>
 			<li>
@@ -56,6 +55,16 @@
 		<statBases>
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
 		</statBases>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_Unity">
+				<hediff>APM_Hediff_Unity</hediff>
+				<checkInterval>250</checkInterval>
+				<severityPerAlly>0.1</severityPerAlly>
+				<maxSeverity>1.0</maxSeverity>
+				<!-- 0 = mapwide; other positive integer numbers indicate the tile radius -->
+				<range>0</range>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="APM_Mech_ConquerorBase">
@@ -114,7 +123,7 @@
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Conqueror_AR</defName>
-		<label>AR onqueror</label>
+		<label>AR conqueror</label>
 		<race>APM_Mech_Conqueror_AR</race>
 		<combatPower>190</combatPower>
 		<lifeStages>
@@ -222,6 +231,7 @@
 			<warmupTime>1</warmupTime>
 			<range>12.9</range>
 			<drawAimPie>false</drawAimPie>
+			<soundCast>APM_UltimateSacrifice</soundCast>
 			<targetParams>
 				<canTargetSelf>true</canTargetSelf>
 			</targetParams>
@@ -267,5 +277,4 @@
 			</li>
 		</stages>
 	</HediffDef>
-
 </Defs>

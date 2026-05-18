@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef Name="APM_Mech_Lasher" ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Lasher</defName>
 		<label>Lasher</label>
@@ -41,7 +40,7 @@
 			</li>
 		</tools>
 		<race>
-			<body>Lancer</body>
+			<body>APM_Lasher</body>
 			<mechEnabledWorkTypes>
 				<li>Handling</li>
 			</mechEnabledWorkTypes>
@@ -97,10 +96,9 @@
 		</lifeStages>
 		<weaponMoney>9999~9999</weaponMoney>
 		<weaponTags>
-			<li>APM_WeaponWhip</li>
+			<li>APM_MechanoidWhip</li>
 		</weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 	</PawnKindDef>
-
 </Defs>

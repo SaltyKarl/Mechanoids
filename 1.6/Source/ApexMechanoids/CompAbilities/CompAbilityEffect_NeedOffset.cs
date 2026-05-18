@@ -28,7 +28,7 @@ namespace ApexMechanoids
     {
         public CompProperties_NeedOffset() : base()
         {
-            this.compClass = typeof(CompProperties_NeedOffset);
+            this.compClass = typeof(CompAbilityEffect_NeedOffset);
         }
         public NeedDef needDef;
         public float offset = 0.1f;

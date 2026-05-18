@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <Defs>
-
 	<ThingDef ParentName="BaseMechanoid">
 		<defName>APM_Mech_Mantis</defName>
 		<label>Mantis</label>
@@ -31,7 +29,7 @@
 			</li>
 		</tools>
 		<race>
-			<body>APM_Ravager</body>
+			<body>APM_Mantis</body>
 			<baseBodySize>3</baseBodySize>
 			<baseHealthScale>6.2</baseHealthScale>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
@@ -97,9 +95,8 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-    <abilities>
-      <li>APM_Bladehopp</li>
-    </abilities>
+		<abilities>
+			<li>APM_Bladehopp</li>
+		</abilities>
 	</PawnKindDef>
-
 </Defs>

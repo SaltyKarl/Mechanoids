@@ -3,7 +3,7 @@ using Verse;
 
 namespace ApexMechanoids
 {
-    public class CompProperties_AbilityRevealInvisibility : AbilityCompProperties
+    public class CompProperties_AbilityRevealInvisibility : CompProperties_AbilityEffect
     {
         public bool instant = false;
         public CompProperties_AbilityRevealInvisibility() => compClass = typeof(CompAbilityRevealInvisibility);

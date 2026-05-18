@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BaseMechanoid">
 		<defName>APM_Mech_Pulse</defName>
 		<label>pulse</label>
@@ -95,7 +94,7 @@
 		</weaponTags>
 		<abilities>
 			<li>LongjumpMech</li>
-			<!--<li>APM_PulseWave</li>-->
+			<li>APM_PulseWave</li>
 		</abilities>
 	</PawnKindDef>
 </Defs>

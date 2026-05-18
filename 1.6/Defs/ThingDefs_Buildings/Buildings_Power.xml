@@ -1,6 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BuildingBase">
 		<defName>APM_DynamoPoweredGenerator</defName>
 		<label>Dynamo powered generator</label>
@@ -73,14 +72,15 @@
 		<constructEffect>ConstructMetal</constructEffect>
 	</ThingDef>
 	<ThingDef ParentName="BaseWeaponTurret">
-		<defName>APM_GazerBeam</defName>
+		<defName>APM_GazerEmplacement</defName>
 		<label>Gazer Emplacement</label>
 		<description>The grazer emplacement is mainly composed of the primary ocular beam emitter of a Gazer mechanoid ripped off and attached to a reinforced metal base. While
 			extremely inefficient, it can emit a massive beam of energy in a single direction, destroying foe and fortification alike in its path. It is not capable of moving in
 			any direction.</description>
 		<graphicData>
 			<texPath>Things/Building/LaserDrill/LaserDrill</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2.5,3.5)</drawSize>
 		</graphicData>
 		<statBases>
 			<AccuracyTouch>0.77</AccuracyTouch>
@@ -92,6 +92,7 @@
 			<Mass>5</Mass>
 			<Flammability>0</Flammability>
 		</statBases>
+		<size>(2,3)</size>
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -100,7 +101,7 @@
 		</comps>
 		<verbs>
 			<li>
-				<verbClass>Verb_ShootBeam</verbClass>
+				<verbClass>ApexMechanoids.Verb_ShootSunBeam</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>1.0</warmupTime>
 				<range>24.9</range>
@@ -113,7 +114,7 @@
 				<beamDamageDef>MegaBeam</beamDamageDef>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
-				<soundCastBeam>BeamGraser_Shooting</soundCastBeam>
+				<soundCastBeam>APM_GazerBeamLoop</soundCastBeam>
 				<beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
 				<beamFleckChancePerTick>0.32</beamFleckChancePerTick>
 				<beamMaxDeviation>1.5</beamMaxDeviation>
@@ -135,5 +136,4 @@
 			</li>
 		</verbs>
 	</ThingDef>
-
 </Defs>

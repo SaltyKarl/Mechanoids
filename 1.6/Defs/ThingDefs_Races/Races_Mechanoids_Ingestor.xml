@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef Name="APM_Mech_Ingestor" ParentName="MechCentipede">
 		<defName>APM_Mech_Ingestor</defName>
 		<label>Ingestor</label>
@@ -33,6 +32,7 @@
 			</li>
 		</tools>
 		<race>
+			<body>APM_Ingestor</body>
 			<baseHealthScale>3.0</baseHealthScale>
 		</race>
 	</ThingDef>
@@ -45,7 +45,8 @@
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
-					<texPath>Things/Pawn/Mechanoid/Ingestor/Closed/IngestorC</texPath><!-- Only the Closed variant, what about Opened? -->
+					<texPath>Things/Pawn/Mechanoid/Ingestor/Closed/IngestorC</texPath>
+					<!-- Only the Closed variant, what about Opened? -->
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Ingestor/Closed/Mech_IngestorC</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
@@ -57,7 +58,8 @@
 			</li>
 			<li>
 				<bodyGraphicData>
-					<texPath>Things/Pawn/Mechanoid/Ingestor/Closed/IngestorCAncient</texPath><!-- Only the Closed variant, what about Opened? -->
+					<texPath>Things/Pawn/Mechanoid/Ingestor/Closed/IngestorCAncient</texPath>
+					<!-- Only the Closed variant, what about Opened? -->
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Ingestor/Closed/Mech_IngestorC</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
@@ -74,8 +76,7 @@
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<controlGroupPortraitZoom>0.65</controlGroupPortraitZoom>
 		<abilities>
-
+			<li>APM_Ability_Absorb</li>
 		</abilities>
 	</PawnKindDef>
-
 </Defs>

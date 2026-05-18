@@ -14,6 +14,7 @@ namespace ApexMechanoids
         public static PawnKindDef APM_Mech_Aegis;
 		public static BodyPartDef APM_AegisShield;
         //public static JobDef APM_RepairAegisShields;
+        public static HediffDef APM_Hediff_Unity;
         public static HediffDef APM_DuelWinner;
         public static HediffDef APM_DuelDraw;
         public static HediffDef APM_InDuel;
@@ -23,10 +24,11 @@ namespace ApexMechanoids
         public static ThingDef APM_Projectile_Hook;
         public static ThingDef APM_Mote_HookRope;
         public static StatDef APM_GestationFactor;
-        public static JobDef APM_RemoteControlUplink;
+        public static ThingDef APM_MechCommandCasket;
 
         public static HediffDef RemoteRepairerImplant;  //from Biotech
         public static HediffDef RemoteShielderImplant;  //from Biotech
+        public static HediffDef APM_Hediff_Devoured;
         public static SoundDef ShieldMech_Complete;     //from Biotech
         public static SoundDef ShieldMech_Start;        //from Biotech
 
