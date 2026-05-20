@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using RimWorld;
 using Verse;
@@ -32,7 +33,7 @@ namespace ApexMechanoids
                     if (comp.remainingCharges > 0)
                     {
                         comp.UsedOnce();
-                        IReadOnlyList<Pawn> list = spawnedThing.ToList();
+                        List<Pawn> list = new List<Pawn>(spawnedThing);
                         foreach (var item in list)
                         {
                             if (item.Dead || item.DestroyedOrNull())
@@ -42,19 +43,19 @@ namespace ApexMechanoids
                         }
                         if (spawnedThing.Count > 2)
                         {                            
-                            Pawn pawn = spawnedThing.FirstOrDefault();
+                            Pawn pawn = spawnedThing[0];
                             pawn.Kill(new DamageInfo(DamageDefOf.ElectricalBurn,99999f,2f,instigator:Caster));
                             spawnedThing.Remove(pawn);
                         }
-                        Pawn spawnedOne = PawnGenerator.GeneratePawn(modExtension.spawnedKind);
-                        spawnedOne.SetFaction(Caster.Faction);
-                        GenSpawn.Spawn(spawnedOne, CurrentTarget.Cell, Caster.MapHeld);
-                        CompUnity compUnity = spawnedOne.TryGetComp<CompUnity>();
+                        Pawn innerSpawnedOne = PawnGenerator.GeneratePawn(modExtension.spawnedKind);
+                        innerSpawnedOne.SetFaction(Caster.Faction);
+                        GenSpawn.Spawn(innerSpawnedOne, CurrentTarget.Cell, Caster.MapHeld);
+                        CompUnity compUnity = innerSpawnedOne.TryGetComp<CompUnity>();
                         if (compUnity != null)
                         {
                             compUnity.ForceUpdateNow();
                         }
-                        spawnedThing.Add(spawnedOne);
+                        spawnedThing.Add(innerSpawnedOne);
                         return true;
                     }
                 }
