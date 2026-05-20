@@ -34,6 +34,9 @@
 		<race>
 			<body>APM_Ingestor</body>
 			<baseHealthScale>3.0</baseHealthScale>
+			<mechEnabledWorkTypes>
+				<li>APM_IngestorCorpseProcessing</li>
+			</mechEnabledWorkTypes>
 		</race>
 	</ThingDef>
 

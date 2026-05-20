@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Terminus</defName>
 		<label>Terminus</label>
@@ -101,7 +100,7 @@
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<abilities>
 			<li>SeveringEdge</li>
-			<li>APM_Overdrive</li>
+			<li>APM_TerminusOverdrive</li>
 		</abilities>
 	</PawnKindDef>
 	<PawnKindDef ParentName="BaseMechanoidKind">
@@ -143,9 +142,86 @@
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<abilities>
 			<li>SeveringEdge</li>
-			<li>APM_Overdrive</li>
+			<li>APM_TerminusOverdrive</li>
 		</abilities>
 	</PawnKindDef>
+
+	<AbilityDef>
+		<defName>APM_TerminusOverdrive</defName>
+		<label>overdrive</label>
+		<description>Terminus diverts power inward and briefly enters an overdriven combat state. While active, it sheds its cape, strikes harder, recovers between swings faster and becomes harder to stagger.</description>
+		<iconPath>UI/Icons/Overdrive</iconPath>
+		<cooldownTicksRange>90000</cooldownTicksRange>
+		<targetRequired>false</targetRequired>
+		<hostile>false</hostile>
+		<aiCanUse>true</aiCanUse>
+		<showCastingProgressBar>true</showCastingProgressBar>
+		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<statBases>
+			<Ability_Duration>30</Ability_Duration>
+		</statBases>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<warmupTime>1.1</warmupTime>
+			<range>0.9</range>
+			<drawAimPie>false</drawAimPie>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetBuildings>false</canTargetBuildings>
+				<canTargetAnimals>false</canTargetAnimals>
+				<canTargetHumans>false</canTargetHumans>
+				<canTargetLocations>false</canTargetLocations>
+				<canTargetMechs>false</canTargetMechs>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="CompProperties_AbilityGiveHediff">
+				<compClass>CompAbilityEffect_GiveHediff</compClass>
+				<hediffDef>APM_Hediff_TerminusOverdrive</hediffDef>
+				<applyToSelf>true</applyToSelf>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_TerminusOverdriveCapeBurst">
+				<moteDef>APM_Mote_TerminusCapeThrown</moteDef>
+				<burstCount>1</burstCount>
+				<spawnRadius>0.06</spawnRadius>
+				<sideOffsetDistance>0.0</sideOffsetDistance>
+				<verticalOffset>0.06</verticalOffset>
+				<speedRange>2.8~3.2</speedRange>
+				<angleOffsetRange>-10~10</angleOffsetRange>
+			</li>
+		</comps>
+	</AbilityDef>
+
+	<HediffDef>
+		<defName>APM_Hediff_TerminusOverdrive</defName>
+		<label>overdrive</label>
+		<description>Terminus is diverting a burst of power into direct combat performance, trading away its cape and restraint for a short window of overwhelming aggression.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.95, 0.45, 0.2)</defaultLabelColor>
+		<isBad>false</isBad>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<showRemainingTime>True</showRemainingTime>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath" />
+		</comps>
+		<stages>
+			<li>
+				<capMods>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>0.25</offset>
+					</li>
+				</capMods>
+				<statFactors>
+					<MeleeDamageFactor>1.4</MeleeDamageFactor>
+					<MeleeCooldownFactor>0.65</MeleeCooldownFactor>
+					<StaggerDurationFactor>0.35</StaggerDurationFactor>
+				</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
 
 	<AbilityDef>
 		<defName>SeveringEdge</defName>

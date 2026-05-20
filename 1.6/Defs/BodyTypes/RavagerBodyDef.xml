@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<BodyDef>
 		<defName>APM_Ravager</defName>
 		<label>ravager</label>
@@ -160,7 +159,6 @@
 			</parts>
 		</corePart>
 	</BodyDef>
-
 	<BodyPartDef>
 		<defName>APM_RavagerBody</defName>
 		<label>body</label>
@@ -170,6 +168,9 @@
 		<solid>true</solid>
 		<alive>false</alive>
 		<bleedRate>0</bleedRate>
+		<tags>
+			<li>MovingLimbCore</li>
+			<li>ManipulationLimbCore</li>
+		</tags>
 	</BodyPartDef>
-
 </Defs>

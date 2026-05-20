@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <AbilityDef>
+    <defName>APM_PulseWave</defName>
+    <label>pulse wave</label>
+    <description>Unleash a blinding acoustic pulse that expands out from the mech, stunning and flash-blinding living pawns caught in the wave.</description>
+    <jobDef>CastAbilityOnThingWithoutWeapon</jobDef>
+    <iconPath>UI/Icons/PulseWave</iconPath>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <hostile>true</hostile>
+    <aiCanUse>true</aiCanUse>
+    <targetRequired>false</targetRequired>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <showCastingProgressBar>true</showCastingProgressBar>
+    <showPsycastEffects>false</showPsycastEffects>
+    <statBases>
+      <Ability_EffectRadius>6.9</Ability_EffectRadius>
+      <Ability_Duration>8</Ability_Duration>
+    </statBases>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1.2</warmupTime>
+      <range>6.9</range>
+      <drawAimPie>false</drawAimPie>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="ApexMechanoids.CompProperties_PulseWave">
+        <emitterDef>APM_Mote_PulseWaveEmitter</emitterDef>
+        <blindFlashThingDef>APM_PulseWaveBlindFlash</blindFlashThingDef>
+        <blindHediffDef>APM_PulseWaveBlind</blindHediffDef>
+        <radius>6.9</radius>
+        <ringIntervalTicks>2</ringIntervalTicks>
+        <stunTicks>60</stunTicks>
+        <blindTicks>480</blindTicks>
+        <visualScale>0.72</visualScale>
+      </li>
+    </comps>
+  </AbilityDef>
+
+</Defs>

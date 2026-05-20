@@ -24,5 +24,18 @@
 			<li>Manipulation</li>
 		</requiredCapacities>
 	</WorkGiverDef>
-
+	<WorkGiverDef>
+		<defName>APM_TinkerRepairMech</defName>
+		<label>repair mech</label>
+		<giverClass>ApexMechanoids.WorkGiver_TinkerRepairMech</giverClass>
+		<workType>Smithing</workType>
+		<verb>repair</verb>
+		<gerund>repairing</gerund>
+		<priorityInType>220</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<canBeDoneByMechs>true</canBeDoneByMechs>
+		<canBeDoneWhileDrafted>false</canBeDoneWhileDrafted>
+	</WorkGiverDef>
 </Defs>

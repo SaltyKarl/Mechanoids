@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
   <APM_Mech_Satellite.label>Сателлит</APM_Mech_Satellite.label>
@@ -6,6 +6,5 @@
   <APM_Mech_Satellite.tools.0.label>левая кисть</APM_Mech_Satellite.tools.0.label>
   <APM_Mech_Satellite.tools.1.label>правая кисть</APM_Mech_Satellite.tools.1.label>
   <APM_Mech_Satellite.tools.2.label>голова</APM_Mech_Satellite.tools.2.label>
-
 
 </LanguageData>

@@ -9,6 +9,9 @@ namespace ApexMechanoids
     {
 		public static ThingDef APM_Mech_Tinker;
 		public static ThingDef APM_Mech_Frostivus;
+        public static ThingDef APM_Mech_Ingestor;
+        public static AbilityDef APM_Absorb;
+        public static HediffDef APM_Hediff_TerminusOverdrive;
         public static BodyPartGroupDef APM_LeftAegisShield;
         public static BodyPartGroupDef APM_RightAegisShield;
         public static PawnKindDef APM_Mech_Aegis;
@@ -25,18 +28,26 @@ namespace ApexMechanoids
         public static ThingDef APM_Mote_HookRope;
         public static StatDef APM_GestationFactor;
         public static ThingDef APM_MechCommandCasket;
-
+		
         public static HediffDef RemoteRepairerImplant;  //from Biotech
         public static HediffDef RemoteShielderImplant;  //from Biotech
         public static HediffDef APM_Hediff_Devoured;
         public static SoundDef ShieldMech_Complete;     //from Biotech
         public static SoundDef ShieldMech_Start;        //from Biotech
-
-
-
+		
         static ApexDefsOf()
         {
             DefOfHelper.EnsureInitializedInCtor(typeof(ApexDefsOf));
         }
+		
+        public static JobDef APM_LasherTame;
+        public static JobDef APM_LasherTrain;
+        public static JobDef APM_LasherMilk;
+        public static JobDef APM_LasherShear;
+        public static JobDef APM_LasherSlaughter;
+        public static JobDef APM_LasherReleaseToWild;
+        public static JobDef APM_SirenChatWithPrisoner;
+        public static JobDef APM_FrostivusUnloadFoodToStorage;
+        public static JobDef APM_FrostivusManualUnloadFood;
     }
 }

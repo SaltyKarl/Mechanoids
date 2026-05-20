@@ -80,4 +80,20 @@
 		<fadeOutTime>1</fadeOutTime>
 	</FleckDef>
 
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>APM_SirenSongNote</defName>
+		<graphicData>
+			<texPath>UI/HeroArt/WebIcons/Soundtrack</texPath>
+			<graphicClass>Graphic_Fleck</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.04</fadeInTime>
+		<solidTime>0.03</solidTime>
+		<fadeOutTime>1</fadeOutTime>
+	</FleckDef>
+
+
+
 </Defs>

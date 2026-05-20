@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
+	<ThingDef ParentName="MoteBase">
+		<defName>APM_Mote_TerminusCapeThrown</defName>
+		<thingClass>ApexMechanoids.Mote_TerminusCapeThrown</thingClass>
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>0.05</fadeInTime>
+			<solidTime>1.4</solidTime>
+			<fadeOutTime>9.0</fadeOutTime>
+			<collide>True</collide>
+		</mote>
+		<graphicData>
+			<texPath>Things/Pawn/Mechanoid/Terminus/Regular/Nodes/CapeThrown</texPath>
+			<graphicClass>Graphic_Mote</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>(1.6, 1.6)</drawSize>
+		</graphicData>
+		<modExtensions>
+			<li Class="ApexMechanoids.DefModExtension_TerminusCapeThrown">
+				<bossTexPath>Things/Pawn/Mechanoid/Terminus/Boss/Nodes/CapeThrown_Boss</bossTexPath>
+				<settleAfterTicks>45</settleAfterTicks>
+				<destroyAfterTicks>625</destroyAfterTicks>
+				<fadeOutTicks>180</fadeOutTicks>
+			</li>
+		</modExtensions>
+	</ThingDef>
 	<ThingDef ParentName="MoteBase">
 		<defName>APM_Mote_SunRay_Base</defName>
 		<thingClass>MoteDualAttached</thingClass>
@@ -28,7 +53,6 @@
 			</shaderParameters>
 		</graphicData>
 	</ThingDef>
-
 	<ThingDef ParentName="MoteBase">
 		<defName>APM_Mote_GazerBeam_Base</defName>
 		<thingClass>MoteDualAttached</thingClass>
@@ -54,9 +78,9 @@
 				<_ScrollSpeedB>3</_ScrollSpeedB>
 				<_Intensity>2</_Intensity>
 			</shaderParameters>
+			<drawSize>(3, 1)</drawSize>
 		</graphicData>
 	</ThingDef>
-
 	<ThingDef ParentName="MoteBase">
 		<defName>APM_Mote_SunRay_Aim</defName>
 		<thingClass>MoteDualAttached</thingClass>
@@ -85,7 +109,6 @@
 			<drawSize>(3, 0.9)</drawSize>
 		</graphicData>
 	</ThingDef>
-
 	<ThingDef ParentName="MoteBase">
 		<defName>APM_Mote_SunRay_Charge</defName>
 		<thingClass>MoteAttached</thingClass>
@@ -110,7 +133,6 @@
 			</shaderParameters>
 		</graphicData>
 	</ThingDef>
-
 	<ThingDef ParentName="MoteBase">
 		<defName>APM_Mote_SunRay_Target</defName>
 		<thingClass>MoteAttached</thingClass>
@@ -134,7 +156,6 @@
 			<drawSize>(8, 8)</drawSize>
 		</graphicData>
 	</ThingDef>
-
 	<ThingDef ParentName="MoteBase">
 		<defName>APM_ElectricArcA</defName>
 		<thingClass>MoteAttached</thingClass>
@@ -156,7 +177,6 @@
 			</shaderParameters>
 		</graphicData>
 	</ThingDef>
-
 	<ThingDef ParentName="MoteBase">
 		<defName>Mote_SeveringEdge_Intro</defName>
 		<thingClass>ApexMechanoids.SeveringEdge_Mote</thingClass>
@@ -176,5 +196,4 @@
 			<ticksPerFrame>5</ticksPerFrame>
 		</graphicData>
 	</ThingDef>
-
 </Defs>
