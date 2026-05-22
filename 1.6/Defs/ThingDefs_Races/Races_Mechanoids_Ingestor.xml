@@ -79,7 +79,7 @@
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<controlGroupPortraitZoom>0.65</controlGroupPortraitZoom>
 		<abilities>
-			<li>APM_Ability_Absorb</li>
+			<li>APM_Absorb</li>
 		</abilities>
 	</PawnKindDef>
 </Defs>

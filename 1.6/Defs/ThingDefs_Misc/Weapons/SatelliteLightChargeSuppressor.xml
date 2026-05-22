@@ -25,7 +25,7 @@
             <texPath>Things/Item/Equipment/WeaponRanged/SatelliteLightChargeSuppressor</texPath>
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
-        <soundInteract>Interact_ChargeBlaster</soundInteract>
+        <soundInteract>Interact_ChargeRifle</soundInteract>
         <destroyOnDrop>true</destroyOnDrop>
         <tradeability>None</tradeability>
         <statBases>

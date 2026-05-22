@@ -149,18 +149,4 @@
 			<explosionDelay>0</explosionDelay>
 		</projectile>
 	</ThingDef>
-	<ThingDef ParentName="BaseFragGrenadeProjectile">
-		<defName>APM_ArtilleryProjectile</defName>
-		<label>artillery projectile</label>
-		<thingClass>Projectile_Explosive</thingClass>
-		<graphicData>
-			<texPath>Things/Projectile/RavagerArtillery</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<projectile>
-			<explosionRadius>1.9</explosionRadius>
-			<damageDef>Bomb</damageDef>
-			<explosionDelay>0</explosionDelay>
-		</projectile>
-	</ThingDef>
 </Defs>

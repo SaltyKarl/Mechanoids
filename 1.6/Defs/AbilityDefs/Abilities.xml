@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<AbilityDef>
-		<defName>APM_Ability_Absorb</defName>
+		<defName>APM_Absorb</defName>
 		<label>Recycle Biomess</label>
 		<jobDef>CastAbilityOnThingMelee</jobDef>
 		<description>Grind up target corpse, and slowly process them into chem fuel.</description>
@@ -194,58 +194,32 @@
 			</beamLineFleckChanceCurve>
 		</verbProperties>
 	</AbilityDef>
-	
-	<AbilityDef>
-		<defName>APM_Ability_SirenLure</defName>
-		<label>siren lure</label>
-		<description>Sing a aluring song to compel the target pawn to walk towards the caster.</description>
-		<iconPath>UI/Call</iconPath>
-		<cooldownTicksRange>60</cooldownTicksRange>
-		<hostile>true</hostile>
-		<writeCombatLog>true</writeCombatLog>
-		<aiCanUse>true</aiCanUse>
-		<verbProperties>
-			<verbClass>Verb_CastAbility</verbClass>
-			<range>29.9</range>
-			<warmupTime>0.5</warmupTime>
-			<requireLineOfSight>False</requireLineOfSight>
-			<soundCast>Pawn_Cat_Call</soundCast>
-			<targetParams>
-				<canTargetSelf>False</canTargetSelf>
-				<canTargetBuildings>False</canTargetBuildings>
-				<canTargetLocations>False</canTargetLocations>
-				<canTargetAnimals>False</canTargetAnimals>
-			</targetParams>
-		</verbProperties>
-		<statBases>
-			<Ability_Duration>10</Ability_Duration>
-			<Ability_EffectRadius>0.9</Ability_EffectRadius>
-		</statBases>
-		<comps>
-			<li Class="CompProperties_AbilityForceJob">
-				<compClass>CompAbilityEffect_ForceJob</compClass>
-				<jobDef>GotoMindControlled</jobDef>
-				<destination>Caster</destination>
-				<range>0.9</range>
-			</li>
-		</comps>
-	</AbilityDef>
 
 	<!-- "pulse wave" for pulse mech -->
 	<AbilityDef>
 		<defName>APM_PulseWave</defName>
-		<label>Pulse Wave</label>
-		<description>Emit a powerful pulse wave, stunning and knocking back all nearby enemies.</description>
+		<label>pulse wave</label>
+		<description>Unleash a blinding acoustic pulse that expands out from the mech, stunning and flash-blinding living pawns caught in the wave.</description>
+		<jobDef>CastAbilityOnThingWithoutWeapon</jobDef>
 		<iconPath>UI/Icons/Starfall</iconPath>
 		<cooldownTicksRange>3600</cooldownTicksRange><!-- 1 minute -->
 		<hostile>true</hostile>
 		<writeCombatLog>true</writeCombatLog>
 		<aiCanUse>true</aiCanUse>
 		<targetRequired>false</targetRequired>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+		<showCastingProgressBar>true</showCastingProgressBar>
+		<showPsycastEffects>false</showPsycastEffects>
+		<statBases>
+			<Ability_EffectRadius>6.9</Ability_EffectRadius>
+			<Ability_Duration>8</Ability_Duration>
+		</statBases>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
-			<range>0.1</range>
-			<warmupTime>1</warmupTime>
+			<warmupTime>1.2</warmupTime>
+			<range>6.9</range>
+			<drawAimPie>false</drawAimPie>
 			<requireLineOfSight>false</requireLineOfSight>
 			<soundCast>APM_PulseWave</soundCast>
 			<targetParams>
@@ -254,6 +228,18 @@
 				<canTargetBuildings>false</canTargetBuildings>
 			</targetParams>
 		</verbProperties>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_PulseWave">
+				<emitterDef>APM_Mote_PulseWaveEmitter</emitterDef>
+				<blindFlashThingDef>APM_PulseWaveBlindFlash</blindFlashThingDef>
+				<blindHediffDef>APM_PulseWaveBlind</blindHediffDef>
+				<radius>6.9</radius>
+				<ringIntervalTicks>2</ringIntervalTicks>
+				<stunTicks>60</stunTicks>
+				<blindTicks>480</blindTicks>
+				<visualScale>0.72</visualScale>
+			</li>
+		</comps>
 	</AbilityDef>
 
 	<!-- "targeting" for pinpoint mech -->
@@ -589,21 +575,29 @@
 	<AbilityDef>
 		<defName>APM_Starfall</defName>
 		<label>Starfall</label>
-		<description>Overcharge the artillery cannon and unleash 3 rapid volleys at the target location.</description>
+		<description>Ravager overcharges its artillery and launches a single heavy shell that splits into three energy blasts while still in flight.</description>
 		<iconPath>UI/Icons/Starfall</iconPath>
-		<cooldownTicksRange>18000</cooldownTicksRange>
+		<cooldownTicksRange>5000</cooldownTicksRange>
 		<hostile>true</hostile>
 		<writeCombatLog>true</writeCombatLog>
 		<aiCanUse>true</aiCanUse>
+		<targetRequired>true</targetRequired>
 		<sendMessageOnCooldownComplete>true</sendMessageOnCooldownComplete>
+		<showCastingProgressBar>true</showCastingProgressBar>
+		<showPsycastEffects>false</showPsycastEffects>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
 		<verbProperties>
 			<verbClass>ApexMechanoids.Verb_StarfallAbility</verbClass>
 			<hasStandardCommand>true</hasStandardCommand>
 			<burstShotCount>3</burstShotCount>
 			<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
 			<forcedMissRadius>8.9</forcedMissRadius>
-			<warmupTime>3</warmupTime>
+			<warmupTime>3.2</warmupTime>
 			<range>24.9</range>
+			<drawAimPie>true</drawAimPie>
+			<requireLineOfSight>true</requireLineOfSight>
 			<noiseRadius>4</noiseRadius>
 			<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
 			<soundCast>Shot_IncendiaryLauncher</soundCast>
@@ -611,8 +605,15 @@
 			<muzzleFlashScale>14</muzzleFlashScale>
 			<targetParams>
 				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
 			</targetParams>
 		</verbProperties>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_Starfall">
+				<carrierProjectileDef>APM_StarfallCarrier</carrierProjectileDef>
+				<launchSoundDefName>Shot_IncendiaryLauncher</launchSoundDefName>
+			</li>
+		</comps>
 	</AbilityDef>
 
 	<AbilityDef>
@@ -719,7 +720,7 @@
 		<defName>APM_Ability_SmokeScreen</defName>
 		<label>Smokescreen</label>
 		<description>Release a dense smokescreen, shrouding the Celerus and nearby allies in obscuring gas that hinders enemy perception and grants the Celerus combat bonuses while hidden.</description>
-		<iconPath>UI/Icons/Starfall</iconPath>
+		<iconPath>UI/Smokescreen</iconPath>
 		<cooldownTicksRange>3600</cooldownTicksRange><!-- 1 minute -->
 		<hostile>false</hostile>
 		<targetRequired>false</targetRequired>
