@@ -42,6 +42,10 @@
 		</tools>
 		<race>
 			<body>APM_Vassal</body>
+			<mechEnabledWorkTypes>
+				<li>Construction</li>
+				<li>Smithing</li>
+			</mechEnabledWorkTypes>
 			<baseHealthScale>1</baseHealthScale>
 			<detritusLeavings>
 				<li>

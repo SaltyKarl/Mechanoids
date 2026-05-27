@@ -65,8 +65,20 @@
 			</detritusLeavings>
 		</race>
 		<statBases>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
+			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">0</BandwidthCost>
 		</statBases>
+		<comps Inherit="False">
+			<li Class="CompProperties_CanBeDormant" />
+			<li Class="CompProperties_WakeUpDormant">
+				<wakeUpOnDamage>true</wakeUpOnDamage>
+				<wakeUpCheckRadius>30</wakeUpCheckRadius>
+				<wakeUpSound>MechanoidsWakeUp</wakeUpSound>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_PlayerFactionMechPowerCell">
+				<totalPowerTicks>30000</totalPowerTicks>
+				<showGizmoOnNonPlayerControlled>false</showGizmoOnNonPlayerControlled>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
@@ -74,6 +86,7 @@
 		<label>satellite</label>
 		<race>APM_Mech_Satellite</race>
 		<combatPower>190</combatPower>
+		<forceNoDeathNotification>true</forceNoDeathNotification>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>

@@ -81,7 +81,13 @@
 					<spawnChance>0.5</spawnChance>
 				</li>
 			</detritusLeavings>
+			<mechEnabledWorkTypes>
+				<li>APM_FrostivusFoodPreservation</li>
+			</mechEnabledWorkTypes>
 		</race>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_FrostivusFoodPreservation" />
+		</comps>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
@@ -126,7 +132,7 @@
 			<li>APM_Ability_CryptoSwallow</li>
 		</abilities>
 	</PawnKindDef>
-
+	
 	<!-- Abilities -->
 	<AbilityDef>
 		<defName>APM_Ability_CryptoSwallow</defName>

@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
-	<!-- Siren: Psychic lure/mood mech. 3-directional textures. LeftHand, RightHand, HeadAttackTool.
-       Light bipedal humanoid. Elegant frame suited for a support psychic broadcaster.
-       Similar to Vassal but with a psychic emitter part on the thorax for flavour. -->
 	<BodyDef>
 		<defName>APM_Siren</defName>
-		<label>siren</label>
+		<label>siren resonant frame</label>
 		<corePart>
 			<def>MechanicalThorax</def>
 			<height>Middle</height>
@@ -18,40 +14,40 @@
 					<height>Top</height>
 					<parts>
 						<li>
-							<def>MechanicalHead</def>
-							<coverage>0.80</coverage>
+							<def>APM_SirenHead</def>
+							<coverage>0.78</coverage>
 							<groups>
 								<li>HeadAttackTool</li>
 							</groups>
 							<parts>
 								<li>
 									<def>ArtificialBrain</def>
-									<coverage>0.10</coverage>
+									<coverage>0.08</coverage>
 									<depth>Inside</depth>
 								</li>
 								<li>
 									<def>SightSensor</def>
-									<customLabel>left sight sensor</customLabel>
-									<coverage>0.13</coverage>
-								</li>
-								<li>
-									<def>SightSensor</def>
-									<customLabel>right sight sensor</customLabel>
-									<coverage>0.13</coverage>
+									<customLabel>central sight sensor</customLabel>
+									<coverage>0.12</coverage>
 								</li>
 								<li>
 									<def>HearingSensor</def>
-									<customLabel>left hearing sensor</customLabel>
-									<coverage>0.10</coverage>
+									<customLabel>left acoustic receiver</customLabel>
+									<coverage>0.09</coverage>
 								</li>
 								<li>
 									<def>HearingSensor</def>
-									<customLabel>right hearing sensor</customLabel>
-									<coverage>0.10</coverage>
+									<customLabel>right acoustic receiver</customLabel>
+									<coverage>0.09</coverage>
 								</li>
 								<li>
-									<def>SmellSensor</def>
-									<coverage>0.08</coverage>
+									<def>APM_VocalSynthesizer</def>
+									<coverage>0.12</coverage>
+								</li>
+								<li>
+									<def>APM_PsychicResonator</def>
+									<coverage>0.10</coverage>
+									<depth>Inside</depth>
 								</li>
 							</parts>
 						</li>
@@ -59,49 +55,32 @@
 				</li>
 				<li>
 					<def>MechanicalShoulder</def>
-					<customLabel>left mechanical shoulder</customLabel>
+					<customLabel>left resonant shoulder</customLabel>
 					<coverage>0.14</coverage>
 					<parts>
 						<li>
 							<def>MechanicalArm</def>
-							<customLabel>left arm</customLabel>
-							<coverage>0.85</coverage>
+							<customLabel>left manipulator arm</customLabel>
+							<coverage>0.82</coverage>
 							<parts>
 								<li>
 									<def>MechanicalHand</def>
-									<customLabel>left hand</customLabel>
-									<coverage>0.2</coverage>
+									<customLabel>left manipulator hand</customLabel>
+									<coverage>0.22</coverage>
 									<height>Bottom</height>
 									<parts>
 										<li>
 											<def>MechanicalFinger</def>
-											<customLabel>left pinky</customLabel>
-											<coverage>0.15</coverage>
+											<customLabel>left outer digit</customLabel>
+											<coverage>0.18</coverage>
 											<groups>
 												<li>LeftHand</li>
 											</groups>
 										</li>
 										<li>
 											<def>MechanicalFinger</def>
-											<customLabel>left middle finger</customLabel>
-											<coverage>0.15</coverage>
-											<groups>
-												<li>LeftHand</li>
-												<li>MiddleFingers</li>
-											</groups>
-										</li>
-										<li>
-											<def>MechanicalFinger</def>
-											<customLabel>left index finger</customLabel>
-											<coverage>0.15</coverage>
-											<groups>
-												<li>LeftHand</li>
-											</groups>
-										</li>
-										<li>
-											<def>MechanicalFinger</def>
-											<customLabel>left thumb</customLabel>
-											<coverage>0.15</coverage>
+											<customLabel>left inner digit</customLabel>
+											<coverage>0.18</coverage>
 											<groups>
 												<li>LeftHand</li>
 											</groups>
@@ -114,49 +93,32 @@
 				</li>
 				<li>
 					<def>MechanicalShoulder</def>
-					<customLabel>right mechanical shoulder</customLabel>
+					<customLabel>right resonant shoulder</customLabel>
 					<coverage>0.14</coverage>
 					<parts>
 						<li>
 							<def>MechanicalArm</def>
-							<customLabel>right arm</customLabel>
-							<coverage>0.85</coverage>
+							<customLabel>right manipulator arm</customLabel>
+							<coverage>0.82</coverage>
 							<parts>
 								<li>
 									<def>MechanicalHand</def>
-									<customLabel>right hand</customLabel>
-									<coverage>0.2</coverage>
+									<customLabel>right manipulator hand</customLabel>
+									<coverage>0.22</coverage>
 									<height>Bottom</height>
 									<parts>
 										<li>
 											<def>MechanicalFinger</def>
-											<customLabel>right pinky</customLabel>
-											<coverage>0.15</coverage>
+											<customLabel>right outer digit</customLabel>
+											<coverage>0.18</coverage>
 											<groups>
 												<li>RightHand</li>
 											</groups>
 										</li>
 										<li>
 											<def>MechanicalFinger</def>
-											<customLabel>right middle finger</customLabel>
-											<coverage>0.15</coverage>
-											<groups>
-												<li>RightHand</li>
-												<li>MiddleFingers</li>
-											</groups>
-										</li>
-										<li>
-											<def>MechanicalFinger</def>
-											<customLabel>right index finger</customLabel>
-											<coverage>0.15</coverage>
-											<groups>
-												<li>RightHand</li>
-											</groups>
-										</li>
-										<li>
-											<def>MechanicalFinger</def>
-											<customLabel>right thumb</customLabel>
-											<coverage>0.15</coverage>
+											<customLabel>right inner digit</customLabel>
+											<coverage>0.18</coverage>
 											<groups>
 												<li>RightHand</li>
 											</groups>
@@ -168,36 +130,39 @@
 					</parts>
 				</li>
 				<li>
-					<def>APM_SirenPsychicEmitter</def>
-					<customLabel>psychic emitter</customLabel>
+					<def>MechanicalLeg</def>
+					<customLabel>left stabilizer leg</customLabel>
+					<coverage>0.18</coverage>
+					<height>Bottom</height>
+					<parts>
+						<li>
+							<def>MechanicalFoot</def>
+							<customLabel>left stabilizer foot</customLabel>
+							<coverage>0.2</coverage>
+						</li>
+					</parts>
+				</li>
+				<li>
+					<def>MechanicalLeg</def>
+					<customLabel>right stabilizer leg</customLabel>
+					<coverage>0.18</coverage>
+					<height>Bottom</height>
+					<parts>
+						<li>
+							<def>MechanicalFoot</def>
+							<customLabel>right stabilizer foot</customLabel>
+							<coverage>0.2</coverage>
+						</li>
+					</parts>
+				</li>
+				<li>
+					<def>APM_SirenResonanceCore</def>
 					<coverage>0.08</coverage>
 					<depth>Inside</depth>
 				</li>
 				<li>
-					<def>MechanicalLeg</def>
-					<customLabel>left leg</customLabel>
-					<coverage>0.16</coverage>
-					<height>Bottom</height>
-					<parts>
-						<li>
-							<def>MechanicalFoot</def>
-							<customLabel>left foot</customLabel>
-							<coverage>0.2</coverage>
-						</li>
-					</parts>
-				</li>
-				<li>
-					<def>MechanicalLeg</def>
-					<customLabel>right leg</customLabel>
-					<coverage>0.16</coverage>
-					<height>Bottom</height>
-					<parts>
-						<li>
-							<def>MechanicalFoot</def>
-							<customLabel>right foot</customLabel>
-							<coverage>0.2</coverage>
-						</li>
-					</parts>
+					<def>APM_BroadcastArray</def>
+					<coverage>0.05</coverage>
 				</li>
 				<li>
 					<def>Reactor</def>
@@ -217,11 +182,53 @@
 			</parts>
 		</corePart>
 	</BodyDef>
-
 	<BodyPartDef>
-		<defName>APM_SirenPsychicEmitter</defName>
-		<label>psychic emitter</label>
-		<hitPoints>30</hitPoints>
+		<defName>APM_SirenHead</defName>
+		<label>resonance crown</label>
+		<hitPoints>28</hitPoints>
+		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<bleedRate>0</bleedRate>
+		<alive>false</alive>
+	</BodyPartDef>
+	<BodyPartDef>
+		<defName>APM_VocalSynthesizer</defName>
+		<label>vocal synthesizer</label>
+		<hitPoints>12</hitPoints>
+		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>TalkingSource</li>
+		</tags>
+	</BodyPartDef>
+	<BodyPartDef>
+		<defName>APM_PsychicResonator</defName>
+		<label>psychic resonator</label>
+		<hitPoints>14</hitPoints>
+		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+	</BodyPartDef>
+	<BodyPartDef>
+		<defName>APM_SirenResonanceCore</defName>
+		<label>resonance core</label>
+		<hitPoints>22</hitPoints>
+		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+	</BodyPartDef>
+	<BodyPartDef>
+		<defName>APM_BroadcastArray</defName>
+		<label>broadcast array</label>
+		<hitPoints>16</hitPoints>
 		<frostbiteVulnerability>2</frostbiteVulnerability>
 		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
 		<skinCovered>false</skinCovered>
@@ -229,5 +236,4 @@
 		<alive>false</alive>
 		<bleedRate>0</bleedRate>
 	</BodyPartDef>
-
 </Defs>

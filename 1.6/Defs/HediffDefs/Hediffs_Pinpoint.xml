@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<HediffDef>
+		<defName>APM_PinpointCombatCommand</defName>
+		<label>combat command</label>
+		<description>Pinpoint is projecting a tactical targeting aura over nearby allies.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<showRemainingTime>True</showRemainingTime>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath"/>
+			<li Class="ApexMechanoids.HediffCompProperties_PinpointCombatCommandAura">
+				<range>9.9</range>
+				<tickInterval>30</tickInterval>
+				<buffRefreshTicks>90</buffRefreshTicks>
+				<buffHediff>APM_PinpointCombatCommandBuff</buffHediff>
+				<includeMechanoids>true</includeMechanoids>
+				<includeNonMechPawns>true</includeNonMechPawns>
+			</li>
+		</comps>
+		<isBad>false</isBad>
+	</HediffDef>
+
+	<HediffDef>
+		<defName>APM_PinpointCombatCommandBuff</defName>
+		<label>targeting uplink</label>
+		<description>This pawn is receiving targeting data from a nearby Pinpoint.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<showRemainingTime>false</showRemainingTime>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath"/>
+		</comps>
+		<isBad>false</isBad>
+		<stages>
+			<li>
+				<statOffsets>
+					<ShootingAccuracyPawn>3</ShootingAccuracyPawn>
+					<AimingDelayFactor>-0.25</AimingDelayFactor>
+				</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+
+</Defs>

@@ -41,6 +41,10 @@
 		</tools>
 		<race>
 			<body>APM_Siren</body>
+			<mechEnabledWorkTypes>
+				<li>APM_SirenWarden</li>
+			</mechEnabledWorkTypes>
+			<mechFixedSkillLevel>10</mechFixedSkillLevel>
 			<baseHealthScale>1</baseHealthScale>
 			<detritusLeavings>
 				<li>
@@ -107,7 +111,7 @@
 	<AbilityDef>
 		<defName>APM_Ability_SirenSong</defName>
 		<label>siren's song</label>
-		<description>Siren's Song - grants recreation buffs</description>
+		<description>The Siren emits a pleasant tune that lifts the spirits of nearby organic allies and briefly helps them recover recreation.</description>
 		<iconPath>UI/SirenSong</iconPath>
 		<cooldownTicksRange>900000</cooldownTicksRange>
 		<!-- 15 days -->
@@ -137,8 +141,22 @@
 				<ignoreSelf>true</ignoreSelf>
 			</li>
 			<li Class="ApexMechanoids.CompProperties_NeedOffset">
-				<needDef>Rest</needDef>
+				<needDef>Joy</needDef>
 				<offset>0.1</offset>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_SpawnSirenSongNotes">
+				<fleckDef>APM_SirenSongNote</fleckDef>
+				<noteCount>2</noteCount>
+				<extraNoteChance>0.25</extraNoteChance>
+				<spawnIntervalTicks>25</spawnIntervalTicks>
+				<horizontalJitter>0.2</horizontalJitter>
+				<minVerticalOffset>0.3</minVerticalOffset>
+				<maxVerticalOffset>1</maxVerticalOffset>
+				<scaleRange>0.32~0.9</scaleRange>
+				<speedRange>0.52~0.74</speedRange>
+				<velocityAngle>-10~10</velocityAngle>
+				<rotation>0</rotation>
+				<rotationRate>0</rotationRate>
 			</li>
 		</comps>
 	</AbilityDef>
@@ -182,7 +200,7 @@
 	<HediffDef>
 		<defName>APM_Hediff_SirenSong</defName>
 		<label>siren's song</label>
-		<description>Siren's Song - grants recreation buffs</description>
+		<description>This pawn is carried by a soothing mechanical chorus, feeling lighter and more energized.</description>
 		<hediffClass>HediffWithComps</hediffClass>
 		<comps>
 			<li Class="HediffCompProperties_Disappears">
@@ -215,7 +233,7 @@
 		<stages>
 			<li>
 				<label>Siren's song</label>
-				<description>PLACEHOLDER.</description>
+				<description>The Siren's impossible melody still echoes in your head, washing away stress for a while.</description>
 				<baseMoodEffect>6</baseMoodEffect>
 			</li>
 		</stages>

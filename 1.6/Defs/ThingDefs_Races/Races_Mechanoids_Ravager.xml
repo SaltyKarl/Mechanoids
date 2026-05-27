@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<ThingDef ParentName="BaseMechanoid">
 		<defName>APM_Mech_Ravager</defName>
 		<label>Ravager</label>
-		<description>The dreaded auto mortar was not enough to sate the mechanoids’ hunger for destruction. Their solution? The ravager, a mobile artillery emplacement. Able to charge excess energy in its reserve power cells, it can temporarily increase the power draw of its artillery cannon, firing 3 shots in rapid succession.</description>
+		<description>The dreaded auto mortar was not enough to sate the mechanoids’ hunger for destruction. Their solution? The ravager, a mobile artillery emplacement. Able to charge excess energy in its reserve power cells, it can temporarily overcharge its cannon and launch a shell that splits into three destructive blasts while still in flight.</description>
 		<statBases>
 			<MarketValue>1600</MarketValue>
 			<MoveSpeed>1.3</MoveSpeed>
@@ -67,6 +67,10 @@
 		<label>ravager</label>
 		<race>APM_Mech_Ravager</race>
 		<combatPower>550</combatPower>
+		<weaponMoney>99999~99999</weaponMoney>
+		<weaponTags Inherit="False">
+			<li>APM_WeaponRavagerArtillery</li>
+		</weaponTags>
 		<maxPerGroup MayRequire="Ludeon.Rimworld.Biotech">2</maxPerGroup>
 		<controlGroupPortraitZoom MayRequire="Ludeon.Rimworld.Biotech">0.48</controlGroupPortraitZoom>
 		<lifeStages>
@@ -95,10 +99,6 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-		<weaponMoney>99999~99999</weaponMoney>
-		<weaponTags Inherit="False">
-			<li>APM_WeaponRavagerArtillery</li>
-		</weaponTags>
 		<abilities>
 			<li>APM_Starfall</li>
 		</abilities>

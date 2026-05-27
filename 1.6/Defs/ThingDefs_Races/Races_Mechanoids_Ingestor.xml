@@ -34,6 +34,9 @@
 		<race>
 			<body>APM_Ingestor</body>
 			<baseHealthScale>3.0</baseHealthScale>
+			<mechEnabledWorkTypes>
+				<li>APM_IngestorCorpseProcessing</li>
+			</mechEnabledWorkTypes>
 		</race>
 	</ThingDef>
 
@@ -76,7 +79,7 @@
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<controlGroupPortraitZoom>0.65</controlGroupPortraitZoom>
 		<abilities>
-			<li>APM_Ability_Absorb</li>
+			<li>APM_Absorb</li>
 		</abilities>
 	</PawnKindDef>
 </Defs>

@@ -222,13 +222,15 @@
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
 		<canUseAoeToGetTargets>true</canUseAoeToGetTargets>
 		<showCastingProgressBar>true</showCastingProgressBar>
+		<warmupMote>APM_Mote_UltimateSacrifice_Pilar</warmupMote>
+		<warmupEffecter>APM_UltitmateSacrifice</warmupEffecter>
 		<statBases>
 			<Ability_EffectRadius>12</Ability_EffectRadius>
 			<Ability_Duration>150</Ability_Duration>
 		</statBases>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
-			<warmupTime>1</warmupTime>
+			<warmupTime>5</warmupTime>
 			<range>12.9</range>
 			<drawAimPie>false</drawAimPie>
 			<soundCast>APM_UltimateSacrifice</soundCast>
@@ -245,6 +247,10 @@
 			</li>
 			<li Class="ApexMechanoids.CompProperties_KillCaster">
 				<destroy>false</destroy>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_AbilityWarmupMote">
+				<moteDef>APM_Mote_UltimateSacrifice_Wave</moteDef>
+				<rotation>3</rotation>
 			</li>
 		</comps>
 	</AbilityDef>

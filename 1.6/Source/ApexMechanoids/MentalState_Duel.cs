@@ -7,20 +7,28 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
 using Verse.AI;
+using Verse.Sound;
 
 namespace ApexMechanoids
 {
     public class MentalState_Duel : MentalState
     {
         public Thing attachedThing;
+        public Pawn duelStarter;
         public override void PostStart(string reason)
         {
             base.PostStart(reason);
             pawn.mindState.enemyTarget = this.causedByPawn;
             if (!(this.causedByPawn.MentalState is MentalState_Duel))
             {
+                this.duelStarter = this.causedByPawn;
                 this.causedByPawn.mindState.mentalStateHandler.TryStartMentalState(this.def, reason: reason, forced: true, forceWake: true, causedByMood: false, otherPawn: this.pawn);
                 this.causedByPawn.mindState.mentalStateHandler.CurState.forceRecoverAfterTicks = this.forceRecoverAfterTicks;
+            }
+            else
+            {
+                this.duelStarter = this.pawn;
+                ApexDefsOf.APM_DuelStarted.PlayOneShot(new TargetInfo(pawn.Position, pawn.Map));
             }
             pawn.health.AddHediff(ApexDefsOf.APM_InDuel);
         }
@@ -50,11 +58,28 @@ namespace ApexMechanoids
             {
                 attachedThing.Destroy(DestroyMode.KillFinalize);
             }
-            if (pawn.drafter?.ShowDraftGizmo ?? false)
+            if (!pawn.DeadOrDowned && (pawn.drafter?.ShowDraftGizmo ?? false))
             {
                 pawn.drafter.Drafted = true;
             }
+
+
+            var duelTarget = pawn == duelStarter ? causedByPawn : pawn;
+
+            if (duelTarget.DeadOrDowned)
+            {
+                ApexDefsOf.APM_DuelWin.PlayOneShot(new TargetInfo(pawn.Position, pawn.Map));
+            }
+            else if (duelStarter.DeadOrDowned)
+            {
+                ApexDefsOf.APM_DuelLose.PlayOneShot(new TargetInfo(pawn.Position, pawn.Map));
+            }
+            else
+            {
+                //ApexDefsOf.APM_DuelDraw.PlayOneShot(new TargetInfo(pawn.Position, pawn.Map));
+            }
         }
+
         public override TaggedString GetBeginLetterText()
         {
             if (this.causedByPawn == null)
@@ -68,6 +93,7 @@ namespace ApexMechanoids
         {
             base.ExposeData();
             Scribe_References.Look(ref attachedThing, nameof(attachedThing));
+            Scribe_References.Look(ref duelStarter, nameof(duelStarter));
         }
     }
 }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="ApparelNoQualityBase">
 		<defName>APM_Apparel_MechamancerPack</defName>
 		<label>Mechamancer Pack</label>
@@ -12,6 +11,39 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(1.2,1.2)</drawSize>
 		</graphicData>
+		<comps>
+			<li Class="CompProperties_ApparelReloadable">
+				<maxCharges>2</maxCharges>
+				<ammoDef>Steel</ammoDef>
+				<ammoCountPerCharge>40</ammoCountPerCharge>
+				<baseReloadTicks>60</baseReloadTicks>
+				<soundReload>Standard_Reload</soundReload>
+				<hotKey>Misc4</hotKey>
+				<chargeNoun>satellite</chargeNoun>
+				<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+				<displayGizmoWhileDrafted>true</displayGizmoWhileDrafted>
+			</li>
+		</comps>
+		<verbs>
+			<li>
+				<verbClass>ApexMechanoids.Verb_SpawnMech</verbClass>
+				<label>summon satellite</label>
+				<warmupTime>1.0</warmupTime>
+				<burstShotCount>1</burstShotCount>
+				<onlyManualCast>true</onlyManualCast>
+				<hasStandardCommand>true</hasStandardCommand>
+				<targetable>false</targetable>
+				<nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+				<violent>false</violent>
+				<canGoWild>false</canGoWild>
+			</li>
+		</verbs>
+		<modExtensions>
+			<li Class="ApexMechanoids.DefModExtension_MechPack">
+				<maxNum>2</maxNum>
+				<spawnedKind>APM_Mech_Satellite</spawnedKind>
+			</li>
+		</modExtensions>
 		<recipeMaker>
 			<unfinishedThingDef>UnfinishedPack</unfinishedThingDef>
 			<!-- <recipeUsers> -->
@@ -92,5 +124,4 @@
 			<li>ExoticMisc</li>
 		</tradeTags>
 	</ThingDef>
-
 </Defs>

@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BaseGun">
 		<defName>APM_Gazer_BeamGun</defName>
 		<label>laser beam projector</label>
@@ -65,7 +64,6 @@
 			</li>
 		</verbs>
 	</ThingDef>
-
 	<ThingDef ParentName="BaseGun">
 		<defName>APM_Gazer_SunRayGun</defName>
 		<label>sun ray projector</label>
@@ -89,6 +87,9 @@
 		<weaponClasses>
 			<li>RangedHeavy</li>
 		</weaponClasses>
+		<weaponTags Inherit="False">
+			<li>APM_WeaponGazerSunRay</li>
+		</weaponTags>
 		<verbs>
 			<li>
 				<verbClass>ApexMechanoids.Verb_ShootSunBeam</verbClass>
@@ -140,5 +141,4 @@
 			</li>
 		</verbs>
 	</ThingDef>
-
 </Defs>
