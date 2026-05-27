@@ -47,7 +47,7 @@
 				<beamDamageDef>MegaBeam</beamDamageDef>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
-				<soundCastBeam>APM_SunRayCast</soundCastBeam>
+				<soundCastBeam>GraserBeam_Shooting</soundCastBeam>
 				<beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
 				<beamFleckChancePerTick>0.32</beamFleckChancePerTick>
 				<beamMaxDeviation>1.5</beamMaxDeviation>
@@ -153,10 +153,10 @@
 			<showBurstShotStats>false</showBurstShotStats>
 			<beamWidth>6</beamWidth>
 			<ticksBetweenBurstShots>22</ticksBetweenBurstShots>
-			<beamDamageDef>Beam</beamDamageDef>
+			<beamDamageDef>MegaBeam</beamDamageDef>
 			<soundCastTail>GunTail_Medium</soundCastTail>
 			<muzzleFlashScale>9</muzzleFlashScale>
-			<soundCastBeam>BeamGraser_Shooting</soundCastBeam>
+			<soundCastBeam>GraserBeam_Shooting</soundCastBeam>
 			<beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
 			<beamFleckChancePerTick>0.32</beamFleckChancePerTick>
 			<beamMaxDeviation>1.5</beamMaxDeviation>

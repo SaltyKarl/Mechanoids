@@ -42,12 +42,9 @@ namespace ApexMechanoids
 				zeroPos = false;
 			}
 			direction = Target.CenterVector3 - exactPos;
-			Log.Message(direction.ToString());
 			direction = direction.normalized;
-			Log.Message(direction.ToString());
 			direction = direction.Yto0() * moveSpeed;
 			base.Notify_Starting();
-			Log.Message(direction.ToString());
 		}
 
 		public override IEnumerable<Toil> MakeNewToils()

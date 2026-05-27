@@ -48,6 +48,7 @@ namespace ApexMechanoids
                             spawnedThing.Remove(pawn);
                         }
                         Pawn innerSpawnedOne = PawnGenerator.GeneratePawn(modExtension.spawnedKind);
+                        innerSpawnedOne.mindState.mentalStateHandler.ClearMentalStateDirect();
                         innerSpawnedOne.SetFaction(Caster.Faction);
                         GenSpawn.Spawn(innerSpawnedOne, CurrentTarget.Cell, Caster.MapHeld);
                         CompUnity compUnity = innerSpawnedOne.TryGetComp<CompUnity>();
@@ -98,6 +99,7 @@ namespace ApexMechanoids
             }
 
             Pawn spawnedOne = PawnGenerator.GeneratePawn(modExtension.spawnedKind);
+            spawnedOne.mindState.mentalStateHandler.ClearMentalStateDirect();
             if (Caster?.Faction != null)
             {
                 spawnedOne.SetFaction(Caster.Faction);

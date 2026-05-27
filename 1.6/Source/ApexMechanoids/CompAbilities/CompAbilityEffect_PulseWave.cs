@@ -218,12 +218,7 @@ namespace ApexMechanoids
                 return false;
             }
 
-            if (!(pawn.RaceProps?.IsFlesh ?? false))
-            {
-                return false;
-            }
-
-            if (pawn.Faction == Faction.OfMechanoids)
+            if (caster?.Faction != null && !pawn.HostileTo(caster))
             {
                 return false;
             }
@@ -233,21 +228,12 @@ namespace ApexMechanoids
 
         private void ApplyWaveToPawn(Pawn pawn)
         {
-            float stunSeconds = stunTicks / 60f;
-            AbilityDef vanillaStun = DefDatabase<AbilityDef>.GetNamedSilentFail("Stun");
-            if (vanillaStun != null)
-            {
-                stunSeconds = vanillaStun.GetStatValueAbstract(StatDefOf.Ability_Duration, caster);
-                stunSeconds *= pawn.GetStatValue(StatDefOf.PsychicSensitivity);
-                stunSeconds *= 2f;
-            }
-
             if (pawn.stances?.stunner != null)
             {
-                pawn.stances.stunner.StunFor(stunSeconds.SecondsToTicks(), caster, addBattleLog: false);
+                pawn.stances.stunner.StunFor(stunTicks, caster, addBattleLog: false);
             }
 
-            if (blindHediffDef != null && pawn.health != null)
+            if (blindHediffDef != null && pawn.health != null && (pawn.RaceProps?.IsFlesh ?? false))
             {
                 Hediff existing = pawn.health.hediffSet?.GetFirstHediffOfDef(blindHediffDef);
                 if (existing != null)

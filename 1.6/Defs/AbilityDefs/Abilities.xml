@@ -113,8 +113,7 @@
 				<sparklesPerPulse>2</sparklesPerPulse>
 			</li>
 			<li Class="ApexMechanoids.CompProperties_BlinkTeleport">
-				<compClass>CompAbilityEffect_Teleport</compClass>
-				<destination>Caster</destination>
+				<destination>Selected</destination>
 				<requiresLineOfSight>True</requiresLineOfSight>
 				<range>17.9</range>
 				<clamorType>Ability</clamorType>
