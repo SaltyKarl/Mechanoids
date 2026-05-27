@@ -234,4 +234,26 @@
 			<color>(250, 147, 19)</color>
 		</graphicData>
 	</ThingDef>
+
+	<ThingDef ParentName="MoteBase">
+		<defName>APM_Mote_RavagerStarfall_Target</defName>
+		<thingClass>ApexMechanoids.Mote_RavagerStarfallTarget</thingClass>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.5</fadeInTime>
+			<fadeOutTime>0.3</fadeOutTime>
+			<solidTime>999999</solidTime>
+			<needsMaintenance>True</needsMaintenance>
+		</mote>
+		<graphicData>
+			<texPath>Things/Mote/Ravager/Aiming_Mote</texPath>
+			<graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
+			<shaderType>MoteHellfireCannon_Target</shaderType>
+			<shaderParameters>
+				<_ScanTex>/Things/Mote/MoteHellfireCannon_Target_Scan</_ScanTex>
+				<_ScanMask>/Things/Mote/MoteHellfireCannon_Target_Scan_Mask</_ScanMask>
+			</shaderParameters>
+			<drawSize>(8, 8)</drawSize>
+		</graphicData>
+	</ThingDef>
 </Defs>
