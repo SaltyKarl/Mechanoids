@@ -126,7 +126,7 @@
 	</SoundDef>
 
 	<SoundDef>
-		<defName>APM_Dual</defName>
+		<defName>APM_DuelStarted</defName>
 		<context>MapOnly</context>
 		<eventNames />
 		<maxVoices>4</maxVoices>
@@ -151,7 +151,7 @@
 	</SoundDef>
 
 	<SoundDef>
-		<defName>APM_DualVictory</defName>
+		<defName>APM_DuelWin</defName>
 		<context>MapOnly</context>
 		<eventNames />
 		<maxVoices>4</maxVoices>
@@ -176,7 +176,7 @@
 	</SoundDef>
 
 	<SoundDef>
-		<defName>APM_DualLost</defName>
+		<defName>APM_DuelLose</defName>
 		<context>MapOnly</context>
 		<eventNames />
 		<maxVoices>4</maxVoices>

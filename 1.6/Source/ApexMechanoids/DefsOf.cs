@@ -34,7 +34,9 @@ namespace ApexMechanoids
         public static HediffDef APM_Hediff_Devoured;
         public static SoundDef ShieldMech_Complete;     //from Biotech
         public static SoundDef ShieldMech_Start;        //from Biotech
-		
+        public static SoundDef APM_DuelWin;
+        public static SoundDef APM_DuelLose;
+        public static SoundDef APM_DuelStarted;
         static ApexDefsOf()
         {
             DefOfHelper.EnsureInitializedInCtor(typeof(ApexDefsOf));
