@@ -576,6 +576,7 @@
 		<defName>APM_Starfall</defName>
 		<label>Starfall</label>
 		<description>Ravager overcharges its artillery and launches a single heavy shell that splits into three energy blasts while still in flight.</description>
+		<jobDef>CastAbilityOnThingWithoutWeapon</jobDef>
 		<iconPath>UI/Icons/Starfall</iconPath>
 		<cooldownTicksRange>5000</cooldownTicksRange>
 		<hostile>true</hostile>
@@ -589,20 +590,15 @@
 		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
 		<verbProperties>
-			<verbClass>ApexMechanoids.Verb_StarfallAbility</verbClass>
-			<hasStandardCommand>true</hasStandardCommand>
-			<burstShotCount>3</burstShotCount>
-			<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
-			<forcedMissRadius>8.9</forcedMissRadius>
-			<warmupTime>3.2</warmupTime>
+			<verbClass>ApexMechanoids.Verb_CastStarfall</verbClass>
+			<warmupTime>4.8</warmupTime>
 			<range>24.9</range>
 			<drawAimPie>true</drawAimPie>
 			<requireLineOfSight>true</requireLineOfSight>
 			<noiseRadius>4</noiseRadius>
 			<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
-			<soundCast>Shot_IncendiaryLauncher</soundCast>
-			<soundCastTail>GunTail_Medium</soundCastTail>
 			<muzzleFlashScale>14</muzzleFlashScale>
+			<aimingTargetMote>APM_Mote_RavagerStarfall_Target</aimingTargetMote>
 			<targetParams>
 				<canTargetLocations>true</canTargetLocations>
 				<canTargetSelf>false</canTargetSelf>
@@ -611,7 +607,7 @@
 		<comps>
 			<li Class="ApexMechanoids.CompProperties_Starfall">
 				<carrierProjectileDef>APM_StarfallCarrier</carrierProjectileDef>
-				<launchSoundDefName>Shot_IncendiaryLauncher</launchSoundDefName>
+				<launchSoundDefName>Starfall</launchSoundDefName>
 			</li>
 		</comps>
 	</AbilityDef>
