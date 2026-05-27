@@ -216,7 +216,7 @@
 			<Ability_Duration>8</Ability_Duration>
 		</statBases>
 		<verbProperties>
-			<verbClass>Verb_CastAbility</verbClass>
+			<verbClass>ApexMechanoids.Verb_CastPulseWave</verbClass>
 			<warmupTime>1.2</warmupTime>
 			<range>6.9</range>
 			<drawAimPie>false</drawAimPie>
