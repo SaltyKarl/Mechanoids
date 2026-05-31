@@ -6,6 +6,25 @@ using Verse.Sound;
 
 namespace ApexMechanoids
 {
+    public class Verb_CastPulseWave : Verb_CastAbility
+    {
+        public override bool TryStartCastOn(LocalTargetInfo castTarg, LocalTargetInfo destTarg, bool surpriseAttack = false, bool canHitNonTargetPawns = true, bool preventFriendlyFire = false, bool nonInterruptingSelfCast = false)
+        {
+            if (!castTarg.IsValid && caster != null)
+            {
+                castTarg = caster;
+            }
+
+            return base.TryStartCastOn(castTarg, destTarg, surpriseAttack, canHitNonTargetPawns, preventFriendlyFire, nonInterruptingSelfCast);
+        }
+
+        public override void WarmupComplete()
+        {
+            base.WarmupComplete();
+            PulseWaveUtility.TryApply(CasterPawn, PulseWaveUtility.GetProps(ability?.def));
+        }
+    }
+
     public class CompAbilityEffect_PulseWave : CompAbilityEffect
     {
         public new CompProperties_PulseWave Props => (CompProperties_PulseWave)props;
@@ -13,40 +32,92 @@ namespace ApexMechanoids
         public override void Apply(LocalTargetInfo target, LocalTargetInfo dest)
         {
             base.Apply(target, dest);
+            PulseWaveUtility.TryApply(parent.pawn, Props);
+        }
+    }
 
-            Pawn caster = parent.pawn;
-            Map map = caster?.MapHeld;
-            if (caster == null || map == null || !caster.Spawned)
+    internal static class PulseWaveUtility
+    {
+        private static int lastCasterThingId = -1;
+        private static int lastApplyTick = -1;
+
+        public static CompProperties_PulseWave GetProps(AbilityDef abilityDef)
+        {
+            if (abilityDef?.comps == null)
             {
-                return;
+                return null;
             }
 
-            SpawnCasterFlash(caster, map);
-
-            Thing thing = ThingMaker.MakeThing(Props.emitterDef);
-            Mote_PulseWaveEmitter emitter = thing as Mote_PulseWaveEmitter;
-            if (emitter != null)
+            for (int i = 0; i < abilityDef.comps.Count; i++)
             {
-                emitter.Initialize(caster, Props);
-                GenSpawn.Spawn(emitter, caster.PositionHeld, map);
+                if (abilityDef.comps[i] is CompProperties_PulseWave pulseProps)
+                {
+                    return pulseProps;
+                }
             }
 
-            SoundDef castSound = DefDatabase<SoundDef>.GetNamedSilentFail(Props.castSoundDefName);
-            if (castSound != null)
-            {
-                castSound.PlayOneShot(new TargetInfo(caster.PositionHeld, map));
-            }
+            return null;
         }
 
-        private void SpawnCasterFlash(Pawn caster, Map map)
+        public static void TryApply(Pawn caster, CompProperties_PulseWave props)
         {
-            if (Props.blindFlashThingDef == null || caster == null || map == null || !caster.PositionHeld.InBounds(map))
+            Map map = caster?.MapHeld;
+            if (caster == null || props == null || map == null || !caster.Spawned)
             {
                 return;
             }
 
-            Thing flashThing = ThingMaker.MakeThing(Props.blindFlashThingDef);
+            int currentTick = Find.TickManager.TicksGame;
+            if (lastApplyTick == currentTick && lastCasterThingId == caster.thingIDNumber)
+            {
+                return;
+            }
+
+            lastApplyTick = currentTick;
+            lastCasterThingId = caster.thingIDNumber;
+
+            SpawnCasterFlash(caster, map, props);
+            SpawnEmitter(caster, map, props);
+            PlayExplicitCastSound(caster, map, props);
+        }
+
+        private static void SpawnCasterFlash(Pawn caster, Map map, CompProperties_PulseWave props)
+        {
+            if (props.blindFlashThingDef == null || !caster.PositionHeld.InBounds(map))
+            {
+                return;
+            }
+
+            Thing flashThing = ThingMaker.MakeThing(props.blindFlashThingDef);
             GenSpawn.Spawn(flashThing, caster.PositionHeld, map, WipeMode.Vanish);
+        }
+
+        private static void SpawnEmitter(Pawn caster, Map map, CompProperties_PulseWave props)
+        {
+            if (props.emitterDef == null)
+            {
+                return;
+            }
+
+            Mote_PulseWaveEmitter emitter = ThingMaker.MakeThing(props.emitterDef) as Mote_PulseWaveEmitter;
+            if (emitter == null)
+            {
+                return;
+            }
+
+            emitter.Initialize(caster, props);
+            GenSpawn.Spawn(emitter, caster.PositionHeld, map);
+        }
+
+        private static void PlayExplicitCastSound(Pawn caster, Map map, CompProperties_PulseWave props)
+        {
+            if (props.castSoundDefName.NullOrEmpty())
+            {
+                return;
+            }
+
+            SoundDef castSound = DefDatabase<SoundDef>.GetNamedSilentFail(props.castSoundDefName);
+            castSound?.PlayOneShot(new TargetInfo(caster.PositionHeld, map));
         }
     }
 
@@ -66,7 +137,7 @@ namespace ApexMechanoids
         public int blindTicks = 480;
         public float visualScale = 0.72f;
         public string fleckDefName = "PsycastPsychicEffect";
-        public string castSoundDefName = "PsycastPsychicPulse";
+        public string castSoundDefName;
     }
 
     public class Mote_PulseWaveEmitter : Mote
@@ -218,7 +289,12 @@ namespace ApexMechanoids
                 return false;
             }
 
-            if (caster?.Faction != null && !pawn.HostileTo(caster))
+            if (!(pawn.RaceProps?.IsFlesh ?? false))
+            {
+                return false;
+            }
+
+            if (pawn.Faction == Faction.OfMechanoids)
             {
                 return false;
             }
@@ -228,12 +304,21 @@ namespace ApexMechanoids
 
         private void ApplyWaveToPawn(Pawn pawn)
         {
-            if (pawn.stances?.stunner != null)
+            float stunSeconds = stunTicks / 60f;
+            AbilityDef vanillaStun = DefDatabase<AbilityDef>.GetNamedSilentFail("Stun");
+            if (vanillaStun != null)
             {
-                pawn.stances.stunner.StunFor(stunTicks, caster, addBattleLog: false);
+                stunSeconds = vanillaStun.GetStatValueAbstract(StatDefOf.Ability_Duration, caster);
+                stunSeconds *= pawn.GetStatValue(StatDefOf.PsychicSensitivity);
+                stunSeconds *= 2f;
             }
 
-            if (blindHediffDef != null && pawn.health != null && (pawn.RaceProps?.IsFlesh ?? false))
+            if (pawn.stances?.stunner != null)
+            {
+                pawn.stances.stunner.StunFor(stunSeconds.SecondsToTicks(), caster, addBattleLog: false);
+            }
+
+            if (blindHediffDef != null && pawn.health != null)
             {
                 Hediff existing = pawn.health.hediffSet?.GetFirstHediffOfDef(blindHediffDef);
                 if (existing != null)
