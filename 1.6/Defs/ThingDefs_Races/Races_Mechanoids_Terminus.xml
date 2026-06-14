@@ -156,6 +156,8 @@
 		<hostile>false</hostile>
 		<aiCanUse>true</aiCanUse>
 		<showCastingProgressBar>true</showCastingProgressBar>
+		<warmupMote>APM_Mote_TerminusOverdrive_SacrificePilar</warmupMote>
+		<warmupEffecter>APM_UltitmateSacrifice</warmupEffecter>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
 		<statBases>
 			<Ability_Duration>30</Ability_Duration>
@@ -180,6 +182,10 @@
 				<compClass>CompAbilityEffect_GiveHediff</compClass>
 				<hediffDef>APM_Hediff_TerminusOverdrive</hediffDef>
 				<applyToSelf>true</applyToSelf>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_AbilityWarmupMote">
+				<moteDef>APM_Mote_TerminusOverdrive_SacrificeWave</moteDef>
+				<rotation>3</rotation>
 			</li>
 			<li Class="ApexMechanoids.CompProperties_TerminusOverdriveCapeBurst">
 				<moteDef>APM_Mote_TerminusCapeThrown</moteDef>
