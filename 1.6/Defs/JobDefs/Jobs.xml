@@ -18,4 +18,16 @@
 		<playerInterruptible>false</playerInterruptible>
 		<casualInterruptible>false</casualInterruptible>
 	</JobDef>
+
+	<JobDef>
+		<defName>APM_SirenLureChannel</defName>
+		<driverClass>ApexMechanoids.JobDriver_SirenLureChannel</driverClass>
+		<reportString>singing.</reportString>
+		<abilityCasting>true</abilityCasting>
+		<neverShowWeapon>true</neverShowWeapon>
+		<playerInterruptible>false</playerInterruptible>
+		<casualInterruptible>false</casualInterruptible>
+		<suspendable>false</suspendable>
+		<checkOverrideOnDamage>Never</checkOverrideOnDamage>
+	</JobDef>
 </Defs>
