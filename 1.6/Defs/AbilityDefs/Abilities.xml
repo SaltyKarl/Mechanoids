@@ -242,66 +242,6 @@
 		</comps>
 	</AbilityDef>
 
-	<!-- "targeting" for pinpoint mech -->
-	<AbilityDef>
-		<defName>APM_Ability_GiveAccuracyHediff</defName>
-		<label>Mark Target</label>
-		<description>Mark target and share live location info to allies, make hitting said target eaiser.</description>
-		<iconPath>UI/Targeting</iconPath>
-		<cooldownTicksRange>3600</cooldownTicksRange><!-- 1 minute -->
-		<hostile>true</hostile>
-		<writeCombatLog>true</writeCombatLog>
-		<aiCanUse>true</aiCanUse>
-		<warmupStartSound>APM_Targeting</warmupStartSound>
-		<verbProperties>
-			<verbClass>Verb_CastAbility</verbClass>
-			<range>12.9</range>
-			<warmupTime>5</warmupTime>
-			<requireLineOfSight>False</requireLineOfSight>
-			<soundCast>APM_Targeting</soundCast>
-			<targetParams>
-				<canTargetBuildings>false</canTargetBuildings>
-			</targetParams>
-		</verbProperties>
-		<comps>
-			<li Class="CompProperties_AbilityGiveHediff">
-				<compClass>CompAbilityEffect_GiveHediff</compClass>
-				<hediffDef>ApexMechanoids_TestAccuracyHediff</hediffDef>
-			</li>
-		</comps>
-	</AbilityDef>
-
-	<!-- "true sight" for pinpoint mech -->
-	<AbilityDef>
-		<defName>ApexMechanoids_Ability_RevealInvisible</defName>
-		<label>Scanner Sweep</label>
-		<description>Scanner sweep the area, revealing invisible targets caught in sweep.</description>
-		<iconPath>Things/Mote/SpeechSymbols/Speech</iconPath>
-		<cooldownTicksRange>1800</cooldownTicksRange>
-		<hostile>true</hostile>
-		<writeCombatLog>true</writeCombatLog>
-		<aiCanUse>true</aiCanUse>
-		<canUseAoeToGetTargets>true</canUseAoeToGetTargets>
-		<statBases>
-			<Ability_EffectRadius>9.9</Ability_EffectRadius> <!-- this should make it possible to pick targets from AoE to push -->
-		</statBases>
-		<verbProperties>
-			<verbClass>Verb_CastAbility</verbClass>
-			<range>14.9</range>
-			<warmupTime>0.5</warmupTime>
-			<requireLineOfSight>False</requireLineOfSight>
-			<soundCast>Pawn_Cat_Call</soundCast>
-			<targetParams>
-				<canTargetBuildings>false</canTargetBuildings>
-			</targetParams>
-		</verbProperties>
-		<comps>
-			<li Class="ApexMechanoids.CompProperties_AbilityRevealInvisibility"> <!-- should reveal invisible pawns -->
-				<instant>false</instant>
-			</li>
-		</comps>
-	</AbilityDef>
-
 	<!-- "dashing" pawnFlyer with rope -->
 	<ThingDef ParentName="PawnFlyerBase">
 		<defName>ApexMechanoids_DashingPawn</defName>
@@ -427,7 +367,7 @@
 				<jobFactor>10</jobFactor>
 				<!--Stun damage amount-->
 				<job>APM_BashStun</job>
-				<moveSpeed>0.015</moveSpeed>
+				<moveSpeed>0.01</moveSpeed>
 			</li>
 		</comps>
 	</AbilityDef>
@@ -468,7 +408,7 @@
 			<li Class="ApexMechanoids.CompProperties_AbilityBash">
 				<jobFactor>10</jobFactor><!--Damage-->
 				<job>APM_BashDamage</job>
-				<moveSpeed>0.05</moveSpeed>
+				<moveSpeed>0.03</moveSpeed>
 			</li>
 		</comps>
 	</AbilityDef>
@@ -739,8 +679,8 @@
 		<comps>
 			<li Class="ApexMechanoids.CompProperties_AbilitySpawnSmokescreen">
 				<gasDef>APM_Smokescreen</gasDef>
-				<radius>5</radius>
-				<maxRadius>15</maxRadius>
+				<radius>3</radius>
+				<maxRadius>8</maxRadius>
 				<spreadIntervalTicks>15</spreadIntervalTicks>
 			</li>
 		</comps>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<SoundDef>
 		<defName>APM_Whip</defName>
@@ -14,8 +14,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.9</min>
@@ -39,8 +39,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.9</min>
@@ -64,8 +64,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.9</min>
@@ -89,8 +89,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.9</min>
@@ -114,8 +114,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.9</min>
@@ -140,7 +140,7 @@
 				</grains>
 				<volumeRange>
 					<min>55</min>
-					<max>65</max>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.895690</min>
@@ -164,8 +164,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.936413</min>
@@ -189,8 +189,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.936413</min>
@@ -213,8 +213,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.95</min>
@@ -265,8 +265,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.95</min>
@@ -292,8 +292,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.95</min>
@@ -317,8 +317,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.95</min>
@@ -343,8 +343,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.95</min>
@@ -369,8 +369,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.95</min>
@@ -394,8 +394,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.95</min>
@@ -420,8 +420,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.95</min>
@@ -445,8 +445,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.95</min>
@@ -471,8 +471,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.95</min>
@@ -496,8 +496,8 @@
 					</li>
 				</grains>
 				<volumeRange>
-					<min>75</min>
-					<max>85</max>
+					<min>55</min>
+					<max>62</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.95</min>
