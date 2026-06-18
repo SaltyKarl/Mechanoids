@@ -142,7 +142,7 @@
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<abilities>
 			<li>SeveringEdge</li>
-			<li>APM_TerminusOverdrive</li>
+			<li>APM_TerminusOverdrive_Boss</li>
 		</abilities>
 	</PawnKindDef>
 
@@ -156,6 +156,8 @@
 		<hostile>false</hostile>
 		<aiCanUse>true</aiCanUse>
 		<showCastingProgressBar>true</showCastingProgressBar>
+		<warmupMote>APM_Mote_TerminusOverdrive_BlueSacrificePilar</warmupMote>
+		<warmupEffecter>APM_TerminusOverdrive_BlueSacrifice</warmupEffecter>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
 		<statBases>
 			<Ability_Duration>30</Ability_Duration>
@@ -180,6 +182,63 @@
 				<compClass>CompAbilityEffect_GiveHediff</compClass>
 				<hediffDef>APM_Hediff_TerminusOverdrive</hediffDef>
 				<applyToSelf>true</applyToSelf>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_AbilityWarmupMote">
+				<moteDef>APM_Mote_TerminusOverdrive_BlueSacrificeWave</moteDef>
+				<rotation>3</rotation>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_TerminusOverdriveCapeBurst">
+				<moteDef>APM_Mote_TerminusCapeThrown</moteDef>
+				<burstCount>1</burstCount>
+				<spawnRadius>0.06</spawnRadius>
+				<sideOffsetDistance>0.0</sideOffsetDistance>
+				<verticalOffset>0.06</verticalOffset>
+				<speedRange>2.8~3.2</speedRange>
+				<angleOffsetRange>-10~10</angleOffsetRange>
+			</li>
+		</comps>
+	</AbilityDef>
+
+	<AbilityDef>
+		<defName>APM_TerminusOverdrive_Boss</defName>
+		<label>overdrive</label>
+		<description>Terminus diverts power inward and briefly enters an overdriven combat state. While active, it sheds its cape, strikes harder, recovers between swings faster and becomes harder to stagger.</description>
+		<iconPath>UI/Icons/Overdrive</iconPath>
+		<cooldownTicksRange>90000</cooldownTicksRange>
+		<targetRequired>false</targetRequired>
+		<hostile>false</hostile>
+		<aiCanUse>true</aiCanUse>
+		<showCastingProgressBar>true</showCastingProgressBar>
+		<warmupMote>APM_Mote_TerminusOverdrive_SacrificePilar</warmupMote>
+		<warmupEffecter>APM_UltitmateSacrifice</warmupEffecter>
+		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<statBases>
+			<Ability_Duration>30</Ability_Duration>
+		</statBases>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<warmupTime>1.1</warmupTime>
+			<range>0.9</range>
+			<drawAimPie>false</drawAimPie>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetBuildings>false</canTargetBuildings>
+				<canTargetAnimals>false</canTargetAnimals>
+				<canTargetHumans>false</canTargetHumans>
+				<canTargetLocations>false</canTargetLocations>
+				<canTargetMechs>false</canTargetMechs>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="CompProperties_AbilityGiveHediff">
+				<compClass>CompAbilityEffect_GiveHediff</compClass>
+				<hediffDef>APM_Hediff_TerminusOverdrive</hediffDef>
+				<applyToSelf>true</applyToSelf>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_AbilityWarmupMote">
+				<moteDef>APM_Mote_TerminusOverdrive_SacrificeWave</moteDef>
+				<rotation>3</rotation>
 			</li>
 			<li Class="ApexMechanoids.CompProperties_TerminusOverdriveCapeBurst">
 				<moteDef>APM_Mote_TerminusCapeThrown</moteDef>

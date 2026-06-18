@@ -36,14 +36,9 @@
 				<warmupTime>1.2</warmupTime>
 				<range>28.9</range>
 				<burstShotCount>1</burstShotCount>
-				<forcedMissRadius>1.5</forcedMissRadius>
 				<soundCast>Shot_IncendiaryLauncher</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>10</muzzleFlashScale>
-				<targetParams>
-					<canTargetLocations>true</canTargetLocations>
-				</targetParams>
-				<rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
 			</li>
 		</verbs>
 		<tools>
@@ -67,22 +62,25 @@
 		</tools>
 	</ThingDef>
 
-	<ThingDef ParentName="BaseFragGrenadeProjectile">
+	<ThingDef ParentName="BaseBullet">
 		<defName>APM_Proj_EMP_Impactor</defName>
 		<label>EMP impactor projectile</label>
-		<thingClass>Projectile_Explosive</thingClass>
 		<graphicData>
-			<texPath>Things/Projectile/LauncherShot</texPath>
+			<texPath>Things/Projectile/EMPImpactor</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 			<color>(68,150,215)</color>
 		</graphicData>
 		<projectile>
-			<damageDef>EMP</damageDef>
-			<damageAmountBase>30</damageAmountBase>
-			<explosionRadius>4.9</explosionRadius>
-			<explosionDelay>2</explosionDelay>
-			<speed>18</speed>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>6</damageAmountBase>
+			<extraDamages>
+				<li>
+					<def>EMP</def>
+					<amount>30</amount>
+				</li>
+			</extraDamages>
+			<speed>70</speed>
 		</projectile>
 	</ThingDef>
 </Defs>

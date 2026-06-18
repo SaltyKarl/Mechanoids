@@ -2,6 +2,7 @@ using RimWorld;
 using System.Collections.Generic;
 using UnityEngine;
 using Verse;
+using Verse.AI;
 
 namespace ApexMechanoids
 {
@@ -23,7 +24,8 @@ namespace ApexMechanoids
                 return;
             }
 
-            if (!parent.wasCastingOnPrevTick)
+            bool isChanneling = Props.channelJobDef != null && caster.CurJobDef == Props.channelJobDef;
+            if (!parent.wasCastingOnPrevTick && !isChanneling)
             {
                 ticksUntilNextSpawn = 0;
                 return;
@@ -95,5 +97,85 @@ namespace ApexMechanoids
         public FloatRange velocityAngle = new FloatRange(-4f, 4f);
         public float rotation = 0f;
         public float rotationRate = 0f;
+        public JobDef channelJobDef;
+    }
+
+    public class CompAbilityEffect_SirenLureChannel : CompAbilityEffect
+    {
+        public CompProperties_SirenLureChannel ChannelProps => (CompProperties_SirenLureChannel)props;
+
+        public override void Apply(LocalTargetInfo target, LocalTargetInfo dest)
+        {
+            base.Apply(target, dest);
+
+            Pawn caster = parent.pawn;
+            Pawn targetPawn = target.Pawn;
+            if (caster == null || caster.Dead || caster.Downed || !caster.Spawned || caster.Map == null ||
+                targetPawn == null || targetPawn.Dead || targetPawn.Downed || !targetPawn.Spawned || targetPawn.Map != caster.Map ||
+                ChannelProps.jobDef == null)
+            {
+                return;
+            }
+
+            int durationTicks = Mathf.Max(1, parent.def.GetStatValueAbstract(StatDefOf.Ability_Duration, caster).SecondsToTicks());
+            Job channelJob = JobMaker.MakeJob(ChannelProps.jobDef, targetPawn, caster);
+            channelJob.count = durationTicks;
+            channelJob.playerForced = caster.Faction == Faction.OfPlayer;
+            caster.jobs.StartJob(channelJob, JobCondition.InterruptForced, cancelBusyStances: true);
+        }
+    }
+
+    public class CompProperties_SirenLureChannel : CompProperties_AbilityEffect
+    {
+        public JobDef jobDef;
+
+        public CompProperties_SirenLureChannel()
+        {
+            compClass = typeof(CompAbilityEffect_SirenLureChannel);
+        }
+    }
+
+    public class JobDriver_SirenLureChannel : JobDriver
+    {
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
+        {
+            return true;
+        }
+
+        public override IEnumerable<Toil> MakeNewToils()
+        {
+            AddFinishAction(delegate
+            {
+                Pawn targetPawn = TargetThingA as Pawn;
+                if (targetPawn?.jobs != null && targetPawn.CurJobDef == JobDefOf.GotoMindControlled)
+                {
+                    targetPawn.jobs.EndCurrentJob(JobCondition.InterruptForced);
+                }
+            });
+
+            this.FailOnDespawnedOrNull(TargetIndex.A);
+            this.FailOn(() => pawn == null || pawn.Destroyed || pawn.Dead || pawn.Downed || !pawn.Spawned || pawn.Map == null);
+            this.FailOn(() =>
+            {
+                Pawn targetPawn = TargetThingA as Pawn;
+                return targetPawn == null || targetPawn.Dead || targetPawn.Downed || targetPawn.Map != pawn.Map ||
+                    targetPawn.CurJobDef != JobDefOf.GotoMindControlled;
+            });
+
+            Toil channel = ToilMaker.MakeToil("SirenLureChannel");
+            channel.initAction = delegate
+            {
+                pawn.pather.StopDead();
+            };
+            channel.tickAction = delegate
+            {
+                pawn.rotationTracker.FaceTarget(TargetA);
+            };
+            channel.defaultCompleteMode = ToilCompleteMode.Delay;
+            channel.defaultDuration = Mathf.Max(1, job.count);
+            channel.handlingFacing = true;
+            channel.WithProgressBarToilDelay(TargetIndex.B);
+            yield return channel;
+        }
     }
 }

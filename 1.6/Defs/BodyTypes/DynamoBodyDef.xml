@@ -3,7 +3,7 @@
 
 	<!-- Dynamo: Stationary-ish support/power plant mech. 3-directional textures, no weapon hand groups.
        No arms (just a support unit). Heavy body with legs. Based on MechCentipede parent & uranium fuel.
-       Custom body with no arm manipulation — just heavy thorax, head, two sturdy legs and internal systems. -->
+       The core body provides manipulation so pawn weapon generation can equip its built-in gun. -->
 	<BodyDef>
 		<defName>APM_Dynamo</defName>
 		<label>dynamo</label>
@@ -103,6 +103,9 @@
 		<solid>true</solid>
 		<alive>false</alive>
 		<bleedRate>0</bleedRate>
+		<tags>
+			<li>ManipulationLimbCore</li>
+		</tags>
 	</BodyPartDef>
 
 	<BodyPartDef>

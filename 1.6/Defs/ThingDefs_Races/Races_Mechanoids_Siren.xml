@@ -165,10 +165,12 @@
 		<label>Aluring Song</label>
 		<description>Sing a aluring song to compel the target pawn to walk towards the caster.</description>
 		<iconPath>UI/Call</iconPath>
+		<jobDef>CastAbilityOnThingWithoutWeapon</jobDef>
 		<cooldownTicksRange>600</cooldownTicksRange>
 		<hostile>true</hostile>
 		<writeCombatLog>true</writeCombatLog>
 		<aiCanUse>true</aiCanUse>
+		<showCastingProgressBar>true</showCastingProgressBar>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
 			<range>29.9</range>
@@ -192,6 +194,24 @@
 				<jobDef>GotoMindControlled</jobDef>
 				<destination>Caster</destination>
 				<range>0.9</range>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_SpawnSirenSongNotes">
+				<fleckDef>APM_SirenSongNote</fleckDef>
+				<noteCount>2</noteCount>
+				<extraNoteChance>0.25</extraNoteChance>
+				<spawnIntervalTicks>25</spawnIntervalTicks>
+				<horizontalJitter>0.2</horizontalJitter>
+				<minVerticalOffset>0.3</minVerticalOffset>
+				<maxVerticalOffset>1</maxVerticalOffset>
+				<scaleRange>0.32~0.9</scaleRange>
+				<speedRange>0.52~0.74</speedRange>
+				<velocityAngle>-10~10</velocityAngle>
+				<rotation>0</rotation>
+				<rotationRate>0</rotationRate>
+				<channelJobDef>APM_SirenLureChannel</channelJobDef>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_SirenLureChannel">
+				<jobDef>APM_SirenLureChannel</jobDef>
 			</li>
 		</comps>
 	</AbilityDef>

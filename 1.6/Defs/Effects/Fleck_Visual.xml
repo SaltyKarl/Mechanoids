@@ -57,6 +57,24 @@
 		<fadeOutTime>1.2</fadeOutTime>
 		<growthRate>0.02</growthRate>
 	</FleckDef>
+
+	<FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
+		<defName>APM_TerminusOverdrive_BlueSacrificeParticles</defName>
+		<randomGraphics>
+			<li>
+				<graphicClass>Graphic_Fleck</graphicClass>
+				<color>(68, 150, 215)</color>
+				<texPath>Things/Mote/UltimateSacrifice/LightParticles</texPath>
+				<shaderType>MoteGlow</shaderType>
+				<renderInstanced>true</renderInstanced>
+			</li>
+		</randomGraphics>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.50</fadeInTime>
+		<solidTime>3</solidTime>
+		<fadeOutTime>1.2</fadeOutTime>
+		<growthRate>0.02</growthRate>
+	</FleckDef>
 	
 	<FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
 		<defName>APM_Fleck_SunRay_Burn</defName>

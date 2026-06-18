@@ -42,6 +42,22 @@
 	</EffecterDef>
 
 	<EffecterDef>
+		<defName>APM_TerminusOverdrive_BlueSacrifice</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+				<positionRadiusMin>0.7</positionRadiusMin>
+				<positionRadius>1.48</positionRadius>
+				<fleckDef>APM_TerminusOverdrive_BlueSacrificeParticles</fleckDef>
+				<chancePerTick>0.1</chancePerTick>
+				<speed>0.1~0.4</speed>
+				<scale>0.1~0.4</scale>
+				<spawnLocType>OnSource</spawnLocType>
+			</li>
+		</children>
+	</EffecterDef>
+
+	<EffecterDef>
 		<defName>APM_Effecter_SunRay_End</defName>
 		<children>
 			<li>
