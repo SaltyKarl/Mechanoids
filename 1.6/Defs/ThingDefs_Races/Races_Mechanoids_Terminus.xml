@@ -210,7 +210,7 @@
 		<aiCanUse>true</aiCanUse>
 		<showCastingProgressBar>true</showCastingProgressBar>
 		<warmupMote>APM_Mote_TerminusOverdrive_SacrificePilar</warmupMote>
-		<warmupEffecter>APM_UltitmateSacrifice</warmupEffecter>
+		<warmupEffecter>APM_TerminusOverdrive_Sacrifice</warmupEffecter>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
 		<statBases>
 			<Ability_Duration>30</Ability_Duration>
@@ -264,6 +264,7 @@
 				<showRemainingTime>True</showRemainingTime>
 			</li>
 			<li Class="HediffCompProperties_DisappearsOnDeath" />
+			<li Class="ApexMechanoids.HediffCompProperties_TerminusOverdriveCapeVisibility" />
 		</comps>
 		<stages>
 			<li>
