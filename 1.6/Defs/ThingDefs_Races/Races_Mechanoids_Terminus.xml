@@ -60,7 +60,6 @@
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
 		</statBases>
 	</ThingDef>
-
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Terminus</defName>
 		<label>terminus</label>
@@ -101,6 +100,7 @@
 		<abilities>
 			<li>SeveringEdge</li>
 			<li>APM_TerminusOverdrive</li>
+			<li>APM_HookPawn</li>
 		</abilities>
 	</PawnKindDef>
 	<PawnKindDef ParentName="BaseMechanoidKind">
@@ -143,9 +143,9 @@
 		<abilities>
 			<li>SeveringEdge</li>
 			<li>APM_TerminusOverdrive_Boss</li>
+			<li>APM_HookPawn</li>
 		</abilities>
 	</PawnKindDef>
-
 	<AbilityDef>
 		<defName>APM_TerminusOverdrive</defName>
 		<label>overdrive</label>
@@ -198,7 +198,6 @@
 			</li>
 		</comps>
 	</AbilityDef>
-
 	<AbilityDef>
 		<defName>APM_TerminusOverdrive_Boss</defName>
 		<label>overdrive</label>
@@ -251,7 +250,6 @@
 			</li>
 		</comps>
 	</AbilityDef>
-
 	<HediffDef>
 		<defName>APM_Hediff_TerminusOverdrive</defName>
 		<label>overdrive</label>
@@ -281,7 +279,6 @@
 			</li>
 		</stages>
 	</HediffDef>
-
 	<AbilityDef>
 		<defName>SeveringEdge</defName>
 		<label>severing edge</label>
@@ -332,5 +329,4 @@
 			<useGraphicClass>true</useGraphicClass>
 		</projectile>
 	</ThingDef>
-
 </Defs>

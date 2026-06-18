@@ -104,7 +104,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<projectile>
-			<explosionRadius>1.9</explosionRadius>
+			<explosionRadius>2.85</explosionRadius>
 			<damageDef>Bomb</damageDef>
 			<!-- Use default damage from explosion def -->
 			<explosionDelay>0</explosionDelay>
@@ -144,7 +144,7 @@
 		</graphicData>
 		<projectile>
 			<speed>64</speed>
-			<explosionRadius>1.9</explosionRadius>
+			<explosionRadius>2.85</explosionRadius>
 			<damageDef>Bomb</damageDef>
 			<explosionDelay>0</explosionDelay>
 		</projectile>
