@@ -22,6 +22,8 @@ namespace ApexMechanoids
         public static HediffDef APM_DuelDraw;
         public static HediffDef APM_InDuel;
         public static FleckDef ArcLargeEMP_B;
+        public static HediffDef APM_AbsorbedThing;
+        public static AnimationDef APM_EatingIngestor;
         public static FleckDef APM_AirPuffGreen;
         public static ThingDef APM_PawnFlyer_Hooked;
         public static ThingDef APM_Projectile_Hook;

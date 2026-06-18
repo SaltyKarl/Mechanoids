@@ -101,6 +101,27 @@
 							</drawData>
 						</li>
 						<li>
+							<debugLabel>Mouth</debugLabel>
+							<tagDef>APM_Ingestor_Mouth</tagDef>
+							<texPath>Things/Pawn/Mechanoid/Ingestor/Closed/IngestorC</texPath>
+							<drawData>
+								<scale>1.9</scale>
+								<dataWest>
+									<offset>(-0.10, 0.0, 0.0)</offset>
+									<layer>20</layer>
+								</dataWest>
+								<dataEast>
+									<layer>20</layer>
+								</dataEast>
+								<dataSouth>
+									<layer>20</layer>
+								</dataSouth>
+								<dataNorth>
+									<layer>-10</layer>
+								</dataNorth>
+							</drawData>
+						</li>
+						<li>
 							<debugLabel>Wounds</debugLabel>
 							<nodeClass>PawnRenderNode_AnimalPart</nodeClass>
 							<workerClass>PawnRenderNodeWorker_OverlayWounds</workerClass>
@@ -125,4 +146,42 @@
 			</children>
 		</root>
 	</PawnRenderTreeDef>
+	<AnimationDef>
+		<defName>APM_EatingIngestor</defName>
+		<durationTicks>80</durationTicks>
+		<keyframeParts>
+			<li>
+				<key>APM_Ingestor_Mouth</key>
+				<value>
+					<keyframes>
+						<li>
+							<tick>60</tick>
+							<graphicState>APM_EatingIngestor_Closed</graphicState>
+						</li>
+						<li>
+							<tick>80</tick>
+							<graphicState>APM_EatingIngestor_Opened</graphicState>
+						</li>
+					</keyframes>
+				</value>
+			</li>
+		</keyframeParts>
+	</AnimationDef>
+	<PawnRenderNodeTagDef>
+		<defName>APM_Ingestor_Mouth</defName>
+	</PawnRenderNodeTagDef>
+	<GraphicStateDef>
+		<defName>APM_EatingIngestor_Closed</defName>
+		<defaultGraphicData>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<texPath>Things/Pawn/Mechanoid/Ingestor/Closed/IngestorC</texPath>
+		</defaultGraphicData>
+	</GraphicStateDef>
+	<GraphicStateDef>
+		<defName>APM_EatingIngestor_Opened</defName>
+		<defaultGraphicData>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<texPath>Things/Pawn/Mechanoid/Ingestor/Opened/IngestorO</texPath>
+		</defaultGraphicData>
+	</GraphicStateDef>
 </Defs>
