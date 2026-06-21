@@ -13,6 +13,7 @@
 		<equippedAngleOffset>45</equippedAngleOffset>
 		<soundInteract>Interact_ChargeRifle</soundInteract>
 		<destroyOnDrop>true</destroyOnDrop>
+		<destroyOnDrop>true</destroyOnDrop>
 		<tradeability>None</tradeability>
 		<statBases>
 			<WorkToMake>45000</WorkToMake>
@@ -31,7 +32,6 @@
 			<li>RewardStandardQualitySuper</li>
 		</thingSetMakerTags>
 		<weaponTags>
-			<li>SpacerGun</li>
 			<li>APM_WeaponVassalSwordRifle</li>
 		</weaponTags>
 		<tradeTags>

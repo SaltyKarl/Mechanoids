@@ -250,7 +250,7 @@
 		<drawGUIOverlay>true</drawGUIOverlay>
 		<pawnFlyer>
 			<flightDurationMin>0.25</flightDurationMin>
-			<flightSpeed>20</flightSpeed>
+			<flightSpeed>7</flightSpeed>
 			<workerClass>PawnFlyerWorker</workerClass>
 			<heightFactor>0.05</heightFactor> <!-- low altitude -->
 			<progressCurve>
@@ -288,6 +288,7 @@
 			<drawAimPie>true</drawAimPie>
 			<requireLineOfSight>true</requireLineOfSight>
 			<warmupTime>1</warmupTime>
+			<soundCast>APM_Hookshot</soundCast>
 			<targetParams>
 				<canTargetSelf>false</canTargetSelf>
 				<canTargetPawns>true</canTargetPawns>
@@ -367,7 +368,7 @@
 				<jobFactor>10</jobFactor>
 				<!--Stun damage amount-->
 				<job>APM_BashStun</job>
-				<moveSpeed>0.01</moveSpeed>
+				<moveSpeed>0.6</moveSpeed>
 			</li>
 		</comps>
 	</AbilityDef>
@@ -408,7 +409,7 @@
 			<li Class="ApexMechanoids.CompProperties_AbilityBash">
 				<jobFactor>10</jobFactor><!--Damage-->
 				<job>APM_BashDamage</job>
-				<moveSpeed>0.03</moveSpeed>
+				<moveSpeed>0.6</moveSpeed>
 			</li>
 		</comps>
 	</AbilityDef>
@@ -445,6 +446,7 @@
 			<drawAimPie>true</drawAimPie>
 			<range>11</range>
 			<warmupTime>0.6</warmupTime>
+			<soundCast>APM_BlindingLaser</soundCast>
 			<targetParams>
 				<canTargetSelf>false</canTargetSelf>
 				<canTargetBuildings>false</canTargetBuildings>
@@ -532,7 +534,7 @@
 		<verbProperties>
 			<verbClass>ApexMechanoids.Verb_CastStarfall</verbClass>
 			<warmupTime>4.8</warmupTime>
-			<range>24.9</range>
+			<range>40</range>
 			<drawAimPie>true</drawAimPie>
 			<requireLineOfSight>true</requireLineOfSight>
 			<noiseRadius>4</noiseRadius>
@@ -645,7 +647,8 @@
 		</verbProperties>
 		<comps>
 			<li Class="ApexMechanoids.CompProperties_AbilitySpawnToxGas">
-				<gasAmount>30</gasAmount>
+				<radius>4.9</radius>
+				<gasAmount>10000</gasAmount>
 				<spreadTicks>600</spreadTicks>
 				<emitIntervalTicks>5</emitIntervalTicks>
 			</li>
@@ -680,7 +683,7 @@
 			<li Class="ApexMechanoids.CompProperties_AbilitySpawnSmokescreen">
 				<gasDef>APM_Smokescreen</gasDef>
 				<radius>3</radius>
-				<maxRadius>8</maxRadius>
+				<maxRadius>4.9</maxRadius>
 				<spreadIntervalTicks>15</spreadIntervalTicks>
 			</li>
 		</comps>

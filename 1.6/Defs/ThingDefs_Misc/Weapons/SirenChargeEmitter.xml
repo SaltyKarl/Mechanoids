@@ -48,7 +48,8 @@
 				<warmupTime>1.2</warmupTime>
 				<range>20.9</range>
 				<burstShotCount>1</burstShotCount>
-				<soundCast>Shot_EMP</soundCast>
+				<soundCast>APM_SirenWeapon</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
 		</verbs>

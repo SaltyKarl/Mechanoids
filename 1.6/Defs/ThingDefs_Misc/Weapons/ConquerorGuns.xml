@@ -27,7 +27,6 @@
 			<ComponentSpacer>2</ComponentSpacer>
 		</costList>
 		<weaponTags>
-			<li>SpacerGun</li>
 			<li>APM_WeaponConquerorAR</li>
 		</weaponTags>
 		<weaponClasses>
@@ -96,9 +95,7 @@
 			<ComponentSpacer>3</ComponentSpacer>
 		</costList>
 		<weaponTags>
-			<li>MechanoidGunMedium</li>
 			<li>APM_WeaponConquerorDMR</li>
-			<li>SpacerGun</li>
 		</weaponTags>
 		<tradeTags>
 			<li>WeaponRanged</li>
@@ -175,7 +172,6 @@
 		</costList>
 		<weaponTags>
 			<li>APM_WeaponConquerorLMG</li>
-			<li>SpacerGun</li>
 		</weaponTags>
 		<tradeTags>
 			<li>WeaponRanged</li>

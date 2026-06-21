@@ -16,14 +16,6 @@
 		<buildingDamageFactorPassable>4.5</buildingDamageFactorPassable>
 		<plantDamageFactor>4</plantDamageFactor>
 	</DamageDef>
-	<DamageDef ParentName="Beam">
-		<defName>APM_SunRayGun</defName>
-		<label>sun ray</label>
-		<defaultDamage>25</defaultDamage>
-		<buildingDamageFactorImpassable>5</buildingDamageFactorImpassable>
-		<buildingDamageFactorPassable>2.5</buildingDamageFactorPassable>
-		<plantDamageFactor>3</plantDamageFactor>
-	</DamageDef>
 	<DamageDef ParentName="BluntBase">
 		<defName>Push</defName>
 		<deathMessage>{0} has been ... to death.</deathMessage>

@@ -108,7 +108,6 @@ namespace ApexMechanoids
             comp.UsedOnce();
             GenSpawn.Spawn(spawnedOne, spawnCell, map);
             spawnedThing.Add(spawnedOne);
-            AssignGuardLord(spawnedOne, CasterPawn, map);
             return true;
         }
 

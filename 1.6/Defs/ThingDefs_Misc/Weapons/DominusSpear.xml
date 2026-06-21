@@ -7,7 +7,7 @@
 		<description>PLACEHOLDER</description>
 		<possessionCount>1</possessionCount>
 		<graphicData>
-			<texPath>Things/Item/Equipment/WeaponMelee/DominusSpear</texPath>
+			<texPath>Things/Item/Equipment/WeaponMelee/MechLance</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
 			<drawSize>1.5</drawSize>
@@ -72,11 +72,11 @@
 						<angleOffset>25</angleOffset>
 					</north>
 					<east>
-						<drawOffset>(0.10,0.2,0.10)</drawOffset>
-						<angleOffset>20</angleOffset>
+						<drawOffset>(0.20,0.0,0.10)</drawOffset>
+						<angleOffset>15</angleOffset>
 					</east>
 					<south>
-						<drawOffset>(0.1,0.00,0.15)</drawOffset>            <!-- -Left/+Right, -Back/+Front, -Down/+Up -->
+						<drawOffset>(0.1,0.00,0.15)</drawOffset><!-- -Left/+Right, -Back/+Front, -Down/+Up -->
 						<angleOffset>15</angleOffset>
 					</south>
 					<west>
@@ -89,11 +89,11 @@
 	</ThingDef>
 	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
 		<defName>APM_Weapon_DominusSpearBoss</defName>
-		<label>Dominus' Spear (Boss)</label>
+		<label>Dominus' Spear</label>
 		<description>PLACEHOLDER</description>
 		<possessionCount>1</possessionCount>
 		<graphicData>
-			<texPath>Things/Item/Equipment/WeaponMelee/DominusSpearB</texPath>
+			<texPath>Things/Item/Equipment/WeaponMelee/Boss/DominusMechLance</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
 			<drawSize>1.5</drawSize>
@@ -158,8 +158,8 @@
 						<angleOffset>25</angleOffset>
 					</north>
 					<east>
-						<drawOffset>(0.10,0.2,0.10)</drawOffset>
-						<angleOffset>20</angleOffset>
+						<drawOffset>(0.20,0.0,0.10)</drawOffset>
+						<angleOffset>15</angleOffset>
 					</east>
 					<south>
 						<drawOffset>(0.1,0.00,0.15)</drawOffset>            <!-- -Left/+Right, -Back/+Front, -Down/+Up -->

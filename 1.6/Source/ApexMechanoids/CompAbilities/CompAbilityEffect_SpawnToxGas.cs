@@ -41,13 +41,17 @@ namespace ApexMechanoids
             {
                 return;
             }
-            emitter.AddEmission(new GradualGasEmission(
-                center,
-                GasType.ToxGas,
-                Props.gasAmount,
-                Props.spreadTicks,
-                Props.emitIntervalTicks
-            ));
+            foreach (IntVec3 cell in GenRadial.RadialCellsAround(center, Props.radius, true))
+            {
+                if (!cell.InBounds(map)) continue;
+                emitter.AddEmission(new GradualGasEmission(
+                    cell,
+                    GasType.ToxGas,
+                    Props.gasAmount,
+                    Props.spreadTicks,
+                    Props.emitIntervalTicks
+                ));
+            }
         }
     }
 }

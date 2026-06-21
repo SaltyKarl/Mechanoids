@@ -506,4 +506,56 @@
 			</li>
 		</subSounds>
 	</SoundDef>
+	<!-- Siren Charge Emitter Weapon Sound -->
+	<SoundDef>
+		<defName>APM_SirenWeapon</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxVoices>4</maxVoices>
+		<maxSimultaneous>2</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>ChargeEmitter</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>55</min>
+					<max>62</max>
+				</volumeRange>
+				<pitchRange>
+					<min>0.95</min>
+					<max>1.05</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<!-- Blinding Laser Ability Sound -->
+	<SoundDef>
+		<defName>APM_BlindingLaser</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxVoices>4</maxVoices>
+		<maxSimultaneous>2</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>BlindingLaser</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>55</min>
+					<max>62</max>
+				</volumeRange>
+				<pitchRange>
+					<min>0.95</min>
+					<max>1.05</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
 </Defs>

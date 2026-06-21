@@ -9,7 +9,7 @@
 		<graphicData>
 			<texPath>Things/Pawn/Humanlike/Apparel/MechamancerPack/MechamancerPack_icon</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(1.2,1.2)</drawSize>
+			<drawSize>(1.4,1.4)</drawSize>
 		</graphicData>
 		<comps>
 			<li Class="CompProperties_ApparelReloadable">
@@ -88,12 +88,15 @@
 			<wornGraphicData>
 				<renderUtilityAsPack>true</renderUtilityAsPack>
 				<north>
+					<scale>(0.7,0.7)</scale>
 					<offset>(0,-0.15)</offset>
 				</north>
 				<south>
+					<scale>(0.7,0.7)</scale>
 					<offset>(0,-0.15)</offset>
 				</south>
 				<east>
+					<scale>(0.7,0.7)</scale>
 					<offset>(-0.35,-0.1)</offset>
 					<thin>
 						<offset>(0.05,0)</offset>
@@ -106,6 +109,7 @@
 					</fat>
 				</east>
 				<west>
+					<scale>(0.7,0.7)</scale>
 					<offset>(0.35,-0.1)</offset>
 					<thin>
 						<offset>(-0.05,0)</offset>

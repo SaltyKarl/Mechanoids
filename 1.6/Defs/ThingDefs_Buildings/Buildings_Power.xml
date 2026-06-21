@@ -9,7 +9,7 @@
 		<graphicData>
 			<texPath>Things/Building/Dynamo/Dynamo_Building</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(2.5,1.5)</drawSize>
+			<drawSize>(2.5,2.5)</drawSize>
 			<shadowData>
 				<volume>(0.93,1,0.93)</volume>
 			</shadowData>

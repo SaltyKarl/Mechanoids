@@ -42,9 +42,9 @@ namespace ApexMechanoids
 				zeroPos = false;
 			}
 			direction = Target.CenterVector3 - exactPos;
-			direction = direction.normalized;
-			direction = direction.Yto0() * moveSpeed;
-			base.Notify_Starting();
+				direction = direction.normalized;
+				direction = direction.Yto0();
+				base.Notify_Starting();
 		}
 
 		public override IEnumerable<Toil> MakeNewToils()
@@ -54,7 +54,7 @@ namespace ApexMechanoids
 			{
 				toil1.actor.rotationTracker.FaceCell(Target.Cell);
 				IntVec3 pos1 = exactPos.ToIntVec3();
-				exactPos += direction;
+				exactPos += direction * moveSpeed;
 				IntVec3 pos2 = exactPos.ToIntVec3();
 				if (pos1 != pos2)
 				{

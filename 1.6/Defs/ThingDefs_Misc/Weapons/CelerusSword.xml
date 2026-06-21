@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+		<defName>APM_Weapon_CelerusSword</defName>
+		<label>celerus' katana</label>
+		<description>PLACEHOLDER</description>
+		<possessionCount>1</possessionCount>
+		<graphicData>
+			<texPath>Things/Item/Equipment/WeaponMelee/Katana</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<equippedAngleOffset>45</equippedAngleOffset>
+		<techLevel>Spacer</techLevel>
+		<weaponTags>
+			<li>APM_WeaponCelerusSword</li>
+		</weaponTags>
+		<thingSetMakerTags>
+			<li>RewardStandardQualitySuper</li>
+		</thingSetMakerTags>
+		<statBases>
+			<WorkToMake>25000</WorkToMake>
+			<Mass>1.5</Mass>
+		</statBases>
+		<relicChance>2</relicChance>
+		<costList>
+			<Plasteel>40</Plasteel>
+			<ComponentSpacer>2</ComponentSpacer>
+		</costList>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>8</power>
+				<cooldownTime>2.0</cooldownTime>
+			</li>
+			<li>
+				<label>tip</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>1.8</cooldownTime>
+			</li>
+			<li>
+				<label>blade</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>18</power>
+				<cooldownTime>1.7</cooldownTime>
+			</li>
+		</tools>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>6</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="false">
+				<li>TableMachining</li>
+			</recipeUsers>
+		</recipeMaker>
+		<modExtensions>
+			<li Class="VEF.Things.ThingDefExtension" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">
+				<usableWithShields>false</usableWithShields>
+				<weaponDraftedDrawOffsets>
+					<north>
+						<drawOffset>(-0.05, 0.0, 0.10)</drawOffset>
+						<angleOffset>10</angleOffset>
+					</north>
+					<east>
+						<drawOffset>(0.20, 0.0, 0.10)</drawOffset>
+						<angleOffset>-30</angleOffset>
+					</east>
+					<south>
+						<drawOffset>(0.05, 0.0, 0.10)</drawOffset>
+						<angleOffset>-20</angleOffset>
+					</south>
+					<west>
+						<drawOffset>(-0.20, 0.0, 0.10)</drawOffset>
+						<angleOffset>30</angleOffset>
+					</west>
+				</weaponDraftedDrawOffsets>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseGun">
+		<defName>APM_Weapon_CelerusSwordBoss</defName>
+		<label>celerus' katana</label>
+		<description>PLACEHOLDER</description>
+		<techLevel>Spacer</techLevel>
+		<graphicData>
+			<texPath>Things/Item/Equipment/WeaponMelee/Boss/CelerusKatana</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<uiIconScale>0.5</uiIconScale>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<statBases>
+			<WorkToMake>45000</WorkToMake>
+			<Mass>1.5</Mass>
+		</statBases>
+		<costList>
+			<Plasteel>50</Plasteel>
+			<ComponentSpacer>2</ComponentSpacer>
+		</costList>
+		<thingSetMakerTags>
+			<li>RewardStandardQualitySuper</li>
+		</thingSetMakerTags>
+		<weaponTags>
+			<li>APM_WeaponCelerusSwordBoss</li>
+		</weaponTags>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2.0</cooldownTime>
+			</li>
+			<li>
+				<label>tip</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>24</power>
+				<cooldownTime>1.7</cooldownTime>
+			</li>
+			<li>
+				<label>blade</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>22</power>
+				<cooldownTime>1.6</cooldownTime>
+			</li>
+		</tools>
+		<modExtensions>
+			<li Class="VEF.Things.ThingDefExtension">
+				<weaponDraftedDrawOffsets>
+					<north>
+						<drawOffset>(-0.05, 0.0, 0.15)</drawOffset>
+						<angleOffset>10</angleOffset>
+					</north>
+					<east>
+						<drawOffset>(0.20, 0.0, 0.15)</drawOffset>
+						<angleOffset>-30</angleOffset>
+					</east>
+					<south>
+						<drawOffset>(0.05, 0.0, 0.15)</drawOffset>
+						<angleOffset>-20</angleOffset>
+					</south>
+					<west>
+						<drawOffset>(-0.20, 0.0, 0.15)</drawOffset>
+						<angleOffset>30</angleOffset>
+					</west>
+				</weaponDraftedDrawOffsets>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+</Defs>

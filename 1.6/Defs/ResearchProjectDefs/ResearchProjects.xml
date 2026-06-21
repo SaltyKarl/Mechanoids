@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ResearchProjectDef>
 		<defName>ApexMechtech</defName>
 		<label>Apex Mechtech</label>
@@ -15,7 +14,6 @@
 			<li>BasicMechtech</li>
 		</prerequisites>
 	</ResearchProjectDef>
-
 	<ResearchProjectDef>
 		<defName>AdvancedMechtech</defName>
 		<label>Advanced Mechtech</label>
@@ -30,5 +28,4 @@
 			<li>ApexMechtech</li>
 		</prerequisites>
 	</ResearchProjectDef>
-
 </Defs>

@@ -49,6 +49,7 @@ namespace ApexMechanoids
 
         public Pawn ContainedMech => innerContainer.FirstOrDefault() as Pawn;
         public bool PowerOn => PowerTrader != null && PowerTrader.PowerOn;
+        public bool AutoRepairEnabled => autoRepairEnabled;
         public float HeldPawnDrawPos_Y => DrawPos.y + 0.04f;
         public float HeldPawnBodyAngle => this.def.rotatable ? this.Rotation.Opposite.AsAngle : this.Rotation.AsAngle;
         public PawnPosture HeldPawnPosture => PawnPosture.LayingOnGroundFaceUp;

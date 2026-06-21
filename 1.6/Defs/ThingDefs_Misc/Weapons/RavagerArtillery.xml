@@ -25,9 +25,7 @@
 			<li>RangedHeavy</li>
 		</weaponClasses>
 		<weaponTags>
-			<li>MechanoidGunHeavy</li>
 			<li>APM_WeaponRavagerArtillery</li>
-			<li>SpacerGun</li>
 		</weaponTags>
 		<tradeTags>
 			<li>WeaponRanged</li>
@@ -39,7 +37,7 @@
 				<defaultProjectile>APM_ArtilleryProjectile</defaultProjectile>
 				<hasStandardCommand>true</hasStandardCommand>
 				<burstShotCount>1</burstShotCount>
-				<range>24.9</range>
+				<range>40</range>
 				<forcedMissRadius>8.9</forcedMissRadius>
 				<warmupTime>3</warmupTime>
 				<noiseRadius>4</noiseRadius>

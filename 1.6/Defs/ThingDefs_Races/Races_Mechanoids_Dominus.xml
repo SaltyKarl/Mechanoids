@@ -97,7 +97,7 @@
 		</lifeStages>
 		<weaponMoney>99999~99999</weaponMoney>
 		<weaponTags Inherit="False">
-			<li>APM_WeaponDominusSpear</li>
+			<li>APM_WeaponDominusSpearBoss</li>
 		</weaponTags>
 		<abilities>
 			<li>APM_PressTheAttack</li>

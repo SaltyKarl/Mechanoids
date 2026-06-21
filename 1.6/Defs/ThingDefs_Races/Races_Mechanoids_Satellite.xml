@@ -65,7 +65,7 @@
 			</detritusLeavings>
 		</race>
 		<statBases>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">0</BandwidthCost>
+			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">1</BandwidthCost>
 		</statBases>
 		<comps Inherit="False">
 			<li Class="CompProperties_CanBeDormant" />
@@ -94,7 +94,7 @@
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Satellite/Mech_Satellite</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>1.5</drawSize>
+					<drawSize>1.2</drawSize>
 					<shadowData>
 						<volume>(0.4, 0.8, 0.4)</volume>
 					</shadowData>
@@ -106,7 +106,7 @@
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Satellite/Mech_Satellite</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>1.5</drawSize>
+					<drawSize>1.2</drawSize>
 					<shadowData>
 						<volume>(0.4, 0.8, 0.4)</volume>
 					</shadowData>
