@@ -234,7 +234,7 @@
 				<blindFlashThingDef>APM_PulseWaveBlindFlash</blindFlashThingDef>
 				<blindHediffDef>APM_PulseWaveBlind</blindHediffDef>
 				<radius>6.9</radius>
-				<ringIntervalTicks>2</ringIntervalTicks>
+				<ringIntervalTicks>4</ringIntervalTicks>
 				<stunTicks>60</stunTicks>
 				<blindTicks>480</blindTicks>
 				<visualScale>0.72</visualScale>

@@ -40,12 +40,12 @@
         <glowColor>(255,252,240,0)</glowColor>
       </li>
       <li Class="CompProperties_DestroyAfterDelay">
-        <delayTicks>18</delayTicks>
+        <delayTicks>36</delayTicks>
       </li>
       <li Class="CompProperties_FadesInOut">
-        <fadeInSecs>0.01</fadeInSecs>
-        <fadeOutSecs>0.12</fadeOutSecs>
-        <solidTimeSecs>0.02</solidTimeSecs>
+        <fadeInSecs>0.02</fadeInSecs>
+        <fadeOutSecs>0.24</fadeOutSecs>
+        <solidTimeSecs>0.04</solidTimeSecs>
       </li>
     </comps>
   </ThingDef>
