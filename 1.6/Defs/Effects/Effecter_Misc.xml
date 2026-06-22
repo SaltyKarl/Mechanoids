@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<EffecterDef>
 		<defName>APM_Duel</defName>
 		<children>
 			<!--<li>
-        <subEffecterClass>SubEffecter_Sustainer</subEffecterClass>
-        <soundDef>SomeSound</soundDef>
-      </li>-->
+				<subEffecterClass>SubEffecter_Sustainer</subEffecterClass>
+				<soundDef>SomeSound</soundDef>
+		    </li>-->
 			<li>
 				<subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
 				<positionRadiusMin>2.4</positionRadiusMin>
@@ -25,9 +24,9 @@
 		<defName>APM_UltitmateSacrifice</defName>
 		<children>
 			<!--<li>
-        <subEffecterClass>SubEffecter_Sustainer</subEffecterClass>
-        <soundDef>SomeSound</soundDef>
-      </li>-->
+				<subEffecterClass>SubEffecter_Sustainer</subEffecterClass>
+				<soundDef>SomeSound</soundDef>
+			</li>-->
 			<li>
 				<subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
 				<positionRadiusMin>0.7</positionRadiusMin>
@@ -142,5 +141,92 @@
 			</li>
 		</children>
 	</EffecterDef>
+	
+	<EffecterDef>
+		<defName>APM_DuelStart</defName>
+		<children>
+			<li>
+				<moteDef>APM_DuelVS</moteDef>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<scale>1</scale>
+				<spawnLocType>OnTarget</spawnLocType>
+				<absoluteAngle>true</absoluteAngle>
+				<angle>0</angle>
+				<speed>0</speed>
+				<rotation>0</rotation>
+				<positionOffset>(0, 0, 2.5)</positionOffset>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SoundTriggered</subEffecterClass>
+				<soundDef>APM_DuelStarted</soundDef>
+				<spawnLocType>OnTarget</spawnLocType>
+			</li>
+		</children>
+	</EffecterDef>
+	
+	<EffecterDef>
+		<defName>APM_DuelLose</defName>
+		<children>
+			<!--<li>
+				<moteDef>APM_DuelDraw</moteDef>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<scale>1</scale>
+				<spawnLocType>OnTarget</spawnLocType>
+				<absoluteAngle>true</absoluteAngle>
+				<angle>0</angle>
+				<speed>0</speed>
+				<rotation>0</rotation>
+				<positionOffset>(0, 0, 2.5)</positionOffset>
+			</li>-->
+			<li>
+				<subEffecterClass>SubEffecter_SoundTriggered</subEffecterClass>
+				<soundDef>APM_DuelLose</soundDef>
+				<spawnLocType>OnTarget</spawnLocType>
+			</li>
+		</children>
+	</EffecterDef>
 
+	<EffecterDef>
+		<defName>APM_DuelDraw</defName>
+		<children>
+			<li>
+				<moteDef>APM_DuelDraw</moteDef>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<scale>1</scale>
+				<spawnLocType>OnTarget</spawnLocType>
+				<absoluteAngle>true</absoluteAngle>
+				<angle>0</angle>
+				<speed>0</speed>
+				<rotation>0</rotation>
+				<positionOffset>(0, 0, 2.5)</positionOffset>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SoundTriggered</subEffecterClass>
+				<soundDef>APM_DuelLose</soundDef>
+				<spawnLocType>OnTarget</spawnLocType>
+			</li>
+		</children>
+	</EffecterDef>
+
+	<EffecterDef>
+		<defName>APM_DuelWin</defName>
+		<children>
+			<li>
+				<moteDef>APM_DuelWinner</moteDef>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<scale>1</scale>
+				<spawnLocType>OnTarget</spawnLocType>
+				<absoluteAngle>true</absoluteAngle>
+				<angle>0</angle>
+				<speed>0</speed>
+				<rotation>0</rotation>
+				<positionOffset>(0, 0, 2.5)</positionOffset>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SoundTriggered</subEffecterClass>
+				<soundDef>APM_DuelWin</soundDef>
+				<spawnLocType>OnTarget</spawnLocType>
+			</li>
+		</children>
+	</EffecterDef>
 </Defs>

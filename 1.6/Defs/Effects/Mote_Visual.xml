@@ -197,6 +197,56 @@
 		</graphicData>
 	</ThingDef>
 	<ThingDef ParentName="MoteBase">
+		<defName>APM_DuelVS</defName>
+		<thingClass>MoteAttached</thingClass>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>0.05</fadeInTime>
+			<fadeOutTime>0.1</fadeOutTime>
+			<solidTime>1.5</solidTime>
+		</mote>
+		<graphicData>
+			<graphicClass>Graphic_Mote</graphicClass>
+			<texPath>Effects/Duel/VS</texPath>
+			<color>(250, 147, 19)</color>
+			<drawSize>(3, 2)</drawSize>
+			<drawOffset>(0, 1.5, 3.7)</drawOffset>
+		</graphicData>
+	</ThingDef>
+	<ThingDef ParentName="MoteBase">
+		<defName>APM_DuelWinner</defName>
+		<thingClass>MoteAttached</thingClass>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<solidTime>1.5</solidTime>
+		</mote>
+		<graphicData>
+			<graphicClass>Graphic_Mote</graphicClass>
+			<texPath>Effects/Duel/Winner</texPath>
+			<color>(250, 147, 19)</color>
+			<drawSize>(3, 2)</drawSize>
+			<drawOffset>(0, 1.5, 3.7)</drawOffset>
+		</graphicData>
+	</ThingDef>
+	<ThingDef ParentName="MoteBase">
+		<defName>APM_DuelDraw</defName>
+		<thingClass>MoteAttached</thingClass>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<solidTime>1.5</solidTime>
+		</mote>
+		<graphicData>
+			<graphicClass>Graphic_Mote</graphicClass>
+			<texPath>Effects/Duel/Draw</texPath>
+			<color>(250, 147, 19)</color>
+			<drawSize>(3, 2)</drawSize>
+			<drawOffset>(0, 1.5, 3.7)</drawOffset>
+		</graphicData>
+	</ThingDef>
+	<ThingDef ParentName="MoteBase">
 		<defName>APM_Mote_UltimateSacrifice_Wave</defName>
 		<thingClass>MoteAttached</thingClass>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -234,7 +284,6 @@
 			<color>(250, 147, 19)</color>
 		</graphicData>
 	</ThingDef>
-
 	<ThingDef ParentName="MoteBase">
 		<defName>APM_Mote_TerminusOverdrive_SacrificeWave</defName>
 		<thingClass>MoteAttached</thingClass>
@@ -253,7 +302,6 @@
 			<color>(250, 147, 19)</color>
 		</graphicData>
 	</ThingDef>
-
 	<ThingDef ParentName="MoteBase">
 		<defName>APM_Mote_TerminusOverdrive_SacrificePilar</defName>
 		<thingClass>MoteAttached</thingClass>
@@ -274,7 +322,6 @@
 			<color>(250, 147, 19)</color>
 		</graphicData>
 	</ThingDef>
-
 	<ThingDef ParentName="MoteBase">
 		<defName>APM_Mote_TerminusOverdrive_BlueSacrificeWave</defName>
 		<thingClass>MoteAttached</thingClass>
@@ -293,7 +340,6 @@
 			<color>(68, 150, 215)</color>
 		</graphicData>
 	</ThingDef>
-
 	<ThingDef ParentName="MoteBase">
 		<defName>APM_Mote_TerminusOverdrive_BlueSacrificePilar</defName>
 		<thingClass>MoteAttached</thingClass>
@@ -314,7 +360,6 @@
 			<color>(68, 150, 215)</color>
 		</graphicData>
 	</ThingDef>
-
 	<ThingDef ParentName="MoteBase">
 		<defName>APM_Mote_RavagerStarfall_Target</defName>
 		<thingClass>ApexMechanoids.Mote_RavagerStarfallTarget</thingClass>

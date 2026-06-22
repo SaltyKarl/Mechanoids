@@ -3,7 +3,7 @@
 	<ThingDef ParentName="ApparelNoQualityBase">
 		<defName>APM_Apparel_MechamancerPack</defName>
 		<label>Mechamancer Pack</label>
-		<description>PLACEHOLDER</description>
+		<description>A backpack containing an advanced bandwidth-expansion computer andl antenna. Increases a mechanitor’s maximum total bandwidth and control groups. When fueled with steel, it can construct small mechanoids that operate independently without consuming bandwidth. Each mechanitor can deploy up to two satellite mechanoids simultaneously.</description>
 		<techLevel>Spacer</techLevel>
 		<mergeVerbGizmos>false</mergeVerbGizmos>
 		<graphicData>

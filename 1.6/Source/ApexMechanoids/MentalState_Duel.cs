@@ -28,7 +28,7 @@ namespace ApexMechanoids
             else
             {
                 this.duelStarter = this.pawn;
-                ApexDefsOf.APM_DuelStarted.PlayOneShot(new TargetInfo(pawn.Position, pawn.Map));
+                ApexEffecterDefsOf.APM_DuelStart.Spawn(Vector3.Lerp(pawn.DrawPos, causedByPawn.DrawPos, 0.5f).ToIntVec3(), pawn.Map).Cleanup();
             }
             pawn.health.AddHediff(ApexDefsOf.APM_InDuel);
         }
@@ -68,15 +68,15 @@ namespace ApexMechanoids
 
             if (duelTarget.DeadOrDowned)
             {
-                ApexDefsOf.APM_DuelWin.PlayOneShot(new TargetInfo(pawn.Position, pawn.Map));
+                ApexEffecterDefsOf.APM_DuelWin.Spawn(pawn, pawn.Map).Cleanup();
             }
             else if (duelStarter.DeadOrDowned)
             {
-                ApexDefsOf.APM_DuelLose.PlayOneShot(new TargetInfo(pawn.Position, pawn.Map));
+                ApexEffecterDefsOf.APM_DuelLose.Spawn(pawn, pawn.Map).Cleanup();
             }
-            else
+            else if (pawn == duelStarter)
             {
-                //ApexDefsOf.APM_DuelDraw.PlayOneShot(new TargetInfo(pawn.Position, pawn.Map));
+                ApexEffecterDefsOf.APM_DuelDraw.Spawn(pawn, pawn.Map).Cleanup();
             }
         }
 

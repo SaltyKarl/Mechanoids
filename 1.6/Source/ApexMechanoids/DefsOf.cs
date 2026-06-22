@@ -39,6 +39,7 @@ namespace ApexMechanoids
         public static SoundDef APM_DuelWin;
         public static SoundDef APM_DuelLose;
         public static SoundDef APM_DuelStarted;
+		
         static ApexDefsOf()
         {
             DefOfHelper.EnsureInitializedInCtor(typeof(ApexDefsOf));
@@ -53,5 +54,13 @@ namespace ApexMechanoids
         public static JobDef APM_SirenChatWithPrisoner;
         public static JobDef APM_FrostivusUnloadFoodToStorage;
         public static JobDef APM_FrostivusManualUnloadFood;
+    }
+    [DefOf]
+    public static class ApexEffecterDefsOf
+    {
+        public static EffecterDef APM_DuelStart;
+        public static EffecterDef APM_DuelWin;
+        public static EffecterDef APM_DuelDraw;
+        public static EffecterDef APM_DuelLose;
     }
 }

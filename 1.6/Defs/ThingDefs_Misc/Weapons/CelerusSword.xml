@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
 		<defName>APM_Weapon_CelerusSword</defName>
 		<label>celerus' katana</label>
-		<description>PLACEHOLDER</description>
+		<description>This weapon is imbued with sharpness maintaining mechanites similar to those seen in imperial monotech. Such a technology being utilized by the mechhive allows the hive to apply it on larger and more complex applications, such as this deadly weapon.</description>
 		<possessionCount>1</possessionCount>
 		<graphicData>
 			<texPath>Things/Item/Equipment/WeaponMelee/Katana</texPath>
@@ -91,7 +90,7 @@
 	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
 		<defName>APM_Weapon_CelerusSwordBoss</defName>
 		<label>celerus' katana</label>
-		<description>PLACEHOLDER</description>
+		<description>This weapon is imbued with sharpness maintaining mechanites similar to those seen in imperial monotech. Such a technology being utilized by the mechhive allows the hive to apply it on larger and more complex applications, such as this deadly weapon. The blade crackles with a form of electricity so intense that it glows a savage purple, the impossible color a result of the whims of the Celerus.</description>
 		<techLevel>Spacer</techLevel>
 		<graphicData>
 			<texPath>Things/Item/Equipment/WeaponMelee/Boss/CelerusKatana</texPath>
@@ -165,5 +164,4 @@
 			</li>
 		</modExtensions>
 	</ThingDef>
-
 </Defs>

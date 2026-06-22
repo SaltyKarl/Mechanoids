@@ -5,7 +5,8 @@
 		<defName>APM_Weapon_DominusSpear</defName>
 		<label>Dominus' Spear</label>
 		<description>PLACEHOLDER</description>
-		<possessionCount>1</possessionCount>
+		<possessionCount>1</possessionCoun
+			t>
 		<graphicData>
 			<texPath>Things/Item/Equipment/WeaponMelee/MechLance</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

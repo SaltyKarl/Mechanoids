@@ -3,7 +3,7 @@
 	<ThingDef ParentName="ApparelArmorHelmetMechanitorBase">
 		<defName>APM_Apparel_ArmorHelmetMechamancerHelmet</defName>
 		<label>mechamancer helmet</label>
-		<description>PLACEHOLDER</description>
+		<description>A heavy plasteel-weave helmet integrated with mechanoid-coordination systems. Enhances the wearer’s general control over of allied mechanoids, increasing mechanitor bandwidth and command groups while providing moderate protection.</description>
 		<graphicData>
 			<texPath>Things/Pawn/Humanlike/Apparel/MechamancerHelmet/MechJuggernautH_icon</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -26,7 +26,7 @@
 			<VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.67</VacuumResistance>
 		</equippedStatOffsets>
 		<recipeMaker Inherit="False">
-			<researchPrerequisite>StandardMechtech</researchPrerequisite> <!-- PLACEHOLDER UNTIL NEW RESEARCH IS ADDED -->
+			<researchPrerequisite>ApexMechtech</researchPrerequisite>
 			<recipeUsers>
 				<li>TableMachining</li>
 			</recipeUsers>
