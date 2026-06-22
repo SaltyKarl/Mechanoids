@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
 		<defName>APM_Weapon_Skipblade</defName>
 		<label>skipblade</label>
-		<description>PLACEHOLDER</description>
+		<description>A high-frequency katana integrated with Celerus-derived displacement technology. Enables the wielder to psychically “skip” short distances with each strike, closing gaps instantly or evading counterattacks.</description>
 		<possessionCount>1</possessionCount>
 		<graphicData>
 			<texPath>Things/Item/Equipment/WeaponMelee/Skipblade</texPath>
@@ -87,5 +86,4 @@
 			</li>
 		</modExtensions>
 	</ThingDef>
-
 </Defs>

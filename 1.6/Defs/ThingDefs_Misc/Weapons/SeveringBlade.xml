@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
 		<defName>APM_Weapon_SeveringBlade</defName>
 		<label>severing blade</label>
-		<description>PLACEHOLDER</description>
+		<description>A heavy combat blade integrated with Terminus-derived control matrices. Allows the wielder to channel psychic energy into wide sweeping strikes, cleaving through multiple foes at once.</description>
 		<possessionCount>1</possessionCount>
 		<graphicData>
 			<texPath>Things/Item/Equipment/WeaponMelee/SeveringBlade</texPath>
@@ -87,5 +86,4 @@
 			</li>
 		</modExtensions>
 	</ThingDef>
-
 </Defs>

@@ -150,7 +150,7 @@
 	<AbilityDef>
 		<defName>APM_PressTheAttack</defName>
 		<label>Press The Attack</label>
-		<description>PLACEHOLDER</description>
+		<description>The Dominus emits a psychic pulse that influences nearby allies to ignore pain, move faster and stay in high spirits.</description>
 		<iconPath>UI/PressTheAttack</iconPath>
 		<cooldownTicksRange>180000</cooldownTicksRange> <!-- 3 days -->
 		<targetRequired>false</targetRequired>
@@ -268,7 +268,7 @@
 	<AbilityDef>
 		<defName>APM_Mech_Duel</defName>
 		<label>the duel trial</label>
-		<description>PLACEHOLDER</description>
+		<description>A selected target is chosen for a duel and a shield is generated around the duelists. For the duration of the duel, ranged attacks, abilities and Incoming damage increased.  Additionally, if the duel does not end within a certain time frame, the duelists gain a harsh debuff. If either combatant dies or is downed, the victor gains a powerful temporary buff instead.</description>
 		<iconPath>UI/Duel</iconPath>
 		<cooldownTicksRange>1800</cooldownTicksRange> <!-- 30 seconds -->
 		<targetRequired>true</targetRequired>

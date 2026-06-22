@@ -84,7 +84,8 @@
 						<angleOffset>-60</angleOffset>
 					</east>
 					<south>
-						<drawOffset>(0.3,0,0.10)</drawOffset>            <!-- -Left/+Right, -Back/+Front, -Down/+Up -->
+						<drawOffset>(0.3,0,0.10)</drawOffset>
+						<!-- -Left/+Right, -Back/+Front, -Down/+Up -->
 						<angleOffset>-60</angleOffset>
 					</south>
 					<west>

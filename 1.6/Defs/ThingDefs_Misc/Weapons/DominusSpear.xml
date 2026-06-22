@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
 		<defName>APM_Weapon_DominusSpear</defName>
 		<label>Dominus' Spear</label>
-		<description>PLACEHOLDER</description>
-		<possessionCount>1</possessionCoun
-			t>
+		<description>This weapon is imbued with sharpness maintaining mechanites similar to those seen in imperial monotech. Such a technology being utilized by the mechhive allows the hive to apply it on larger and more complex applications, such as this deadly weapon.</description>
+		<possessionCount>1</possessionCount>
 		<graphicData>
 			<texPath>Things/Item/Equipment/WeaponMelee/MechLance</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -78,7 +76,8 @@
 						<angleOffset>15</angleOffset>
 					</east>
 					<south>
-						<drawOffset>(0.1,0.00,0.15)</drawOffset><!-- -Left/+Right, -Back/+Front, -Down/+Up -->
+						<drawOffset>(0.1,0.00,0.15)</drawOffset>
+						<!-- -Left/+Right, -Back/+Front, -Down/+Up -->
 						<angleOffset>15</angleOffset>
 					</south>
 					<west>
@@ -92,7 +91,7 @@
 	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
 		<defName>APM_Weapon_DominusSpearBoss</defName>
 		<label>Dominus' Spear</label>
-		<description>PLACEHOLDER</description>
+		<description>This weapon is imbued with sharpness maintaining mechanites similar to those seen in imperial monotech. Such a technology being utilized by the mechhive allows the hive to apply it on larger and more complex applications, such as this deadly weapon. In such close proximity to the Dominus, the mechanites in this mechlance have been influenced by its psychic presence, so much so that it bleeds out in a reddish hue.</description>
 		<possessionCount>1</possessionCount>
 		<graphicData>
 			<texPath>Things/Item/Equipment/WeaponMelee/Boss/DominusMechLance</texPath>
@@ -165,7 +164,8 @@
 						<angleOffset>15</angleOffset>
 					</east>
 					<south>
-						<drawOffset>(0.1,0.00,0.15)</drawOffset>            <!-- -Left/+Right, -Back/+Front, -Down/+Up -->
+						<drawOffset>(0.1,0.00,0.15)</drawOffset>
+						<!-- -Left/+Right, -Back/+Front, -Down/+Up -->
 						<angleOffset>15</angleOffset>
 					</south>
 					<west>

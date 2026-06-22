@@ -1,19 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<!-- Test mechanoid with mechanitor range extension -->
-
 	<ThingDef ParentName="ApexMechanoids_TestScyther">
 		<defName>ApexMechanoids_Test_Mech_MechanitorRange</defName>
 		<label>test mechanitor range</label>
 		<comps>
-			<li Class="ApexMechanoids.CompProperties_MechanitorRangeExtender"> <!-- use this comp -->
-				<minRange>7.9</minRange> <!-- when not used, for performance reasons -->
-				<maxRange>15.4</maxRange> <!-- when used -->
+			<li Class="ApexMechanoids.CompProperties_MechanitorRangeExtender">
+				<!-- use this comp -->
+				<minRange>7.9</minRange>
+				<!-- when not used, for performance reasons -->
+				<maxRange>15.4</maxRange>
+				<!-- when used -->
 			</li>
 		</comps>
 	</ThingDef>
-
+	
 	<PawnKindDef ParentName="ApexMechanoids_TestScytherKind">
 		<defName>ApexMechanoids_Test_Mech_MechanitorRange</defName>
 		<label>test mechanitor range</label>
@@ -118,5 +119,4 @@
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 	</PawnKindDef>
-
 </Defs>
