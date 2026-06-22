@@ -88,7 +88,7 @@
 		</modExtensions>
 	</ThingDef>
 
-	<ThingDef ParentName="BaseGun">
+	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
 		<defName>APM_Weapon_CelerusSwordBoss</defName>
 		<label>celerus' katana</label>
 		<description>PLACEHOLDER</description>

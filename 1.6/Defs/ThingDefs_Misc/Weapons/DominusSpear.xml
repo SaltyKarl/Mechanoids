@@ -12,6 +12,7 @@
 			<shaderType>CutoutComplex</shaderType>
 			<drawSize>1.5</drawSize>
 		</graphicData>
+		<uiIconScale>0.5</uiIconScale>
 		<equippedAngleOffset>-90</equippedAngleOffset>
 		<techLevel>Spacer</techLevel>
 		<weaponTags>
@@ -98,6 +99,7 @@
 			<shaderType>CutoutComplex</shaderType>
 			<drawSize>1.5</drawSize>
 		</graphicData>
+		<uiIconScale>0.5</uiIconScale>
 		<equippedAngleOffset>-90</equippedAngleOffset>
 		<techLevel>Spacer</techLevel>
 		<weaponTags>
