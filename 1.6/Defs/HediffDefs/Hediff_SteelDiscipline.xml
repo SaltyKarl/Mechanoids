@@ -30,6 +30,29 @@
 				</statOffsets>
 			</li>
 		</stages>
+		<renderNodeProperties>
+			<li Class="ApexMechanoids.PawnRenderNodeProperties_Animated">
+				<nodeClass>ApexMechanoids.PawnRenderNode_RandomAnimated</nodeClass>
+				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+				<pawnType>Any</pawnType>
+				<color>(68, 150, 215)</color>
+				<texPath>Effects/PressTheAttack/Wings</texPath>
+				<parentTagDef>Body</parentTagDef>
+				<texPaths>
+					<li>Effects/PressTheAttack/Wings/WingsA</li>
+					<li>Effects/PressTheAttack/Wings/WingsB</li>
+					<li>Effects/PressTheAttack/Wings/WingsC</li>
+				</texPaths>
+				<ticksPerTexture>3</ticksPerTexture>
+				<drawData>
+					<scale>2.3</scale>
+					<defaultData>
+						<layer>-6</layer>
+						<offset>(0,0,0)</offset>
+					</defaultData>
+				</drawData>
+			</li>
+		</renderNodeProperties>
 	</HediffDef>
 
 	<!--

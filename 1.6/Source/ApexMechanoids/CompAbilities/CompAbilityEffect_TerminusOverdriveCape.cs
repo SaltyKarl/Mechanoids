@@ -1,5 +1,4 @@
 using RimWorld;
-using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
@@ -7,16 +6,9 @@ namespace ApexMechanoids
 {
     public static class TerminusOverdriveCapeState
     {
-        private static readonly Dictionary<int, int> HiddenUntilByPawnId = new Dictionary<int, int>();
-
-        public static void MarkCapeDropped(Pawn pawn, int ticks)
+        public static void NotifyCapeVisibilityChanged(Pawn pawn)
         {
-            if (pawn == null)
-            {
-                return;
-            }
-
-            HiddenUntilByPawnId[pawn.thingIDNumber] = Find.TickManager.TicksGame + ticks;
+            pawn?.Drawer?.renderer?.SetAllGraphicsDirty();
         }
 
         public static bool ShouldHideCape(Pawn pawn)
@@ -26,22 +18,7 @@ namespace ApexMechanoids
                 return false;
             }
 
-            if (pawn.health?.hediffSet?.HasHediff(ApexDefsOf.APM_Hediff_TerminusOverdrive) ?? false)
-            {
-                return true;
-            }
-
-            if (HiddenUntilByPawnId.TryGetValue(pawn.thingIDNumber, out int hiddenUntilTick))
-            {
-                if (Find.TickManager.TicksGame <= hiddenUntilTick)
-                {
-                    return true;
-                }
-
-                HiddenUntilByPawnId.Remove(pawn.thingIDNumber);
-            }
-
-            return false;
+            return pawn.health?.hediffSet?.HasHediff(ApexDefsOf.APM_Hediff_TerminusOverdrive) ?? false;
         }
     }
 
@@ -69,7 +46,7 @@ namespace ApexMechanoids
             for (int i = 0; i < burstCount; i++)
             {
                 bool throwRight = Rand.Bool;
-                float moveAngle = throwRight ? 90f : 270f;
+                float moveAngle = (throwRight ? 90f : 270f) + Rand.Range(angleOffsetRange.min, angleOffsetRange.max);
                 float horizontalOffset = (throwRight ? 1f : -1f) * sideOffsetDistance;
                 float horizontalJitter = Rand.Range(-spawnRadius, spawnRadius) * 1.6f;
                 float verticalJitter = Rand.Range(-spawnRadius, spawnRadius) * 0.9f;
@@ -81,12 +58,12 @@ namespace ApexMechanoids
                     continue;
                 }
 
-                GenSpawn.Spawn(mote, spawnPos.ToIntVec3(), map);
                 float moveSpeed = Rand.Range(speedRange.min, speedRange.max);
                 float startRotation = Rand.Range(-18f, 18f);
                 float startRotationRate = Rand.Range(-18f, 18f);
                 int settleAfterTicks = Rand.RangeInclusive(36, 64);
                 mote.Launch(spawnPos, moveAngle, moveSpeed, startRotation, startRotationRate, colorOne, !throwRight, isBossVariant, settleAfterTicks);
+                GenSpawn.Spawn(mote, spawnPos.ToIntVec3(), map);
             }
         }
     }
@@ -149,14 +126,12 @@ namespace ApexMechanoids
 
     public class CompAbilityEffect_TerminusOverdriveCapeBurst : CompAbilityEffect
     {
-        private const int InstantHideGraceTicks = 45;
-
         public new CompProperties_TerminusOverdriveCapeBurst Props => (CompProperties_TerminusOverdriveCapeBurst)props;
 
         public override void Apply(LocalTargetInfo target, LocalTargetInfo dest)
         {
-            TerminusOverdriveCapeState.MarkCapeDropped(parent.pawn, InstantHideGraceTicks);
             base.Apply(target, dest);
+            TerminusOverdriveCapeState.NotifyCapeVisibilityChanged(parent.pawn);
             TerminusOverdriveCapeUtility.SpawnBurst(parent.pawn, Props.moteDef, Props.burstCount, Props.speedRange, Props.angleOffsetRange, Props.spawnRadius, Props.sideOffsetDistance, Props.verticalOffset);
         }
     }
@@ -175,5 +150,26 @@ namespace ApexMechanoids
         public float verticalOffset = 0.06f;
         public FloatRange speedRange = new FloatRange(0.9f, 1.15f);
         public FloatRange angleOffsetRange = new FloatRange(-10f, 10f);
+    }
+
+    public class HediffComp_TerminusOverdriveCapeVisibility : HediffComp
+    {
+        public override void CompPostPostAdd(DamageInfo? dinfo)
+        {
+            TerminusOverdriveCapeState.NotifyCapeVisibilityChanged(Pawn);
+        }
+
+        public override void CompPostPostRemoved()
+        {
+            TerminusOverdriveCapeState.NotifyCapeVisibilityChanged(Pawn);
+        }
+    }
+
+    public class HediffCompProperties_TerminusOverdriveCapeVisibility : HediffCompProperties
+    {
+        public HediffCompProperties_TerminusOverdriveCapeVisibility()
+        {
+            compClass = typeof(HediffComp_TerminusOverdriveCapeVisibility);
+        }
     }
 }
