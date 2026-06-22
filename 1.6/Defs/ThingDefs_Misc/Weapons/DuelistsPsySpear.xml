@@ -63,10 +63,8 @@
 			</recipeUsers>
 		</recipeMaker>
 		<comps>
-			<li Class="CompProperties_AbilityEquipment">
-				<abilities>
-					<li>APM_Mech_Duel</li>
-				</abilities>
+			<li Class="CompProperties_EquippableAbility">
+				<abilityDef>APM_Mech_Duel</abilityDef>
 			</li>
 		</comps>
 		<modExtensions>
