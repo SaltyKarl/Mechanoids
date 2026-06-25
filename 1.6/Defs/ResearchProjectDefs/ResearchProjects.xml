@@ -8,10 +8,11 @@
 		<baseCost>2000</baseCost>
 		<techLevel>Spacer</techLevel>
 		<tab>Main</tab>
-		<researchViewX>8.0</researchViewX>
-		<researchViewY>2.0</researchViewY>
+		<researchViewX>16.00</researchViewX>
+		<researchViewY>4.40</researchViewY>
 		<prerequisites>
-			<li>BasicMechtech</li>
+			<li>AdvancedMechtech</li>
+			<li>HighMechtech</li>
 		</prerequisites>
 	</ResearchProjectDef>
 	<ResearchProjectDef>
@@ -22,10 +23,10 @@
 		<baseCost>3000</baseCost>
 		<techLevel>Spacer</techLevel>
 		<tab>Main</tab>
-		<researchViewX>10.0</researchViewX>
-		<researchViewY>2.0</researchViewY>
+		<researchViewX>14.0</researchViewX>
+		<researchViewY>5.0</researchViewY>
 		<prerequisites>
-			<li>ApexMechtech</li>
+			<li>StandardMechtech</li>
 		</prerequisites>
 	</ResearchProjectDef>
 </Defs>
