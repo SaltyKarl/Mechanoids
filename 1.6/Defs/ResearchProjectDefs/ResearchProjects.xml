@@ -9,7 +9,7 @@
 		<techLevel>Spacer</techLevel>
 		<tab>Main</tab>
 		<researchViewX>16.00</researchViewX>
-		<researchViewY>4.40</researchViewY>
+		<researchViewY>4.50</researchViewY>
 		<prerequisites>
 			<li>AdvancedMechtech</li>
 			<li>HighMechtech</li>
@@ -24,7 +24,7 @@
 		<techLevel>Spacer</techLevel>
 		<tab>Main</tab>
 		<researchViewX>14.0</researchViewX>
-		<researchViewY>5.0</researchViewY>
+		<researchViewY>5.15</researchViewY>
 		<prerequisites>
 			<li>StandardMechtech</li>
 		</prerequisites>
