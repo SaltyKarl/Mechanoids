@@ -60,6 +60,9 @@
 				<conditionDef>APM_Toxicity</conditionDef>
 			</li>
 		</comps>
+		<researchPrerequisites>
+			<li>AdvancedMechtech</li>
+		</researchPrerequisites>
 	</ThingDef>
 
 	<GameConditionDef>

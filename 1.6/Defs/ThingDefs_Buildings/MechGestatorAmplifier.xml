@@ -45,11 +45,9 @@
 			<!-- should this require a signal chip, like biotechs mech gestation processor implant? -->
 		</costList>
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
-		<!-- add research?
-    <researchPrerequisites>
-
-    </researchPrerequisites>
-	 -->
+		<researchPrerequisites>
+			<li>AdvancedMechtech</li>
+		</researchPrerequisites>
 		<comps>
 			<li Class="CompProperties_Facility">
 				<statOffsets>

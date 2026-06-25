@@ -21,7 +21,7 @@
 
 	<ThingDef ParentName="BaseGun">
 		<defName>APM_Weapon_MechWhip</defName>
-		<label>whip</label>
+		<label>plasma whip</label>
 		<description>The mech whip can deal heavy damage and stun multiple targets in close proximity to the user. It appears the mechhive views sentient organic life akin to how we view cattle, and treats us as such.</description>
 		<graphicData>
 			<texPath>Things/Item/Equipment/WeaponMelee/Mech_Whip</texPath>
@@ -38,6 +38,19 @@
 			<AccuracyLong>0.26</AccuracyLong>
 			<RangedWeapon_Cooldown>2.6</RangedWeapon_Cooldown>
 		</statBases>
+		<costList>
+			<Plasteel>55</Plasteel>
+			<ComponentSpacer>2</ComponentSpacer>
+		</costList>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="false">
+				<li>TableMachining</li>
+			</recipeUsers>
+			<researchPrerequisite>ApexMechtech</researchPrerequisite>
+		</recipeMaker>
 		<weaponTags>
 			<li>APM_MechanoidWhip</li>
 		</weaponTags>

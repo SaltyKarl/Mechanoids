@@ -61,6 +61,7 @@
 			<recipeUsers Inherit="false">
 				<li>TableMachining</li>
 			</recipeUsers>
+			<researchPrerequisite>ApexMechtech</researchPrerequisite>
 		</recipeMaker>
 		<modExtensions>
 			<li Class="VEF.Things.ThingDefExtension" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">

@@ -57,6 +57,7 @@
 			<skillRequirements>
 				<Crafting>4</Crafting>
 			</skillRequirements>
+			<researchPrerequisite>ApexMechtech</researchPrerequisite>
 			<displayPriority>30</displayPriority>
 		</recipeMaker>
 		<costList>

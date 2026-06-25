@@ -61,6 +61,7 @@
 			<recipeUsers Inherit="false">
 				<li>TableMachining</li>
 			</recipeUsers>
+			<researchPrerequisite>ApexMechtech</researchPrerequisite>
 		</recipeMaker>
 		<comps>
 			<li Class="CompProperties_EquippableAbility">

@@ -4,7 +4,7 @@
 		<label>mechmancer suit</label>
 		<description>A power-assisted armor suit packed with mechanitor-assistance gear. The mechmancer suit dramatically amplifies a mechanitor's bandwidth, providing a personal energy shield and damage resistance comparable to dedicated power armor.</description>
 		<recipeMaker>
-			<!--<researchPrerequisite>ApexMechtech</researchPrerequisite>-->
+			<researchPrerequisite>ApexMechtech</researchPrerequisite>
 			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
 			<displayPriority>510</displayPriority>
 		</recipeMaker>
