@@ -9,9 +9,9 @@
 			<texPath>Things/Item/Equipment/WeaponMelee/Exoblade</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
-			<drawSize>2.0</drawSize>
+			<drawSize>1.5</drawSize>
 		</graphicData>
-		<equippedAngleOffset>45</equippedAngleOffset>
+		<uiIconScale>0.5</uiIconScale>
 		<techLevel>Spacer</techLevel>
 		<weaponTags>
 			<li>APM_WeaponExoblade</li>
@@ -62,6 +62,13 @@
 				<li>TableMachining</li>
 			</recipeUsers>
 		</recipeMaker>
+		<comps>
+			<li Class="CompProperties_AbilityGranter">
+				<abilities>
+					<li>APM_ExobladeSeveringEdge</li>
+				</abilities>
+			</li>
+		</comps>
 		<modExtensions>
 			<li Class="VEF.Things.ThingDefExtension" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">
 				<usableWithShields>false</usableWithShields>
@@ -86,4 +93,38 @@
 			</li>
 		</modExtensions>
 	</ThingDef>
+
+	<AbilityDef>
+		<defName>APM_ExobladeSeveringEdge</defName>
+		<label>severing edge</label>
+		<description>Channel the psychic energy within the exoblade to release a sweeping blade of energy in front of the wielder, cutting anything in the area.</description>
+		<iconPath>UI/SeveringEdge</iconPath>
+		<cooldownTicksRange>60</cooldownTicksRange>
+		<aiCanUse>false</aiCanUse>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<range>4.9</range>
+			<warmupTime>0.3</warmupTime>
+			<soundCast>APM_SeveringEdge</soundCast>
+			<targetParams>
+				<canTargetLocations>true</canTargetLocations>
+			</targetParams>
+		</verbProperties>
+		<warmupMote>Mote_SeveringEdge_Intro</warmupMote>
+		<moteOffsetAmountTowardsTarget>0.1</moteOffsetAmountTowardsTarget>
+		<comps>
+			<li Class="CompProperties_AbilityLaunchProjectile">
+				<projectileDef>SeveringEdge</projectileDef>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_RotateMoteTowardsDestination">
+				<extraRotation>310</extraRotation>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_MaintainWarmupMoteAfterCast">
+				<ticksToMaintain>60</ticksToMaintain>
+			</li>
+		</comps>
+	</AbilityDef>
+
 </Defs>

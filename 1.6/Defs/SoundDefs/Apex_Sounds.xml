@@ -235,7 +235,7 @@
 			<li>
 				<grains>
 					<li Class="AudioGrain_Clip">
-						<clipPath>SunRay_Cast</clipPath>
+						<clipPath>GazerPowerBeam</clipPath>
 					</li>
 				</grains>
 				<volumeRange>
@@ -549,6 +549,56 @@
 				<volumeRange>
 					<min>55</min>
 					<max>62</max>
+				</volumeRange>
+				<pitchRange>
+					<min>0.95</min>
+					<max>1.05</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>APM_PressTheAttack_Cast</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxVoices>4</maxVoices>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>PressTheAttack</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>55</min>
+					<max>62</max>
+				</volumeRange>
+				<pitchRange>
+					<min>0.95</min>
+					<max>1.05</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>APM_SirenSong_Cast</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxVoices>4</maxVoices>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>SongOfTheSiren</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>55</min>
+					<max>65</max>
 				</volumeRange>
 				<pitchRange>
 					<min>0.95</min>

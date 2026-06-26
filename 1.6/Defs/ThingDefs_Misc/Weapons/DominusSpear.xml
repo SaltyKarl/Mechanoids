@@ -6,7 +6,7 @@
 		<description>This weapon is imbued with sharpness maintaining mechanites similar to those seen in imperial monotech. Such a technology being utilized by the mechhive allows the hive to apply it on larger and more complex applications, such as this deadly weapon.</description>
 		<possessionCount>1</possessionCount>
 		<graphicData>
-			<texPath>Things/Item/Equipment/WeaponMelee/MechLance</texPath>
+			<texPath>Things/Item/Equipment/WeaponMelee/Boss/DominusMechLance</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
 			<drawSize>1.5</drawSize>
@@ -63,6 +63,13 @@
 				<li>TableMachining</li>
 			</recipeUsers>
 		</recipeMaker>
+		<comps>
+			<li Class="CompProperties_AbilityGranter">
+				<abilities>
+					<li>APM_Mech_Duel</li>
+				</abilities>
+			</li>
+		</comps>
 		<modExtensions>
 			<li Class="VEF.Things.ThingDefExtension" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">
 				<usableWithShields>true</usableWithShields>
@@ -94,7 +101,7 @@
 		<description>This weapon is imbued with sharpness maintaining mechanites similar to those seen in imperial monotech. Such a technology being utilized by the mechhive allows the hive to apply it on larger and more complex applications, such as this deadly weapon. In such close proximity to the Dominus, the mechanites in this mechlance have been influenced by its psychic presence, so much so that it bleeds out in a reddish hue.</description>
 		<possessionCount>1</possessionCount>
 		<graphicData>
-			<texPath>Things/Item/Equipment/WeaponMelee/Boss/DominusMechLance</texPath>
+			<texPath>Things/Item/Equipment/WeaponMelee/MechLance</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
 			<drawSize>1.5</drawSize>

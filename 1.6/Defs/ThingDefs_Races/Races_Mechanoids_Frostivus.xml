@@ -156,7 +156,7 @@
 			<range>-1</range>
 			<warmupTime>1.0</warmupTime>
 			<requireLineOfSight>True</requireLineOfSight>
-			<soundCast><!--TODO--></soundCast>
+			<soundCast>CryptosleepCasket_Eject</soundCast>
 			<targetParams>
 				<canTargetSelf>False</canTargetSelf>
 				<canTargetPawns>True</canTargetPawns>

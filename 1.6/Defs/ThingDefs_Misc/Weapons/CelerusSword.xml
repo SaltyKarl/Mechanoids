@@ -11,7 +11,8 @@
 			<shaderType>CutoutComplex</shaderType>
 			<drawSize>1.5</drawSize>
 		</graphicData>
-		<equippedAngleOffset>45</equippedAngleOffset>
+		<uiIconScale>0.5</uiIconScale>
+		<equippedAngleOffset>225</equippedAngleOffset>
 		<techLevel>Spacer</techLevel>
 		<weaponTags>
 			<li>APM_WeaponCelerusSword</li>
@@ -68,19 +69,19 @@
 				<weaponDraftedDrawOffsets>
 					<north>
 						<drawOffset>(-0.05, 0.0, 0.10)</drawOffset>
-						<angleOffset>10</angleOffset>
+						<angleOffset>190</angleOffset>
 					</north>
 					<east>
 						<drawOffset>(0.20, 0.0, 0.10)</drawOffset>
-						<angleOffset>-30</angleOffset>
+						<angleOffset>150</angleOffset>
 					</east>
 					<south>
 						<drawOffset>(0.05, 0.0, 0.10)</drawOffset>
-						<angleOffset>-20</angleOffset>
+						<angleOffset>160</angleOffset>
 					</south>
 					<west>
 						<drawOffset>(-0.20, 0.0, 0.10)</drawOffset>
-						<angleOffset>30</angleOffset>
+						<angleOffset>210</angleOffset>
 					</west>
 				</weaponDraftedDrawOffsets>
 			</li>
@@ -146,19 +147,19 @@
 				<weaponDraftedDrawOffsets>
 					<north>
 						<drawOffset>(-0.05, 0.0, 0.15)</drawOffset>
-						<angleOffset>10</angleOffset>
+						<angleOffset>190</angleOffset>
 					</north>
 					<east>
 						<drawOffset>(0.20, 0.0, 0.15)</drawOffset>
-						<angleOffset>-30</angleOffset>
+						<angleOffset>150</angleOffset>
 					</east>
 					<south>
 						<drawOffset>(0.05, 0.0, 0.15)</drawOffset>
-						<angleOffset>-20</angleOffset>
+						<angleOffset>160</angleOffset>
 					</south>
 					<west>
 						<drawOffset>(-0.20, 0.0, 0.15)</drawOffset>
-						<angleOffset>30</angleOffset>
+						<angleOffset>210</angleOffset>
 					</west>
 				</weaponDraftedDrawOffsets>
 			</li>

@@ -141,7 +141,7 @@
 		</lifeStages>
 		<weaponMoney>9999~9999</weaponMoney>
 		<weaponTags Inherit="False">
-			<li>APM_WeaponCelerusSwordBoss</li>
+			<li>APM_WeaponCelerusSword</li>
 		</weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>

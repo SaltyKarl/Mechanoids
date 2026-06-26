@@ -271,11 +271,11 @@
 	<AbilityDef>
 		<defName>APM_HookPawn</defName>
 		<label>Grappling Hook</label>
-		<description>Fire a grappling hook at a target, and quickly retract the hook to effectively launch caster to the target, can be used on buildings and pawns.</description>
+		<description>The Terminus launches its grappling hook, either pulling a foe towards it or itself towards a foe depending on the bodysize of the target.</description>
 		<jobDef>APM_HookPawn</jobDef>
 		<targetRequired>true</targetRequired>
 		<canUseAoeToGetTargets>False</canUseAoeToGetTargets>
-		<iconPath>UI/Gizmos/ShieldMech</iconPath>
+		<iconPath>UI/Icons/Hookshot</iconPath>
 		<showPsycastEffects>False</showPsycastEffects>
 		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
 		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
@@ -536,7 +536,7 @@
 			<warmupTime>4.8</warmupTime>
 			<range>40</range>
 			<drawAimPie>true</drawAimPie>
-			<requireLineOfSight>true</requireLineOfSight>
+			<requireLineOfSight>false</requireLineOfSight>
 			<noiseRadius>4</noiseRadius>
 			<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
 			<muzzleFlashScale>14</muzzleFlashScale>

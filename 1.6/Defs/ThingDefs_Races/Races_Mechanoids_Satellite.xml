@@ -43,13 +43,7 @@
 			<body>APM_Satellite</body>
 			<baseHealthScale>1</baseHealthScale>
 			<hediffGiverSets>
-				<li>
-					<hediffGivers>
-						<li Class="HediffGiver_StartWithHediff">
-							<hediff>APM_Mech_Floating</hediff>
-						</li>
-					</hediffGivers>
-				</li>
+				<li>APM_Mech_Floating</li>
 			</hediffGiverSets>
 			<detritusLeavings>
 				<li>

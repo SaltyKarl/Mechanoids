@@ -9,8 +9,9 @@
 			<texPath>Things/Item/Equipment/WeaponMelee/SeveringBlade</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
-			<drawSize>2.0</drawSize>
+			<drawSize>1.2</drawSize>
 		</graphicData>
+		<uiIconScale>0.5</uiIconScale>
 		<equippedAngleOffset>45</equippedAngleOffset>
 		<techLevel>Spacer</techLevel>
 		<weaponTags>
@@ -62,6 +63,13 @@
 				<li>TableMachining</li>
 			</recipeUsers>
 		</recipeMaker>
+		<comps>
+			<li Class="CompProperties_AbilityGranter">
+				<abilities>
+					<li>SeveringEdge</li>
+				</abilities>
+			</li>
+		</comps>
 		<modExtensions>
 			<li Class="VEF.Things.ThingDefExtension" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">
 				<usableWithShields>false</usableWithShields>

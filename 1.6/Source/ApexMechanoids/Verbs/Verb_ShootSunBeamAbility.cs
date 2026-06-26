@@ -335,8 +335,13 @@ namespace ApexMechanoids
         private void CalculatePath(Vector3 target, List<Vector3> pathList, HashSet<IntVec3> pathCellsList, bool addRandomOffset = true)
         {
             pathList.Clear();
+            pathCellsList.Clear();
             IntVec3 intVec = target.ToIntVec3();
             float lengthHorizontal = (intVec - caster.Position).LengthHorizontal;
+            if (lengthHorizontal < 0.001f)
+            {
+                return;
+            }
             float num = (float)(intVec.x - caster.Position.x) / lengthHorizontal;
             float num2 = (float)(intVec.z - caster.Position.z) / lengthHorizontal;
             intVec.x = Mathf.RoundToInt((float)caster.Position.x + num * verbProps.range);

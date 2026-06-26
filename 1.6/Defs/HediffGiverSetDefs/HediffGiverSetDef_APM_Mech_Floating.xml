@@ -3,7 +3,9 @@
 	<HediffGiverSetDef>
 		<defName>APM_Mech_Floating</defName>
 		<hediffGivers>
-			<!-- Add HediffGiver entries here as needed -->
+			<li Class="ApexMechanoids.HediffGiver_StartWithHediff">
+				<hediff>APM_ApexMechanoid_Floating</hediff>
+			</li>
 		</hediffGivers>
 	</HediffGiverSetDef>
 </Defs>

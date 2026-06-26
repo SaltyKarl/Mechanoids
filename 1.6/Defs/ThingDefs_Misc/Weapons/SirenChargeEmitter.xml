@@ -22,6 +22,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1.25</drawSize>
 		</graphicData>
+		<uiIconScale>0.5</uiIconScale>
 		<soundInteract>Interact_ChargeRifle</soundInteract>
 		<destroyOnDrop>true</destroyOnDrop>
 		<tradeability>None</tradeability>

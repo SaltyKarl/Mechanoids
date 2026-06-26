@@ -8,7 +8,7 @@
 			<texPath>Blank</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<uiIconPath>UI/Light</uiIconPath>
+		<uiIconPath>UI/Icons/GazerLaser</uiIconPath>
 		<techLevel>Ultra</techLevel>
 		<tradeability>None</tradeability>
 		<destroyOnDrop>true</destroyOnDrop>
@@ -27,11 +27,6 @@
 		<weaponTags Inherit="False">
 			<li>APM_WeaponGazerLaser</li>
 		</weaponTags>
-		<comps>
-			<li Class="CompProperties_EquippableAbilityReloadable">
-				<abilityDef>APM_PowerBeam</abilityDef>
-			</li>
-		</comps>
 		<verbs>
 			<li Class="ApexMechanoids.VerbProperties_ShootBeamFromOffset">
 				<verbClass>ApexMechanoids.Verb_ShootBeamFromOffset</verbClass>

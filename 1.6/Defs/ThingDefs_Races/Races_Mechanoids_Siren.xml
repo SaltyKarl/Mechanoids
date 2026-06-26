@@ -127,6 +127,7 @@
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
 			<warmupTime>1</warmupTime>
+			<soundCast>APM_SirenSong_Cast</soundCast>
 			<range>12.9</range>
 			<drawAimPie>false</drawAimPie>
 			<targetParams>

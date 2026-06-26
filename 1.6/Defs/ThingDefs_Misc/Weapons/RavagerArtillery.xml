@@ -9,6 +9,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1.6</drawSize>
 		</graphicData>
+		<uiIconScale>0.5</uiIconScale>
 		<techLevel>Ultra</techLevel>
 		<tradeability>None</tradeability>
 		<destroyOnDrop>true</destroyOnDrop>
@@ -41,11 +42,12 @@
 				<forcedMissRadius>8.9</forcedMissRadius>
 				<warmupTime>3</warmupTime>
 				<noiseRadius>4</noiseRadius>
+				<requireLineOfSight>false</requireLineOfSight>
 				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
 				<soundCast>Shot_IncendiaryLauncher</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>14</muzzleFlashScale>
-				<drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+				<drawHighlightWithLineOfSight>false</drawHighlightWithLineOfSight>
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>
 					<canTargetPawns>true</canTargetPawns>
@@ -102,6 +104,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<projectile>
+			<flyOverhead>true</flyOverhead>
 			<explosionRadius>2.85</explosionRadius>
 			<damageDef>Bomb</damageDef>
 			<!-- Use default damage from explosion def -->
