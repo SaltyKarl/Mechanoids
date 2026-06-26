@@ -51,7 +51,7 @@
 		</costList>
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
 		<researchPrerequisites>
-			<li>MicroelectronicsBasics</li>
+			<li>ApexMechtech</li>
 		</researchPrerequisites>
 		<comps>
 			<li Class="CompProperties_Power">
