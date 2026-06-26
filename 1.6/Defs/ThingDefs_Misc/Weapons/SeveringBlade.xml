@@ -65,7 +65,7 @@
 			<researchPrerequisite>ApexMechtech</researchPrerequisite>
 		</recipeMaker>
 		<comps>
-			<li Class="CompProperties_AbilityGranter">
+			<li Class="ApexMechanoids.CompProperties_AbilityGranter">
 				<abilities>
 					<li>SeveringEdge</li>
 				</abilities>

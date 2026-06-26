@@ -63,7 +63,7 @@
 			</recipeUsers>
 		</recipeMaker>
 		<comps>
-			<li Class="CompProperties_AbilityGranter">
+			<li Class="ApexMechanoids.CompProperties_AbilityGranter">
 				<abilities>
 					<li>APM_ExobladeSeveringEdge</li>
 				</abilities>
