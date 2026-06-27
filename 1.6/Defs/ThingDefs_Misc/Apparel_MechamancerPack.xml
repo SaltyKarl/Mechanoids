@@ -97,31 +97,43 @@
 					<offset>(0,-0.15)</offset>
 				</south>
 				<east>
-					<scale>(0.7,0.7)</scale>
-					<offset>(-0.35,-0.1)</offset>
-					<thin>
-						<offset>(0.05,0)</offset>
-					</thin>
-					<hulk>
-						<offset>(-0.15,0)</offset>
-					</hulk>
-					<fat>
-						<offset>(-0.20,0)</offset>
-					</fat>
-				</east>
-				<west>
-					<scale>(0.7,0.7)</scale>
-					<offset>(0.35,-0.1)</offset>
-					<thin>
-						<offset>(-0.05,0)</offset>
-					</thin>
-					<hulk>
-						<offset>(0.15,0)</offset>
-					</hulk>
-					<fat>
-						<offset>(0.20,0)</offset>
-					</fat>
-				</west>
+						<scale>(0.7,0.7)</scale>
+						<offset>(-0.40,-0.1)</offset>
+						<male>
+							<offset>(0,0)</offset>
+						</male>
+						<female>
+							<offset>(0.02,0)</offset>
+						</female>
+						<thin>
+							<offset>(0.05,0)</offset>
+						</thin>
+						<hulk>
+							<offset>(-0.12,0)</offset>
+						</hulk>
+						<fat>
+							<offset>(-0.08,0)</offset>
+						</fat>
+					</east>
+					<west>
+						<scale>(0.7,0.7)</scale>
+						<offset>(0.40,-0.1)</offset>
+						<male>
+							<offset>(0,0)</offset>
+						</male>
+						<female>
+							<offset>(-0.02,0)</offset>
+						</female>
+						<thin>
+							<offset>(-0.05,0)</offset>
+						</thin>
+						<hulk>
+							<offset>(0.12,0)</offset>
+						</hulk>
+						<fat>
+							<offset>(0.08,0)</offset>
+						</fat>
+					</west>
 			</wornGraphicData>
 		</apparel>
 		<allowedArchonexusCount>1</allowedArchonexusCount>

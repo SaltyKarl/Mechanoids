@@ -2,7 +2,7 @@
 <Defs>
 	<ThingDef ParentName="BaseGun">
 		<defName>APM_Gazer_Laser</defName>
-		<label>laser</label>
+<label>laser</label>
 		<description>PLACEHOLDER</description>
 		<graphicData>
 			<texPath>Blank</texPath>

@@ -12,7 +12,7 @@
 			<drawSize>1.5</drawSize>
 		</graphicData>
 		<uiIconScale>0.5</uiIconScale>
-		<equippedAngleOffset>225</equippedAngleOffset>
+		<equippedAngleOffset>45</equippedAngleOffset>
 		<techLevel>Spacer</techLevel>
 		<weaponTags>
 			<li>APM_WeaponSkipblade</li>

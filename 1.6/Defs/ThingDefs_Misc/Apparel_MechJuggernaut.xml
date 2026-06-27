@@ -12,6 +12,7 @@
 			<texPath>Things/Pawn/Humanlike/Apparel/MechamancerSuit/MechJuggernaut_icon</texPath><!-- make an icon -->
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(0.85, 0.85)</drawSize>
 		</graphicData>
 		<statBases>
 			<ArmorRating_Sharp>1.07</ArmorRating_Sharp>
