@@ -94,6 +94,7 @@
 			</li>
 		</modExtensions>
 	</ThingDef>
+	
 	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
 		<defName>APM_Weapon_DominusApexMechlance</defName>
 		<label>Dominus' apex mechlance</label>
