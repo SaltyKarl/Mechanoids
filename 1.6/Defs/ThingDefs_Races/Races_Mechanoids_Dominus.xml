@@ -97,7 +97,7 @@
 		</lifeStages>
 		<weaponMoney>99999~99999</weaponMoney>
 		<weaponTags Inherit="False">
-			<li>APM_WeaponDominusSpear</li>
+			<li>APM_WeaponDominusMechlance</li>
 		</weaponTags>
 		<abilities>
 			<li>APM_PressTheAttack</li>
@@ -139,7 +139,7 @@
 		</lifeStages>
 		<weaponMoney>99999~99999</weaponMoney>
 		<weaponTags Inherit="False">
-			<li>APM_WeaponDominusSpearBoss</li>
+			<li>APM_WeaponDominusApexMechlance</li>
 		</weaponTags>
 		<abilities>
 			<li>APM_PressTheAttack</li>

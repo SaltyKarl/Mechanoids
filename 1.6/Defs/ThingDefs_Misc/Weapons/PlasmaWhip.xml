@@ -64,23 +64,23 @@
 		</recipeMaker>
 		<modExtensions>
 			<li Class="VEF.Things.ThingDefExtension" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">
-				<usableWithShields>false</usableWithShields>
+				<usableWithShields>true</usableWithShields>
 				<weaponDraftedDrawOffsets>
 					<north>
-						<drawOffset>(-0.10, 0.0, 0.15)</drawOffset>
-						<angleOffset>180</angleOffset>
+						<drawOffset>(-0.10, 0.00, 0.10)</drawOffset>
+						<angleOffset>120</angleOffset>
 					</north>
 					<east>
-						<drawOffset>(0.15, 0.0, 0.10)</drawOffset>
-						<angleOffset>135</angleOffset>
+						<drawOffset>(0.00, 0.00, 0.10)</drawOffset>
+						<angleOffset>-40</angleOffset>
 					</east>
 					<south>
-						<drawOffset>(0.10, 0.0, 0.10)</drawOffset>
-						<angleOffset>135</angleOffset>
+						<drawOffset>(0.10, 0.00, 0.10)</drawOffset>
+						<angleOffset>-40</angleOffset>
 					</south>
 					<west>
-						<drawOffset>(-0.15, 0.0, 0.10)</drawOffset>
-						<angleOffset>225</angleOffset>
+						<drawOffset>(0.00, 0.00, 0.10)</drawOffset>
+						<angleOffset>40</angleOffset>
 					</west>
 				</weaponDraftedDrawOffsets>
 			</li>

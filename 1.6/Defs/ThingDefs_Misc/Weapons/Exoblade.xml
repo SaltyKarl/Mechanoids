@@ -71,23 +71,23 @@
 		</comps>
 		<modExtensions>
 			<li Class="VEF.Things.ThingDefExtension" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">
-				<usableWithShields>false</usableWithShields>
+				<usableWithShields>true</usableWithShields>
 				<weaponDraftedDrawOffsets>
 					<north>
-						<drawOffset>(-0.25, 0.0, 0.35)</drawOffset>
-						<angleOffset>115</angleOffset>
+						<drawOffset>(-0.05, 0.0, 0.10)</drawOffset>
+						<angleOffset>190</angleOffset>
 					</north>
 					<east>
-						<drawOffset>(0.30, 0.0, 0.35)</drawOffset>
-						<angleOffset>-45</angleOffset>
+						<drawOffset>(0.20, 0.0, 0.10)</drawOffset>
+						<angleOffset>150</angleOffset>
 					</east>
 					<south>
-						<drawOffset>(0.25, 0.0, 0.35)</drawOffset>
-						<angleOffset>-45</angleOffset>
+						<drawOffset>(0.05, 0.0, 0.10)</drawOffset>
+						<angleOffset>160</angleOffset>
 					</south>
 					<west>
-						<drawOffset>(-0.30, 0.0, 0.35)</drawOffset>
-						<angleOffset>45</angleOffset>
+						<drawOffset>(-0.20, 0.0, 0.10)</drawOffset>
+						<angleOffset>210</angleOffset>
 					</west>
 				</weaponDraftedDrawOffsets>
 			</li>

@@ -93,7 +93,7 @@
 		</lifeStages>
 		<weaponMoney>9999~9999</weaponMoney>
 		<weaponTags Inherit="False">
-			<li>APM_WeaponExoblade</li>
+			<li>APM_WeaponTerminusApexExoblade</li>
 		</weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
@@ -136,7 +136,7 @@
 		</lifeStages>
 		<weaponMoney>9999~9999</weaponMoney>
 		<weaponTags Inherit="False">
-			<li>APM_WeaponTerminusSword</li>
+			<li>APM_WeaponTerminusExoblade</li>
 		</weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>

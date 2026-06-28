@@ -74,20 +74,20 @@
 				<usableWithShields>true</usableWithShields>
 				<weaponDraftedDrawOffsets>
 					<north>
-						<drawOffset>(0.05, 0.0, 0.0)</drawOffset>
-						<angleOffset>25</angleOffset>
+						<drawOffset>(-0.20, 0.00, 0.30)</drawOffset>
+						<angleOffset>0.00</angleOffset>
 					</north>
 					<east>
-						<drawOffset>(0.20, 0.0, 0.10)</drawOffset>
-						<angleOffset>15</angleOffset>
+						<drawOffset>(0.20, 0.00, 0.30)</drawOffset>
+						<angleOffset>70</angleOffset>
 					</east>
 					<south>
-						<drawOffset>(0.10, 0.0, 0.15)</drawOffset>
-						<angleOffset>15</angleOffset>
+						<drawOffset>(0.25, 0.00, 0.30)</drawOffset>
+						<angleOffset>65</angleOffset>
 					</south>
 					<west>
-						<drawOffset>(-0.20, 0.0, 0.10)</drawOffset>
-						<angleOffset>-15</angleOffset>
+						<drawOffset>(-0.20, 0.00, 0.30)</drawOffset>
+						<angleOffset>-70</angleOffset>
 					</west>
 				</weaponDraftedDrawOffsets>
 			</li>

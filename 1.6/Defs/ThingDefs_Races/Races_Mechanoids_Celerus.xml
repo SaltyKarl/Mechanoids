@@ -99,7 +99,7 @@
 		</lifeStages>
 		<weaponMoney>9999~9999</weaponMoney>
 		<weaponTags Inherit="False">
-			<li>APM_WeaponCelerusSwordBoss</li>
+			<li>APM_WeaponCelerusApexVoltana</li>
 		</weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
@@ -141,7 +141,7 @@
 		</lifeStages>
 		<weaponMoney>9999~9999</weaponMoney>
 		<weaponTags Inherit="False">
-			<li>APM_WeaponCelerusSword</li>
+			<li>APM_WeaponCelerusVoltana</li>
 		</weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>

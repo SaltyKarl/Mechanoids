@@ -37,8 +37,7 @@
 			<VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.4</VacuumResistance>
 		</equippedStatOffsets>
 		<costList>
-			<!--Terminus
-      chips which havent been defined yet, this requires rebalancing anyway-->
+			<!--Terminus chips which havent been defined yet, this requires rebalancing anyway-->
 			<Plasteel>250</Plasteel>
 			<ComponentSpacer>9</ComponentSpacer>
 			<ComponentIndustrial>4</ComponentIndustrial>
