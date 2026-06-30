@@ -34,6 +34,11 @@ namespace ApexMechanoids
             base.Apply(target, dest);
             PulseWaveUtility.TryApply(parent.pawn, Props);
         }
+
+        public override bool AICanTargetNow(LocalTargetInfo target)
+        {
+            return PulseWaveUtility.HasHostileAffectedPawnInRadius(parent?.pawn, Props);
+        }
     }
 
     internal static class PulseWaveUtility
@@ -79,6 +84,43 @@ namespace ApexMechanoids
             SpawnCasterFlash(caster, map, props);
             SpawnEmitter(caster, map, props);
             PlayExplicitCastSound(caster, map, props);
+        }
+
+        public static bool HasHostileAffectedPawnInRadius(Pawn caster, CompProperties_PulseWave props)
+        {
+            Map map = caster?.MapHeld;
+            if (caster == null || props == null || map == null || !caster.Spawned)
+            {
+                return false;
+            }
+
+            float radius = props.radius;
+            IReadOnlyList<Pawn> pawns = map.mapPawns.AllPawnsSpawned;
+            for (int i = 0; i < pawns.Count; i++)
+            {
+                Pawn pawn = pawns[i];
+                if (pawn == null || pawn == caster || pawn.Dead || pawn.Downed || !pawn.Spawned)
+                {
+                    continue;
+                }
+
+                if (!(pawn.RaceProps?.IsFlesh ?? false) || pawn.Faction == Faction.OfMechanoids)
+                {
+                    continue;
+                }
+
+                if (!pawn.HostileTo(caster))
+                {
+                    continue;
+                }
+
+                if (pawn.Position.DistanceTo(caster.Position) <= radius)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private static void SpawnCasterFlash(Pawn caster, Map map, CompProperties_PulseWave props)
