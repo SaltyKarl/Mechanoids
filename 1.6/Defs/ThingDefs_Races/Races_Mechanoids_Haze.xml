@@ -76,6 +76,13 @@
 			<soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding_Generic</soundMeleeHitBuilding>
 			<soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
 		</race>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_HazeToxicMistController">
+				<abilityDef>APM_Ability_ToxicMist</abilityDef>
+				<checkIntervalTicks>300</checkIntervalTicks>
+				<autoCastForPlayer>false</autoCastForPlayer>
+			</li>
+		</comps>
 		<butcherProducts>
 			<Steel>50</Steel>
 			<Plasteel>20</Plasteel>

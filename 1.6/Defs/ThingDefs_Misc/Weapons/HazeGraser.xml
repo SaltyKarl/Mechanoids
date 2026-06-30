@@ -1,42 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<!-- ===== Beam Mote ===== -->
+	<!-- ===== Beam Motes ===== -->
 	<ThingDef ParentName="MoteBase">
-		<defName>APM_Mote_HazeBeam_Base</defName>
+		<defName>APM_Mote_HazeBeamRepeaterLaser</defName>
 		<thingClass>MoteDualAttached</thingClass>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<mote>
-			<fadeInTime>0.2</fadeInTime>
-			<fadeOutTime>0.3</fadeOutTime>
-			<solidTime>999999</solidTime>
-			<needsMaintenance>True</needsMaintenance>
+			<fadeInTime>0.1</fadeInTime>
+			<fadeOutTime>0.1</fadeOutTime>
+			<solidTime>0.1</solidTime>
 			<rotateTowardsTarget>True</rotateTowardsTarget>
 			<scaleToConnectTargets>True</scaleToConnectTargets>
-			<fadeOutUnmaintained>True</fadeOutUnmaintained>
 		</mote>
 		<drawOffscreen>true</drawOffscreen>
 		<graphicData>
-			<texPath>Things/Projectile/HazeBeamWitherer</texPath>
+			<texPath>Things/Mote/GraserBeam</texPath>
 			<graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
 			<shaderType>MoteBeam</shaderType>
 			<shaderParameters>
 				<_ExtraTexA>/Things/Mote/BeamSecondaryNoise_A</_ExtraTexA>
 				<_ExtraTexB>/Things/Mote/BeamSecondaryNoise_B</_ExtraTexB>
-				<_ScrollSpeedA>-4</_ScrollSpeedA>
-				<_ScrollSpeedB>3</_ScrollSpeedB>
+				<_ScrollSpeedA>0</_ScrollSpeedA>
+				<_ScrollSpeedB>0</_ScrollSpeedB>
 				<_Intensity>2</_Intensity>
 			</shaderParameters>
-			<color>(60, 220, 80)</color>
-			<drawSize>(5.5, 1)</drawSize>
+			<color>(85, 175, 95)</color>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="MoteBase">
+		<defName>APM_Mote_HazeBeamRepeater_Charge</defName>
+		<thingClass>MoteAttached</thingClass>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.15</fadeInTime>
+			<fadeOutTime>0.3</fadeOutTime>
+			<solidTime>999999</solidTime>
+			<needsMaintenance>True</needsMaintenance>
+		</mote>
+		<graphicData>
+			<texPath>Things/Mote/HellsphereCannon_ChargeGlow</texPath>
+			<graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
+			<shaderType>MoteHellfireCannon_Charge</shaderType>
+			<shaderParameters>
+				<_RandomTex>/Things/Mote/RandomFlicker</_RandomTex>
+				<_FlickerFrequency>0.25</_FlickerFrequency>
+				<_FlickerAmount>0.6</_FlickerAmount>
+				<_InnerCircleIntensity>0.1</_InnerCircleIntensity>
+				<_InnerCircleSize>0.1</_InnerCircleSize>
+				<_InnerCircleShimmerAmount>0.14</_InnerCircleShimmerAmount>
+			</shaderParameters>
+			<color>(85, 175, 95)</color>
 		</graphicData>
 	</ThingDef>
 
 	<!-- ===== Damage Def ===== -->
 	<DamageDef ParentName="Beam">
-		<defName>APM_HazeBeam</defName>
-		<label>haze beam</label>
-		<defaultDamage>18</defaultDamage>
+		<defName>APM_HazeAcidBeam</defName>
+		<label>haze acid beam</label>
+		<ignoreShields>true</ignoreShields>
 	</DamageDef>
+
+	<!-- ===== Projectile Defs ===== -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>APM_Proj_HazeToxicRepeater</defName>
+		<label>haze acid beam</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingClass>ApexMechanoids.Projectile_HazeToxicRepeater</thingClass>
+		<projectile>
+			<damageDef>APM_HazeAcidBeam</damageDef>
+			<damageAmountBase>0</damageAmountBase>
+			<beamMoteDef>APM_Mote_HazeBeamRepeaterLaser</beamMoteDef>
+			<beamStartOffset>0.5</beamStartOffset>
+			<armorPenetrationBase>0</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseFilth">
+		<defName>APM_HazeToxicPuddle</defName>
+		<label>acid residue</label>
+		<thingClass>ApexMechanoids.HazeToxicPuddle</thingClass>
+		<tickerType>Normal</tickerType>
+		<graphicData>
+			<texPath>Things/Filth/Acid</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<drawSize>2.5</drawSize>
+			<color>(1,1,1,0.5)</color>
+		</graphicData>
+		<filth>
+			<ignoreFilthMultiplierStat>true</ignoreFilthMultiplierStat>
+			<rainWashes>true</rainWashes>
+			<cleaningWorkToReduceThickness>70</cleaningWorkToReduceThickness>
+			<canFilthAttach>true</canFilthAttach>
+			<maxThickness>1</maxThickness>
+			<cleaningSound>Interact_CleanFilth_Fluid</cleaningSound>
+		</filth>
+	</ThingDef>
 
 	<!-- ===== Weapon Def ===== -->
 	<ThingDef ParentName="BaseGun">
@@ -58,10 +120,10 @@
 			<WorkToMake>47000</WorkToMake>
 			<Mass>4.6</Mass>
 			<AccuracyTouch>0.65</AccuracyTouch>
-			<AccuracyShort>0.82</AccuracyShort>
-			<AccuracyMedium>0.88</AccuracyMedium>
-			<AccuracyLong>0.80</AccuracyLong>
-			<RangedWeapon_Cooldown>6.0</RangedWeapon_Cooldown>
+			<AccuracyShort>0.72</AccuracyShort>
+			<AccuracyMedium>0.65</AccuracyMedium>
+			<AccuracyLong>0.6</AccuracyLong>
+			<RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
 			<Plasteel>50</Plasteel>
@@ -75,38 +137,19 @@
 		</weaponTags>
 		<verbs>
 			<li>
-				<verbClass>ApexMechanoids.Verb_ShootHazeBeam</verbClass>
+				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<warmupTime>1.5</warmupTime>
-				<range>22.9</range>
-				<minRange>3.9</minRange>
-				<beamFullWidthRange>6.9</beamFullWidthRange>
-				<burstShotCount>8</burstShotCount>
+				<defaultProjectile>APM_Proj_HazeToxicRepeater</defaultProjectile>
+				<warmupTime>2</warmupTime>
+				<range>21.9</range>
+				<burstShotCount>15</burstShotCount>
 				<showBurstShotStats>false</showBurstShotStats>
-				<beamWidth>4</beamWidth>
-				<ticksBetweenBurstShots>18</ticksBetweenBurstShots>
-				<beamDamageDef>APM_HazeBeam</beamDamageDef>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+				<soundCast>Shot_ChargeBlaster</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
-				<soundCastBeam>BeamGraser_Shooting</soundCastBeam>
-				<beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
-				<beamFleckChancePerTick>0.32</beamFleckChancePerTick>
-				<beamMaxDeviation>1.5</beamMaxDeviation>
-				<beamCurvature>0.6</beamCurvature>
-				<beamMoteDef>APM_Mote_HazeBeam_Base</beamMoteDef>
-				<beamEndEffecterDef>GraserBeam_End</beamEndEffecterDef>
-				<beamChanceToStartFire>0.2</beamChanceToStartFire>
-				<beamChanceToAttachFire>0.1</beamChanceToAttachFire>
-				<beamFireSizeRange>0.4~0.7</beamFireSizeRange>
-				<beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
-				<beamStartOffset>0.8</beamStartOffset>
-				<beamLineFleckChanceCurve>
-					<points>
-						<li>(0, 0)</li>
-						<li>(0.65, 0.4)</li>
-						<li>(1, 0.75)</li>
-					</points>
-				</beamLineFleckChanceCurve>
+				<aimingChargeMote>APM_Mote_HazeBeamRepeater_Charge</aimingChargeMote>
+				<aimingChargeMoteOffset>1.07</aimingChargeMoteOffset>
 			</li>
 		</verbs>
 		<tools>
