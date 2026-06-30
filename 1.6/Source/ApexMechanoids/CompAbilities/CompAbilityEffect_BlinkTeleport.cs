@@ -7,8 +7,11 @@ namespace ApexMechanoids
 {
     public static class BlinkVisualUtility
     {
+        private const string CelerusBossKindDefName = "APM_Mech_Celerus_Boss";
         private const float DefaultMoteAlpha = 0.8f;
         private const float DarkFragmentAlpha = 0.8f;
+        private static readonly Color BossBlinkColor = new Color(0.74f, 0.25f, 1f);
+        private static readonly Color ColonyBlinkColor = new Color(0.22f, 0.66f, 1f);
 
         public static void SpawnWarmupStart(Pawn caster, CompProperties_BlinkWarmupVisuals props)
         {
@@ -18,9 +21,10 @@ namespace ApexMechanoids
             }
 
             Vector3 center = caster.DrawPos;
-            SpawnStaticMote(caster.MapHeld, props.ringMoteDef, center, Rand.Range(0.66f, 0.82f), Rand.Range(0f, 360f));
-            SpawnStaticMote(caster.MapHeld, props.sparkleMoteDef, center + RandomFlatOffset(0.04f, 0.16f), Rand.Range(0.74f, 0.96f), Rand.Range(0f, 360f));
-            SpawnStaticMote(caster.MapHeld, props.sparkleMoteDef, center + RandomFlatOffset(0.04f, 0.18f), Rand.Range(0.68f, 0.9f), Rand.Range(0f, 360f));
+            Color color = GetBlinkColor(caster);
+            SpawnStaticMote(caster.MapHeld, props.ringMoteDef, center, Rand.Range(0.66f, 0.82f), Rand.Range(0f, 360f), color);
+            SpawnStaticMote(caster.MapHeld, props.sparkleMoteDef, center + RandomFlatOffset(0.04f, 0.16f), Rand.Range(0.74f, 0.96f), Rand.Range(0f, 360f), color);
+            SpawnStaticMote(caster.MapHeld, props.sparkleMoteDef, center + RandomFlatOffset(0.04f, 0.18f), Rand.Range(0.68f, 0.9f), Rand.Range(0f, 360f), color);
         }
 
         public static void SpawnWarmupPulse(Pawn caster, CompProperties_BlinkWarmupVisuals props)
@@ -31,14 +35,15 @@ namespace ApexMechanoids
             }
 
             Vector3 center = caster.DrawPos;
-            SpawnStaticMote(caster.MapHeld, props.sparkleMoteDef, center + RandomFlatOffset(0.05f, 0.22f), Rand.Range(0.62f, 0.84f), Rand.Range(0f, 360f));
+            Color color = GetBlinkColor(caster);
+            SpawnStaticMote(caster.MapHeld, props.sparkleMoteDef, center + RandomFlatOffset(0.05f, 0.22f), Rand.Range(0.62f, 0.84f), Rand.Range(0f, 360f), color);
             for (int i = 0; i < props.sparklesPerPulse - 1; i++)
             {
-                SpawnStaticMote(caster.MapHeld, props.sparkleMoteDef, center + RandomFlatOffset(0.04f, 0.2f), Rand.Range(0.56f, 0.78f), Rand.Range(0f, 360f));
+                SpawnStaticMote(caster.MapHeld, props.sparkleMoteDef, center + RandomFlatOffset(0.04f, 0.2f), Rand.Range(0.56f, 0.78f), Rand.Range(0f, 360f), color);
             }
         }
 
-        public static void SpawnDepartureBurst(Map map, IntVec3 cell, CompProperties_BlinkTeleport props)
+        public static void SpawnDepartureBurst(Pawn caster, Map map, IntVec3 cell, CompProperties_BlinkTeleport props)
         {
             if (!CanSpawnAt(map, cell))
             {
@@ -46,24 +51,25 @@ namespace ApexMechanoids
             }
 
             Vector3 center = cell.ToVector3Shifted();
-            SpawnStaticMote(map, props.ringMoteDef, center, Rand.Range(1.18f, 1.34f), Rand.Range(0f, 360f));
-            SpawnStaticMote(map, props.starAMoteDef, center + RandomFlatOffset(0.02f, 0.16f), Rand.Range(1.04f, 1.3f), Rand.Range(0f, 360f));
-            SpawnStaticMote(map, props.starBMoteDef, center + RandomFlatOffset(0.02f, 0.18f), Rand.Range(0.96f, 1.22f), Rand.Range(0f, 360f));
+            Color color = GetBlinkColor(caster);
+            SpawnStaticMote(map, props.ringMoteDef, center, Rand.Range(1.18f, 1.34f), Rand.Range(0f, 360f), color);
+            SpawnStaticMote(map, props.starAMoteDef, center + RandomFlatOffset(0.02f, 0.16f), Rand.Range(1.04f, 1.3f), Rand.Range(0f, 360f), color);
+            SpawnStaticMote(map, props.starBMoteDef, center + RandomFlatOffset(0.02f, 0.18f), Rand.Range(0.96f, 1.22f), Rand.Range(0f, 360f), color);
 
             for (int i = 0; i < 4; i++)
             {
-                SpawnStaticMote(map, props.sparkleMoteDef, center + RandomFlatOffset(0.03f, 0.3f), Rand.Range(0.84f, 1.18f), Rand.Range(0f, 360f));
+                SpawnStaticMote(map, props.sparkleMoteDef, center + RandomFlatOffset(0.03f, 0.3f), Rand.Range(0.84f, 1.18f), Rand.Range(0f, 360f), color);
             }
 
             int fragmentCount = props.darkFragmentCount.RandomInRange;
             for (int i = 0; i < fragmentCount; i++)
             {
                 float angle = Rand.Range(0f, 360f);
-                SpawnStaticMote(map, props.darkFragmentMoteDefs.RandomElement(), center + FlatOffset(angle, Rand.Range(0.03f, 0.12f)), 1f, Rand.Range(0f, 360f), DarkFragmentAlpha);
+                SpawnStaticMote(map, props.darkFragmentMoteDefs.RandomElement(), center + FlatOffset(angle, Rand.Range(0.03f, 0.12f)), 1f, Rand.Range(0f, 360f), color, DarkFragmentAlpha);
             }
         }
 
-        public static void SpawnArrivalBurst(Map map, IntVec3 cell, CompProperties_BlinkTeleport props)
+        public static void SpawnArrivalBurst(Pawn caster, Map map, IntVec3 cell, CompProperties_BlinkTeleport props)
         {
             if (!CanSpawnAt(map, cell))
             {
@@ -71,16 +77,17 @@ namespace ApexMechanoids
             }
 
             Vector3 center = cell.ToVector3Shifted();
-            SpawnStaticMote(map, props.arrivalPillarMoteDef, center, Rand.Range(1.24f, 1.5f), 0f);
-            SpawnStaticMote(map, props.arrivalRayMoteDef, center + RandomFlatOffset(0.02f, 0.08f), Rand.Range(1.16f, 1.34f), Rand.Range(-8f, 8f));
-            SpawnStaticMote(map, props.arrivalRayMoteDef, center + RandomFlatOffset(0.02f, 0.08f), Rand.Range(1.1f, 1.28f), Rand.Range(172f, 188f));
-            SpawnStaticMote(map, props.ringMoteDef, center, Rand.Range(1.08f, 1.24f), Rand.Range(0f, 360f));
-            SpawnStaticMote(map, props.starAMoteDef, center + RandomFlatOffset(0.01f, 0.12f), Rand.Range(1.06f, 1.24f), Rand.Range(0f, 360f));
-            SpawnStaticMote(map, props.starBMoteDef, center + RandomFlatOffset(0.01f, 0.12f), Rand.Range(1.0f, 1.18f), Rand.Range(0f, 360f));
+            Color color = GetBlinkColor(caster);
+            SpawnStaticMote(map, props.arrivalPillarMoteDef, center, Rand.Range(1.24f, 1.5f), 0f, color);
+            SpawnStaticMote(map, props.arrivalRayMoteDef, center + RandomFlatOffset(0.02f, 0.08f), Rand.Range(1.16f, 1.34f), Rand.Range(-8f, 8f), color);
+            SpawnStaticMote(map, props.arrivalRayMoteDef, center + RandomFlatOffset(0.02f, 0.08f), Rand.Range(1.1f, 1.28f), Rand.Range(172f, 188f), color);
+            SpawnStaticMote(map, props.ringMoteDef, center, Rand.Range(1.08f, 1.24f), Rand.Range(0f, 360f), color);
+            SpawnStaticMote(map, props.starAMoteDef, center + RandomFlatOffset(0.01f, 0.12f), Rand.Range(1.06f, 1.24f), Rand.Range(0f, 360f), color);
+            SpawnStaticMote(map, props.starBMoteDef, center + RandomFlatOffset(0.01f, 0.12f), Rand.Range(1.0f, 1.18f), Rand.Range(0f, 360f), color);
 
             for (int i = 0; i < 6; i++)
             {
-                SpawnStaticMote(map, props.sparkleMoteDef, center + RandomFlatOffset(0.02f, 0.28f), Rand.Range(0.84f, 1.18f), Rand.Range(0f, 360f));
+                SpawnStaticMote(map, props.sparkleMoteDef, center + RandomFlatOffset(0.02f, 0.28f), Rand.Range(0.84f, 1.18f), Rand.Range(0f, 360f), color);
             }
         }
 
@@ -94,7 +101,7 @@ namespace ApexMechanoids
             return map != null && cell.InBounds(map) && cell.ShouldSpawnMotesAt(map);
         }
 
-        private static Mote SpawnStaticMote(Map map, ThingDef moteDef, Vector3 position, float scale, float rotation, float alpha = DefaultMoteAlpha)
+        private static Mote SpawnStaticMote(Map map, ThingDef moteDef, Vector3 position, float scale, float rotation, Color color, float alpha = DefaultMoteAlpha)
         {
             if (map == null || moteDef == null)
             {
@@ -111,10 +118,31 @@ namespace ApexMechanoids
             if (mote != null)
             {
                 mote.exactRotation = rotation;
-                mote.instanceColor = new Color(1f, 1f, 1f, Mathf.Clamp01(alpha));
+                mote.instanceColor = WithAlpha(color, alpha);
             }
 
             return mote;
+        }
+
+        private static Color GetBlinkColor(Pawn caster)
+        {
+            if (caster?.kindDef?.defName == CelerusBossKindDefName)
+            {
+                return BossBlinkColor;
+            }
+
+            if (caster != null && (caster.Faction == Faction.OfPlayer || caster.IsPlayerControlled || caster.IsColonyMech))
+            {
+                return ColonyBlinkColor;
+            }
+
+            return caster?.Faction?.AllegianceColor ?? Color.white;
+        }
+
+        private static Color WithAlpha(Color color, float alpha)
+        {
+            color.a = Mathf.Clamp01(alpha);
+            return color;
         }
 
         private static Vector3 RandomFlatOffset(float minRadius, float maxRadius)
@@ -211,7 +239,7 @@ namespace ApexMechanoids
             IntVec3 destinationCell = target.Cell;
             IntVec3 originCell = caster.PositionHeld;
             caster.TryGetComp<CompCanBeDormant>()?.WakeUp();
-            BlinkVisualUtility.SpawnDepartureBurst(map, originCell, Props);
+            BlinkVisualUtility.SpawnDepartureBurst(caster, map, originCell, Props);
 
             caster.Position = destinationCell;
             if ((caster.Faction == Faction.OfPlayer || caster.IsPlayerControlled) && caster.Position.Fogged(caster.Map))
@@ -227,7 +255,7 @@ namespace ApexMechanoids
             caster.Notify_Teleported();
             CompAbilityEffect_Teleport.SendSkipUsedSignal(caster.Position, caster);
 
-            BlinkVisualUtility.SpawnArrivalBurst(map, destinationCell, Props);
+            BlinkVisualUtility.SpawnArrivalBurst(caster, map, destinationCell, Props);
 
             if (Props.clamorType != null)
             {
