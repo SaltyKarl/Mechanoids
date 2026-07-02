@@ -212,6 +212,7 @@
 				<texPath>Effects/PressTheAttack/Halo</texPath>
 				<parentTagDef>Head</parentTagDef>
 				<pawnType>HumanlikeOnly</pawnType>
+				<color>(250, 147, 19)</color>
 				<drawData>
 					<scale>0.7</scale>
 					<scaleOffsetByBodySize>true</scaleOffsetByBodySize>
@@ -241,6 +242,7 @@
 				<texPath>Effects/PressTheAttack/Wings</texPath>
 				<parentTagDef>Body</parentTagDef>
 				<pawnType>Any</pawnType>
+				<color>(250, 147, 19)</color>
 				<texPaths>
 					<li>Effects/PressTheAttack/Wings/WingsA</li>
 					<li>Effects/PressTheAttack/Wings/WingsB</li>
