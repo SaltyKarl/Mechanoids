@@ -227,7 +227,25 @@
 		<graphicData>
 			<graphicClass>Graphic_Mote</graphicClass>
 			<texPath>Effects/Duel/VS</texPath>
-			<color>(250, 147, 19)</color>
+			<color>(50, 140, 220)</color>
+			<drawSize>(3, 2)</drawSize>
+			<drawOffset>(0, 1.5, 3.7)</drawOffset>
+		</graphicData>
+	</ThingDef>
+	<ThingDef ParentName="MoteBase">
+		<defName>APM_DuelVS_Boss</defName>
+		<thingClass>MoteAttached</thingClass>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>0.05</fadeInTime>
+			<solidTime>3.5</solidTime>
+			<fadeOutTime>1.5</fadeOutTime>
+		</mote>
+		<graphicData>
+			<graphicClass>Graphic_Mote</graphicClass>
+			<texPath>Effects/Duel/VS</texPath>
+			<color>(220, 50, 50)</color>
 			<drawSize>(3, 2)</drawSize>
 			<drawOffset>(0, 1.5, 3.7)</drawOffset>
 		</graphicData>
@@ -245,7 +263,25 @@
 		<graphicData>
 			<graphicClass>Graphic_Mote</graphicClass>
 			<texPath>Effects/Duel/Winner</texPath>
-			<color>(250, 147, 19)</color>
+			<color>(50, 140, 220)</color>
+			<drawSize>(3, 2)</drawSize>
+			<drawOffset>(0, 1.5, 3.7)</drawOffset>
+		</graphicData>
+	</ThingDef>
+	<ThingDef ParentName="MoteBase">
+		<defName>APM_DuelWinner_Boss</defName>
+		<thingClass>MoteAttached</thingClass>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>0.05</fadeInTime>
+			<solidTime>3.5</solidTime>
+			<fadeOutTime>1.5</fadeOutTime>
+		</mote>
+		<graphicData>
+			<graphicClass>Graphic_Mote</graphicClass>
+			<texPath>Effects/Duel/Winner</texPath>
+			<color>(220, 50, 50)</color>
 			<drawSize>(3, 2)</drawSize>
 			<drawOffset>(0, 1.5, 3.7)</drawOffset>
 		</graphicData>
@@ -263,7 +299,25 @@
 		<graphicData>
 			<graphicClass>Graphic_Mote</graphicClass>
 			<texPath>Effects/Duel/Draw</texPath>
-			<color>(250, 147, 19)</color>
+			<color>(50, 140, 220)</color>
+			<drawSize>(3, 2)</drawSize>
+			<drawOffset>(0, 1.5, 3.7)</drawOffset>
+		</graphicData>
+	</ThingDef>
+	<ThingDef ParentName="MoteBase">
+		<defName>APM_DuelDraw_Boss</defName>
+		<thingClass>MoteAttached</thingClass>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>0.05</fadeInTime>
+			<solidTime>3.5</solidTime>
+			<fadeOutTime>1.5</fadeOutTime>
+		</mote>
+		<graphicData>
+			<graphicClass>Graphic_Mote</graphicClass>
+			<texPath>Effects/Duel/Draw</texPath>
+			<color>(220, 50, 50)</color>
 			<drawSize>(3, 2)</drawSize>
 			<drawOffset>(0, 1.5, 3.7)</drawOffset>
 		</graphicData>

@@ -238,6 +238,9 @@ namespace ApexMechanoids
                 float statValue = CasterPawn.GetStatValue(StatDefOf.AimingDelayFactor);
                 int ticks = (WarmupTime * statValue).SecondsToTicks();
                 CasterPawn.stances.SetStance(new Stance_Warmup(ticks, castTarg, this));
+                SoundInfo sunRayStartInfo = SoundInfo.InMap(caster, MaintenanceType.PerTick);
+                sunRayStartInfo.pitchFactor = Mathf.Max(1f, Find.TickManager.TickRateMultiplier);
+                SoundDef.Named("APM_SunRayStart").PlayOneShot(sunRayStartInfo);
                 if (verbProps.stunTargetOnCastStart && castTarg.Pawn != null)
                 {
                     castTarg.Pawn.stances.stunner.StunFor(ticks, null, addBattleLog: false);
@@ -320,7 +323,6 @@ namespace ApexMechanoids
             {
                 mote = MoteMaker.MakeInteractionOverlay(verbProps.beamMoteDef, caster, new TargetInfo(path[0].ToIntVec3(), caster.Map));
             }
-            SoundDef.Named("APM_SunRayStart").PlayOneShot(SoundInfo.InMap(caster, MaintenanceType.PerTick));
             TryCastNextBurstShot();
             ticksToNextPathStep = base.TicksBetweenBurstShots;
             endEffecter?.Cleanup();

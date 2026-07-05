@@ -199,7 +199,29 @@
 			</li>
 		</children>
 	</EffecterDef>
-	
+
+	<EffecterDef>
+		<defName>APM_DuelStart_Boss</defName>
+		<children>
+			<li>
+				<moteDef>APM_DuelVS_Boss</moteDef>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<scale>1</scale>
+				<spawnLocType>OnTarget</spawnLocType>
+				<absoluteAngle>true</absoluteAngle>
+				<angle>0</angle>
+				<speed>0</speed>
+				<rotation>0</rotation>
+				<positionOffset>(0, 0, 2.5)</positionOffset>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SoundTriggered</subEffecterClass>
+				<soundDef>APM_DuelStarted</soundDef>
+				<spawnLocType>OnTarget</spawnLocType>
+			</li>
+		</children>
+	</EffecterDef>
+
 	<EffecterDef>
 		<defName>APM_DuelLose</defName>
 		<children>
@@ -245,10 +267,54 @@
 	</EffecterDef>
 
 	<EffecterDef>
+		<defName>APM_DuelDraw_Boss</defName>
+		<children>
+			<li>
+				<moteDef>APM_DuelDraw_Boss</moteDef>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<scale>1</scale>
+				<spawnLocType>OnTarget</spawnLocType>
+				<absoluteAngle>true</absoluteAngle>
+				<angle>0</angle>
+				<speed>0</speed>
+				<rotation>0</rotation>
+				<positionOffset>(0, 0, 2.5)</positionOffset>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SoundTriggered</subEffecterClass>
+				<soundDef>APM_DuelLose</soundDef>
+				<spawnLocType>OnTarget</spawnLocType>
+			</li>
+		</children>
+	</EffecterDef>
+
+	<EffecterDef>
 		<defName>APM_DuelWin</defName>
 		<children>
 			<li>
 				<moteDef>APM_DuelWinner</moteDef>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<scale>1</scale>
+				<spawnLocType>OnTarget</spawnLocType>
+				<absoluteAngle>true</absoluteAngle>
+				<angle>0</angle>
+				<speed>0</speed>
+				<rotation>0</rotation>
+				<positionOffset>(0, 0, 2.5)</positionOffset>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SoundTriggered</subEffecterClass>
+				<soundDef>APM_DuelWin</soundDef>
+				<spawnLocType>OnTarget</spawnLocType>
+			</li>
+		</children>
+	</EffecterDef>
+
+	<EffecterDef>
+		<defName>APM_DuelWin_Boss</defName>
+		<children>
+			<li>
+				<moteDef>APM_DuelWinner_Boss</moteDef>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
 				<scale>1</scale>
 				<spawnLocType>OnTarget</spawnLocType>

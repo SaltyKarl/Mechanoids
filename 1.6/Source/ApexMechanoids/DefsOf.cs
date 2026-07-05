@@ -59,8 +59,11 @@ namespace ApexMechanoids
     public static class ApexEffecterDefsOf
     {
         public static EffecterDef APM_DuelStart;
+        public static EffecterDef APM_DuelStart_Boss;
         public static EffecterDef APM_DuelWin;
+        public static EffecterDef APM_DuelWin_Boss;
         public static EffecterDef APM_DuelDraw;
+        public static EffecterDef APM_DuelDraw_Boss;
         public static EffecterDef APM_DuelLose;
     }
 }

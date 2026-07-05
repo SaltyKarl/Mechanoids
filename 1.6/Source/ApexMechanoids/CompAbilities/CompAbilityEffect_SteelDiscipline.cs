@@ -54,7 +54,15 @@ namespace ApexMechanoids
                     Hediff existing = p.health.hediffSet.GetFirstHediffOfDef(Props.buffHediff);
                     if (existing != null)
                         p.health.RemoveHediff(existing);
-                    p.health.AddHediff(Props.buffHediff);
+                    Hediff newHediff = HediffMaker.MakeHediff(Props.buffHediff, p);
+                    float duration = GetAbilityDuration();
+                    if (duration > 0f)
+                    {
+                        HediffComp_Disappears disappears = newHediff.TryGetComp<HediffComp_Disappears>();
+                        if (disappears != null)
+                            disappears.ticksToDisappear = duration.SecondsToTicks();
+                    }
+                    p.health.AddHediff(newHediff);
                 }
 
                 // Thought only for organic pawns with a mood need.
@@ -66,6 +74,18 @@ namespace ApexMechanoids
         private static bool IsApexMechanoid(Pawn p)
         {
             return p.kindDef != null && p.kindDef.defName.StartsWith("APM_Mech_");
+        }
+
+        private float GetAbilityDuration()
+        {
+            List<StatModifier> statBases = parent.def.statBases;
+            if (statBases == null) return 0f;
+            for (int i = 0; i < statBases.Count; i++)
+            {
+                if (statBases[i].stat == StatDefOf.Ability_Duration)
+                    return statBases[i].value;
+            }
+            return 0f;
         }
 
         public override void DrawEffectPreview(LocalTargetInfo target)

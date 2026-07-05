@@ -156,7 +156,6 @@
 		<targetRequired>false</targetRequired>
 		<hostile>false</hostile>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
-		<canUseAoeToGetTargets>true</canUseAoeToGetTargets>
 		<showCastingProgressBar>true</showCastingProgressBar>
 		<statBases>
 			<Ability_EffectRadius>12</Ability_EffectRadius>
@@ -172,10 +171,9 @@
 			</targetParams>
 		</verbProperties>
 		<comps>
-			<li Class="CompProperties_AbilityGiveHediff">
-				<compClass>CompAbilityEffect_GiveHediff</compClass>
-				<hediffDef>APM_Hediff_PressTheAttack</hediffDef>
-				<applyToSelf>false</applyToSelf>
+			<li Class="ApexMechanoids.CompProperties_AbilitySteelDiscipline">
+				<radius>12</radius>
+				<buffHediff>APM_Hediff_PressTheAttack</buffHediff>
 			</li>
 		</comps>
 	</AbilityDef>

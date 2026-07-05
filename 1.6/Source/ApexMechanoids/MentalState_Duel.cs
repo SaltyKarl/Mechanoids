@@ -28,7 +28,9 @@ namespace ApexMechanoids
             else
             {
                 this.duelStarter = this.pawn;
-                ApexEffecterDefsOf.APM_DuelStart.Spawn(Vector3.Lerp(pawn.DrawPos, causedByPawn.DrawPos, 0.5f).ToIntVec3(), pawn.Map).Cleanup();
+                bool isBoss = this.causedByPawn.kindDef?.defName?.EndsWith("_Boss") ?? false;
+                EffecterDef startEffecter = isBoss ? ApexEffecterDefsOf.APM_DuelStart_Boss : ApexEffecterDefsOf.APM_DuelStart;
+                startEffecter.Spawn(Vector3.Lerp(pawn.DrawPos, causedByPawn.DrawPos, 0.5f).ToIntVec3(), pawn.Map).Cleanup();
             }
             pawn.health.AddHediff(ApexDefsOf.APM_InDuel);
         }
@@ -65,10 +67,12 @@ namespace ApexMechanoids
 
 
             var duelTarget = pawn == duelStarter ? causedByPawn : pawn;
+            bool starterIsBoss = causedByPawn != null && (causedByPawn.kindDef?.defName?.EndsWith("_Boss") ?? false);
 
             if (duelTarget.DeadOrDowned)
             {
-                ApexEffecterDefsOf.APM_DuelWin.Spawn(pawn, pawn.Map).Cleanup();
+                EffecterDef winEffecter = starterIsBoss ? ApexEffecterDefsOf.APM_DuelWin_Boss : ApexEffecterDefsOf.APM_DuelWin;
+                winEffecter.Spawn(pawn, pawn.Map).Cleanup();
             }
             else if (duelStarter.DeadOrDowned)
             {
@@ -76,7 +80,8 @@ namespace ApexMechanoids
             }
             else if (pawn == duelStarter)
             {
-                ApexEffecterDefsOf.APM_DuelDraw.Spawn(pawn, pawn.Map).Cleanup();
+                EffecterDef drawEffecter = starterIsBoss ? ApexEffecterDefsOf.APM_DuelDraw_Boss : ApexEffecterDefsOf.APM_DuelDraw;
+                drawEffecter.Spawn(pawn, pawn.Map).Cleanup();
             }
         }
 
