@@ -46,6 +46,7 @@
 			</mechEnabledWorkTypes>
 			<mechFixedSkillLevel>10</mechFixedSkillLevel>
 			<baseHealthScale>1</baseHealthScale>
+			<baseBodySize>2.0</baseBodySize>
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>

@@ -9,10 +9,9 @@
 			<texPath>Things/Item/Equipment/WeaponMelee/DuelistsPsySpear</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
-			<drawSize>1.2</drawSize>
+			<drawSize>1.6</drawSize>
 		</graphicData>
 		<uiIconScale>0.5</uiIconScale>
-		<equippedAngleOffset>-90</equippedAngleOffset>
 		<techLevel>Spacer</techLevel>
 		<weaponTags>
 			<li>APM_WeaponDuelistsPsySpear</li>
@@ -74,20 +73,20 @@
 				<usableWithShields>true</usableWithShields>
 				<weaponDraftedDrawOffsets>
 					<north>
-						<drawOffset>(-0.20, 0.00, 0.30)</drawOffset>
-						<angleOffset>0.00</angleOffset>
+						<drawOffset>(-0.30, 0.00, 0.30)</drawOffset>
+						<angleOffset>90</angleOffset>
 					</north>
 					<east>
 						<drawOffset>(0.20, 0.00, 0.30)</drawOffset>
-						<angleOffset>70</angleOffset>
+						<angleOffset>-30</angleOffset>
 					</east>
 					<south>
-						<drawOffset>(0.25, 0.00, 0.30)</drawOffset>
-						<angleOffset>65</angleOffset>
+						<drawOffset>(0.30, 0.00, 0.30)</drawOffset>
+						<angleOffset>-20</angleOffset>
 					</south>
 					<west>
 						<drawOffset>(-0.20, 0.00, 0.30)</drawOffset>
-						<angleOffset>-70</angleOffset>
+						<angleOffset>30</angleOffset>
 					</west>
 				</weaponDraftedDrawOffsets>
 			</li>

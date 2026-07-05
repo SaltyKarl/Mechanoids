@@ -42,6 +42,7 @@
 		<race>
 			<body>APM_Celerus</body>
 			<baseHealthScale>1</baseHealthScale>
+			<baseBodySize>1.5</baseBodySize>
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>
@@ -105,7 +106,7 @@
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<abilities>
 			<li>APM_CelerusBlink</li>
-			<li>APM_Ability_SmokeScreen</li>
+			<li>APM_Ability_SmokeScreen_Boss</li>
 		</abilities>
 	</PawnKindDef>
 	<PawnKindDef ParentName="BaseMechanoidKind">

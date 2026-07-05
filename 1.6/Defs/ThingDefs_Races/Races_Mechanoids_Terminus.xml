@@ -43,6 +43,7 @@
 			<body>APM_Terminus</body>
 			<renderTree>APM_RenderTree_Terminus</renderTree>
 			<baseHealthScale>1</baseHealthScale>
+			<baseBodySize>2.0</baseBodySize>
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>
@@ -93,7 +94,7 @@
 		</lifeStages>
 		<weaponMoney>9999~9999</weaponMoney>
 		<weaponTags Inherit="False">
-			<li>APM_WeaponTerminusApexExoblade</li>
+			<li>APM_WeaponTerminusExoblade</li>
 		</weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
@@ -136,12 +137,12 @@
 		</lifeStages>
 		<weaponMoney>9999~9999</weaponMoney>
 		<weaponTags Inherit="False">
-			<li>APM_WeaponTerminusExoblade</li>
+			<li>APM_WeaponTerminusApexExoblade</li>
 		</weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<abilities>
-			<li>SeveringEdge</li>
+			<li>SeveringEdge_Boss</li>
 			<li>APM_TerminusOverdrive_Boss</li>
 			<li>APM_HookPawn</li>
 		</abilities>
@@ -319,7 +320,57 @@
 			<graphicClass>VEF.Graphics.Graphic_Animated</graphicClass>
 			<drawSize>3.7</drawSize>
 			<ticksPerFrame>5</ticksPerFrame>
-			<color>(163,180,187)</color>
+			<color>(184,200,207)</color>
+		</graphicData>
+		<projectile>
+			<damageDef>RangedStab</damageDef>
+			<damageAmountBase>30</damageAmountBase>
+			<armorPenetrationBase>1</armorPenetrationBase>
+			<stoppingPower>1</stoppingPower>
+			<speed>12</speed>
+			<useGraphicClass>true</useGraphicClass>
+		</projectile>
+	</ThingDef>
+	<AbilityDef>
+		<defName>SeveringEdge_Boss</defName>
+		<label>severing edge</label>
+		<description>Utilizing the innate psychic channeling qualities of its blade, the Terminus releases a sweeping blade of energy in front of itself, cutting anything in the area.</description>
+		<iconPath>UI/SeveringEdge</iconPath>
+		<cooldownTicksRange>60</cooldownTicksRange>
+		<aiCanUse>true</aiCanUse>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<range>4.9</range>
+			<warmupTime>0.3</warmupTime>
+			<soundCast>APM_SeveringEdge</soundCast>
+			<targetParams>
+				<canTargetLocations>true</canTargetLocations>
+			</targetParams>
+		</verbProperties>
+		<warmupMote>Mote_SeveringEdge_Intro_Boss</warmupMote>
+		<moteOffsetAmountTowardsTarget>0.1</moteOffsetAmountTowardsTarget>
+		<comps>
+			<li Class="CompProperties_AbilityLaunchProjectile">
+				<projectileDef>SeveringEdge_Boss</projectileDef>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_RotateMoteTowardsDestination">
+				<extraRotation>310</extraRotation>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_MaintainWarmupMoteAfterCast">
+				<ticksToMaintain>60</ticksToMaintain>
+			</li>
+		</comps>
+	</AbilityDef>
+	<ThingDef ParentName="BaseBullet">
+		<defName>SeveringEdge_Boss</defName>
+		<thingClass>ApexMechanoids.SeveringEdge</thingClass>
+		<label>severing edge</label>
+		<graphicData Class="VEF.Graphics.GraphicData_Animated">
+			<texPath>Things/Projectile/SeveringEdge</texPath>
+			<graphicClass>VEF.Graphics.Graphic_Animated</graphicClass>
+			<drawSize>3.7</drawSize>
+			<ticksPerFrame>5</ticksPerFrame>
+			<color>(229,211,127)</color>
 		</graphicData>
 		<projectile>
 			<damageDef>RangedStab</damageDef>

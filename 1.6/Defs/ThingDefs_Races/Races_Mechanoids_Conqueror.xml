@@ -39,6 +39,7 @@
 		<race>
 			<body>APM_Conqueror</body>
 			<baseHealthScale>1</baseHealthScale>
+			<baseBodySize>1.5</baseBodySize>
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>

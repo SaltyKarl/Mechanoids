@@ -143,7 +143,7 @@
 		</weaponTags>
 		<abilities>
 			<li>APM_PressTheAttack</li>
-			<li>APM_Mech_Duel</li>
+			<li>APM_Mech_Duel_Boss</li>
 		</abilities>
 	</PawnKindDef>
 
@@ -303,6 +303,47 @@
 			</li>
 			<li Class="ApexMechanoids.CompProperties_SpawnThingDuelAttached">
 				<thing>APM_DuelSpot</thing>
+			</li>
+		</comps>
+	</AbilityDef>
+
+	<AbilityDef>
+		<defName>APM_Mech_Duel_Boss</defName>
+		<label>the duel trial</label>
+		<description>A selected target is chosen for a duel and a shield is generated around the duelists. For the duration of the duel, ranged attacks, abilities and Incoming damage increased.  Additionally, if the duel does not end within a certain time frame, the duelists gain a harsh debuff. If either combatant dies or is downed, the victor gains a powerful temporary buff instead.</description>
+		<iconPath>UI/Duel</iconPath>
+		<cooldownTicksRange>1800</cooldownTicksRange> <!-- 30 seconds -->
+		<targetRequired>true</targetRequired>
+		<hostile>true</hostile>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<warmupTime>1</warmupTime>
+			<drawAimPie>false</drawAimPie>
+			<range>5</range>
+			<targetParams>
+				<canTargetCorpses>false</canTargetCorpses>
+				<canTargetItems>false</canTargetItems>
+				<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+				<canTargetSelf>false</canTargetSelf>
+				<canTargetPawns>true</canTargetPawns>
+				<neverTargetIncapacitated>true</neverTargetIncapacitated>
+				<canTargetAnimals>false</canTargetAnimals>
+				<canTargetBuildings>false</canTargetBuildings>
+				<thingCategory>None</thingCategory>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="CompProperties_AbilityGiveMentalState">
+				<compClass>CompAbilityEffect_GiveMentalState</compClass>
+				<stateDef>APM_Duel</stateDef>
+				<stateDefForMechs>APM_Duel</stateDefForMechs>
+				<applyToSelf>false</applyToSelf>
+				<forced>true</forced>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_SpawnThingDuelAttached">
+				<thing>APM_DuelSpot_Boss</thing>
 			</li>
 		</comps>
 	</AbilityDef>

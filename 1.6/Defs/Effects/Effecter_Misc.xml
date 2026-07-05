@@ -6,12 +6,32 @@
 			<!--<li>
 				<subEffecterClass>SubEffecter_Sustainer</subEffecterClass>
 				<soundDef>SomeSound</soundDef>
-		    </li>-->
+			</li>-->
 			<li>
 				<subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
 				<positionRadiusMin>2.4</positionRadiusMin>
 				<positionRadius>2.98</positionRadius>
 				<fleckDef>APM_DuelFireOrbs</fleckDef>
+				<chancePerTick>0.3</chancePerTick>
+				<speed>0.1~0.4</speed>
+				<scale>0.2~0.7</scale>
+				<spawnLocType>OnSource</spawnLocType>
+			</li>
+		</children>
+	</EffecterDef>
+
+	<EffecterDef>
+		<defName>APM_Duel_Boss</defName>
+		<children>
+			<!--<li>
+				<subEffecterClass>SubEffecter_Sustainer</subEffecterClass>
+				<soundDef>SomeSound</soundDef>
+			</li>-->
+			<li>
+				<subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+				<positionRadiusMin>2.4</positionRadiusMin>
+				<positionRadius>2.98</positionRadius>
+				<fleckDef>APM_DuelFireOrbs_Boss</fleckDef>
 				<chancePerTick>0.3</chancePerTick>
 				<speed>0.1~0.4</speed>
 				<scale>0.2~0.7</scale>

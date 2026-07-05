@@ -688,4 +688,37 @@
 			</li>
 		</comps>
 	</AbilityDef>
+	<AbilityDef>
+		<defName>APM_Ability_SmokeScreen_Boss</defName>
+		<label>Smokescreen</label>
+		<description>Release a dense smokescreen, shrouding the Celerus and nearby allies in obscuring gas that hinders enemy perception and grants the Celerus combat bonuses while hidden.</description>
+		<iconPath>UI/Smokescreen</iconPath>
+		<cooldownTicksRange>3600</cooldownTicksRange>
+		<hostile>false</hostile>
+		<targetRequired>false</targetRequired>
+		<aiCanUse>true</aiCanUse>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<warmupStartSound>APM_SmokeScreen</warmupStartSound>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<warmupTime>1</warmupTime>
+			<range>0.48</range>
+			<requireLineOfSight>false</requireLineOfSight>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetBuildings>false</canTargetBuildings>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_AbilitySpawnSmokescreen">
+				<gasDef>APM_Smokescreen_Boss</gasDef>
+				<radius>3</radius>
+				<maxRadius>4.9</maxRadius>
+				<spreadIntervalTicks>15</spreadIntervalTicks>
+			</li>
+		</comps>
+	</AbilityDef>
 </Defs>

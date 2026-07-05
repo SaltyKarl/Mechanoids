@@ -42,6 +42,7 @@
 		<race>
 			<body>APM_Vassal</body>
 			<baseHealthScale>1</baseHealthScale>
+			<baseBodySize>1.5</baseBodySize>
 			<mechEnabledWorkTypes>
 				<li>Crafting</li>
 				<li>Smithing</li>

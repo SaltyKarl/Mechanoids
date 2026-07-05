@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BaseGun">
 		<defName>APM_Gun_Vassal_SwordRifle</defName>
 		<label>charge sword rifle</label>
@@ -94,5 +93,4 @@
 			<speed>70</speed>
 		</projectile>
 	</ThingDef>
-
 </Defs>

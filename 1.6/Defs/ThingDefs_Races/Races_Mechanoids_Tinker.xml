@@ -47,6 +47,7 @@
 				<li>Smithing</li>
 			</mechEnabledWorkTypes>
 			<baseHealthScale>1</baseHealthScale>
+			<baseBodySize>1.5</baseBodySize>
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>

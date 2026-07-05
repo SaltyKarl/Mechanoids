@@ -42,6 +42,7 @@
 		<race>
 			<body>APM_Satellite</body>
 			<baseHealthScale>1</baseHealthScale>
+			<baseBodySize>1.0</baseBodySize>
 			<hediffGiverSets>
 				<li>APM_Mech_Floating</li>
 			</hediffGiverSets>

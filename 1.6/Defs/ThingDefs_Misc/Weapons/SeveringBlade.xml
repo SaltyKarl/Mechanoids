@@ -9,10 +9,9 @@
 			<texPath>Things/Item/Equipment/WeaponMelee/SeveringBlade</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
-			<drawSize>1.2</drawSize>
+			<drawSize>1.4</drawSize>
 		</graphicData>
 		<uiIconScale>0.5</uiIconScale>
-		<equippedAngleOffset>45</equippedAngleOffset>
 		<techLevel>Spacer</techLevel>
 		<weaponTags>
 			<li>APM_WeaponSeveringBlade</li>
@@ -76,20 +75,20 @@
 				<usableWithShields>true</usableWithShields>
 				<weaponDraftedDrawOffsets>
 					<north>
-						<drawOffset>(-0.25, 0.00, 0.20)</drawOffset>
-						<angleOffset>130</angleOffset>
+						<drawOffset>(-0.30, 0.00, 0.30)</drawOffset>
+						<angleOffset>90</angleOffset>
 					</north>
 					<east>
-						<drawOffset>(0.25, 0.00, 0.20)</drawOffset>
-						<angleOffset>-70</angleOffset>
+						<drawOffset>(0.20, 0.00, 0.30)</drawOffset>
+						<angleOffset>-30</angleOffset>
 					</east>
 					<south>
-						<drawOffset>(0.25, 0.00, 0.20 )</drawOffset>
-						<angleOffset>-60</angleOffset>
+						<drawOffset>(0.30, 0.00, 0.30)</drawOffset>
+						<angleOffset>-20</angleOffset>
 					</south>
 					<west>
-						<drawOffset>(-0.25, 0.00, 0.20)</drawOffset>
-						<angleOffset>70</angleOffset>
+						<drawOffset>(-0.20, 0.00, 0.30)</drawOffset>
+						<angleOffset>30</angleOffset>
 					</west>
 				</weaponDraftedDrawOffsets>
 			</li>

@@ -12,7 +12,6 @@
 			<drawSize>1.5</drawSize>
 		</graphicData>
 		<uiIconScale>0.5</uiIconScale>
-		<equippedAngleOffset>225</equippedAngleOffset>
 		<techLevel>Spacer</techLevel>
 		<weaponTags>
 			<li>APM_WeaponCelerusVoltana</li>
@@ -68,19 +67,19 @@
 				<usableWithShields>true</usableWithShields>
 				<weaponDraftedDrawOffsets>
 					<north>
-						<drawOffset>(-0.40, 0.00, 0.30)</drawOffset>
-						<angleOffset>-120</angleOffset>
+						<drawOffset>(-0.25, 0.00, 0.40)</drawOffset>
+						<angleOffset>130</angleOffset>
 					</north>
 					<east>
-						<drawOffset>(0.30, 0.00, 0.30)</drawOffset>
-						<angleOffset>-60</angleOffset>
+						<drawOffset>(0.40, 0.00, 0.40 )</drawOffset>
+						<angleOffset>300</angleOffset>
 					</east>
 					<south>
-						<drawOffset>(0.25, 0.00, 0.30)</drawOffset>
+						<drawOffset>(0.25, 0.00, 0.40)</drawOffset>
 						<angleOffset>300</angleOffset>
 					</south>
 					<west>
-						<drawOffset>(-0.30, 0.00, 0.30)</drawOffset>
+						<drawOffset>(-0.40, 0.00, 0.40)</drawOffset>
 						<angleOffset>60</angleOffset>
 					</west>
 				</weaponDraftedDrawOffsets>
@@ -147,19 +146,19 @@
 				<usableWithShields>true</usableWithShields>
 				<weaponDraftedDrawOffsets>
 					<north>
-						<drawOffset>(-0.40, 0.00, 0.30)</drawOffset>
-						<angleOffset>-120</angleOffset>
+						<drawOffset>(-0.25, 0.00, 0.40)</drawOffset>
+						<angleOffset>130</angleOffset>
 					</north>
 					<east>
-						<drawOffset>(0.30, 0.00, 0.30)</drawOffset>
-						<angleOffset>-60</angleOffset>
+						<drawOffset>(0.40, 0.00, 0.40 )</drawOffset>
+						<angleOffset>300</angleOffset>
 					</east>
 					<south>
-						<drawOffset>(0.25, 0.00, 0.30)</drawOffset>
+						<drawOffset>(0.25, 0.00, 0.40)</drawOffset>
 						<angleOffset>300</angleOffset>
 					</south>
 					<west>
-						<drawOffset>(-0.30, 0.00, 0.30)</drawOffset>
+						<drawOffset>(-0.40, 0.00, 0.40)</drawOffset>
 						<angleOffset>60</angleOffset>
 					</west>
 				</weaponDraftedDrawOffsets>
