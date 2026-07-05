@@ -632,6 +632,7 @@
 		<hostile>false</hostile>
 		<writeCombatLog>true</writeCombatLog>
 		<aiCanUse>true</aiCanUse>
+		<targetRequired>false</targetRequired>
 		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
 		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
 		<verbProperties>
@@ -641,16 +642,20 @@
 			<requireLineOfSight>false</requireLineOfSight>
 			<targetParams>
 				<canTargetSelf>true</canTargetSelf>
-				<canTargetPawns>true</canTargetPawns>
+				<canTargetPawns>false</canTargetPawns>
 				<canTargetBuildings>false</canTargetBuildings>
+				<canTargetLocations>false</canTargetLocations>
 			</targetParams>
 		</verbProperties>
 		<comps>
 			<li Class="ApexMechanoids.CompProperties_AbilitySpawnToxGas">
 				<radius>4.9</radius>
-				<gasAmount>10000</gasAmount>
-				<spreadTicks>600</spreadTicks>
+				<gasAmount>16</gasAmount>
+				<spreadTicks>360</spreadTicks>
 				<emitIntervalTicks>5</emitIntervalTicks>
+				<cellsToPollute>8</cellsToPollute>
+				<pollutionRadius>4</pollutionRadius>
+				<pollutionEffecterDef>CellPollution_Performant</pollutionEffecterDef>
 			</li>
 		</comps>
 	</AbilityDef>

@@ -56,8 +56,8 @@
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>
 				</targetParams>
-				<soundCast>Shot_ChargeBlaster</soundCast>
-				<soundCastTail>GunTail_Medium</soundCastTail>
+				<soundCast>Shot_HellsphereCannonGun</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>16</muzzleFlashScale>
 				<drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
 				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
@@ -102,6 +102,10 @@
 				<activationFlashScale>0.8</activationFlashScale>
 				<impactEffecterDef>APM_Effecter_Solus_End</impactEffecterDef>
 				<impactFlashScale>2.1</impactFlashScale>
+				<flightSustainSoundDef>BeamGraser_Shooting</flightSustainSoundDef>
+				<activationSoundDef>Explosion_EMP</activationSoundDef>
+				<arcStrikeSoundDef>MechBandShockwave</arcStrikeSoundDef>
+				<impactSoundDef>Explosion_Vaporize</impactSoundDef>
 				<totalArcStrikeBudget>40</totalArcStrikeBudget>
 				<maxLifetimeTicks>500</maxLifetimeTicks>
 				<orbSpinDegreesPerTick>2.6</orbSpinDegreesPerTick>
