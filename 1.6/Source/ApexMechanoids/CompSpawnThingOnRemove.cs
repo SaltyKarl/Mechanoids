@@ -20,6 +20,7 @@ namespace ApexMechanoids
             var pos = CellFinder.FindNoWipeSpawnLocNear(parent.pawn.Position, parent.pawn.Map, thing, Rot4.North, count);
             GenSpawn.Spawn(thing, pos, parent.pawn.Map, WipeMode.VanishOrMoveAside).stackCount = Mathf.Max(count, 1);
         }
+        public override string CompLabelPrefix => $"({count} {thing.LabelCap})";
         public override void CompExposeData()
         {
             base.CompExposeData();
