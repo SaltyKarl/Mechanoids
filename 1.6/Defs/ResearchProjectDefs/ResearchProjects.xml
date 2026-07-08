@@ -14,6 +14,11 @@
 			<li>AdvancedMechtech</li>
 			<li>HighMechtech</li>
 		</prerequisites>
+		<requiredAnalyzed>
+      	 <li>PsionicChip</li>
+		 <li>ExtraChip</li>
+		 <li>PsyfluxChip</li>
+    	</requiredAnalyzed>
 	</ResearchProjectDef>
 	<ResearchProjectDef>
 		<defName>AdvancedMechtech</defName>
@@ -28,5 +33,8 @@
 		<prerequisites>
 			<li>StandardMechtech</li>
 		</prerequisites>
+		<requiredAnalyzed>
+         <li>OcularChip</li>
+    	</requiredAnalyzed>
 	</ResearchProjectDef>
 </Defs>
