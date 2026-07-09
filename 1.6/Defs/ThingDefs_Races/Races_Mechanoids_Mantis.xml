@@ -83,6 +83,9 @@
 			<soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding_Generic</soundMeleeHitBuilding>
 			<soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
 		</race>
+		<hediffGiverSets>
+				<li>APM_Mech_HealOnKills</li>
+			</hediffGiverSets>
 		<butcherProducts>
 			<Steel>50</Steel>
 			<Plasteel>20</Plasteel>
