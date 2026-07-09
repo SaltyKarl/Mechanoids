@@ -12,7 +12,7 @@ namespace ApexMechanoids
         public static readonly Color DominusColor  = new Color(230f / 255f, 130f / 255f,  40f / 255f);
         public static readonly Color CelerusColor  = new Color(160f / 255f,  60f / 255f, 230f / 255f);
         public static readonly Color TerminusColor = new Color(229f / 255f, 211f / 255f, 127f / 255f);
-        public static readonly Color PlayerColor = new Color(68f / 255f, 150f / 255f, 215f / 255f);
+        public static readonly Color PlayerColor = new Color(163f / 255f, 180f / 255f, 187f / 255f);
 
         public static Color GetAbilityColor(Pawn caster)
         {
