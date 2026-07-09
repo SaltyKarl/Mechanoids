@@ -20,25 +20,35 @@ namespace ApexMechanoids
 
         public float currentRange;
 
-        public float SquaredDistance => cachedDistance == 0f ? GetCacheDistance() : cachedDistance;
+        public float SquaredDistance => GetEffectiveSquaredDistance();
 
-        private float GetCacheDistance() => cachedDistance = Mathf.Pow(currentRange, 2f);
+        private float GetEffectiveSquaredDistance()
+        {
+            float range = GetEffectiveRange();
+            if (range <= 0f) return 0f;
+            if (cachedDistance == 0f) cachedDistance = Mathf.Pow(range, 2f);
+            return cachedDistance;
+        }
+
+        public float GetEffectiveRange()
+        {
+            Pawn overseer = Pawn.GetOverseer();
+            if (overseer == null) return 0f;
+            if (overseer.MapHeld == Pawn.MapHeld) return Props.maxRange;
+            return Props.minRange;
+        }
 
         public override void PostDraw()
         {
             base.PostDraw();
             if (!Pawn.Drafted) return;
-            Pawn overseer = Pawn.GetOverseer();
-            if (overseer == null) return;
-            if (overseer.MapHeld == Pawn.MapHeld)
+            float range = GetEffectiveRange();
+            cachedDistance = 0f; // invalidate cache each draw tick
+            currentRange = range;
+            if (range > 0f)
             {
-                currentRange = Props.maxRange;
+                GenDraw.DrawRadiusRing(parent.Position, range, Color.cyan);
             }
-            else if (!overseer.Spawned)
-            {
-                currentRange = Props.minRange;
-            }
-            GenDraw.DrawRadiusRing(parent.Position, currentRange, Color.cyan);
         }
     }
 }

@@ -2,10 +2,32 @@
 using RimWorld;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using UnityEngine;
 using Verse.AI;
 
 namespace ApexMechanoids
 {
+    public static class ApexMechColors
+    {
+        public static readonly Color DominusColor  = new Color(230f / 255f, 130f / 255f,  40f / 255f);
+        public static readonly Color CelerusColor  = new Color(160f / 255f,  60f / 255f, 230f / 255f);
+        public static readonly Color TerminusColor = new Color(229f / 255f, 211f / 255f, 127f / 255f);
+        public static readonly Color PlayerColor = new Color(163f / 255f, 180f / 255f, 187f / 255f);
+
+        public static Color GetAbilityColor(Pawn caster)
+        {
+            string kind = caster?.kindDef?.defName;
+            if (kind != null)
+            {
+                bool isBoss = kind.EndsWith("_Boss");
+                if (kind.Contains("Dominus")) return isBoss ? DominusColor  : PlayerColor;
+                if (kind.Contains("Celerus")) return isBoss ? CelerusColor  : PlayerColor;
+                if (kind.Contains("Terminus")) return isBoss ? TerminusColor : PlayerColor;
+            }
+            return caster?.Faction?.AllegianceColor ?? Color.white;
+        }
+    }
+
     public static class Utils
     {
         public static BodyPartRecord GetNonMissingBodyPart(Pawn pawn, BodyPartDef def, BodyPartGroupDef group = null)
@@ -73,32 +95,49 @@ namespace ApexMechanoids
             ab.QueueCastingJob(target.Pawn, target.Pawn);
         }
 
+        
         public static bool IsUplinkActiveFor(Pawn mechanitor)
         {
+
             if (mechanitor == null || mechanitor.Dead || mechanitor.mechanitor == null)
             {
                 return false;
             }
 
-            Job curJob = mechanitor.CurJob;
-            if (curJob == null || curJob.def != ApexDefsOf.APM_RemoteControlUplink)
+            if (!mechanitor.Spawned)
             {
-                return false;
+                Thing spawnedParentOrMe = mechanitor.SpawnedParentOrMe;
+                if (spawnedParentOrMe is Building_MechCommandCasket)
+                {
+                    return true;
+                }
             }
 
-            Thing building = curJob.targetA.Thing;
-            if (building == null)
-            {
-                return false;
-            }
-
-            CompRemoteControlUplink comp = building.TryGetComp<CompRemoteControlUplink>();
-            if (comp == null || comp.ManningPawn != mechanitor)
-            {
-                return false;
-            }
-
-            return true;
+            return false;
         }
+
+        public static bool IsUplinkActiveFor(Pawn mechanitor, out Building_MechCommandCasket casket)
+        {
+
+            if (mechanitor == null || mechanitor.Dead || mechanitor.mechanitor == null)
+            {
+                casket = null;
+                return false;
+            }
+
+            if (!mechanitor.Spawned)
+            {
+                Thing spawnedParentOrMe = mechanitor.SpawnedParentOrMe;
+                if (spawnedParentOrMe is Building_MechCommandCasket)
+                {
+                    casket = (Building_MechCommandCasket)spawnedParentOrMe;
+                    return true;
+                }
+            }
+            casket = null;
+            return false;
+        }
+
+
     }
 }

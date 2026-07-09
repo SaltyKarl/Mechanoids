@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Dynamo</defName>
 		<label>dynamo</label>
@@ -13,8 +12,21 @@
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
 			<ControlTakingTime MayRequire="Ludeon.RimWorld.Biotech">18</ControlTakingTime>
 		</statBases>
+		<tools>
+			<li>
+				<label>head</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>8.5</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+				<chanceFactor>0.2</chanceFactor>
+			</li>
+		</tools>
 		<race>
-			<body>Pikeman</body>
+			<body>APM_Dynamo</body>
 			<baseBodySize>3.0</baseBodySize>
 			<baseHealthScale>3.0</baseHealthScale>
 			<lifeStageAges Inherit="False">
@@ -73,28 +85,42 @@
 				<activeSound>BulletShield_Ambience</activeSound>
 				<hitPoints>600</hitPoints>
 				<hitPointsRestoreInstantlyAfterCharge>true</hitPointsRestoreInstantlyAfterCharge>
-				<chargeDurationTicks>5400</chargeDurationTicks><!-- 90s -->
+				<chargeDurationTicks>5400</chargeDurationTicks>
+				<rechargeHitPointsIntervalTicks>120</rechargeHitPointsIntervalTicks>
+				<!-- 90s -->
 				<drawWithNoSelection>True</drawWithNoSelection>
 				<disarmedByEmpForTicks>1500</disarmedByEmpForTicks>
 				<gizmoTipKey>ProjectileInterceptorTip</gizmoTipKey>
 			</li>
 			<li Class="ApexMechanoids.CompProperties_MechWirelessCharger">
 				<radius>6</radius>
-				<fuelPerCharge>0.009</fuelPerCharge><!-- 0.009 for chemfuel -->
+				<fuelPerCharge>0.009</fuelPerCharge>
+				<!-- 0.009 for chemfuel -->
 				<powerPerCharge>0.5</powerPerCharge>
 				<maxMechPerCharge>4</maxMechPerCharge>
 			</li>
 			<li Class="CompProperties_WasteProducer">
 				<showContentsInInspectPane>false</showContentsInInspectPane>
 			</li>
-			<li Class="CompProperties_ThingContainer">
-				<compClass>CompThingContainer</compClass>
-				<stackLimit>30</stackLimit>
-				<drawContainedThing>false</drawContainedThing>
-				<dropEffecterDef>MechChargerWasteRemoved</dropEffecterDef>
-			</li>
-		</comps>
-	</ThingDef>
+				<li Class="CompProperties_ThingContainer">
+						<compClass>CompThingContainer</compClass>
+						<stackLimit>30</stackLimit>
+						<drawContainedThing>false</drawContainedThing>
+						<dropEffecterDef>MechChargerWasteRemoved</dropEffecterDef>
+					</li>
+				</comps>
+				<tools>
+					<li>
+						<label>head</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>12</power>
+						<cooldownTime>2.0</cooldownTime>
+						<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+					</li>
+				</tools>
+			</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Dynamo</defName>
@@ -103,7 +129,7 @@
 		<combatPower>150</combatPower>
 		<allowInMechClusters>false</allowInMechClusters>
 		<lifeStages>
-			<li>
+			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
 					<texPath>Things/Pawn/Mechanoid/Dynamo/Dynamo</texPath>
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Dynamo/Mech_Dynamo</maskPath>
@@ -122,7 +148,7 @@
 		</lifeStages>
 		<weaponMoney>9999~9999</weaponMoney>
 		<weaponTags>
-			<li>MechanoidGunNeedleLauncher</li>
+			<li>APM_WeaponEMPImpactor</li>
 		</weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
@@ -131,5 +157,4 @@
 			<li>APM_SwitchToPowerPlantMode</li>
 		</abilities>
 	</PawnKindDef>
-
 </Defs>

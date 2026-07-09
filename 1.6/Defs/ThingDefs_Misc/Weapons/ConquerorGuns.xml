@@ -26,16 +26,9 @@
 			<Plasteel>50</Plasteel>
 			<ComponentSpacer>2</ComponentSpacer>
 		</costList>
-		<thingSetMakerTags>
-			<li>RewardStandardQualitySuper</li>
-		</thingSetMakerTags>
 		<weaponTags>
-			<li>SpacerGun</li>
 			<li>APM_WeaponConquerorAR</li>
 		</weaponTags>
-		<tradeTags>
-			<li>WeaponRanged</li>
-		</tradeTags>
 		<weaponClasses>
 			<li>RangedLight</li>
 		</weaponClasses>
@@ -102,9 +95,7 @@
 			<ComponentSpacer>3</ComponentSpacer>
 		</costList>
 		<weaponTags>
-			<li>MechanoidGunMedium</li>
 			<li>APM_WeaponConquerorDMR</li>
-			<li>SpacerGun</li>
 		</weaponTags>
 		<tradeTags>
 			<li>WeaponRanged</li>
@@ -181,7 +172,6 @@
 		</costList>
 		<weaponTags>
 			<li>APM_WeaponConquerorLMG</li>
-			<li>SpacerGun</li>
 		</weaponTags>
 		<tradeTags>
 			<li>WeaponRanged</li>

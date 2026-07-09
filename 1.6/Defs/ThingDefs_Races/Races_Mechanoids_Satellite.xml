@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Satellite</defName>
 		<label>Satellite</label>
@@ -41,8 +40,12 @@
 			</li>
 		</tools>
 		<race>
-			<body>APM_Vassal</body>
+			<body>APM_Satellite</body>
 			<baseHealthScale>1</baseHealthScale>
+			<baseBodySize>1.0</baseBodySize>
+			<hediffGiverSets>
+				<li>APM_Mech_Floating</li>
+			</hediffGiverSets>
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>
@@ -57,8 +60,20 @@
 			</detritusLeavings>
 		</race>
 		<statBases>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
+			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">1</BandwidthCost>
 		</statBases>
+		<comps Inherit="False">
+			<li Class="CompProperties_CanBeDormant" />
+			<li Class="CompProperties_WakeUpDormant">
+				<wakeUpOnDamage>true</wakeUpOnDamage>
+				<wakeUpCheckRadius>30</wakeUpCheckRadius>
+				<wakeUpSound>MechanoidsWakeUp</wakeUpSound>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_PlayerFactionMechPowerCell">
+				<totalPowerTicks>30000</totalPowerTicks>
+				<showGizmoOnNonPlayerControlled>false</showGizmoOnNonPlayerControlled>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
@@ -66,6 +81,7 @@
 		<label>satellite</label>
 		<race>APM_Mech_Satellite</race>
 		<combatPower>190</combatPower>
+		<forceNoDeathNotification>true</forceNoDeathNotification>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
@@ -73,7 +89,7 @@
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Satellite/Mech_Satellite</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>1.5</drawSize>
+					<drawSize>1.2</drawSize>
 					<shadowData>
 						<volume>(0.4, 0.8, 0.4)</volume>
 					</shadowData>
@@ -85,15 +101,18 @@
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Satellite/Mech_Satellite</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>1.5</drawSize>
+					<drawSize>1.2</drawSize>
 					<shadowData>
 						<volume>(0.4, 0.8, 0.4)</volume>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
+		<weaponTags>
+			<li>APM_WeaponSatellite</li>
+		</weaponTags>
+		<weaponMoney>9999~9999</weaponMoney>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 	</PawnKindDef>
-
 </Defs>

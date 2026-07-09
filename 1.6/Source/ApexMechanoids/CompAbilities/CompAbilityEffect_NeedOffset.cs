@@ -10,6 +10,7 @@ namespace ApexMechanoids
 {
     public class CompAbilityEffect_NeedOffset : CompAbilityEffect
     {
+        public CompAbilityEffect_NeedOffset() : base() { }
         public new CompProperties_NeedOffset Props => (CompProperties_NeedOffset)this.props;
         public override void Apply(LocalTargetInfo target, LocalTargetInfo dest)
         {

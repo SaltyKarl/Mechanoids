@@ -28,12 +28,6 @@
 					</value>
 				</li>
 
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/RecipeDef[defName = "ResurrectLightMech"]/fixedIngredientFilter/thingDefs</xpath>
-					<value>
-						<li>Corpse_APM_Mech_Pinpoint</li>
-					</value>
-				</li>
 
 				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName = "LargeMechGestator"]/recipes</xpath>
@@ -45,7 +39,6 @@
 						<li>APM_Mech_Frostivus</li>
 						<li>APM_Mech_Lasher</li>
 						<li>APM_Mech_Maul</li>
-						<li>APM_Mech_Pinpoint</li>
 						<li>APM_Mech_Vassal</li>
 						<li>APM_Mech_Ravager</li>
 					</value>
@@ -478,52 +471,6 @@
 							</descriptionHyperlinks>
 						</RecipeDef>
 
-						<RecipeDef ParentName="HeavyMechanoidRecipe">
-							<defName>APM_Mech_Pinpoint</defName>
-							<label>gestate pinpoint</label>
-							<description>Gestate an pinpoint mechanoid.</description>
-							<researchPrerequisite>HighMechtech</researchPrerequisite>
-							<ingredients Inherit="False">
-								<li>
-									<filter>
-										<thingDefs>
-											<li>Steel</li>
-										</thingDefs>
-									</filter>
-									<count>50</count>
-								</li>
-								<li>
-									<filter>
-										<thingDefs>
-											<li>Plasteel</li>
-										</thingDefs>
-									</filter>
-									<count>25</count>
-								</li>
-								<li>
-									<filter>
-										<thingDefs>
-											<li>ComponentIndustrial</li>
-										</thingDefs>
-									</filter>
-									<count>1</count>
-								</li>
-								<li>
-									<filter>
-										<thingDefs>
-											<li>SubcoreHigh</li>
-										</thingDefs>
-									</filter>
-									<count>1</count>
-								</li>
-							</ingredients>
-							<products>
-								<APM_Mech_Pinpoint>1</APM_Mech_Pinpoint>
-							</products>
-							<descriptionHyperlinks>
-								<ThingDef>APM_Mech_Pinpoint</ThingDef>
-							</descriptionHyperlinks>
-						</RecipeDef>
 
 						<RecipeDef ParentName="MediumMechanoidRecipe">
 							<defName>APM_Mech_Vassal</defName>
@@ -809,9 +756,9 @@
 
 					</value>
 				</li>
-			
+
 				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[@Name="MechGestatorBase"]/comps</xpath>	
+					<xpath>Defs/ThingDef[@Name="MechGestatorBase"]/comps</xpath>
 					<value>
 						<li Class="CompProperties_AffectedByFacilities">
 							<linkableFacilities>
@@ -820,7 +767,7 @@
 						</li>
 					</value>
 				</li>
-				
+
 			</operations>
 		</match>
 	</Operation>

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Patch>
-  <Operation Class="PatchOperationAdd">
-    <xpath>/Defs/ThinkTreeDef[defName="MentalStateCritical"]/thinkRoot/subNodes</xpath>
-    <value>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThinkTreeDef[defName="MentalStateCritical"]/thinkRoot/subNodes</xpath>
+		<value>
 			<li Class="ThinkNode_ConditionalMentalState">
 				<state>APM_Duel</state>
 				<subNodes>
@@ -16,14 +16,40 @@
 					</li>
 				</subNodes>
 			</li>
-    </value>
-  </Operation>
+			<li Class="ThinkNode_ConditionalMentalState">
+				<state>APM_Duel_Boss</state>
+				<subNodes>
+					<li Class="ThinkNode_Priority">
+						<subNodes>
+							<li Class="ApexMechanoids.JobGiver_Duel" />
+							<li Class="JobGiver_WanderAnywhere">
+								<maxDanger>Deadly</maxDanger>
+							</li>
+						</subNodes>
+					</li>
+				</subNodes>
+			</li>
+		</value>
+	</Operation>
 
 	<Operation Class="PatchOperationInsert">
 		<xpath>/Defs/ThinkTreeDef[defName="Mechanoid"]/thinkRoot/subNodes/li[state="BerserkMechanoid"]</xpath>
 		<value>
 			<li Class="ThinkNode_ConditionalMentalState">
 				<state>APM_Duel</state>
+				<subNodes>
+					<li Class="ThinkNode_Priority">
+						<subNodes>
+							<li Class="ApexMechanoids.JobGiver_Duel" />
+							<li Class="JobGiver_WanderAnywhere">
+								<maxDanger>Deadly</maxDanger>
+							</li>
+						</subNodes>
+					</li>
+				</subNodes>
+			</li>
+			<li Class="ThinkNode_ConditionalMentalState">
+				<state>APM_Duel_Boss</state>
 				<subNodes>
 					<li Class="ThinkNode_Priority">
 						<subNodes>

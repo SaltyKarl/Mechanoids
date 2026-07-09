@@ -187,7 +187,10 @@ namespace ApexMechanoids
                     }
                 }
             }
-            sustainer?.Maintain();
+            if (sustainer != null && !sustainer.Ended)
+            {
+                sustainer.Maintain();
+            }
         }
 
         public override bool TryStartCastOn(LocalTargetInfo castTarg, LocalTargetInfo destTarg, bool surpriseAttack = false, bool canHitNonTargetPawns = true, bool preventFriendlyFire = false, bool nonInterruptingSelfCast = false)
@@ -258,6 +261,8 @@ namespace ApexMechanoids
             }
         }
 
+
+
         private new void CalculatePath(Vector3 target, List<Vector3> pathList, HashSet<IntVec3> pathCellsList, bool addRandomOffset = true)
         {
             pathList.Clear();
@@ -296,12 +301,43 @@ namespace ApexMechanoids
             {
                 if (item.InBounds(caster.Map))
                 {
-                    ApplyDamage(VerbUtility.ThingsToHit(item, caster.Map, CanHit).RandomElementWithFallback(), sourceCell, damageFactor);
+                    ApplyDamageSafe(VerbUtility.ThingsToHit(item, caster.Map, CanHit).RandomElementWithFallback(), sourceCell, damageFactor);
                 }
             }
             if (verbProps.beamSetsGroundOnFire && Rand.Chance(verbProps.beamChanceToStartFire))
             {
                 FireUtility.TryStartFireIn(cell, caster.Map, 1f, caster);
+            }
+        }
+
+        private void ApplyDamageSafe(Thing thing, IntVec3 sourceCell, float damageFactor = 1f)
+        {
+            if (thing == null || verbProps.beamDamageDef == null)
+            {
+                return;
+            }
+            IntVec3 intVec = InterpolatedPosition.Yto0().ToIntVec3();
+            IntVec3 intVec2 = GenSight.LastPointOnLineOfSight(sourceCell, intVec, (IntVec3 c) => c.InBounds(caster.Map) && c.CanBeSeenOverFast(caster.Map), skipFirstCell: true);
+            if (intVec2.IsValid)
+            {
+                intVec = intVec2;
+            }
+            Map map = caster.Map;
+            float angleFlat = (currentTarget.Cell - caster.Position).AngleFlat;
+            BattleLogEntry_RangedImpact log = new BattleLogEntry_RangedImpact(caster, thing, currentTarget.Thing, null, null, null);
+            float amount = (float)verbProps.beamDamageDef.defaultDamage * damageFactor;
+            DamageInfo dinfo = new DamageInfo(verbProps.beamDamageDef, amount, verbProps.beamDamageDef.defaultArmorPenetration, angleFlat, caster, null, null, DamageInfo.SourceCategory.ThingOrUnknown, currentTarget.Thing);
+            thing.TakeDamage(dinfo).AssociateWithLog(log);
+            if (thing.CanEverAttachFire())
+            {
+                if (Rand.Chance(verbProps.beamChanceToAttachFire))
+                {
+                    thing.TryAttachFire(verbProps.beamFireSizeRange.RandomInRange, caster);
+                }
+            }
+            else if (Rand.Chance(verbProps.beamChanceToStartFire))
+            {
+                FireUtility.TryStartFireIn(intVec, map, verbProps.beamFireSizeRange.RandomInRange, caster, verbProps.flammabilityAttachFireChanceCurve);
             }
         }
 

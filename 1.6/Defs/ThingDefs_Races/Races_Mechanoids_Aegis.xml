@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="HeavyMechanoid">
 		<defName>APM_Mech_Aegis</defName>
 		<label>Aegis</label>
@@ -86,9 +85,12 @@
 				<maxDrawSize>0</maxDrawSize>
 			</li>
 			<li Class="ApexMechanoids.CompProperties_Aegis">
-				<regenerationAmount>2</regenerationAmount> <!-- Amount of HP to regenerate per interval -->
-				<regenerationDelaySeconds>60</regenerationDelaySeconds> <!-- Minimum time in seconds before regeneration starts after damage -->
-				<regenerationIntervalSeconds>30</regenerationIntervalSeconds> <!-- How often to regenerate in seconds (converted to ticks internally). Uses CompTickRare, any amount less than 4.16 seconds won't work. -->
+				<regenerationAmount>2</regenerationAmount>
+				<!-- Amount of HP to regenerate per interval -->
+				<regenerationDelaySeconds>60</regenerationDelaySeconds>
+				<!-- Minimum time in seconds before regeneration starts after damage -->
+				<regenerationIntervalSeconds>30</regenerationIntervalSeconds>
+				<!-- How often to regenerate in seconds (converted to ticks internally). Uses CompTickRare, any amount less than 4.16 seconds won't work. -->
 			</li>
 		</comps>
 	</ThingDef>
@@ -99,6 +101,10 @@
 		<race>APM_Mech_Aegis</race>
 		<allowInMechClusters>true</allowInMechClusters>
 		<combatPower>250</combatPower>
+		<weaponTags>
+			<li>APM_AegisShield</li>
+		</weaponTags>
+		<weaponMoney>9999~9999</weaponMoney>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
@@ -127,9 +133,8 @@
 		</lifeStages>
 		<techHediffsChance MayRequire="Ludeon.RimWorld.Biotech">1</techHediffsChance>
 		<controlGroupPortraitZoom>1</controlGroupPortraitZoom>
-    <abilities>
-      <li>APM_ShieldCharge</li>
-    </abilities>
+		<abilities>
+			<li>APM_ShieldCharge</li>
+		</abilities>
 	</PawnKindDef>
-
 </Defs>

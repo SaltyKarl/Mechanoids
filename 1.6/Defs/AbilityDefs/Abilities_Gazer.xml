@@ -14,7 +14,7 @@
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
     <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
     <showPsycastEffects>false</showPsycastEffects>
-    <warmupStartSound>CombatCommand_Warmup</warmupStartSound>
+    <warmupStartSound MayRequire="Ludeon.RimWorld.Royalty">CombatCommand_Warmup</warmupStartSound>
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
       <warmupTime>3.0</warmupTime>
@@ -30,7 +30,6 @@
     </verbProperties>
     <comps>
       <li Class="ApexMechanoids.CompProperties_ShockwaveWarmup">
-        <chargeFleckDefName></chargeFleckDefName>
         <sparkIntervalTicks>0</sparkIntervalTicks>
       </li>
       <li Class="ApexMechanoids.CompProperties_Shockwave">

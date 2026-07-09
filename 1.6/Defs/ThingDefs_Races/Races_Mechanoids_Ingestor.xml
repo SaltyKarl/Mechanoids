@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef Name="APM_Mech_Ingestor" ParentName="MechCentipede">
 		<defName>APM_Mech_Ingestor</defName>
 		<label>Ingestor</label>
@@ -33,7 +32,12 @@
 			</li>
 		</tools>
 		<race>
+			<body>APM_Ingestor</body>
+			<renderTree>APM_RenderTree_Ingestor</renderTree>
 			<baseHealthScale>3.0</baseHealthScale>
+			<mechEnabledWorkTypes>
+				<li>APM_IngestorCorpseProcessing</li>
+			</mechEnabledWorkTypes>
 		</race>
 	</ThingDef>
 
@@ -45,8 +49,8 @@
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
-					<texPath>Things/Pawn/Mechanoid/Ingestor/Closed/IngestorC</texPath><!-- Only the Closed variant, what about Opened? -->
-					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Ingestor/Closed/Mech_IngestorC</maskPath>
+					<texPath>Things/Pawn/Mechanoid/Ingestor/Ingestor</texPath><!-- Only the Closed variant, what about Opened? -->
+					<maskPath>Things/Pawn/Mechanoid/Overlays/Ingestor_Overlay/Mech_Ingestor</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>3</drawSize>
@@ -57,8 +61,8 @@
 			</li>
 			<li>
 				<bodyGraphicData>
-					<texPath>Things/Pawn/Mechanoid/Ingestor/Closed/IngestorCAncient</texPath><!-- Only the Closed variant, what about Opened? -->
-					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Ingestor/Closed/Mech_IngestorC</maskPath>
+					<texPath>Things/Pawn/Mechanoid/Ingestor/IngestorAncient</texPath><!-- Only the Closed variant, what about Opened? -->
+					<maskPath>Things/Pawn/Mechanoid/Overlays/Ingestor_Overlay/Mech_Ingestor</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>3</drawSize>
@@ -68,14 +72,11 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-		<weaponMoney>9999~9999</weaponMoney>
-		<weaponTags></weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<controlGroupPortraitZoom>0.65</controlGroupPortraitZoom>
 		<abilities>
-
+			<li>APM_Absorb</li>
 		</abilities>
 	</PawnKindDef>
-
 </Defs>

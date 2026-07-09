@@ -1,21 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<AbilityDef>
 		<defName>APM_Absorb</defName>
 		<label>Recycle Biomess</label>
-		<jobDef>CastAbilityOnThingMelee</jobDef>
+		<jobDef>APM_Absorb</jobDef>
 		<description>Grind up target corpse, and slowly process them into chem fuel.</description>
 		<iconPath>UI/Absorb</iconPath>
-		<cooldownTicksRange>90000</cooldownTicksRange><!-- 1.5 days -->
+		<cooldownTicksRange>90000</cooldownTicksRange>
+		<!-- 1.5 days -->
 		<targetRequired>true</targetRequired>
 		<hostile>false</hostile>
 		<showCastingProgressBar>true</showCastingProgressBar>
 		<displayGizmoWhileUndrafted>True</displayGizmoWhileUndrafted>
-		<disableGizmoWhileUndrafted>True</disableGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>False</disableGizmoWhileUndrafted>
+		<aiCanUse>true</aiCanUse>
 		<verbProperties>
 			<verbClass>Verb_CastAbilityTouch</verbClass>
-			<warmupTime>1</warmupTime>
+			<warmupTime>5</warmupTime>
 			<drawAimPie>false</drawAimPie>
 			<range>-1</range>
 			<targetParams>
@@ -49,11 +50,11 @@
 		<showPsycastEffects>False</showPsycastEffects>
 		<displayGizmoWhileUndrafted>True</displayGizmoWhileUndrafted>
 		<disableGizmoWhileUndrafted>False</disableGizmoWhileUndrafted>
-		<warmupStartSound>CombatCommand_Warmup</warmupStartSound>
+		<warmupStartSound MayRequire="Ludeon.RimWorld.Royalty">CombatCommand_Warmup</warmupStartSound>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
-			<warmupTime>40</warmupTime>
+			<warmupTime>5</warmupTime>
 			<range>0.48</range>
 			<requireLineOfSight>False</requireLineOfSight>
 			<targetParams>
@@ -72,26 +73,46 @@
 		</comps>
 	</AbilityDef>
 
-	<AbilityDef ParentName="PsycastBaseSkip">
+	<AbilityDef>
 		<defName>APM_CelerusBlink</defName>
 		<label>"Blink"</label>
 		<description>Active onboard "blink" micro skip drive, skip to target loction.</description>
 		<level>4</level>
 		<iconPath>UI/Blink</iconPath>
+		<cooldownTicksRange>300</cooldownTicksRange>
 		<writeCombatLog>True</writeCombatLog>
+		<aiCanUse>true</aiCanUse>
+		<showCastingProgressBar>true</showCastingProgressBar>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<warmupStartSound>APM_CelerusBlink</warmupStartSound>
 		<verbProperties>
-			<warmupTime>0.25</warmupTime>
-			<range>27.9</range>
+			<verbClass>Verb_CastAbility</verbClass>
+			<warmupTime>0.15</warmupTime>
+			<soundCast>APM_CelerusBlink</soundCast>
+			<range>17.9</range>
+			<requireLineOfSight>True</requireLineOfSight>
 			<targetParams>
-				<canTargetSelf>True</canTargetSelf>
-				<canTargetAnimals>True</canTargetAnimals>
-				<canTargetItems>True</canTargetItems>
+				<canTargetSelf>False</canTargetSelf>
+				<canTargetPawns>False</canTargetPawns>
+				<canTargetBuildings>False</canTargetBuildings>
+				<canTargetAnimals>False</canTargetAnimals>
+				<canTargetItems>False</canTargetItems>
+				<canTargetLocations>True</canTargetLocations>
+				<mapObjectTargetsMustBeAutoAttackable>False</mapObjectTargetsMustBeAutoAttackable>
 			</targetParams>
 		</verbProperties>
 		<comps>
-			<li Class="CompProperties_AbilityTeleport">
-				<compClass>CompAbilityEffect_Teleport</compClass>
+		    <li Class="ApexMechanoids.CompProperties_BlinkWarmupVisuals">
+				<pillarMoteDef>APM_Mote_Blink_WarmupPillar</pillarMoteDef>
+				<ringMoteDef>APM_Mote_Blink_Ring</ringMoteDef>
+				<rayMoteDef>APM_Mote_Blink_WarmupRay</rayMoteDef>
+				<sparkleMoteDef>APM_Mote_Blink_Sparkle</sparkleMoteDef>
+				<spawnIntervalTicks>20</spawnIntervalTicks>
+				<sparklesPerPulse>2</sparklesPerPulse>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_BlinkTeleport">
 				<destination>Selected</destination>
 				<requiresLineOfSight>True</requiresLineOfSight>
 				<range>17.9</range>
@@ -99,6 +120,19 @@
 				<clamorRadius>10</clamorRadius>
 				<destClamorType>Ability</destClamorType>
 				<destClamorRadius>10</destClamorRadius>
+				<ringMoteDef>APM_Mote_Blink_Ring</ringMoteDef>
+				<starAMoteDef>APM_Mote_Blink_StarA</starAMoteDef>
+				<starBMoteDef>APM_Mote_Blink_StarB</starBMoteDef>
+				<sparkleMoteDef>APM_Mote_Blink_Sparkle</sparkleMoteDef>
+				<arrivalPillarMoteDef>APM_Mote_Blink_WarmupPillar</arrivalPillarMoteDef>
+				<arrivalRayMoteDef>APM_Mote_Blink_WarmupRay</arrivalRayMoteDef>
+				<darkFragmentMoteDefs>
+					<li>APM_Mote_Blink_DarkFragment_A</li>
+					<li>APM_Mote_Blink_DarkFragment_B</li>
+					<li>APM_Mote_Blink_DarkFragment_C</li>
+					<li>APM_Mote_Blink_DarkFragment_D</li>
+				</darkFragmentMoteDefs>
+				<darkFragmentCount>1~1</darkFragmentCount>
 			</li>
 		</comps>
 	</AbilityDef>
@@ -106,11 +140,17 @@
 	<AbilityDef>
 		<defName>APM_SunRay</defName>
 		<label>Sun Ray</label>
-		<description>Fire beam at full output towards target postion, burning everything in the way.</description>
-		<iconPath>UI/Powerful</iconPath>
+		<description>The gazer blasts a devastating beam from itself, remaining stationary to keep the beam on target. Anything within reach of the beam takes heavy damage.</description>
+		<iconPath>UI/SunRay</iconPath>
 		<cooldownTicksRange>3500</cooldownTicksRange>
 		<aiCanUse>true</aiCanUse>
 		<sendMessageOnCooldownComplete>true</sendMessageOnCooldownComplete>
+		<modExtensions>
+			<li Class="ApexMechanoids.DefModExtension_SunRayAbility">
+				<!-- SunRay_Start.ogg is ~5 s; 5 * 60 = 300 ticks. Adjust if the clip length changes. -->
+				<soundWarmupLeadInTicks>300</soundWarmupLeadInTicks>
+			</li>
+		</modExtensions>
 		<verbProperties>
 			<verbClass>ApexMechanoids.Verb_ShootSunBeamAbility</verbClass>
 			<hasStandardCommand>true</hasStandardCommand>
@@ -128,7 +168,7 @@
 			<beamDamageDef>APM_SunRay</beamDamageDef>
 			<soundCastTail>GunTail_Medium</soundCastTail>
 			<muzzleFlashScale>35</muzzleFlashScale>
-			<soundCastBeam>BeamGraser_Shooting</soundCastBeam>
+			<soundCastBeam>APM_SunRayCast</soundCastBeam>
 			<beamGroundFleckDef>APM_Fleck_SunRay_Burn</beamGroundFleckDef>
 			<beamFleckChancePerTick>0.5</beamFleckChancePerTick>
 			<beamMaxDeviation>1.5</beamMaxDeviation>
@@ -161,61 +201,49 @@
 		</verbProperties>
 	</AbilityDef>
 
-	<!-- "targeting" for pinpoint mech -->
+	<!-- "pulse wave" for pulse mech -->
 	<AbilityDef>
-		<defName>ApexMechanoids_Ability_GiveAccuracyHediff</defName>
-		<label>Mark Target</label>
-		<description>Mark target and share live location info to allies, make hitting said target eaiser.</description>
-		<iconPath>UI/Targeting</iconPath>
-		<cooldownTicksRange>1200</cooldownTicksRange>
+		<defName>APM_PulseWave</defName>
+		<label>pulse wave</label>
+		<description>Unleash a blinding acoustic pulse that expands out from the mech, stunning and flash-blinding living pawns caught in the wave.</description>
+		<jobDef>CastAbilityOnThingWithoutWeapon</jobDef>
+		<iconPath>UI/Icons/PulseWave</iconPath>
+		<cooldownTicksRange>3600</cooldownTicksRange><!-- 1 minute -->
 		<hostile>true</hostile>
 		<writeCombatLog>true</writeCombatLog>
 		<aiCanUse>true</aiCanUse>
-		<verbProperties>
-			<verbClass>Verb_CastAbility</verbClass>
-			<range>12.9</range>
-			<warmupTime>0.5</warmupTime>
-			<requireLineOfSight>False</requireLineOfSight>
-			<soundCast>Pawn_Cat_Call</soundCast>
-			<targetParams>
-				<canTargetBuildings>false</canTargetBuildings>
-			</targetParams>
-		</verbProperties>
-		<comps>
-			<li Class="CompProperties_AbilityGiveHediff">
-				<compClass>CompAbilityEffect_GiveHediff</compClass>
-				<hediffDef>ApexMechanoids_TestAccuracyHediff</hediffDef>
-			</li>
-		</comps>
-	</AbilityDef>
-
-	<!-- "true sight" for pinpoint mech -->
-	<AbilityDef>
-		<defName>ApexMechanoids_Ability_RevealInvisible</defName>
-		<label>Scanner Sweep</label>
-		<description>Scanner sweep the area, revealing invisible targets caught in sweep.</description>
-		<iconPath>Things/Mote/SpeechSymbols/Speech</iconPath>
-		<cooldownTicksRange>1800</cooldownTicksRange>
-		<hostile>true</hostile>
-		<writeCombatLog>true</writeCombatLog>
-		<aiCanUse>true</aiCanUse>
-		<canUseAoeToGetTargets>true</canUseAoeToGetTargets>
+		<targetRequired>false</targetRequired>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+		<showCastingProgressBar>true</showCastingProgressBar>
+		<showPsycastEffects>false</showPsycastEffects>
 		<statBases>
-			<Ability_EffectRadius>9.9</Ability_EffectRadius> <!-- this should make it possible to pick targets from AoE to push -->
+			<Ability_EffectRadius>6.9</Ability_EffectRadius>
+			<Ability_Duration>8</Ability_Duration>
 		</statBases>
 		<verbProperties>
-			<verbClass>Verb_CastAbility</verbClass>
-			<range>14.9</range>
-			<warmupTime>0.5</warmupTime>
-			<requireLineOfSight>False</requireLineOfSight>
-			<soundCast>Pawn_Cat_Call</soundCast>
+			<verbClass>ApexMechanoids.Verb_CastPulseWave</verbClass>
+			<warmupTime>1.2</warmupTime>
+			<range>6.9</range>
+			<drawAimPie>false</drawAimPie>
+			<requireLineOfSight>false</requireLineOfSight>
+			<soundCast>APM_PulseWave</soundCast>
 			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+				<canTargetPawns>false</canTargetPawns>
 				<canTargetBuildings>false</canTargetBuildings>
 			</targetParams>
 		</verbProperties>
 		<comps>
-			<li Class="ApexMechanoids.CompProperties_AbilityRevealInvisibility"> <!-- should reveal invisible pawns -->
-				<instant>false</instant>
+			<li Class="ApexMechanoids.CompProperties_PulseWave">
+				<emitterDef>APM_Mote_PulseWaveEmitter</emitterDef>
+				<blindFlashThingDef>APM_PulseWaveBlindFlash</blindFlashThingDef>
+				<blindHediffDef>APM_PulseWaveBlind</blindHediffDef>
+				<radius>6.9</radius>
+				<ringIntervalTicks>4</ringIntervalTicks>
+				<stunTicks>60</stunTicks>
+				<blindTicks>480</blindTicks>
+				<visualScale>0.72</visualScale>
 			</li>
 		</comps>
 	</AbilityDef>
@@ -228,7 +256,7 @@
 		<drawGUIOverlay>true</drawGUIOverlay>
 		<pawnFlyer>
 			<flightDurationMin>0.25</flightDurationMin>
-			<flightSpeed>20</flightSpeed>
+			<flightSpeed>7</flightSpeed>
 			<workerClass>PawnFlyerWorker</workerClass>
 			<heightFactor>0.05</heightFactor> <!-- low altitude -->
 			<progressCurve>
@@ -246,51 +274,14 @@
 		</modExtensions>
 	</ThingDef>
 
-	<!-- Siren Lure -->
-	<AbilityDef>
-		<defName>ApexMechanoids_Ability_SirenLure</defName>
-		<label>Aluring Song</label>
-		<description>Sing a aluring song to compel the target pawn to walk towards the caster.</description>
-		<iconPath>UI/Call</iconPath>
-		<cooldownTicksRange>600</cooldownTicksRange>
-		<hostile>true</hostile>
-		<writeCombatLog>true</writeCombatLog>
-		<aiCanUse>true</aiCanUse>
-		<verbProperties>
-			<verbClass>Verb_CastAbility</verbClass>
-			<range>29.9</range>
-			<warmupTime>0.5</warmupTime>
-			<requireLineOfSight>False</requireLineOfSight>
-			<soundCast>Pawn_Cat_Call</soundCast>
-			<targetParams>
-				<canTargetSelf>False</canTargetSelf>
-				<canTargetBuildings>False</canTargetBuildings>
-				<canTargetLocations>False</canTargetLocations>
-				<canTargetAnimals>False</canTargetAnimals>
-			</targetParams>
-		</verbProperties>
-		<statBases>
-			<Ability_Duration>10</Ability_Duration>
-			<Ability_EffectRadius>0.9</Ability_EffectRadius>
-		</statBases>
-		<comps>
-			<li Class="CompProperties_AbilityForceJob">
-				<compClass>CompAbilityEffect_ForceJob</compClass>
-				<jobDef>GotoMindControlled</jobDef>
-				<destination>Caster</destination>
-				<range>0.9</range>
-			</li>
-		</comps>
-	</AbilityDef>
-
 	<AbilityDef>
 		<defName>APM_HookPawn</defName>
 		<label>Grappling Hook</label>
-		<description>Fire a grappling hook at a target, and quickly retract the hook to effectively launch caster to the target, can be used on buildings and pawns.</description>
+		<description>The Terminus launches its grappling hook, either pulling a foe towards it or itself towards a foe depending on the bodysize of the target.</description>
 		<jobDef>APM_HookPawn</jobDef>
 		<targetRequired>true</targetRequired>
 		<canUseAoeToGetTargets>False</canUseAoeToGetTargets>
-		<iconPath>UI/Gizmos/ShieldMech</iconPath>
+		<iconPath>UI/Icons/Hookshot</iconPath>
 		<showPsycastEffects>False</showPsycastEffects>
 		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
 		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
@@ -303,6 +294,7 @@
 			<drawAimPie>true</drawAimPie>
 			<requireLineOfSight>true</requireLineOfSight>
 			<warmupTime>1</warmupTime>
+			<soundCast>APM_Hookshot</soundCast>
 			<targetParams>
 				<canTargetSelf>false</canTargetSelf>
 				<canTargetPawns>true</canTargetPawns>
@@ -359,7 +351,7 @@
 		<defName>APM_ShieldCharge</defName>
 		<label>Shield Charge</label>
 		<description>Charge at a pawn, stunning everything hit on the way.</description>
-		<iconPath>Things/Mote/SpeechSymbols/Speech</iconPath>
+		<iconPath>UI/Icons/ShieldCharge</iconPath>
 		<cooldownTicksRange>2500</cooldownTicksRange>
 		<hostile>true</hostile>
 		<writeCombatLog>true</writeCombatLog>
@@ -369,6 +361,7 @@
 			<range>9.9</range>
 			<warmupTime>0.5</warmupTime>
 			<requireLineOfSight>true</requireLineOfSight>
+			<soundCast>APM_ShieldCharge</soundCast>
 			<targetParams>
 				<canTargetSelf>False</canTargetSelf>
 				<canTargetBuildings>False</canTargetBuildings>
@@ -381,7 +374,7 @@
 				<jobFactor>10</jobFactor>
 				<!--Stun damage amount-->
 				<job>APM_BashStun</job>
-				<moveSpeed>0.05</moveSpeed>
+				<moveSpeed>0.6</moveSpeed>
 			</li>
 		</comps>
 	</AbilityDef>
@@ -400,7 +393,7 @@
 		<defName>APM_Bladehopp</defName>
 		<label>Bladehopp</label>
 		<description>Dash to a target followed by a quick attack.</description>
-		<iconPath>Things/Mote/SpeechSymbols/Speech</iconPath>
+		<iconPath>UI/Icons/Bladehopp</iconPath>
 		<cooldownTicksRange>2500</cooldownTicksRange>
 		<hostile>true</hostile>
 		<writeCombatLog>true</writeCombatLog>
@@ -410,6 +403,7 @@
 			<range>9.9</range>
 			<warmupTime>0.5</warmupTime>
 			<requireLineOfSight>true</requireLineOfSight>
+			<soundCast>APM_Bladehopp</soundCast>
 			<targetParams>
 				<canTargetSelf>False</canTargetSelf>
 				<canTargetBuildings>False</canTargetBuildings>
@@ -421,7 +415,7 @@
 			<li Class="ApexMechanoids.CompProperties_AbilityBash">
 				<jobFactor>10</jobFactor><!--Damage-->
 				<job>APM_BashDamage</job>
-				<moveSpeed>0.05</moveSpeed>
+				<moveSpeed>0.6</moveSpeed>
 			</li>
 		</comps>
 	</AbilityDef>
@@ -429,7 +423,7 @@
 	<AbilityDef>
 		<defName>APM_BlindingLaser</defName>
 		<label>Blinding Laser</label>
-		<description>Fire a laser at target, effectively binding them for a short time.</description>
+		<description>Fire a laser at target, effectively blinding them for a short time.</description>
 		<iconPath>UI/Icons/Laser</iconPath>
 		<showPsycastEffects>false</showPsycastEffects>
 		<cooldownTicksRange>850</cooldownTicksRange>
@@ -458,6 +452,7 @@
 			<drawAimPie>true</drawAimPie>
 			<range>11</range>
 			<warmupTime>0.6</warmupTime>
+			<soundCast>APM_BlindingLaser</soundCast>
 			<targetParams>
 				<canTargetSelf>false</canTargetSelf>
 				<canTargetBuildings>false</canTargetBuildings>
@@ -498,15 +493,12 @@
 	<HediffDef>
 		<defName>APM_LaserBlind</defName>
 		<label>blinded by laser</label>
-		<description>vastly reduced sight capacity due to been blinded by laser.</description>
+		<description>Vastly reduced sight capacity due to been blinded by laser.</description>
 		<isBad>false</isBad>
 		<defaultLabelColor>(0.82, 0.6, 0.44)</defaultLabelColor>
 		<initialSeverity>1</initialSeverity>
 		<maxSeverity>1</maxSeverity>
 		<hediffClass>HediffWithComps</hediffClass>
-		<li Class="HediffCompProperties_Immunizable">
-			<severityPerDayNotImmune>-4</severityPerDayNotImmune>
-		</li>
 		<stages>
 			<li>
 				<capMods>
@@ -518,7 +510,10 @@
 			</li>
 		</stages>
 		<comps>
-			<li Class="HediffCompProperties_DisappearsOnDeath" />
+			<li Class="HediffCompProperties_Immunizable">
+				<severityPerDayNotImmune>-4</severityPerDayNotImmune>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath"></li>
 			<li Class="HediffCompProperties_Disappears">
 				<showRemainingTime>True</showRemainingTime>
 			</li>
@@ -526,11 +521,49 @@
 	</HediffDef>
 
 	<AbilityDef>
+		<defName>APM_Starfall</defName>
+		<label>Starfall</label>
+		<description>Ravager overcharges its artillery and launches a single heavy shell that splits into three energy blasts while still in flight.</description>
+		<jobDef>CastAbilityOnThingWithoutWeapon</jobDef>
+		<iconPath>UI/Icons/Starfall</iconPath>
+		<cooldownTicksRange>5000</cooldownTicksRange>
+		<hostile>true</hostile>
+		<writeCombatLog>true</writeCombatLog>
+		<aiCanUse>true</aiCanUse>
+		<targetRequired>true</targetRequired>
+		<sendMessageOnCooldownComplete>true</sendMessageOnCooldownComplete>
+		<showCastingProgressBar>true</showCastingProgressBar>
+		<showPsycastEffects>false</showPsycastEffects>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<verbProperties>
+			<verbClass>ApexMechanoids.Verb_CastStarfall</verbClass>
+			<warmupTime>4.8</warmupTime>
+			<range>40</range>
+			<drawAimPie>true</drawAimPie>
+			<requireLineOfSight>false</requireLineOfSight>
+			<noiseRadius>4</noiseRadius>
+			<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+			<muzzleFlashScale>14</muzzleFlashScale>
+			<aimingTargetMote>APM_Mote_RavagerStarfall_Target</aimingTargetMote>
+			<targetParams>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_Starfall">
+				<carrierProjectileDef>APM_StarfallCarrier</carrierProjectileDef>
+				<launchSoundDefName>Starfall</launchSoundDefName>
+			</li>
+		</comps>
+	</AbilityDef>
+
+	<AbilityDef>
 		<defName>APM_DefenceMatrix</defName>
 		<label>Defence Matrix</label>
-		<description>Remotely project a personal defense shield onto a friendly pawn. The shield stops incoming damage, but also prevents shooting out, so this can be useful even
-			when cast
-			on enemies. The tinker will be focused on projecting the shield.</description>
+		<description>Remotely project a personal defense shield onto a friendly pawn. The shield stops incoming damage, but also prevents shooting out, so this can be useful even when cast on enemies. The tinker will be focused on projecting the shield.</description>
 		<jobDef>ShieldMech</jobDef>
 		<targetRequired>true</targetRequired>
 		<canUseAoeToGetTargets>False</canUseAoeToGetTargets>
@@ -561,5 +594,142 @@
 			</targetParams>
 		</verbProperties>
 	</AbilityDef>
+	
+	<AbilityDef>
+		<defName>APM_Ability_SteelDiscipline</defName>
+		<label>Steel Discipline</label>
+		<description>In a radius around the Vassal, its allies gain a speed boost and their mental break chance is reduced if organic. The Vassal's commanding presence inspires those nearby with renewed purpose and fortitude.</description>
+		<iconPath>UI/Icons/SteelDiscipline</iconPath>
+		<cooldownTicksRange>9000</cooldownTicksRange><!-- 2.5 hours -->
+		<hostile>false</hostile>
+		<targetRequired>false</targetRequired>
+		<aiCanUse>true</aiCanUse>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<soundCast>APM_SteelDiscipline_Cast</soundCast>
+			<warmupTime>1.5</warmupTime>
+			<range>0.1</range>
+			<requireLineOfSight>false</requireLineOfSight>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetBuildings>false</canTargetBuildings>
+				<canTargetLocations>false</canTargetLocations>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_AbilitySteelDiscipline">
+				<radius>12</radius>
+				<buffHediff>APM_Hediff_SteelDiscipline</buffHediff>
+				<inspiredThought>APM_Thought_InspiredByDiscipline</inspiredThought>
+			</li>
+		</comps>
+	</AbilityDef>
 
+	<AbilityDef>
+		<defName>APM_Ability_ToxicMist</defName>
+		<label>Toxic Mist</label>
+		<description>Similar to a tox pack, the haze releases tox gas around itself, enveloping the surrounding area in a toxic cloud.</description>
+		<iconPath>UI/Icons/ToxicMist</iconPath>
+		<cooldownTicksRange>18000</cooldownTicksRange><!-- 5 hours -->
+		<hostile>false</hostile>
+		<writeCombatLog>true</writeCombatLog>
+		<aiCanUse>true</aiCanUse>
+		<targetRequired>false</targetRequired>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<warmupTime>1.5</warmupTime>
+			<range>0.48</range>
+			<requireLineOfSight>false</requireLineOfSight>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetBuildings>false</canTargetBuildings>
+				<canTargetLocations>false</canTargetLocations>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_AbilitySpawnToxGas">
+				<radius>4.9</radius>
+				<gasAmount>16</gasAmount>
+				<spreadTicks>360</spreadTicks>
+				<emitIntervalTicks>5</emitIntervalTicks>
+				<cellsToPollute>8</cellsToPollute>
+				<pollutionRadius>4</pollutionRadius>
+				<pollutionEffecterDef>CellPollution_Performant</pollutionEffecterDef>
+			</li>
+		</comps>
+	</AbilityDef>
+	
+	<AbilityDef>
+		<defName>APM_Ability_SmokeScreen</defName>
+		<label>Smokescreen</label>
+		<description>Release a dense smokescreen, shrouding the Celerus and nearby allies in obscuring gas that hinders enemy perception and grants the Celerus combat bonuses while hidden.</description>
+		<iconPath>UI/Smokescreen</iconPath>
+		<cooldownTicksRange>3600</cooldownTicksRange><!-- 1 minute -->
+		<hostile>false</hostile>
+		<targetRequired>false</targetRequired>
+		<aiCanUse>true</aiCanUse>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<warmupStartSound>APM_SmokeScreen</warmupStartSound>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<warmupTime>1</warmupTime>
+			<range>0.48</range>
+			<requireLineOfSight>false</requireLineOfSight>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetBuildings>false</canTargetBuildings>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_AbilitySpawnSmokescreen">
+				<gasDef>APM_Smokescreen</gasDef>
+				<radius>3</radius>
+				<maxRadius>4.9</maxRadius>
+				<spreadIntervalTicks>15</spreadIntervalTicks>
+			</li>
+		</comps>
+	</AbilityDef>
+	<AbilityDef>
+		<defName>APM_Ability_SmokeScreen_Boss</defName>
+		<label>Smokescreen</label>
+		<description>Release a dense smokescreen, shrouding the Celerus and nearby allies in obscuring gas that hinders enemy perception and grants the Celerus combat bonuses while hidden.</description>
+		<iconPath>UI/Smokescreen</iconPath>
+		<cooldownTicksRange>3600</cooldownTicksRange>
+		<hostile>false</hostile>
+		<targetRequired>false</targetRequired>
+		<aiCanUse>true</aiCanUse>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<warmupStartSound>APM_SmokeScreen</warmupStartSound>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<warmupTime>1</warmupTime>
+			<range>0.48</range>
+			<requireLineOfSight>false</requireLineOfSight>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetBuildings>false</canTargetBuildings>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_AbilitySpawnSmokescreen">
+				<gasDef>APM_Smokescreen_Boss</gasDef>
+				<radius>3</radius>
+				<maxRadius>4.9</maxRadius>
+				<spreadIntervalTicks>15</spreadIntervalTicks>
+			</li>
+		</comps>
+	</AbilityDef>
 </Defs>

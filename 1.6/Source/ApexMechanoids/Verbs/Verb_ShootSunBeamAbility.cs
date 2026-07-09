@@ -9,6 +9,12 @@ using Verse.Sound;
 
 namespace ApexMechanoids
 {
+    public class DefModExtension_SunRayAbility : DefModExtension
+    {
+        // How many ticks before firing to start the warmup sound (= clip duration in ticks; 1 s = 60 ticks).
+        public int soundWarmupLeadInTicks = 0;
+    }
+
     public class Verb_ShootSunBeamAbility : Verb_CastAbility
     {
         private List<Vector3> path = new List<Vector3>();
@@ -34,6 +40,8 @@ namespace ApexMechanoids
         private HashSet<IntVec3> tmpSecondaryHighlightCells = new HashSet<IntVec3>();
 
         private HashSet<IntVec3> hitCells = new HashSet<IntVec3>();
+
+        private bool warmupSoundPlayed;
 
         private const int NumSubdivisionsPerUnitLength = 1;
 
@@ -143,6 +151,10 @@ namespace ApexMechanoids
             lastShotTick = Find.TickManager.TicksGame;
             ticksToNextPathStep = base.TicksBetweenBurstShots;
             IntVec3 targetCell = InterpolatedPosition.Yto0().ToIntVec3();
+            if (burstShotsLeft == 1)
+            {
+                SoundDef.Named("APM_SunRayStop").PlayOneShot(SoundInfo.InMap(caster, MaintenanceType.PerTick));
+            }
             if (!ability.Activate(currentTarget, currentDestination))
             {
                 return false;
@@ -234,6 +246,7 @@ namespace ApexMechanoids
                 float statValue = CasterPawn.GetStatValue(StatDefOf.AimingDelayFactor);
                 int ticks = (WarmupTime * statValue).SecondsToTicks();
                 CasterPawn.stances.SetStance(new Stance_Warmup(ticks, castTarg, this));
+                warmupSoundPlayed = false;
                 if (verbProps.stunTargetOnCastStart && castTarg.Pawn != null)
                 {
                     castTarg.Pawn.stances.stunner.StunFor(ticks, null, addBattleLog: false);
@@ -248,6 +261,22 @@ namespace ApexMechanoids
                 WarmupComplete();
             }
             return true;
+        }
+
+        public void WarmupSoundTick(int ticksLeft)
+        {
+            if (warmupSoundPlayed) return;
+            int leadIn = 0;
+            if (verbTracker?.directOwner is Ability abilityOwner)
+            {
+                DefModExtension_SunRayAbility ext = abilityOwner.def?.GetModExtension<DefModExtension_SunRayAbility>();
+                if (ext != null) leadIn = ext.soundWarmupLeadInTicks;
+            }
+            if (leadIn <= 0 || ticksLeft > leadIn) return;
+            SoundInfo info = SoundInfo.InMap(caster, MaintenanceType.PerTick);
+            info.pitchFactor = Mathf.Max(1f, Find.TickManager.TickRateMultiplier);
+            SoundDef.Named("APM_SunRayStart").PlayOneShot(info);
+            warmupSoundPlayed = true;
         }
 
         public override void BurstingTick()
@@ -299,7 +328,10 @@ namespace ApexMechanoids
                     }
                 }
             }
-            sustainer?.Maintain();
+            if (sustainer != null && !sustainer.Ended)
+            {
+                sustainer.Maintain();
+            }
         }
 
         public override void WarmupComplete()
@@ -322,11 +354,18 @@ namespace ApexMechanoids
             }
         }
 
+
+
         private void CalculatePath(Vector3 target, List<Vector3> pathList, HashSet<IntVec3> pathCellsList, bool addRandomOffset = true)
         {
             pathList.Clear();
+            pathCellsList.Clear();
             IntVec3 intVec = target.ToIntVec3();
             float lengthHorizontal = (intVec - caster.Position).LengthHorizontal;
+            if (lengthHorizontal < 0.001f)
+            {
+                return;
+            }
             float num = (float)(intVec.x - caster.Position.x) / lengthHorizontal;
             float num2 = (float)(intVec.z - caster.Position.z) / lengthHorizontal;
             intVec.x = Mathf.RoundToInt((float)caster.Position.x + num * verbProps.range);

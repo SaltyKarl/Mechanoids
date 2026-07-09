@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BaseMechanoid">
 		<defName>APM_Mech_Haze</defName>
 		<label>Haze</label>
@@ -28,9 +27,29 @@
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
 				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
 			</li>
+			<li>
+				<label>front left paw</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>20.5</power>
+				<cooldownTime>2.9</cooldownTime>
+				<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+			</li>
+			<li>
+				<label>front right paw</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>20.5</power>
+				<cooldownTime>2.9</cooldownTime>
+				<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+			</li>
 		</tools>
 		<race>
-			<body>APM_Ravager</body>
+			<body>APM_Haze</body>
 			<baseBodySize>3</baseBodySize>
 			<baseHealthScale>6.2</baseHealthScale>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
@@ -57,6 +76,13 @@
 			<soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding_Generic</soundMeleeHitBuilding>
 			<soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
 		</race>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_HazeToxicMistController">
+				<abilityDef>APM_Ability_ToxicMist</abilityDef>
+				<checkIntervalTicks>300</checkIntervalTicks>
+				<autoCastForPlayer>false</autoCastForPlayer>
+			</li>
+		</comps>
 		<butcherProducts>
 			<Steel>50</Steel>
 			<Plasteel>20</Plasteel>
@@ -96,6 +122,14 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
+		<weaponMoney>9999~9999</weaponMoney>
+		<weaponTags Inherit="False">
+			<li>APM_HazeGraserTag</li>
+		</weaponTags>
+		<techHediffsChance>1</techHediffsChance>
+		<techHediffsMoney>9999~9999</techHediffsMoney>
+		<abilities>
+			<li>APM_Ability_ToxicMist</li>
+		</abilities>
 	</PawnKindDef>
-
 </Defs>

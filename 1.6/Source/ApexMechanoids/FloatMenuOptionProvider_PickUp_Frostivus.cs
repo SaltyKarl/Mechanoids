@@ -72,7 +72,7 @@ namespace ApexMechanoids
             {
                 yield return new FloatMenuOption("CannotPickUp".Translate(clickedThing.Label, clickedThing) + ": " + "TooHeavy".Translate().CapitalizeFirst(), null);
             }
-            else
+            else if (!(clickedThing is Pawn))
             {
                 if (MassUtility.WillBeOverEncumberedAfterPickingUp(context.FirstSelectedPawn, clickedThing, clickedThing.stackCount))
                 {
