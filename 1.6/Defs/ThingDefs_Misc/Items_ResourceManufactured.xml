@@ -4,7 +4,7 @@
     <label>ocular harmonizer chip</label>
     <description>A stabilization matrix that synchronizes hellsphere turbulence into a coherent firing pattern. Without one, any ocular beam platform would tear itself apart. It is necessary to produce certain advanced types of mechanoids and equipment. A mechanitor can study this chip to help unlock higher tiers of mechtech research.</description>
     <graphicData>
-      <texPath>Things/Item/Chips/Chip_GazerChip</texPath>
+      <texPath>Item/Chips/Chip_GazerChip</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -36,7 +36,7 @@
     <label>psionic coordination chip</label>
     <description>A psychic-command mechanoid micro-organ infused with an Archotech echo of martial authority. Generates localized command fields, amplifying allied effectiveness. It is necessary to produce certain advanced types of mechanoids and equipment. A mechanitor can study this chip to help unlock higher tiers of mechtech research.</description>
     <graphicData>
-      <texPath>Things/Item/Chips/Chip_DominusChip</texPath>
+      <texPath>Item/Chips/Chip_DominusChip</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -68,7 +68,7 @@
     <label>extrasensory amplification chip</label>
     <description>A emotion weaving mechanoid micro-organ engineered to magnify and regulate extrasensory mental force. It artificially amplifies emotions and the resulting psychic energy while limiting damage to the mind. It is necessary to produce certain advanced types of mechanoids and equipment. A mechanitor can study this chip to help unlock higher tiers of mechtech research.</description>
     <graphicData>
-      <texPath>Things/Item/Chips/Chip_TerminusChip</texPath>
+      <texPath>Item/Chips/Chip_TerminusChip</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -100,7 +100,7 @@
     <label>psyflux projection chip</label>
     <description>A perception-warping mechanoid micro-organ that regulates rapid displacement, charged-particle emissions, and brief periods of psychic imperceptibility. It is necessary to produce certain advanced types of mechanoids and equipment. A mechanitor can study this chip to help unlock higher tiers of mechtech research.</description>
     <graphicData>
-      <texPath>Things/Item/Chips/Chip_CelerusChip</texPath>
+      <texPath>Item/Chips/Chip_CelerusChip</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
