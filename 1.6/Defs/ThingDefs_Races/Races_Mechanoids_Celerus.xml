@@ -35,12 +35,15 @@
 				<power>8.5</power>
 				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-				<chanceFactor>0.2</chanceFactor>
-			</li>
-		</tools>
-		<race>
-			<body>APM_Celerus</body>
+					<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+						<chanceFactor>0.2</chanceFactor>
+					</li>
+				</tools>
+				<killedLeavingsPlayerHostile>
+					<PsyfluxChip>1</PsyfluxChip>
+				</killedLeavingsPlayerHostile>
+				<race>
+					<body>APM_Celerus</body>
 			<baseHealthScale>1</baseHealthScale>
 			<baseBodySize>1.5</baseBodySize>
 			<detritusLeavings>

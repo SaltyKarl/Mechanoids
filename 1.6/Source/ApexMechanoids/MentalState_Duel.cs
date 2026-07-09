@@ -26,9 +26,9 @@ namespace ApexMechanoids
                 this.causedByPawn.mindState.mentalStateHandler.CurState.forceRecoverAfterTicks = this.forceRecoverAfterTicks;
             }
             else
-            {
-                this.duelStarter = this.pawn;
-                bool isBoss = this.causedByPawn.kindDef?.defName?.EndsWith("_Boss") ?? false;
+                {
+                    this.duelStarter = this.pawn;
+                    bool isBoss = this.pawn.kindDef?.defName?.EndsWith("_Boss") ?? false;
                 EffecterDef startEffecter = isBoss ? ApexEffecterDefsOf.APM_DuelStart_Boss : ApexEffecterDefsOf.APM_DuelStart;
                 startEffecter.Spawn(Vector3.Lerp(pawn.DrawPos, causedByPawn.DrawPos, 0.5f).ToIntVec3(), pawn.Map).Cleanup();
             }
@@ -38,6 +38,7 @@ namespace ApexMechanoids
         public override void MentalStateTick(int delta)
         {
             base.MentalStateTick(delta);
+            pawn.mindState.enemyTarget = this.causedByPawn;
             if (this.causedByPawn.DeadOrDowned)
             {
                 this.RecoverFromState();
@@ -55,7 +56,11 @@ namespace ApexMechanoids
             {
                 pawn.health.AddHediff(ApexDefsOf.APM_DuelDraw);
             }
-            pawn.health.RemoveHediff(pawn.health.hediffSet.GetFirstHediffOfDef(ApexDefsOf.APM_InDuel));
+            Hediff inDuelHediff = pawn.health.hediffSet.GetFirstHediffOfDef(ApexDefsOf.APM_InDuel);
+            if (inDuelHediff != null)
+            {
+                pawn.health.RemoveHediff(inDuelHediff);
+            }
             if (!attachedThing.DestroyedOrNull())
             {
                 attachedThing.Destroy(DestroyMode.KillFinalize);
@@ -67,14 +72,14 @@ namespace ApexMechanoids
 
 
             var duelTarget = pawn == duelStarter ? causedByPawn : pawn;
-            bool starterIsBoss = causedByPawn != null && (causedByPawn.kindDef?.defName?.EndsWith("_Boss") ?? false);
+            bool starterIsBoss = duelStarter != null && (duelStarter.kindDef?.defName?.EndsWith("_Boss") ?? false);
 
             if (duelTarget.DeadOrDowned)
             {
                 EffecterDef winEffecter = starterIsBoss ? ApexEffecterDefsOf.APM_DuelWin_Boss : ApexEffecterDefsOf.APM_DuelWin;
                 winEffecter.Spawn(pawn, pawn.Map).Cleanup();
             }
-            else if (duelStarter.DeadOrDowned)
+            else if (duelStarter != null && duelStarter.DeadOrDowned)
             {
                 ApexEffecterDefsOf.APM_DuelLose.Spawn(pawn, pawn.Map).Cleanup();
             }

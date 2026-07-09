@@ -25,11 +25,14 @@
 				<power>18.5</power>
 				<cooldownTime>2.9</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-			</li>
-		</tools>
-		<race>
-			<body>APM_Dominus</body>
+					<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+					</li>
+				</tools>
+				<killedLeavingsPlayerHostile>
+					<PsionicChip>1</PsionicChip>
+				</killedLeavingsPlayerHostile>
+				<race>
+					<body>APM_Dominus</body>
 			<baseBodySize>3</baseBodySize>
 			<baseHealthScale>6.2</baseHealthScale>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
@@ -174,6 +177,7 @@
 			<li Class="ApexMechanoids.CompProperties_AbilitySteelDiscipline">
 				<radius>12</radius>
 				<buffHediff>APM_Hediff_PressTheAttack</buffHediff>
+				<buffHediffBoss>APM_Hediff_PressTheAttack_Boss</buffHediffBoss>
 			</li>
 		</comps>
 	</AbilityDef>
@@ -211,7 +215,7 @@
 				<texPath>Effects/PressTheAttack/Halo</texPath>
 				<parentTagDef>Head</parentTagDef>
 				<pawnType>HumanlikeOnly</pawnType>
-				<color>(250, 147, 19)</color>
+				<color>(68, 150, 215)</color>
 				<drawData>
 					<scale>0.7</scale>
 					<scaleOffsetByBodySize>true</scaleOffsetByBodySize>
@@ -226,6 +230,7 @@
 				<texPath>Effects/PressTheAttack/Halo</texPath>
 				<!--<parentTagDef>Head</parentTagDef>-->
 				<pawnType>NonHumanlikeOnly</pawnType>
+				<color>(68, 150, 215)</color>
 				<drawData>
 					<scale>0.7</scale>
 					<scaleOffsetByBodySize>true</scaleOffsetByBodySize>
@@ -241,7 +246,7 @@
 				<texPath>Effects/PressTheAttack/Wings</texPath>
 				<parentTagDef>Body</parentTagDef>
 				<pawnType>Any</pawnType>
-				<color>(250, 147, 19)</color>
+				<color>(68, 150, 215)</color>
 				<texPaths>
 					<li>Effects/PressTheAttack/Wings/WingsA</li>
 					<li>Effects/PressTheAttack/Wings/WingsB</li>
@@ -268,10 +273,107 @@
 		</renderNodeProperties>
 	</HediffDef>
 
+	<HediffDef>
+		<defName>APM_Hediff_PressTheAttack_Boss</defName>
+		<label>Press The Attack</label>
+		<description>PLACEHOLDER</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<showRemainingTime>True</showRemainingTime>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath" />
+		</comps>
+		<isBad>false</isBad>
+		<stages>
+			<li>
+				<painFactor>0.85</painFactor>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>0.10</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>0.15</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<renderNodeProperties>
+			<li> <!--For pawns with head render node-->
+				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+				<texPath>Effects/PressTheAttack/Halo</texPath>
+				<parentTagDef>Head</parentTagDef>
+				<pawnType>HumanlikeOnly</pawnType>
+				<color>(230, 130, 40)</color>
+				<drawData>
+					<scale>0.7</scale>
+					<scaleOffsetByBodySize>true</scaleOffsetByBodySize>
+					<defaultData>
+						<layer>92</layer>
+						<offset>(0,0,0.5)</offset>
+					</defaultData>
+				</drawData>
+			</li>
+			<li> <!--For pawns whos render tree has no head node, e.g. mechs-->
+				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+				<texPath>Effects/PressTheAttack/Halo</texPath>
+				<!--<parentTagDef>Head</parentTagDef>-->
+				<pawnType>NonHumanlikeOnly</pawnType>
+				<color>(230, 130, 40)</color>
+				<drawData>
+					<scale>0.7</scale>
+					<scaleOffsetByBodySize>true</scaleOffsetByBodySize>
+					<defaultData>
+						<layer>92</layer>
+						<offset>(0,0,0.9)</offset>
+					</defaultData>
+				</drawData>
+			</li>
+			<li Class="ApexMechanoids.PawnRenderNodeProperties_Animated">
+				<nodeClass>ApexMechanoids.PawnRenderNode_RandomAnimated</nodeClass>
+				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+				<texPath>Effects/PressTheAttack/Wings</texPath>
+				<parentTagDef>Body</parentTagDef>
+				<pawnType>Any</pawnType>
+				<color>(230, 130, 40)</color>
+				<texPaths>
+					<li>Effects/PressTheAttack/Wings/WingsA</li>
+					<li>Effects/PressTheAttack/Wings/WingsB</li>
+					<li>Effects/PressTheAttack/Wings/WingsC</li>
+				</texPaths>
+				<ticksPerTexture>3</ticksPerTexture>
+				<drawData>
+					<scale>2.3</scale>
+					<defaultData>
+						<layer>-6</layer>
+						<offset>(0,0,0)</offset>
+					</defaultData>
+				</drawData>
+			</li>
+		</renderNodeProperties>
+	</HediffDef>
+
 	<ThoughtDef>
 		<defName>APM_Thought_PressTheAttack</defName>
 		<workerClass>ThoughtWorker_Hediff</workerClass>
 		<hediff>APM_Hediff_PressTheAttack</hediff>
+		<validWhileDespawned>true</validWhileDespawned>
+		<developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+		<stages>
+			<li>
+				<label>Press The Attack</label>
+				<description>PLACEHOLDER.</description>
+				<baseMoodEffect>3</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+	<ThoughtDef>
+		<defName>APM_Thought_PressTheAttack_Boss</defName>
+		<workerClass>ThoughtWorker_Hediff</workerClass>
+		<hediff>APM_Hediff_PressTheAttack_Boss</hediff>
 		<validWhileDespawned>true</validWhileDespawned>
 		<developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
 		<stages>
@@ -354,8 +456,8 @@
 		<comps>
 			<li Class="CompProperties_AbilityGiveMentalState">
 				<compClass>CompAbilityEffect_GiveMentalState</compClass>
-				<stateDef>APM_Duel</stateDef>
-				<stateDefForMechs>APM_Duel</stateDefForMechs>
+				<stateDef>APM_Duel_Boss</stateDef>
+				<stateDefForMechs>APM_Duel_Boss</stateDefForMechs>
 				<applyToSelf>false</applyToSelf>
 				<forced>true</forced>
 			</li>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<ThingDef ParentName="BuildingBase">
 		<defName>APM_DuelSpot</defName>
@@ -26,7 +26,7 @@
 			<destroySound>BuildingDestroyed_Metal_Small</destroySound>
 			<ai_chillDestination>false</ai_chillDestination>
 			<isEdifice>false</isEdifice>
-			<destroyEffecter>Broadshield_Burnout</destroyEffecter>
+			<destroyEffecter MayRequire="Ludeon.RimWorld.Royalty">Broadshield_Burnout</destroyEffecter>
 			<!--Duel sound?-->
 		</building>
 		<comps>
@@ -39,7 +39,7 @@
 				<idlePulseSpeed>3</idlePulseSpeed>
 				<minIdleAlpha>0.05</minIdleAlpha>
 				<disarmedByEmpForTicks>600</disarmedByEmpForTicks>
-				<activeSound>Broadshield_Ambience</activeSound>
+				<activeSound MayRequire="Ludeon.RimWorld.Royalty">Broadshield_Ambience</activeSound>
 				<!--Duel sound?-->
 			</li>
 			<li Class="CompProperties_DestroyAfterDelay">
@@ -53,21 +53,21 @@
 						<texPath>Things/Building/Duel/Ring_Layer1</texPath>
 						<graphicClass>Graphic_Single</graphicClass>
 						<drawOffset>(0,-0.03,0)</drawOffset>
-						<color>(50, 140, 220)</color>
+						<color>(68, 150, 215)</color>
 						<drawSize>5.7</drawSize>
 					</li>
 					<li>
 						<texPath>Things/Building/Duel/Ring_Layer2</texPath>
 						<graphicClass>Graphic_Single</graphicClass>
 						<drawOffset>(0,-0.02,0)</drawOffset>
-						<color>(50, 140, 220)</color>
+						<color>(68, 150, 215)</color>
 						<drawSize>5.7</drawSize>
 					</li>
 					<li>
 						<texPath>Things/Building/Duel/Ring_Layer3</texPath>
 						<drawOffset>(0,-0.01,0)</drawOffset>
 						<graphicClass>Graphic_Single</graphicClass>
-						<color>(50, 140, 220)</color>
+						<color>(68, 150, 215)</color>
 						<drawSize>5.7</drawSize>
 					</li>
 				</graphics>
@@ -79,42 +79,42 @@
 						<graphicClass>Graphic_Single</graphicClass>
 						<drawSize>1.5</drawSize>
 						<drawOffset>(-4,0,0)</drawOffset>
-						<color>(50, 140, 220)</color>
+						<color>(68, 150, 215)</color>
 					</li>
 					<li>
 						<texPath>Things/Building/Duel/Flag</texPath>
 						<graphicClass>Graphic_Single</graphicClass>
 						<drawSize>1.5</drawSize>
 						<drawOffset>(4,0,0)</drawOffset>
-						<color>(50, 140, 220)</color>
+						<color>(68, 150, 215)</color>
 					</li>
 					<li>
 						<texPath>Things/Building/Duel/Flag</texPath>
 						<graphicClass>Graphic_Single</graphicClass>
 						<drawSize>1.5</drawSize>
 						<drawOffset>(-2.2,0,-3)</drawOffset>
-						<color>(50, 140, 220)</color>
+						<color>(68, 150, 215)</color>
 					</li>
 					<li>
 						<texPath>Things/Building/Duel/Flag</texPath>
 						<graphicClass>Graphic_Single</graphicClass>
 						<drawSize>1.5</drawSize>
 						<drawOffset>(2.2,0,-3)</drawOffset>
-						<color>(50, 140, 220)</color>
+						<color>(68, 150, 215)</color>
 					</li>
 					<li>
 						<texPath>Things/Building/Duel/Flag</texPath>
 						<graphicClass>Graphic_Single</graphicClass>
 						<drawSize>1.5</drawSize>
 						<drawOffset>(-2.2,0,3)</drawOffset>
-						<color>(50, 140, 220)</color>
+						<color>(68, 150, 215)</color>
 					</li>
 					<li>
 						<texPath>Things/Building/Duel/Flag</texPath>
 						<graphicClass>Graphic_Single</graphicClass>
 						<drawSize>1.5</drawSize>
 						<drawOffset>(2.2,0,3)</drawOffset>
-						<color>(50, 140, 220)</color>
+						<color>(68, 150, 215)</color>
 					</li>
 				</graphics>
 			</li>
@@ -149,7 +149,7 @@
 			<destroySound>BuildingDestroyed_Metal_Small</destroySound>
 			<ai_chillDestination>false</ai_chillDestination>
 			<isEdifice>false</isEdifice>
-			<destroyEffecter>Broadshield_Burnout</destroyEffecter>
+			<destroyEffecter MayRequire="Ludeon.RimWorld.Royalty">Broadshield_Burnout</destroyEffecter>
 		</building>
 		<comps>
 			<li Class="CompProperties_ProjectileInterceptor">
@@ -161,7 +161,7 @@
 				<idlePulseSpeed>3</idlePulseSpeed>
 				<minIdleAlpha>0.05</minIdleAlpha>
 				<disarmedByEmpForTicks>600</disarmedByEmpForTicks>
-				<activeSound>Broadshield_Ambience</activeSound>
+				<activeSound MayRequire="Ludeon.RimWorld.Royalty">Broadshield_Ambience</activeSound>
 			</li>
 			<li Class="CompProperties_DestroyAfterDelay">
 				<delayTicks>1200</delayTicks>

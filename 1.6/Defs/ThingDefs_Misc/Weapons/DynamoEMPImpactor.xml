@@ -70,7 +70,7 @@
 			<texPath>Things/Projectile/EMPImpactor</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
-			<color>(68,150,215)</color>
+			<color>(200, 230, 40)</color>
 		</graphicData>
 		<projectile>
 			<damageDef>Bullet</damageDef>
