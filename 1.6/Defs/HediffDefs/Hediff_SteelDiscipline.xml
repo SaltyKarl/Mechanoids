@@ -37,7 +37,7 @@
 				<nodeClass>ApexMechanoids.PawnRenderNode_RandomAnimated</nodeClass>
 				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
 				<pawnType>Any</pawnType>
-				<color>(163, 180, 187)</color>
+				<color>(200, 230, 40)</color>
 				<texPath>Effects/PressTheAttack/Wings</texPath>
 				<parentTagDef>Body</parentTagDef>
 				<texPaths>
