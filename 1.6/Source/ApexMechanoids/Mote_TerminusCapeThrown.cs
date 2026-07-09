@@ -66,7 +66,7 @@ namespace ApexMechanoids
                         texPath = modExt.bossTexPath;
                     }
 
-                    Color color = useBossGraphic ? Color.white : drawColor;
+                    Color color = drawColor;
                     Vector2 drawSize = def.graphicData.drawSize;
                     Shader shader = def.graphicData.shaderType?.Shader ?? ShaderDatabase.Transparent;
                     graphicInt = GraphicDatabase.Get<Graphic_Mote>(texPath, shader, drawSize, color);

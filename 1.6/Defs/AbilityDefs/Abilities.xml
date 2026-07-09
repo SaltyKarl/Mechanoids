@@ -50,7 +50,7 @@
 		<showPsycastEffects>False</showPsycastEffects>
 		<displayGizmoWhileUndrafted>True</displayGizmoWhileUndrafted>
 		<disableGizmoWhileUndrafted>False</disableGizmoWhileUndrafted>
-		<warmupStartSound>CombatCommand_Warmup</warmupStartSound>
+		<warmupStartSound MayRequire="Ludeon.RimWorld.Royalty">CombatCommand_Warmup</warmupStartSound>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
@@ -145,6 +145,12 @@
 		<cooldownTicksRange>3500</cooldownTicksRange>
 		<aiCanUse>true</aiCanUse>
 		<sendMessageOnCooldownComplete>true</sendMessageOnCooldownComplete>
+		<modExtensions>
+			<li Class="ApexMechanoids.DefModExtension_SunRayAbility">
+				<!-- SunRay_Start.ogg is ~5 s; 5 * 60 = 300 ticks. Adjust if the clip length changes. -->
+				<soundWarmupLeadInTicks>300</soundWarmupLeadInTicks>
+			</li>
+		</modExtensions>
 		<verbProperties>
 			<verbClass>ApexMechanoids.Verb_ShootSunBeamAbility</verbClass>
 			<hasStandardCommand>true</hasStandardCommand>

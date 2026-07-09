@@ -26,9 +26,9 @@ namespace ApexMechanoids
                 this.causedByPawn.mindState.mentalStateHandler.CurState.forceRecoverAfterTicks = this.forceRecoverAfterTicks;
             }
             else
-            {
-                this.duelStarter = this.pawn;
-                bool isBoss = this.causedByPawn.kindDef?.defName?.EndsWith("_Boss") ?? false;
+                {
+                    this.duelStarter = this.pawn;
+                    bool isBoss = this.pawn.kindDef?.defName?.EndsWith("_Boss") ?? false;
                 EffecterDef startEffecter = isBoss ? ApexEffecterDefsOf.APM_DuelStart_Boss : ApexEffecterDefsOf.APM_DuelStart;
                 startEffecter.Spawn(Vector3.Lerp(pawn.DrawPos, causedByPawn.DrawPos, 0.5f).ToIntVec3(), pawn.Map).Cleanup();
             }
@@ -67,7 +67,7 @@ namespace ApexMechanoids
 
 
             var duelTarget = pawn == duelStarter ? causedByPawn : pawn;
-            bool starterIsBoss = causedByPawn != null && (causedByPawn.kindDef?.defName?.EndsWith("_Boss") ?? false);
+            bool starterIsBoss = duelStarter != null && (duelStarter.kindDef?.defName?.EndsWith("_Boss") ?? false);
 
             if (duelTarget.DeadOrDowned)
             {

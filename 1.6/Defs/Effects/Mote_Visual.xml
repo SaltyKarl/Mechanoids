@@ -189,7 +189,7 @@
 		</mote>
 		<graphicData Class="VEF.Graphics.GraphicData_Animated">
 			<graphicClass>VEF.Graphics.Graphic_AnimatedMote</graphicClass>
-			<color>(184,200,207)</color>
+			<color>(68,150,215)</color>
 			<drawSize>(3.5, 2.5)</drawSize>
 			<!--<shaderType>MoteMultiplyAddScroll</shaderType>-->
 			<texPath>Things/Mote/SeveringEdge_Intro</texPath>
@@ -227,7 +227,7 @@
 		<graphicData>
 			<graphicClass>Graphic_Mote</graphicClass>
 			<texPath>Effects/Duel/VS</texPath>
-			<color>(50, 140, 220)</color>
+			<color>(68, 150, 215)</color>
 			<drawSize>(3, 2)</drawSize>
 			<drawOffset>(0, 1.5, 3.7)</drawOffset>
 		</graphicData>
@@ -245,7 +245,7 @@
 		<graphicData>
 			<graphicClass>Graphic_Mote</graphicClass>
 			<texPath>Effects/Duel/VS</texPath>
-			<color>(220, 50, 50)</color>
+			<color>(230, 130, 40)</color>
 			<drawSize>(3, 2)</drawSize>
 			<drawOffset>(0, 1.5, 3.7)</drawOffset>
 		</graphicData>
@@ -263,7 +263,7 @@
 		<graphicData>
 			<graphicClass>Graphic_Mote</graphicClass>
 			<texPath>Effects/Duel/Winner</texPath>
-			<color>(50, 140, 220)</color>
+			<color>(68, 150, 215)</color>
 			<drawSize>(3, 2)</drawSize>
 			<drawOffset>(0, 1.5, 3.7)</drawOffset>
 		</graphicData>
@@ -281,7 +281,7 @@
 		<graphicData>
 			<graphicClass>Graphic_Mote</graphicClass>
 			<texPath>Effects/Duel/Winner</texPath>
-			<color>(220, 50, 50)</color>
+			<color>(230, 130, 40)</color>
 			<drawSize>(3, 2)</drawSize>
 			<drawOffset>(0, 1.5, 3.7)</drawOffset>
 		</graphicData>
@@ -299,7 +299,7 @@
 		<graphicData>
 			<graphicClass>Graphic_Mote</graphicClass>
 			<texPath>Effects/Duel/Draw</texPath>
-			<color>(50, 140, 220)</color>
+			<color>(68, 150, 215)</color>
 			<drawSize>(3, 2)</drawSize>
 			<drawOffset>(0, 1.5, 3.7)</drawOffset>
 		</graphicData>
@@ -317,7 +317,7 @@
 		<graphicData>
 			<graphicClass>Graphic_Mote</graphicClass>
 			<texPath>Effects/Duel/Draw</texPath>
-			<color>(220, 50, 50)</color>
+			<color>(230, 130, 40)</color>
 			<drawSize>(3, 2)</drawSize>
 			<drawOffset>(0, 1.5, 3.7)</drawOffset>
 		</graphicData>

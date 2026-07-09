@@ -9,6 +9,12 @@ using Verse.Sound;
 
 namespace ApexMechanoids
 {
+    public class DefModExtension_SunRayAbility : DefModExtension
+    {
+        // How many ticks before firing to start the warmup sound (= clip duration in ticks; 1 s = 60 ticks).
+        public int soundWarmupLeadInTicks = 0;
+    }
+
     public class Verb_ShootSunBeamAbility : Verb_CastAbility
     {
         private List<Vector3> path = new List<Vector3>();
@@ -34,6 +40,8 @@ namespace ApexMechanoids
         private HashSet<IntVec3> tmpSecondaryHighlightCells = new HashSet<IntVec3>();
 
         private HashSet<IntVec3> hitCells = new HashSet<IntVec3>();
+
+        private bool warmupSoundPlayed;
 
         private const int NumSubdivisionsPerUnitLength = 1;
 
@@ -238,9 +246,7 @@ namespace ApexMechanoids
                 float statValue = CasterPawn.GetStatValue(StatDefOf.AimingDelayFactor);
                 int ticks = (WarmupTime * statValue).SecondsToTicks();
                 CasterPawn.stances.SetStance(new Stance_Warmup(ticks, castTarg, this));
-                SoundInfo sunRayStartInfo = SoundInfo.InMap(caster, MaintenanceType.PerTick);
-                sunRayStartInfo.pitchFactor = Mathf.Max(1f, Find.TickManager.TickRateMultiplier);
-                SoundDef.Named("APM_SunRayStart").PlayOneShot(sunRayStartInfo);
+                warmupSoundPlayed = false;
                 if (verbProps.stunTargetOnCastStart && castTarg.Pawn != null)
                 {
                     castTarg.Pawn.stances.stunner.StunFor(ticks, null, addBattleLog: false);
@@ -255,6 +261,22 @@ namespace ApexMechanoids
                 WarmupComplete();
             }
             return true;
+        }
+
+        public void WarmupSoundTick(int ticksLeft)
+        {
+            if (warmupSoundPlayed) return;
+            int leadIn = 0;
+            if (verbTracker?.directOwner is Ability abilityOwner)
+            {
+                DefModExtension_SunRayAbility ext = abilityOwner.def?.GetModExtension<DefModExtension_SunRayAbility>();
+                if (ext != null) leadIn = ext.soundWarmupLeadInTicks;
+            }
+            if (leadIn <= 0 || ticksLeft > leadIn) return;
+            SoundInfo info = SoundInfo.InMap(caster, MaintenanceType.PerTick);
+            info.pitchFactor = Mathf.Max(1f, Find.TickManager.TickRateMultiplier);
+            SoundDef.Named("APM_SunRayStart").PlayOneShot(info);
+            warmupSoundPlayed = true;
         }
 
         public override void BurstingTick()

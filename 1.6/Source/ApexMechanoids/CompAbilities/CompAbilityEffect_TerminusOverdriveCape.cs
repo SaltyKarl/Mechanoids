@@ -24,7 +24,6 @@ namespace ApexMechanoids
 
     public static class TerminusOverdriveCapeUtility
     {
-        private const string TerminusBossKindDefName = "APM_Mech_Terminus_Boss";
         private const float VisualSouthOffset = 0.32f;
 
         public static void SpawnBurst(Pawn caster, ThingDef moteDef, int burstCount, FloatRange speedRange, FloatRange angleOffsetRange, float spawnRadius, float sideOffsetDistance, float verticalOffset)
@@ -40,8 +39,8 @@ namespace ApexMechanoids
                 return;
             }
 
-            bool isBossVariant = caster.kindDef?.defName == TerminusBossKindDefName;
-            Color colorOne = isBossVariant ? Color.white : (caster.Faction?.AllegianceColor ?? caster.DrawColor);
+            bool isBossVariant = caster.kindDef?.defName?.EndsWith("_Boss") ?? false;
+            Color colorOne = ApexMechColors.GetAbilityColor(caster);
 
             for (int i = 0; i < burstCount; i++)
             {

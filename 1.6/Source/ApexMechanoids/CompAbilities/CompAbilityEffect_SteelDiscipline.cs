@@ -12,6 +12,9 @@ namespace ApexMechanoids
         // HediffDef applied to APM allies (speed boost + mental break reduction).
         public HediffDef buffHediff;
 
+        // Boss variant HediffDef (red halo) applied when the caster is a boss.
+        public HediffDef buffHediffBoss;
+
         // Thought given to organic same-faction pawns that have a mood need.
         public ThoughtDef inspiredThought = null;
 
@@ -44,17 +47,27 @@ namespace ApexMechanoids
                 affected.Add(p);
             }
 
+            bool casterIsBoss = caster.kindDef != null && caster.kindDef.defName.EndsWith("_Boss");
+            HediffDef activeHediff = (casterIsBoss && Props.buffHediffBoss != null) ? Props.buffHediffBoss : Props.buffHediff;
+
             for (int i = 0; i < affected.Count; i++)
             {
                 Pawn p = affected[i];
 
                 // Hediff (speed + discipline) only for APM mechanoids.
-                if (Props.buffHediff != null && IsApexMechanoid(p))
+                if (activeHediff != null && IsApexMechanoid(p))
                 {
-                    Hediff existing = p.health.hediffSet.GetFirstHediffOfDef(Props.buffHediff);
-                    if (existing != null)
-                        p.health.RemoveHediff(existing);
-                    Hediff newHediff = HediffMaker.MakeHediff(Props.buffHediff, p);
+                    if (Props.buffHediff != null)
+                    {
+                        Hediff existing = p.health.hediffSet.GetFirstHediffOfDef(Props.buffHediff);
+                        if (existing != null) p.health.RemoveHediff(existing);
+                    }
+                    if (Props.buffHediffBoss != null)
+                    {
+                        Hediff existing = p.health.hediffSet.GetFirstHediffOfDef(Props.buffHediffBoss);
+                        if (existing != null) p.health.RemoveHediff(existing);
+                    }
+                    Hediff newHediff = HediffMaker.MakeHediff(activeHediff, p);
                     float duration = GetAbilityDuration();
                     if (duration > 0f)
                     {

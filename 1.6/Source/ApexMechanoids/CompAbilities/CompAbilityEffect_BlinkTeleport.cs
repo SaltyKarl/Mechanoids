@@ -7,11 +7,8 @@ namespace ApexMechanoids
 {
     public static class BlinkVisualUtility
     {
-        private const string CelerusBossKindDefName = "APM_Mech_Celerus_Boss";
         private const float DefaultMoteAlpha = 0.8f;
         private const float DarkFragmentAlpha = 0.8f;
-        private static readonly Color BossBlinkColor = new Color(0.74f, 0.25f, 1f);
-        private static readonly Color ColonyBlinkColor = new Color(0.22f, 0.66f, 1f);
 
         public static void SpawnWarmupStart(Pawn caster, CompProperties_BlinkWarmupVisuals props)
         {
@@ -126,17 +123,7 @@ namespace ApexMechanoids
 
         private static Color GetBlinkColor(Pawn caster)
         {
-            if (caster?.kindDef?.defName == CelerusBossKindDefName)
-            {
-                return BossBlinkColor;
-            }
-
-            if (caster != null && (caster.Faction == Faction.OfPlayer || caster.IsPlayerControlled || caster.IsColonyMech))
-            {
-                return ColonyBlinkColor;
-            }
-
-            return caster?.Faction?.AllegianceColor ?? Color.white;
+            return ApexMechColors.GetAbilityColor(caster);
         }
 
         private static Color WithAlpha(Color color, float alpha)
