@@ -1,5 +1,6 @@
 using RimWorld;
 using System.Collections.Generic;
+using UnityEngine;
 using Verse;
 
 namespace ApexMechanoids
@@ -103,7 +104,7 @@ namespace ApexMechanoids
 
         public override void DrawEffectPreview(LocalTargetInfo target)
         {
-            GenDraw.DrawRadiusRing(parent.pawn.Position, Props.radius);
+            GenDraw.DrawRadiusRing(parent.pawn.Position, Props.radius, ApexMechColors.GetAbilityColor(parent.pawn));
         }
     }
 }
