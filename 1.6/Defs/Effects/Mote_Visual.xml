@@ -189,7 +189,7 @@
 		</mote>
 		<graphicData Class="VEF.Graphics.GraphicData_Animated">
 			<graphicClass>VEF.Graphics.Graphic_AnimatedMote</graphicClass>
-			<color>(68,150,215)</color>
+			<color>(68, 150, 215)</color>
 			<drawSize>(3.5, 2.5)</drawSize>
 			<!--<shaderType>MoteMultiplyAddScroll</shaderType>-->
 			<texPath>Things/Mote/SeveringEdge_Intro</texPath>

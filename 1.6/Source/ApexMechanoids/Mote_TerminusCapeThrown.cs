@@ -137,6 +137,10 @@ namespace ApexMechanoids
         public override void Tick()
         {
             base.Tick();
+            if (Destroyed)
+            {
+                return;
+            }
 
             DefModExtension_TerminusCapeThrown modExt = def.GetModExtension<DefModExtension_TerminusCapeThrown>();
             if (modExt == null)
@@ -153,7 +157,7 @@ namespace ApexMechanoids
                 rotationRate = 0f;
             }
 
-            if (ageTicks >= modExt.destroyAfterTicks)
+            if (ageTicks >= modExt.destroyAfterTicks && !Destroyed)
             {
                 Destroy();
             }

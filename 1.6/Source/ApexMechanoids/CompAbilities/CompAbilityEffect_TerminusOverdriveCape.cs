@@ -40,7 +40,7 @@ namespace ApexMechanoids
             }
 
             bool isBossVariant = caster.kindDef?.defName?.EndsWith("_Boss") ?? false;
-            Color colorOne = ApexMechColors.GetAbilityColor(caster);
+            Color colorOne = Color.white;
 
             for (int i = 0; i < burstCount; i++)
             {

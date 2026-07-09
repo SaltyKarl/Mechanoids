@@ -6,28 +6,28 @@
 		<randomGraphics>
 			<li>
 				<graphicClass>Graphic_Fleck</graphicClass>
-				<color>(230, 130, 40)</color>
+				<color>(68, 150, 215)</color>
 				<texPath>Things/Mote/Duel/FireOrb_a</texPath>
 				<shaderType>MoteGlow</shaderType>
 				<renderInstanced>true</renderInstanced>
 			</li>
 			<li>
 				<graphicClass>Graphic_Fleck</graphicClass>
-				<color>(230, 130, 40)</color>
+				<color>(68, 150, 215)</color>
 				<texPath>Things/Mote/Duel/FireOrb_b</texPath>
 				<shaderType>MoteGlow</shaderType>
 				<renderInstanced>true</renderInstanced>
 			</li>
 			<li>
 				<graphicClass>Graphic_Fleck</graphicClass>
-				<color>(230, 130, 40)</color>
+				<color>(68, 150, 215)</color>
 				<texPath>Things/Mote/Duel/FireOrb_c</texPath>
 				<shaderType>MoteGlow</shaderType>
 				<renderInstanced>true</renderInstanced>
 			</li>
 			<li>
 				<graphicClass>Graphic_Fleck</graphicClass>
-				<color>(230, 130, 40)</color>
+				<color>(68, 150, 215)</color>
 				<texPath>Things/Mote/Duel/FireOrb_d</texPath>
 				<shaderType>MoteGlow</shaderType>
 				<renderInstanced>true</renderInstanced>

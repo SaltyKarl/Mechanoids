@@ -35,12 +35,15 @@
 				<power>8.5</power>
 				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-				<chanceFactor>0.2</chanceFactor>
-			</li>
-		</tools>
-		<race>
-			<body>APM_Terminus</body>
+					<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+						<chanceFactor>0.2</chanceFactor>
+					</li>
+				</tools>
+				<killedLeavingsPlayerHostile>
+					<ExtraChip>1</ExtraChip>
+				</killedLeavingsPlayerHostile>
+				<race>
+					<body>APM_Terminus</body>
 			<renderTree>APM_RenderTree_Terminus</renderTree>
 			<baseHealthScale>1</baseHealthScale>
 			<baseBodySize>2.0</baseBodySize>
@@ -320,7 +323,7 @@
 			<graphicClass>VEF.Graphics.Graphic_Animated</graphicClass>
 			<drawSize>3.7</drawSize>
 			<ticksPerFrame>5</ticksPerFrame>
-			<color>(68,150,215)</color>
+			<color>(68, 150, 215)</color>
 		</graphicData>
 		<projectile>
 			<damageDef>RangedStab</damageDef>

@@ -25,11 +25,14 @@
 				<power>18.5</power>
 				<cooldownTime>2.9</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-			</li>
-		</tools>
-		<race>
-			<body>APM_Dominus</body>
+					<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+					</li>
+				</tools>
+				<killedLeavingsPlayerHostile>
+					<PsionicChip>1</PsionicChip>
+				</killedLeavingsPlayerHostile>
+				<race>
+					<body>APM_Dominus</body>
 			<baseBodySize>3</baseBodySize>
 			<baseHealthScale>6.2</baseHealthScale>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>

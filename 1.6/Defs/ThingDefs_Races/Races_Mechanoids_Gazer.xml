@@ -48,6 +48,9 @@
         <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
       </li>
     </tools>
+    <killedLeavingsPlayerHostile>
+      <OcularChip>1</OcularChip>
+    </killedLeavingsPlayerHostile>
     <race>
       <body>APM_Gazer</body>
       <baseBodySize>3</baseBodySize>

@@ -12,7 +12,7 @@ namespace ApexMechanoids
         public static readonly Color DominusColor  = new Color(230f / 255f, 130f / 255f,  40f / 255f);
         public static readonly Color CelerusColor  = new Color(160f / 255f,  60f / 255f, 230f / 255f);
         public static readonly Color TerminusColor = new Color(229f / 255f, 211f / 255f, 127f / 255f);
-        public static readonly Color PlayerBlueColor = new Color(68f / 255f, 150f / 255f, 215f / 255f);
+        public static readonly Color PlayerColor = new Color(68f / 255f, 150f / 255f, 215f / 255f);
 
         public static Color GetAbilityColor(Pawn caster)
         {
@@ -20,9 +20,9 @@ namespace ApexMechanoids
             if (kind != null)
             {
                 bool isBoss = kind.EndsWith("_Boss");
-                if (kind.Contains("Dominus")) return isBoss ? DominusColor  : PlayerBlueColor;
-                if (kind.Contains("Celerus")) return isBoss ? CelerusColor  : PlayerBlueColor;
-                if (kind.Contains("Terminus")) return isBoss ? TerminusColor : PlayerBlueColor;
+                if (kind.Contains("Dominus")) return isBoss ? DominusColor  : PlayerColor;
+                if (kind.Contains("Celerus")) return isBoss ? CelerusColor  : PlayerColor;
+                if (kind.Contains("Terminus")) return isBoss ? TerminusColor : PlayerColor;
             }
             return caster?.Faction?.AllegianceColor ?? Color.white;
         }
