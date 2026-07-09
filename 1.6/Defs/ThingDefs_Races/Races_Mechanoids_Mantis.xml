@@ -6,9 +6,9 @@
 		<description>Descended from the well known and well feared scyther mechanoid, the mantis was built to rip apart foes in melee combat. Featuring a combination of mechanoid components and synthesized artificial muscles, flexible yet durable armor plates and a set of resonating plasteel cutting claws, this mechanoid well surpasses its predecessors.For targets that outrange this mechanoid, it is able to quickly dash forward in a burst of speed, unleashing a swift strike. If its physical capabilities were fearsome enough, it actively analyzes the battlefield around it, and chooses an opportune time to trigger its installed repair mechanite swarm to heal and supercharge its abilities after it has ended a sufficient amount of targets.</description>
 		<statBases>
 			<MarketValue>1600</MarketValue>
-			<MoveSpeed>3.5</MoveSpeed>
-			<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
-			<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+			<MoveSpeed>4.5</MoveSpeed>
+			<ArmorRating_Blunt>0.20</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.40</ArmorRating_Sharp>
 			<BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">5</BandwidthCost>
 			<ControlTakingTime MayRequire="Ludeon.Rimworld.Biotech">30</ControlTakingTime>
 			<ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">1</ToxicEnvironmentResistance>
@@ -26,6 +26,30 @@
 				<cooldownTime>2.9</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
 				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+			</li>
+			<li>
+				<label>left blade</label>
+				<labelNoLocation>blade</labelNoLocation>
+				<capacities>
+					<li>Cut</li>
+					<li>Stab</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>LeftBlade</linkedBodyPartsGroup>
+				<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+			</li>
+			<li>
+				<label>right blade</label>
+				<labelNoLocation>blade</labelNoLocation>
+				<capacities>
+					<li>Cut</li>
+					<li>Stab</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>RightBlade</linkedBodyPartsGroup>
+				<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
 			</li>
 		</tools>
 		<race>
@@ -56,6 +80,9 @@
 			<soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding_Generic</soundMeleeHitBuilding>
 			<soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
 		</race>
+		<hediffGiverSets>
+				<li>APM_Mech_HealOnKills</li>
+			</hediffGiverSets>
 		<butcherProducts>
 			<Steel>50</Steel>
 			<Plasteel>20</Plasteel>
@@ -66,7 +93,7 @@
 		<defName>APM_Mech_Mantis</defName>
 		<label>mantis</label>
 		<race>APM_Mech_Mantis</race>
-		<combatPower>550</combatPower>
+		<combatPower>200</combatPower>
 		<maxPerGroup MayRequire="Ludeon.Rimworld.Biotech">2</maxPerGroup>
 		<controlGroupPortraitZoom MayRequire="Ludeon.Rimworld.Biotech">0.48</controlGroupPortraitZoom>
 		<lifeStages>

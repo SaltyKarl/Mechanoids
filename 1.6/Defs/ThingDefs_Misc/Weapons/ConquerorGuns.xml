@@ -36,7 +36,7 @@
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>Bullet_ChargeRifle</defaultProjectile>
+				<defaultProjectile>Bullet_ChargeAR</defaultProjectile>
 				<warmupTime>1.0</warmupTime>
 				<range>27.9</range>
 				<ticksBetweenBurstShots>12</ticksBetweenBurstShots>
@@ -67,6 +67,22 @@
 		</tools>
 	</ThingDef>
 
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_ChargeAR</defName>
+		<label>charge assault shot</label>
+		<graphicData>
+			<texPath>Things/Projectile/Charge_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>11</damageAmountBase>
+			<armorPenetrationBase>0.35</armorPenetrationBase>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+
 	<ThingDef ParentName="BaseGun" Name="APM_Gun_Conqueror_DMR">
 		<defName>APM_Gun_Conqueror_DMR</defName>
 		<label>charge carbine</label>
@@ -87,13 +103,9 @@
 			<AccuracyTouch>0.60</AccuracyTouch>
 			<AccuracyShort>0.75</AccuracyShort>
 			<AccuracyMedium>0.75</AccuracyMedium>
-			<AccuracyLong>0.80</AccuracyLong>
+			<AccuracyLong>0.70</AccuracyLong>
 			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
 		</statBases>
-		<costList>
-			<Plasteel>60</Plasteel>
-			<ComponentSpacer>3</ComponentSpacer>
-		</costList>
 		<weaponTags>
 			<li>APM_WeaponConquerorDMR</li>
 		</weaponTags>
@@ -108,7 +120,7 @@
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_ChargeLance</defaultProjectile>
-				<warmupTime>1.7</warmupTime>
+				<warmupTime>1.5</warmupTime>
 				<range>32.9</range>
 				<soundCast>ChargeLance_Fire</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
@@ -139,6 +151,7 @@
 		<projectile>
 			<damageDef>Bullet</damageDef>
 			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationBase>0.20</armorPenetrationBase>
 			<speed>90</speed>
 		</projectile>
 	</ThingDef>
@@ -164,7 +177,7 @@
 			<AccuracyShort>0.55</AccuracyShort>
 			<AccuracyMedium>0.4</AccuracyMedium>
 			<AccuracyLong>0.3</AccuracyLong>
-			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+			<RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
 			<Plasteel>60</Plasteel>

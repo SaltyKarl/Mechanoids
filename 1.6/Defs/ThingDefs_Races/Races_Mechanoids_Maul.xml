@@ -3,11 +3,11 @@
 	<ThingDef Name="APM_Mech_Maul" ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Maul</defName>
 		<label>Maul</label>
-		<description>TBD</description>
+		<description>Heavy mechanoid walker, that is more dangerous the more damaged it is, more damaged the armor better the cooling, a close to destoryed Maul is a very devastating beast.</description>
 		<statBases>
-			<MoveSpeed>4.2</MoveSpeed>
-			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.6</ArmorRating_Sharp>
+			<MoveSpeed>1.9</MoveSpeed>
+			<ArmorRating_Blunt>0.25</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.7</ArmorRating_Sharp>
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">4</BandwidthCost>
 		</statBases>
 		<tools>
@@ -47,7 +47,7 @@
 		</tools>
 		<race>
 			<body>APM_Maul</body>
-			<baseBodySize>2.0</baseBodySize>
+			<baseBodySize>2.5</baseBodySize>
 			<baseHealthScale>3.5</baseHealthScale>
 			<detritusLeavings>
 				<li>
@@ -100,7 +100,7 @@
 		<defName>APM_Mech_Maul</defName>
 		<label>maul</label>
 		<race>APM_Mech_Maul</race>
-		<combatPower>190</combatPower>
+		<combatPower>400</combatPower>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>

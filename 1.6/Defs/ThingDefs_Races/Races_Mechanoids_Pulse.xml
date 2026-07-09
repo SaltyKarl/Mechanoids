@@ -1,19 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<ThingDef ParentName="BaseMechanoid">
+	<ThingDef ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Pulse</defName>
 		<label>pulse</label>
 		<description>The latest in mechanoid urban warfare tactics is the pulse mechanoid. Designed to catch enemies off guard by breaching structures, it can then discharge its signature ability. Impulses fired from this mech’s shoulder mounts not only blast out with deafening sound, but blind nearby opponents with intense light. A sensory deprived target stands no chance against the mechhive’s ever continuous march. For those who still stand afterwards, an installed jump pack quickly sends this mech to its next target.</description>
 		<statBases>
 			<MarketValue>1200</MarketValue>
-			<MoveSpeed>3</MoveSpeed>
-			<ArmorRating_Blunt>0.45</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.75</ArmorRating_Sharp>
+			<MoveSpeed>3.8</MoveSpeed>
+			<ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.25</ArmorRating_Blunt>
 			<BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">3</BandwidthCost>
-			<ControlTakingTime MayRequire="Ludeon.Rimworld.Biotech">15</ControlTakingTime>
-			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.15</MechEnergyLossPerHP>
-			<WastepacksPerRecharge MayRequire="Ludeon.Rimworld.Biotech">5</WastepacksPerRecharge>
-			<EMPResistance MayRequire="Ludeon.Rimworld.Biotech">0.45</EMPResistance>
 		</statBases>
 		<tools>
 			<li>

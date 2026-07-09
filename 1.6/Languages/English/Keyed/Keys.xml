@@ -18,4 +18,5 @@
 	<APM_InsertMech>Insert mech</APM_InsertMech>
 	<APM_NoMechsAvailable>No mechs available.</APM_NoMechsAvailable>
 	<APM_UnityTooltip_Current>Current stats (with unity uplink):</APM_UnityTooltip_Current>
+	<APM_VampiricCharges>Vampiric charges: {0} / {1} ({2} heal ticks)</APM_VampiricCharges>
 </LanguageData>

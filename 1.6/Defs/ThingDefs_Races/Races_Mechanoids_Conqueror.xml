@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<ThingDef Abstract="True" Name="APM_Mech_ConquerorBase" ParentName="BaseMechanoidWalker">
+		<statBases>
+			<ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.20</ArmorRating_Blunt>
+			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
+		</statBases>
 		<tools>
 			<li>
 				<label>left fist</label>
