@@ -41,8 +41,17 @@
 			</li>
 		</tools>
 		<race>
+<<<<<<< Updated upstream
 			<body>APM_Vassal</body>
 			<baseHealthScale>1</baseHealthScale>
+=======
+			<body>APM_Satellite</body>
+			<baseHealthScale>1.0</baseHealthScale>
+			<baseBodySize>1.0</baseBodySize>
+			<hediffGiverSets>
+				<li>APM_Mech_Floating</li>
+			</hediffGiverSets>
+>>>>>>> Stashed changes
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>
@@ -57,7 +66,17 @@
 			</detritusLeavings>
 		</race>
 		<statBases>
+<<<<<<< Updated upstream
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
+=======
+			<MoveSpeed>5.2</MoveSpeed>
+			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.25</ArmorRating_Sharp>
+			<ArmorRating_Heat>2.0</ArmorRating_Heat>
+			<MarketValue>700</MarketValue>
+			<MechEnergyLossPerHP MayRequire="Ludeon.RimWorld.Biotech">0.66</MechEnergyLossPerHP>
+			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">1</BandwidthCost>
+>>>>>>> Stashed changes
 		</statBases>
 	</ThingDef>
 
@@ -65,7 +84,12 @@
 		<defName>APM_Mech_Satellite</defName>
 		<label>satellite</label>
 		<race>APM_Mech_Satellite</race>
+<<<<<<< Updated upstream
 		<combatPower>190</combatPower>
+=======
+		<combatPower>120</combatPower>
+		<forceNoDeathNotification>true</forceNoDeathNotification>
+>>>>>>> Stashed changes
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
@@ -95,5 +119,8 @@
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 	</PawnKindDef>
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 </Defs>

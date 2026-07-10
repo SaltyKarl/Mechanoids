@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
+<<<<<<< Updated upstream
   <ThingDef ParentName="BaseGun">
   <defName>APM_Solus</defName>
   <label>solus</label>
@@ -52,6 +53,60 @@
     </li>
   </verbs>
 </ThingDef>
+=======
+	<ThingDef ParentName="BaseGun">
+		<defName>APM_Solus</defName>
+		<label>solus</label>
+		<description>A reinforced gamma-ray emitter capable of producing a dense, concentrated ball of destructive energy. As the ball passes by targets, it discharges into them and ignites its surroundings. It is a particularly devastating weapon against groups of enemies. The massive energy output requires stabilization protocols to prevent self-damage.</description>
+		<graphicData>
+			<texPath>Things/Item/Equipment/WeaponRanged/Solus</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<techLevel>Ultra</techLevel>
+		<tradeability>Sellable</tradeability>
+		<smeltable>false</smeltable>
+		<relicChance>0</relicChance>
+		<statBases>
+			<MarketValue>5000</MarketValue>
+			<Mass>9.5</Mass>
+			<AccuracyTouch>1.0</AccuracyTouch>
+			<AccuracyShort>1.0</AccuracyShort>
+			<AccuracyMedium>1.0</AccuracyMedium>
+			<AccuracyLong>1.0</AccuracyLong>
+			<RangedWeapon_Cooldown>2.0</RangedWeapon_Cooldown>
+		</statBases>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+		</weaponClasses>
+		<tradeTags>
+			<li>WeaponRanged</li>
+		</tradeTags>
+		<weaponTags Inherit="False">
+			<li>APM_WeaponSolus</li>
+		</weaponTags>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>APM_SolusOrb</defaultProjectile>
+				<warmupTime>5.2</warmupTime>
+				<range>29.9</range>
+				<minRange>3.9</minRange>
+				<forcedMissRadius>0</forcedMissRadius>
+				<burstShotCount>1</burstShotCount>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<soundCast>Shot_HellsphereCannonGun</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>16</muzzleFlashScale>
+				<drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				<ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
+			</li>
+		</verbs>
+	</ThingDef>
+>>>>>>> Stashed changes
 
   <ThingDef ParentName="BaseBullet">
     <defName>APM_SolusOrb</defName>

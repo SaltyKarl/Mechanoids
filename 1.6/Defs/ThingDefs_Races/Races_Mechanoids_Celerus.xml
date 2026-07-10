@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
+<<<<<<< Updated upstream
 
 	<ThingDef ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Celerus</defName>
+=======
+	<ThingDef ParentName="BaseMechanoid" Name="APM_Mech_Celerus_Base" Abstract="True">
+>>>>>>> Stashed changes
 		<label>Celerus</label>
 		<description>Three powerful mechanoid types were created by an Archotech mind in an attempt to create a central commander of all mechanoid forces. Influenced by the Old Earth region of Japan during its Sengoku period, the swift and stealthy Celerus is not any weaker for its speed. It has the ability to skip itself short distances around it as well as create a smokescreen to hinder enemies perception of it and anything around it, additionally becoming psychically imperceptible in this area. On top of those effects, enemies will receive periodic.</description>
+		<statBases>
+			<MoveSpeed>4.7</MoveSpeed>
+			<ArmorRating_Blunt>0.40</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.60</ArmorRating_Sharp>
+			<ArmorRating_Heat>2.0</ArmorRating_Heat>
+			<MarketValue>1600</MarketValue>
+			<MechEnergyLossPerHP MayRequire="Ludeon.RimWorld.Biotech">0.15</MechEnergyLossPerHP>
+			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">4</BandwidthCost>
+			<EMPResistance MayRequire="Ludeon.Rimworld.Biotech">0.45</EMPResistance>
+		</statBases>
+		
 		<tools>
 			<li>
 				<label>left fist</label>
@@ -36,6 +51,7 @@
 				<power>8.5</power>
 				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+<<<<<<< Updated upstream
 				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
 				<chanceFactor>0.2</chanceFactor>
 			</li>
@@ -43,6 +59,35 @@
 		<race>
 			<body>APM_Vassal</body>
 			<baseHealthScale>1</baseHealthScale>
+=======
+					<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+						<chanceFactor>0.2</chanceFactor>
+					</li>
+				</tools>
+				<killedLeavingsPlayerHostile>
+					<PsyfluxChip>1</PsyfluxChip>
+				</killedLeavingsPlayerHostile>
+		<race>
+					<body>APM_Celerus</body>
+			<baseHealthScale>1</baseHealthScale>
+			<baseBodySize>1.5</baseBodySize>
+			<lifeStageAges>
+				<li>
+					<def>MechanoidFullyFormed</def>
+					<minAge>0</minAge>
+					<soundWounded>Pawn_Mech_Centipede_Wounded</soundWounded>
+					<soundDeath>Pawn_Mech_Centipede_Death</soundDeath>
+					<soundCall>Pawn_Mech_Centipede_Call</soundCall>
+				</li>
+				<li MayRequire="Ludeon.RimWorld.Biotech">
+					<def>MechanoidFullyFormed</def>
+					<minAge>100</minAge>
+					<soundWounded>Pawn_Mech_Centipede_Wounded</soundWounded>
+					<soundDeath>Pawn_Mech_Centipede_Death</soundDeath>
+					<soundCall>Pawn_Mech_Centipede_Call</soundCall>
+				</li>
+			</lifeStageAges>
+>>>>>>> Stashed changes
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>
@@ -56,16 +101,37 @@
 				</li>
 			</detritusLeavings>
 		</race>
+<<<<<<< Updated upstream
 		<statBases>
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
 		</statBases>
+=======
+		<butcherProducts>
+			<Steel>40</Steel>
+			<Plasteel>30</Plasteel>
+		</butcherProducts>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_MechanitorRangeExtender">
+				<minRange>7.9</minRange>
+				<maxRange>15.4</maxRange>
+			</li>
+		</comps>
+>>>>>>> Stashed changes
+	</ThingDef>
+
+	<ThingDef ParentName="APM_Mech_Celerus_Base">
+		<defName>APM_Mech_Celerus</defName>
+	</ThingDef>
+
+	<ThingDef ParentName="APM_Mech_Celerus_Base">
+		<defName>APM_Mech_CelerusB</defName>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Celerus_Boss</defName>
 		<label>Celerus</label>
-		<race>APM_Mech_Celerus</race>
-		<combatPower>190</combatPower>
+		<race>APM_Mech_CelerusB</race>
+		<combatPower>550</combatPower>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
@@ -95,11 +161,12 @@
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 	</PawnKindDef>
+	
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Celerus</defName>
 		<label>Celerus</label>
 		<race>APM_Mech_Celerus</race>
-		<combatPower>190</combatPower>
+		<combatPower>550</combatPower>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
@@ -129,5 +196,8 @@
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 	</PawnKindDef>
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 </Defs>

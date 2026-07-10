@@ -7,8 +7,12 @@
 		<description>A very unique mechanoid, the frostivus is a mobile cryogenic chamber. It consumes organic material such as foodstuffs to store, freeze and dispense at request. It can be commanded to seal a targeted pawn inside of itself to store for the mechhive to later utilize for its twisted machinations. Not entirely for utility, the frostivus can also extend its chilling properties to its extremities, inflicting hypothermia over repeated attacks.</description>
 		<statBases>
 			<MarketValue>1200</MarketValue>
-			<MoveSpeed>2.2</MoveSpeed>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">3</BandwidthCost>
+			<MoveSpeed>3.3</MoveSpeed>
+			<ArmorRating_Blunt>0.22</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.4</ArmorRating_Sharp>
+			<ArmorRating_Heat>2.0</ArmorRating_Heat>
+			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
+			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.66</MechEnergyLossPerHP>
 		</statBases>
 		<tools>
 			<li>
@@ -48,7 +52,8 @@
 		<race>
 			<body>Pikeman</body>
 			<baseBodySize>3.0</baseBodySize>
-			<baseHealthScale>3.0</baseHealthScale>
+			<baseHealthScale>1.82</baseHealthScale>
+			<mechWeightClass>Medium</mechWeightClass>
 			<lifeStageAges Inherit="False">
 				<li>
 					<def>MechanoidFullyFormed</def>
@@ -89,7 +94,15 @@
 		<defName>APM_Mech_Frostivus</defName>
 		<label>frostivus</label>
 		<race>APM_Mech_Frostivus</race>
+<<<<<<< Updated upstream
 		<combatPower>90</combatPower>
+=======
+		<combatPower>200</combatPower>
+		<weaponTags>
+			<!--<li>APM_FrostivusWeapon</li>-->
+		</weaponTags>
+		<weaponMoney>9999~9999</weaponMoney>
+>>>>>>> Stashed changes
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
@@ -125,5 +138,54 @@
 
 		</abilities>
 	</PawnKindDef>
+<<<<<<< Updated upstream
 
+=======
+	
+	<!-- Abilities -->
+	<AbilityDef>
+		<defName>APM_Ability_CryptoSwallow</defName>
+		<label>Crypto Swallow</label>
+		<description>Engulfs a living pawn or corpse, sealing it within an internal cryo-chamber. Preserves the target in suspended animation - halting decay and biological processes until released.</description>
+		<iconPath>UI/Cryptoswallow</iconPath>
+		<jobDef>CastAbilityOnThingMelee</jobDef>
+		<stunTargetWhileCasting>True</stunTargetWhileCasting>
+		<showPsycastEffects>False</showPsycastEffects>
+		<displayGizmoWhileUndrafted>True</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>False</disableGizmoWhileUndrafted>
+		<showWhenDrafted>false</showWhenDrafted>
+		<cooldownTicksRange>3600~3600</cooldownTicksRange>
+		<hostile>true</hostile>
+		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<writeCombatLog>true</writeCombatLog>
+		<aiCanUse>true</aiCanUse>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<drawAimPie>False</drawAimPie>
+			<range>-1</range>
+			<warmupTime>1.0</warmupTime>
+			<requireLineOfSight>True</requireLineOfSight>
+			<soundCast>CryptosleepCasket_Eject</soundCast>
+			<targetParams>
+				<canTargetSelf>False</canTargetSelf>
+				<canTargetPawns>True</canTargetPawns>
+				<canTargetAnimals>False</canTargetAnimals>
+				<canTargetMechs>False</canTargetMechs>
+				<canTargetHumans>True</canTargetHumans>
+				<canTargetSubhumans>false</canTargetSubhumans>
+				<canTargetBuildings>False</canTargetBuildings>
+				<canTargetLocations>False</canTargetLocations>
+				<canTargetCorpses>True</canTargetCorpses>
+				<neverTargetHostileFaction>True</neverTargetHostileFaction>
+			</targetParams>
+		</verbProperties>
+		<statBases>
+			<Ability_Duration>0</Ability_Duration>
+			<Ability_EffectRadius>0</Ability_EffectRadius>
+		</statBases>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_CryptoSwallow"></li>
+		</comps>
+	</AbilityDef>
+>>>>>>> Stashed changes
 </Defs>

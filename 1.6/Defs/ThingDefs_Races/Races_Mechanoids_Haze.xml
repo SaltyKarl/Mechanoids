@@ -6,14 +6,15 @@
 		<label>Haze</label>
 		<description>A mechanoid experiment into organic area denial, the haze can pump tox gas into the area around it. Its melee attacks are especially lethal, inflicting toxic buildup upon hit. The intellect of the mechhive knows no bounds, even repurposing its waste products to further its goals.</description>
 		<statBases>
-			<MarketValue>1600</MarketValue>
-			<MoveSpeed>1.3</MoveSpeed>
-			<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
-			<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
-			<BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">5</BandwidthCost>
+			<MarketValue>900</MarketValue>
+			<MoveSpeed>4.3</MoveSpeed>
+			<ArmorRating_Blunt>0.15</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+			<ArmorRating_Heat>2.0</ArmorRating_Heat>
+			<BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">2</BandwidthCost>
 			<ControlTakingTime MayRequire="Ludeon.Rimworld.Biotech">30</ControlTakingTime>
 			<ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">1</ToxicEnvironmentResistance>
-			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.15</MechEnergyLossPerHP>
+			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.2</MechEnergyLossPerHP>
 			<WastepacksPerRecharge MayRequire="Ludeon.Rimworld.Biotech">8</WastepacksPerRecharge>
 			<EMPResistance MayRequire="Ludeon.Rimworld.Biotech">0.35</EMPResistance>
 		</statBases>
@@ -32,10 +33,10 @@
 		<race>
 			<body>APM_Ravager</body>
 			<baseBodySize>3</baseBodySize>
-			<baseHealthScale>6.2</baseHealthScale>
+			<baseHealthScale>1.32</baseHealthScale>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
 			<intelligence>ToolUser</intelligence>
-			<mechWeightClass>UltraHeavy</mechWeightClass>
+			<mechWeightClass>Light</mechWeightClass>
 			<lifeStageAges>
 				<li>
 					<def>MechanoidFullyFormed</def>
@@ -58,8 +59,8 @@
 			<soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
 		</race>
 		<butcherProducts>
-			<Steel>50</Steel>
-			<Plasteel>20</Plasteel>
+			<Steel>20</Steel>
+			<Plasteel>5</Plasteel>
 		</butcherProducts>
 	</ThingDef>
 
@@ -67,7 +68,7 @@
 		<defName>APM_Mech_Haze</defName>
 		<label>haze</label>
 		<race>APM_Mech_Haze</race>
-		<combatPower>550</combatPower>
+		<combatPower>140</combatPower>
 		<maxPerGroup MayRequire="Ludeon.Rimworld.Biotech">2</maxPerGroup>
 		<controlGroupPortraitZoom MayRequire="Ludeon.Rimworld.Biotech">0.48</controlGroupPortraitZoom>
 		<lifeStages>
@@ -97,5 +98,8 @@
 			</li>
 		</lifeStages>
 	</PawnKindDef>
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 </Defs>

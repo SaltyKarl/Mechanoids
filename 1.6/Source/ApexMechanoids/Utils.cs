@@ -6,6 +6,31 @@ using Verse.AI;
 
 namespace ApexMechanoids
 {
+<<<<<<< Updated upstream
+=======
+    public static class ApexMechColors
+    {
+        public static readonly Color DominusColor  = new Color(230f / 255f, 130f / 255f,  40f / 255f);
+        public static readonly Color CelerusColor  = new Color(160f / 255f,  60f / 255f, 230f / 255f);
+        public static readonly Color TerminusColor = new Color(229f / 255f, 211f / 255f, 127f / 255f);
+        public static readonly Color PlayerColor = new Color(163f / 255f, 180f / 255f, 187f / 255f);
+
+        public static Color GetAbilityColor(Pawn caster)
+        {
+            string kind = caster?.kindDef?.defName;
+            if (kind != null)
+            {
+                bool isBoss = kind.EndsWith("_Boss");
+                if (kind.Contains("Dominus")) return isBoss ? DominusColor  : PlayerColor;
+                if (kind.Contains("Celerus")) return isBoss ? CelerusColor  : PlayerColor;
+                if (kind.Contains("Terminus")) return isBoss ? TerminusColor : PlayerColor;
+                if (kind.Contains("Vassal"))  return PlayerColor;
+            }
+            return caster?.Faction?.AllegianceColor ?? Color.white;
+        }
+    }
+
+>>>>>>> Stashed changes
     public static class Utils
     {
         public static BodyPartRecord GetNonMissingBodyPart(Pawn pawn, BodyPartDef def, BodyPartGroupDef group = null)
