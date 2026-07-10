@@ -51,7 +51,7 @@
 		<defName>APM_Mech_Pulse</defName>
 		<label>pulse</label>
 		<race>APM_Mech_Pulse</race>
-		<combatPower>300</combatPower>
+		<combatPower>240</combatPower>
 		<maxPerGroup MayRequire="Ludeon.Rimworld.Biotech">3</maxPerGroup>
 		<controlGroupPortraitZoom MayRequire="Ludeon.Rimworld.Biotech">0.65</controlGroupPortraitZoom>
 		<lifeStages>

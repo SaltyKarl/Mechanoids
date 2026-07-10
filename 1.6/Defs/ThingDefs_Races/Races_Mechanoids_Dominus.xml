@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<ThingDef ParentName="BaseMechanoid">
-		<defName>APM_Mech_Dominus</defName>
+	<ThingDef ParentName="BaseMechanoid" Name="APM_Mech_Dominus_Base" Abstract="True">
 		<label>Dominus</label>
 		<description>Three powerful mechanoid types were created by an Archotech mind in an attempt to create a central commander of all mechanoid forces. Influenced by the Old Earth nation of Rome, the Dominus provides considerable buffs to nearby allies and personally challenges perceived threats in 1v1 melee combat. The pure force of its determination manifests in a psychic maelstrom forming around those it challenges, summoning a shield generator and increasing damage taken until one stands victorious or it exhausts its will after a certain amount of time. If this occurs, both duelists will be significantly weakened for a period. If a victor emerges, the opposite will occur. It can alternatively channel its will into a temporary wave of energy for its allies. Additionally, mechanitors can extend their command range in a radius around this mech if under their control.</description>
 		<statBases>
-			<MarketValue>1600</MarketValue>
-			<MoveSpeed>3.5</MoveSpeed>
-			<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
-			<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+			<MarketValue>1500</MarketValue>
+			<MoveSpeed>3.4</MoveSpeed>
+			<ArmorRating_Blunt>0.44</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.65</ArmorRating_Sharp>
 			<BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">5</BandwidthCost>
 			<ControlTakingTime MayRequire="Ludeon.Rimworld.Biotech">30</ControlTakingTime>
 			<ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">1</ToxicEnvironmentResistance>
 			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.15</MechEnergyLossPerHP>
 			<WastepacksPerRecharge MayRequire="Ludeon.Rimworld.Biotech">8</WastepacksPerRecharge>
-			<EMPResistance MayRequire="Ludeon.Rimworld.Biotech">0.35</EMPResistance>
+			<EMPResistance MayRequire="Ludeon.Rimworld.Biotech">0.55</EMPResistance>
 		</statBases>
 		<tools>
 			<li>
@@ -25,16 +24,16 @@
 				<power>18.5</power>
 				<cooldownTime>2.9</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-					<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-					</li>
-				</tools>
-				<killedLeavingsPlayerHostile>
-					<PsionicChip>1</PsionicChip>
-				</killedLeavingsPlayerHostile>
-				<race>
-					<body>APM_Dominus</body>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+			</li>
+		</tools>
+		<killedLeavingsPlayerHostile>
+			<PsionicChip>1</PsionicChip>
+		</killedLeavingsPlayerHostile>
+		<race>
+			<body>APM_Dominus</body>
 			<baseBodySize>3</baseBodySize>
-			<baseHealthScale>6.2</baseHealthScale>
+			<baseHealthScale>4.5</baseHealthScale>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
 			<intelligence>ToolUser</intelligence>
 			<mechWeightClass>Medium</mechWeightClass>
@@ -65,11 +64,19 @@
 		</butcherProducts>
 	</ThingDef>
 
+	<ThingDef ParentName="APM_Mech_Dominus_Base">
+		<defName>APM_Mech_Dominus</defName>
+	</ThingDef>
+
+	<ThingDef ParentName="APM_Mech_Dominus_Base">
+		<defName>APM_Mech_DominusB</defName>
+	</ThingDef>
+
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Dominus</defName>
 		<label>dominus</label>
 		<race>APM_Mech_Dominus</race>
-		<combatPower>550</combatPower>
+		<combatPower>500</combatPower>
 		<maxPerGroup MayRequire="Ludeon.Rimworld.Biotech">2</maxPerGroup>
 		<controlGroupPortraitZoom MayRequire="Ludeon.Rimworld.Biotech">0.48</controlGroupPortraitZoom>
 		<lifeStages>
@@ -107,11 +114,12 @@
 			<li>APM_Mech_Duel</li>
 		</abilities>
 	</PawnKindDef>
+
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Dominus_Boss</defName>
 		<label>dominus</label>
-		<race>APM_Mech_Dominus</race>
-		<combatPower>550</combatPower>
+		<race>APM_Mech_DominusB</race>
+		<combatPower>500</combatPower>
 		<maxPerGroup MayRequire="Ludeon.Rimworld.Biotech">2</maxPerGroup>
 		<controlGroupPortraitZoom MayRequire="Ludeon.Rimworld.Biotech">0.48</controlGroupPortraitZoom>
 		<lifeStages>
@@ -155,7 +163,7 @@
 		<label>Press The Attack</label>
 		<description>The Dominus emits a psychic pulse that influences nearby allies to ignore pain, move faster and stay in high spirits.</description>
 		<iconPath>UI/PressTheAttack</iconPath>
-		<cooldownTicksRange>180000</cooldownTicksRange> <!-- 3 days -->
+		<cooldownTicksRange>180000</cooldownTicksRange>
 		<targetRequired>false</targetRequired>
 		<hostile>false</hostile>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
@@ -184,8 +192,8 @@
 
 	<HediffDef>
 		<defName>APM_Hediff_PressTheAttack</defName>
-		<label>Press The Attack</label>
-		<description>PLACEHOLDER</description>
+		<label>Psionic rush</label>
+		<description>A psionic wave directly stimulating the brain's neural pathways. It temporarily numbs pain receptors and forces an intense surge of adrenaline, allowing the subject to move significantly faster and disregard physical trauma. The effect is highly potent but short-lived.</description>
 		<hediffClass>HediffWithComps</hediffClass>
 		<comps>
 			<li Class="HediffCompProperties_Disappears">
@@ -222,21 +230,6 @@
 					<defaultData>
 						<layer>92</layer>
 						<offset>(0,0,0.5)</offset>
-					</defaultData>
-				</drawData>
-			</li>
-			<li> <!--For pawns whos render tree has no head node, e.g. mechs-->
-				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
-				<texPath>Effects/PressTheAttack/Halo</texPath>
-				<!--<parentTagDef>Head</parentTagDef>-->
-				<pawnType>NonHumanlikeOnly</pawnType>
-				<color>(68, 150, 215)</color>
-				<drawData>
-					<scale>0.7</scale>
-					<scaleOffsetByBodySize>true</scaleOffsetByBodySize>
-					<defaultData>
-						<layer>92</layer>
-						<offset>(0,0,0.9)</offset>
 					</defaultData>
 				</drawData>
 			</li>
@@ -253,14 +246,6 @@
 					<li>Effects/PressTheAttack/Wings/WingsC</li>
 				</texPaths>
 
-				<!--Optional, if we want specific time for each frame-->
-				<!--
-				<ticksPerTexPaths>
-					<li>3</li>
-					<li>4</li>
-					<li>3</li>
-				</ticksPerTexPaths>
-				-->
 				<ticksPerTexture>3</ticksPerTexture> <!--Alternative way to specify each frame time-->
 				<drawData>
 					<scale>2.3</scale>
@@ -275,8 +260,8 @@
 
 	<HediffDef>
 		<defName>APM_Hediff_PressTheAttack_Boss</defName>
-		<label>Press The Attack</label>
-		<description>PLACEHOLDER</description>
+		<label>Psionic rush</label>
+		<description>A psionic wave directly stimulating the brain's neural pathways. It temporarily numbs pain receptors and forces an intense surge of adrenaline, allowing the subject to move significantly faster and disregard physical trauma. The effect is highly potent but short-lived.</description>
 		<hediffClass>HediffWithComps</hediffClass>
 		<comps>
 			<li Class="HediffCompProperties_Disappears">
@@ -301,7 +286,7 @@
 			</li>
 		</stages>
 		<renderNodeProperties>
-			<li> <!--For pawns with head render node-->
+			<li>
 				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
 				<texPath>Effects/PressTheAttack/Halo</texPath>
 				<parentTagDef>Head</parentTagDef>
@@ -313,21 +298,6 @@
 					<defaultData>
 						<layer>92</layer>
 						<offset>(0,0,0.5)</offset>
-					</defaultData>
-				</drawData>
-			</li>
-			<li> <!--For pawns whos render tree has no head node, e.g. mechs-->
-				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
-				<texPath>Effects/PressTheAttack/Halo</texPath>
-				<!--<parentTagDef>Head</parentTagDef>-->
-				<pawnType>NonHumanlikeOnly</pawnType>
-				<color>(230, 130, 40)</color>
-				<drawData>
-					<scale>0.7</scale>
-					<scaleOffsetByBodySize>true</scaleOffsetByBodySize>
-					<defaultData>
-						<layer>92</layer>
-						<offset>(0,0,0.9)</offset>
 					</defaultData>
 				</drawData>
 			</li>
@@ -363,34 +333,20 @@
 		<developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
 		<stages>
 			<li>
-				<label>Press The Attack</label>
-				<description>PLACEHOLDER.</description>
-				<baseMoodEffect>3</baseMoodEffect>
+				<label>Rush</label>
+				<description>I'm ready to Fight.</description>
+				<baseMoodEffect>6</baseMoodEffect>
 			</li>
 		</stages>
 	</ThoughtDef>
 
-	<ThoughtDef>
-		<defName>APM_Thought_PressTheAttack_Boss</defName>
-		<workerClass>ThoughtWorker_Hediff</workerClass>
-		<hediff>APM_Hediff_PressTheAttack_Boss</hediff>
-		<validWhileDespawned>true</validWhileDespawned>
-		<developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
-		<stages>
-			<li>
-				<label>Press The Attack</label>
-				<description>PLACEHOLDER.</description>
-				<baseMoodEffect>3</baseMoodEffect>
-			</li>
-		</stages>
-	</ThoughtDef>
 
 	<AbilityDef>
 		<defName>APM_Mech_Duel</defName>
 		<label>the duel trial</label>
-		<description>A selected target is chosen for a duel and a shield is generated around the duelists. For the duration of the duel, ranged attacks, abilities and Incoming damage increased.  Additionally, if the duel does not end within a certain time frame, the duelists gain a harsh debuff. If either combatant dies or is downed, the victor gains a powerful temporary buff instead.</description>
+		<description>A selected target is chosen for a duel and a shield is generated around the duelists. For the duration of the duel, ranged attacks, abilities and Incoming damage increased. Additionally, if the duel does not end within a certain time frame, the duelists gain a harsh debuff. If either combatant dies or is downed, the victor gains a powerful temporary buff instead.</description>
 		<iconPath>UI/Duel</iconPath>
-		<cooldownTicksRange>1800</cooldownTicksRange> <!-- 30 seconds -->
+		<cooldownTicksRange>1800</cooldownTicksRange>
 		<targetRequired>true</targetRequired>
 		<hostile>true</hostile>
 		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
@@ -422,47 +378,6 @@
 			</li>
 			<li Class="ApexMechanoids.CompProperties_SpawnThingDuelAttached">
 				<thing>APM_DuelSpot</thing>
-			</li>
-		</comps>
-	</AbilityDef>
-
-	<AbilityDef>
-		<defName>APM_Mech_Duel_Boss</defName>
-		<label>the duel trial</label>
-		<description>A selected target is chosen for a duel and a shield is generated around the duelists. For the duration of the duel, ranged attacks, abilities and Incoming damage increased.  Additionally, if the duel does not end within a certain time frame, the duelists gain a harsh debuff. If either combatant dies or is downed, the victor gains a powerful temporary buff instead.</description>
-		<iconPath>UI/Duel</iconPath>
-		<cooldownTicksRange>1800</cooldownTicksRange> <!-- 30 seconds -->
-		<targetRequired>true</targetRequired>
-		<hostile>true</hostile>
-		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
-		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
-		<verbProperties>
-			<verbClass>Verb_CastAbility</verbClass>
-			<warmupTime>1</warmupTime>
-			<drawAimPie>false</drawAimPie>
-			<range>5</range>
-			<targetParams>
-				<canTargetCorpses>false</canTargetCorpses>
-				<canTargetItems>false</canTargetItems>
-				<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
-				<canTargetSelf>false</canTargetSelf>
-				<canTargetPawns>true</canTargetPawns>
-				<neverTargetIncapacitated>true</neverTargetIncapacitated>
-				<canTargetAnimals>false</canTargetAnimals>
-				<canTargetBuildings>false</canTargetBuildings>
-				<thingCategory>None</thingCategory>
-			</targetParams>
-		</verbProperties>
-		<comps>
-			<li Class="CompProperties_AbilityGiveMentalState">
-				<compClass>CompAbilityEffect_GiveMentalState</compClass>
-				<stateDef>APM_Duel_Boss</stateDef>
-				<stateDefForMechs>APM_Duel_Boss</stateDefForMechs>
-				<applyToSelf>false</applyToSelf>
-				<forced>true</forced>
-			</li>
-			<li Class="ApexMechanoids.CompProperties_SpawnThingDuelAttached">
-				<thing>APM_DuelSpot_Boss</thing>
 			</li>
 		</comps>
 	</AbilityDef>

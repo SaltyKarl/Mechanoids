@@ -5,8 +5,8 @@
 		<label>Aegis</label>
 		<description>"The Aegis is a mighty mechanoid that sacrifices offensive capabilities for defensive mastery. The phrase 'The best defense is a good offense' rings true with the Aegis' dual shields."</description>
 		<statBases>
-			<MoveSpeed>1.6</MoveSpeed>
-			<ArmorRating_Blunt>0.20</ArmorRating_Blunt>
+			<MoveSpeed>1.9</MoveSpeed>
+			<ArmorRating_Blunt>0.30</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0.70</ArmorRating_Sharp>
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">3</BandwidthCost>
 			<WorkSpeedGlobal>1.5</WorkSpeedGlobal>
@@ -15,7 +15,7 @@
 			<body>APM_Aegis</body>
 			<baseBodySize>3.5</baseBodySize>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
-			<baseHealthScale>2</baseHealthScale>
+			<baseHealthScale>3.82</baseHealthScale>
 			<mechWeightClass>Heavy</mechWeightClass>
 			<renderTree>APM_RenderTree_Aegis</renderTree>
 			<lifeStageAges>
@@ -100,7 +100,7 @@
 		<label>Aegis</label>
 		<race>APM_Mech_Aegis</race>
 		<allowInMechClusters>true</allowInMechClusters>
-		<combatPower>250</combatPower>
+		<combatPower>400</combatPower>
 		<weaponTags>
 			<li>APM_AegisShield</li>
 		</weaponTags>

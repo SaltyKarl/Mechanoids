@@ -58,9 +58,6 @@
 				</li>
 			</detritusLeavings>
 		</race>
-		<statBases>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
-		</statBases>
 		<comps>
 			<li Class="ApexMechanoids.CompProperties_Unity">
 				<hediff>APM_Hediff_Unity</hediff>
@@ -220,9 +217,9 @@
 	<AbilityDef>
 		<defName>APM_UltimateSacrifice</defName>
 		<label>ultimate sacrifice</label>
-		<description>One conqueror can sacrifice himself to give a powerful buff to all allied conquerors in radius</description>
+		<description>By rapidly performing complex aiming, movement and logic calculations until its processing units liquify from the heat, this mechanoid grants its nearby allies a temporary stat buff</description>
 		<iconPath>UI/Sacrifice</iconPath>
-		<cooldownTicksRange>900000</cooldownTicksRange><!-- 15 days -->
+		<cooldownTicksRange>900000</cooldownTicksRange>
 		<targetRequired>false</targetRequired>
 		<hostile>false</hostile>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
@@ -264,7 +261,7 @@
 	<HediffDef>
 		<defName>APM_Hediff_UltimateSacrifice</defName>
 		<label>ultimate sacrifice</label>
-		<description>Ultimate Sacrifice - One conqueror can sacrifice himself to give a powerful buff to all allied conquerors in radius.</description>
+		<description>Ultimate Sacrifice - One conqueror sacrifice himself to give a powerful buff to all allied conquerors in radius.</description>
 		<hediffClass>HediffWithComps</hediffClass>
 		<comps>
 			<li Class="HediffCompProperties_Disappears">

@@ -1,0 +1,200 @@
+<Defs>
+	<ThingDef ParentName="ApparelBase">
+		<defName>APM_Apparel_MechamancerSuit</defName>
+		<label>mechmancer suit</label>
+		<description>A power-assisted armor suit packed with mechanitor-assistance gear. The mechmancer suit dramatically amplifies a mechanitor's bandwidth, providing a personal energy shield and damage resistance comparable to dedicated power armor.</description>
+		<techLevel>Spacer</techLevel>
+		<tradeTags>
+	<li>ExoticMisc</li>
+	<li>Clothing</li>
+    <li>HiTechArmor</li>
+    <li>Armor</li>
+    	</tradeTags>
+    <generateCommonality>2</generateCommonality>
+		<graphicData>
+			<texPath>Things/Pawn/Humanlike/Apparel/MechamancerSuit/MechJuggernaut_icon</texPath><!-- make an icon -->
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(0.85, 0.85)</drawSize>
+		</graphicData>
+		<statBases>
+		    <WorkToMake>60000</WorkToMake>
+      		<MaxHitPoints>400</MaxHitPoints>
+      		<Mass>12</Mass>
+			<ArmorRating_Sharp>1.07</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.9</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.70</ArmorRating_Heat>
+			<Insulation_Cold>50</Insulation_Cold>
+			<Insulation_Heat>30</Insulation_Heat>
+			<EquipDelay>25</EquipDelay>
+			<EnergyShieldRechargeRate MayRequire="Ludeon.RimWorld.Royalty">0.12</EnergyShieldRechargeRate>
+			<EnergyShieldEnergyMax MayRequire="Ludeon.RimWorld.Royalty">1.2</EnergyShieldEnergyMax>
+		</statBases>
+    	<costList>
+      	<ComponentSpacer>4</ComponentSpacer>
+      	<Plasteel>100</Plasteel>
+      	<Uranium>20</Uranium>
+    	</costList>
+		<comps>
+			<li Class="CompProperties_Shield" MayRequire="Ludeon.RimWorld.Royalty">
+				<blocksRangedWeapons>false</blocksRangedWeapons>
+			</li>
+		</comps>
+		<equippedStatOffsets>
+			<MechBandwidth>26</MechBandwidth>
+			<MechControlGroups>2</MechControlGroups>
+			<ShootingAccuracyPawn>-4</ShootingAccuracyPawn>
+			<MeleeHitChance>-0.6</MeleeHitChance>
+			<VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.4</VacuumResistance>
+		</equippedStatOffsets>
+		<apparel>
+		<bodyPartGroups>
+        	<li>Torso</li>
+        	<li>Neck</li>
+        	<li>Shoulders</li>
+        	<li>Arms</li>
+        	<li>Legs</li>
+      	</bodyPartGroups>
+		<layers>
+        <li>Middle</li>
+        <li>Shell</li>
+      </layers>
+			<tags>
+				<li>RoyalTier7</li>
+				<li>APM_Mechamancer</li>
+			</tags>
+			<wornGraphicPath>Things/Pawn/Humanlike/Apparel/MechamancerSuit/MechJuggernaut</wornGraphicPath>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+        <li>Spacefarer</li>
+      </defaultOutfitTags>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+      <forceEyesVisibleForRotations>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </forceEyesVisibleForRotations>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>(0.9,0.9,0.9,1)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.33,0.33,0.33,1)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.65,0.65,0.65,1)</only>
+        </li>
+        <li>
+          <weight>6</weight>
+          <min>(0.3,0.3,0.3,1)</min>
+          <max>(0.5,0.5,0.5,1)</max>
+        </li>
+      </options>
+    </colorGenerator>
+    <comps>
+      <li Class="CompProperties_Biocodable"/>
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+		<tradeability>Sellable</tradeability>
+	</ThingDef>
+
+	
+		<ThingDef ParentName="ApparelBase">
+		<defName>APM_Apparel_ArmorHelmetMechamancerHelmet</defName>
+		<label>mechamancer helmet</label>
+		<description>A heavy plasteel-weave helmet integrated with mechanoid-coordination systems. Enhances the wearer’s general control over of allied mechanoids, increasing mechanitor bandwidth and command groups while providing moderate protection.</description>
+		<techLevel>Spacer</techLevel>
+		<tradeTags>
+	<li>ExoticMisc</li>
+	<li>Clothing</li>
+    <li>HiTechArmor</li>
+    <li>Armor</li>
+    	</tradeTags>
+    <generateCommonality>2</generateCommonality>
+		<graphicData>
+			<texPath>Things/Pawn/Humanlike/Apparel/MechamancerHelmet/MechJuggernautH_icon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(0.75, 0.75)</drawSize>
+		</graphicData>
+		<statBases>
+      		<WorkToMake>30000</WorkToMake>
+      		<MaxHitPoints>290</MaxHitPoints>
+      		<Mass>4</Mass>
+			<ArmorRating_Sharp>0.78</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.43</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.42</ArmorRating_Heat>
+			<Insulation_Cold>5</Insulation_Cold>
+			<Insulation_Heat>2</Insulation_Heat>
+		</statBases>
+    	<costList>
+      	<ComponentSpacer>4</ComponentSpacer>
+      	<Plasteel>100</Plasteel>
+      	<Uranium>20</Uranium>
+    	</costList>
+		<equippedStatOffsets>
+			<MechBandwidth>12</MechBandwidth>
+			<ShootingAccuracyPawn>-5</ShootingAccuracyPawn>
+			<MeleeHitChance>-0.5</MeleeHitChance>
+			<VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.67</VacuumResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<bodyPartGroups>
+        	<li>FullHead</li>
+        	</bodyPartGroups>
+        	<layers>
+        	<li>Overhead</li>
+        	</layers>
+			<tags>
+				<li>RoyalTier7</li>
+				<li>APM_Mechamancer</li>
+			</tags>
+			<wornGraphicPath>Things/Pawn/Humanlike/Apparel/MechamancerHelmet/MechJuggernautH</wornGraphicPath>
+			      <defaultOutfitTags>
+        		<li>Soldier</li>
+        		<li>Spacefarer</li>
+      </defaultOutfitTags>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+      <forceEyesVisibleForRotations>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </forceEyesVisibleForRotations>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>(0.9,0.9,0.9,1)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.33,0.33,0.33,1)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.65,0.65,0.65,1)</only>
+        </li>
+        <li>
+          <weight>6</weight>
+          <min>(0.3,0.3,0.3,1)</min>
+          <max>(0.5,0.5,0.5,1)</max>
+        </li>
+      </options>
+    </colorGenerator>
+    <comps>
+      <li Class="CompProperties_Biocodable"/>
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+		<tradeability>Sellable</tradeability>
+	</ThingDef>
+</Defs>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	<APM_MechRepaired>{0} has been fully repaired.</APM_MechRepaired>
 	<APM_Repairing>Repairing {0}</APM_Repairing>
@@ -16,5 +16,4 @@
 	<APM_InsertMech>Insert mech</APM_InsertMech>
 	<APM_NoMechsAvailable>No mechs available.</APM_NoMechsAvailable>
 	<APM_UnityTooltip_Current>Current stats (with unity uplink):</APM_UnityTooltip_Current>
-	<APM_VampiricCharges>Vampiric charges: {0} / {1} ({2} heal ticks)</APM_VampiricCharges>
 </LanguageData>

@@ -26,6 +26,9 @@
 			<Plasteel>50</Plasteel>
 			<ComponentSpacer>2</ComponentSpacer>
 		</costList>
+		<thingSetMakerTags>
+			<li>RewardStandardQualitySuper</li>
+		</thingSetMakerTags>
 		<weaponTags>
 			<li>APM_WeaponConquerorAR</li>
 		</weaponTags>
@@ -179,10 +182,6 @@
 			<AccuracyLong>0.3</AccuracyLong>
 			<RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
 		</statBases>
-		<costList>
-			<Plasteel>60</Plasteel>
-			<ComponentSpacer>4</ComponentSpacer>
-		</costList>
 		<weaponTags>
 			<li>APM_WeaponConquerorLMG</li>
 		</weaponTags>

@@ -513,7 +513,7 @@
 			<li Class="HediffCompProperties_Immunizable">
 				<severityPerDayNotImmune>-4</severityPerDayNotImmune>
 			</li>
-			<li Class="HediffCompProperties_DisappearsOnDeath" />
+			<li Class="HediffCompProperties_DisappearsOnDeath"></li>
 			<li Class="HediffCompProperties_Disappears">
 				<showRemainingTime>True</showRemainingTime>
 			</li>
@@ -594,6 +594,7 @@
 			</targetParams>
 		</verbProperties>
 	</AbilityDef>
+<<<<<<< Updated upstream
 
 	<AbilityDef>
 		<defName>APM_Ability_SteelDiscipline</defName>
@@ -804,3 +805,144 @@
 		</pawnFlyer>
 	</ThingDef>
 </Defs>
+=======
+	
+	<AbilityDef>
+		<defName>APM_Ability_SteelDiscipline</defName>
+		<label>Steel Discipline</label>
+		<description>In a radius around the Vassal, its allies gain a speed boost and their mental break chance is reduced if organic. The Vassal's commanding presence inspires those nearby with renewed purpose and fortitude.</description>
+		<iconPath>UI/Icons/SteelDiscipline</iconPath>
+		<cooldownTicksRange>9000</cooldownTicksRange><!-- 2.5 hours -->
+		<hostile>false</hostile>
+		<targetRequired>false</targetRequired>
+		<aiCanUse>true</aiCanUse>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<soundCast>APM_SteelDiscipline_Cast</soundCast>
+			<warmupTime>1.5</warmupTime>
+			<range>0.1</range>
+			<requireLineOfSight>false</requireLineOfSight>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetBuildings>false</canTargetBuildings>
+				<canTargetLocations>false</canTargetLocations>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_AbilitySteelDiscipline">
+				<radius>12</radius>
+				<buffHediff>APM_Hediff_SteelDiscipline</buffHediff>
+				<inspiredThought>APM_Thought_InspiredByDiscipline</inspiredThought>
+			</li>
+		</comps>
+	</AbilityDef>
+
+	<AbilityDef>
+		<defName>APM_Ability_ToxicMist</defName>
+		<label>Toxic Mist</label>
+		<description>Similar to a tox pack, the haze releases tox gas around itself, enveloping the surrounding area in a toxic cloud.</description>
+		<iconPath>UI/Icons/ToxicMist</iconPath>
+		<cooldownTicksRange>18000</cooldownTicksRange><!-- 5 hours -->
+		<hostile>false</hostile>
+		<writeCombatLog>true</writeCombatLog>
+		<aiCanUse>true</aiCanUse>
+		<targetRequired>false</targetRequired>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<warmupTime>1.5</warmupTime>
+			<range>0.48</range>
+			<requireLineOfSight>false</requireLineOfSight>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetBuildings>false</canTargetBuildings>
+				<canTargetLocations>false</canTargetLocations>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_AbilitySpawnToxGas">
+				<radius>4.9</radius>
+				<gasAmount>16</gasAmount>
+				<spreadTicks>360</spreadTicks>
+				<emitIntervalTicks>5</emitIntervalTicks>
+				<cellsToPollute>8</cellsToPollute>
+				<pollutionRadius>4</pollutionRadius>
+				<pollutionEffecterDef>CellPollution_Performant</pollutionEffecterDef>
+			</li>
+		</comps>
+	</AbilityDef>
+	
+	<AbilityDef>
+		<defName>APM_Ability_SmokeScreen</defName>
+		<label>Smokescreen</label>
+		<description>Release a dense smokescreen, shrouding the Celerus and nearby allies in obscuring gas that hinders enemy perception and grants the Celerus combat bonuses while hidden.</description>
+		<iconPath>UI/Smokescreen</iconPath>
+		<cooldownTicksRange>3600</cooldownTicksRange><!-- 1 minute -->
+		<hostile>false</hostile>
+		<targetRequired>false</targetRequired>
+		<aiCanUse>true</aiCanUse>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<warmupStartSound>APM_SmokeScreen</warmupStartSound>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<warmupTime>1</warmupTime>
+			<range>0.48</range>
+			<requireLineOfSight>false</requireLineOfSight>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetBuildings>false</canTargetBuildings>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_AbilitySpawnSmokescreen">
+				<gasDef>APM_Smokescreen</gasDef>
+				<radius>3</radius>
+				<maxRadius>4.9</maxRadius>
+				<spreadIntervalTicks>15</spreadIntervalTicks>
+			</li>
+		</comps>
+	</AbilityDef>
+	<AbilityDef>
+		<defName>APM_Ability_SmokeScreen_Boss</defName>
+		<label>Smokescreen</label>
+		<description>Release a dense smokescreen, shrouding the Celerus and nearby allies in obscuring gas that hinders enemy perception and grants the Celerus combat bonuses while hidden.</description>
+		<iconPath>UI/Smokescreen</iconPath>
+		<cooldownTicksRange>3600</cooldownTicksRange>
+		<hostile>false</hostile>
+		<targetRequired>false</targetRequired>
+		<aiCanUse>true</aiCanUse>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<warmupStartSound>APM_SmokeScreen</warmupStartSound>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<warmupTime>1</warmupTime>
+			<range>0.48</range>
+			<requireLineOfSight>false</requireLineOfSight>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetBuildings>false</canTargetBuildings>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_AbilitySpawnSmokescreen">
+				<gasDef>APM_Smokescreen_Boss</gasDef>
+				<radius>3</radius>
+				<maxRadius>4.9</maxRadius>
+				<spreadIntervalTicks>15</spreadIntervalTicks>
+			</li>
+		</comps>
+	</AbilityDef>
+</Defs>
+>>>>>>> Stashed changes

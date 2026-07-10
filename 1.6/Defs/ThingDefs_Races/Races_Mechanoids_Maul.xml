@@ -9,6 +9,7 @@
 			<ArmorRating_Blunt>0.25</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0.7</ArmorRating_Sharp>
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">4</BandwidthCost>
+			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.2</MechEnergyLossPerHP>
 		</statBases>
 		<tools>
 			<li>
@@ -49,6 +50,7 @@
 			<body>APM_Maul</body>
 			<baseBodySize>2.5</baseBodySize>
 			<baseHealthScale>3.5</baseHealthScale>
+			<mechWeightClass>Heavy</mechWeightClass>
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>

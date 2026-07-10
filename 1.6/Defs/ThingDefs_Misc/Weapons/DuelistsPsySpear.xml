@@ -67,6 +67,9 @@
 			<li Class="CompProperties_EquippableAbility">
 				<abilityDef>APM_Mech_Duel</abilityDef>
 			</li>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
 		</comps>
 		<modExtensions>
 			<li Class="VEF.Things.ThingDefExtension" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">

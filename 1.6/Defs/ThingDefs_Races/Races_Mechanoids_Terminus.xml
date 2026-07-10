@@ -4,6 +4,15 @@
 		<defName>APM_Mech_Terminus</defName>
 		<label>Terminus</label>
 		<description>Three powerful mechanoid types were created by an Archotech mind in an attempt to create a central commander of all mechanoid forces. Influenced by the Old Earth region of Europe in medieval times, the Terminus cleaves through waves of foes and not even distance can mitigate its wrath. Its weapon has the ability to sweep through a large area in front of itself. The Terminus can also focus its psychic influence inward, enhancing its damage and stagger resistance. For foes who escape its grasp, it is also equipped with a grappling hook to draw in enemies from a distance to finish off. Additionally, mechanitors can extend their command range in a radius around this mech if under their control.</description>
+		<statBases>
+			<MarketValue>1900</MarketValue>
+			<MoveSpeed>3.3</MoveSpeed>
+			<ArmorRating_Blunt>0.54</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.72</ArmorRating_Sharp>
+			<BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">5</BandwidthCost>
+			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.15</MechEnergyLossPerHP>
+			<EMPResistance MayRequire="Ludeon.Rimworld.Biotech">0.45</EMPResistance>
+		</statBases>
 		<tools>
 			<li>
 				<label>left fist</label>
@@ -60,10 +69,13 @@
 				</li>
 			</detritusLeavings>
 		</race>
-		<statBases>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
-		</statBases>
+		<butcherProducts>
+			<Steel>80</Steel>
+			<Plasteel>50</Plasteel>
+		</butcherProducts>
 	</ThingDef>
+
+
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Terminus</defName>
 		<label>terminus</label>
@@ -107,10 +119,11 @@
 			<li>APM_HookPawn</li>
 		</abilities>
 	</PawnKindDef>
+	
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Terminus_Boss</defName>
 		<label>terminus boss</label>
-		<race>APM_Mech_Terminus</race>
+		<race>APM_Mech_TerminusB</race>
 		<combatPower>190</combatPower>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
@@ -199,6 +212,10 @@
 				<verticalOffset>0.06</verticalOffset>
 				<speedRange>2.8~3.2</speedRange>
 				<angleOffsetRange>-10~10</angleOffsetRange>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_MechanitorRangeExtender">
+				<minRange>0</minRange>
+				<maxRange>15</maxRange>
 			</li>
 		</comps>
 	</AbilityDef>
@@ -314,6 +331,7 @@
 			</li>
 		</comps>
 	</AbilityDef>
+
 	<ThingDef ParentName="BaseBullet">
 		<defName>SeveringEdge</defName>
 		<thingClass>ApexMechanoids.SeveringEdge</thingClass>
