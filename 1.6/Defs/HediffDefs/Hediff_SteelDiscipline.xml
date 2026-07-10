@@ -25,6 +25,8 @@
 			<li>
 				<statOffsets>
 					<MoveSpeed>0.4</MoveSpeed>
+					<ShootingAccuracyPawn>1</ShootingAccuracyPawn>
+					<MeleeHitChance>1</MeleeHitChance>
 					<!-- Reduce mental break threshold by 25% -->
 					<MentalBreakThreshold>-0.05</MentalBreakThreshold>
 				</statOffsets>
