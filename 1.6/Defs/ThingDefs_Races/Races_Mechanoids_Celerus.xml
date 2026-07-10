@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-<<<<<<< Updated upstream
-
-	<ThingDef ParentName="BaseMechanoidWalker">
-		<defName>APM_Mech_Celerus</defName>
-=======
 	<ThingDef ParentName="BaseMechanoid" Name="APM_Mech_Celerus_Base" Abstract="True">
->>>>>>> Stashed changes
 		<label>Celerus</label>
 		<description>Three powerful mechanoid types were created by an Archotech mind in an attempt to create a central commander of all mechanoid forces. Influenced by the Old Earth region of Japan during its Sengoku period, the swift and stealthy Celerus is not any weaker for its speed. It has the ability to skip itself short distances around it as well as create a smokescreen to hinder enemies perception of it and anything around it, additionally becoming psychically imperceptible in this area. On top of those effects, enemies will receive periodic.</description>
 		<statBases>
@@ -51,15 +45,6 @@
 				<power>8.5</power>
 				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-<<<<<<< Updated upstream
-				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-				<chanceFactor>0.2</chanceFactor>
-			</li>
-		</tools>
-		<race>
-			<body>APM_Vassal</body>
-			<baseHealthScale>1</baseHealthScale>
-=======
 					<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
 						<chanceFactor>0.2</chanceFactor>
 					</li>
@@ -87,7 +72,6 @@
 					<soundCall>Pawn_Mech_Centipede_Call</soundCall>
 				</li>
 			</lifeStageAges>
->>>>>>> Stashed changes
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>
@@ -101,11 +85,6 @@
 				</li>
 			</detritusLeavings>
 		</race>
-<<<<<<< Updated upstream
-		<statBases>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
-		</statBases>
-=======
 		<butcherProducts>
 			<Steel>40</Steel>
 			<Plasteel>30</Plasteel>
@@ -116,7 +95,6 @@
 				<maxRange>15.4</maxRange>
 			</li>
 		</comps>
->>>>>>> Stashed changes
 	</ThingDef>
 
 	<ThingDef ParentName="APM_Mech_Celerus_Base">
@@ -158,8 +136,16 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
+		<weaponMoney>9999~9999</weaponMoney>
+		<weaponTags Inherit="False">
+			<li>APM_WeaponCelerusApexVoltana</li>
+		</weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
+		<abilities>
+			<li>APM_CelerusBlink</li>
+			<li>APM_Ability_SmokeScreen_Boss</li>
+		</abilities>
 	</PawnKindDef>
 	
 	<PawnKindDef ParentName="BaseMechanoidKind">
@@ -193,11 +179,15 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
+		<weaponMoney>9999~9999</weaponMoney>
+		<weaponTags Inherit="False">
+			<li>APM_WeaponCelerusVoltana</li>
+		</weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
+		<abilities>
+			<li>APM_CelerusBlink</li>
+			<li>APM_Ability_SmokeScreen</li>
+		</abilities>
 	</PawnKindDef>
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 </Defs>

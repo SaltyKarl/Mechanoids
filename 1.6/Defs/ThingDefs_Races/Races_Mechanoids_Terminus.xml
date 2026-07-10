@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-<<<<<<< Updated upstream
-
-	<ThingDef ParentName="BaseMechanoidWalker">
-		<defName>APM_Mech_Terminus</defName>
-=======
 	<ThingDef ParentName="BaseMechanoid" Name="APM_Mech_Terminus_Base" Abstract="True">
->>>>>>> Stashed changes
 		<label>Terminus</label>
 		<description>Three powerful mechanoid types were created by an Archotech mind in an attempt to create a central commander of all mechanoid forces. Influenced by the Old Earth region of Europe in medieval times, the Terminus cleaves through waves of foes and not even distance can mitigate its wrath. Its weapon has the ability to sweep through a large area in front of itself. The Terminus can also focus its psychic influence inward, enhancing its damage and stagger resistance. For foes who escape its grasp, it is also equipped with a grappling hook to draw in enemies from a distance to finish off. Additionally, mechanitors can extend their command range in a radius around this mech if under their control.</description>
 		<statBases>
@@ -53,8 +47,6 @@
 				<chanceFactor>0.2</chanceFactor>
 			</li>
 		</tools>
-<<<<<<< Updated upstream
-=======
 		<comps>
 			<li Class="ApexMechanoids.CompProperties_MechanitorRangeExtender">
 				<minRange>7.9</minRange>
@@ -64,13 +56,10 @@
 		<killedLeavingsPlayerHostile>
 			<ExtraChip>1</ExtraChip>
 		</killedLeavingsPlayerHostile>
->>>>>>> Stashed changes
 		<race>
 			<body>APM_Terminus</body>
 			<renderTree>APM_RenderTree_Terminus</renderTree>
 			<baseHealthScale>1</baseHealthScale>
-<<<<<<< Updated upstream
-=======
 			<baseBodySize>2.0</baseBodySize>
 			<lifeStageAges>
 				<li>
@@ -88,7 +77,6 @@
 					<soundCall>Pawn_Mech_Centipede_Call</soundCall>
 				</li>
 			</lifeStageAges>
->>>>>>> Stashed changes
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>
@@ -108,8 +96,6 @@
 		</butcherProducts>
 	</ThingDef>
 
-<<<<<<< Updated upstream
-=======
 	<ThingDef ParentName="APM_Mech_Terminus_Base">
 		<defName>APM_Mech_Terminus</defName>
 	</ThingDef>
@@ -118,7 +104,6 @@
 		<defName>APM_Mech_TerminusB</defName>
 	</ThingDef>
 
->>>>>>> Stashed changes
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Terminus</defName>
 		<label>terminus</label>
@@ -152,13 +137,14 @@
 		</lifeStages>
 		<weaponMoney>9999~9999</weaponMoney>
 		<weaponTags Inherit="False">
-			<li>APM_WeaponTerminusSword</li>
+			<li>APM_WeaponTerminusExoblade</li>
 		</weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<abilities>
 			<li>SeveringEdge</li>
 			<li>APM_TerminusOverdrive</li>
+			<li>APM_HookPawn</li>
 		</abilities>
 	</PawnKindDef>
 	
@@ -195,66 +181,17 @@
 		</lifeStages>
 		<weaponMoney>9999~9999</weaponMoney>
 		<weaponTags Inherit="False">
-			<li>APM_WeaponTerminusSword</li>
+			<li>APM_WeaponTerminusApexExoblade</li>
 		</weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<abilities>
-			<li>SeveringEdge</li>
-			<li>APM_TerminusOverdrive</li>
+			<li>SeveringEdge_Boss</li>
+			<li>APM_TerminusOverdrive_Boss</li>
+			<li>APM_HookPawn</li>
 		</abilities>
 	</PawnKindDef>
 
-<<<<<<< Updated upstream
-
-	<AbilityDef>
-  <defName>APM_TerminusOverdrive</defName>
-  <label>overdrive</label>
-  <description>Terminus diverts power inward and briefly enters an overdriven combat state. While active, it sheds its cape, strikes harder, recovers between swings faster and becomes harder to stagger.</description>
-  <iconPath>UI/Icons/Overdrive</iconPath>
-  <cooldownTicksRange>90000</cooldownTicksRange>
-  <targetRequired>false</targetRequired>
-  <hostile>false</hostile>
-  <aiCanUse>true</aiCanUse>
-  <showCastingProgressBar>true</showCastingProgressBar>
-  <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
-  <statBases>
-    <Ability_Duration>30</Ability_Duration>
-  </statBases>
-  <verbProperties>
-    <verbClass>Verb_CastAbility</verbClass>
-    <warmupTime>1.1</warmupTime>
-    <range>0.9</range>
-    <drawAimPie>false</drawAimPie>
-    <targetParams>
-      <canTargetSelf>true</canTargetSelf>
-      <canTargetPawns>false</canTargetPawns>
-      <canTargetBuildings>false</canTargetBuildings>
-      <canTargetAnimals>false</canTargetAnimals>
-      <canTargetHumans>false</canTargetHumans>
-      <canTargetLocations>false</canTargetLocations>
-      <canTargetMechs>false</canTargetMechs>
-    </targetParams>
-  </verbProperties>
-  <comps>
-    <li Class="CompProperties_AbilityGiveHediff">
-      <compClass>CompAbilityEffect_GiveHediff</compClass>
-      <hediffDef>APM_Hediff_TerminusOverdrive</hediffDef>
-      <applyToSelf>true</applyToSelf>
-    </li>
-    <li Class="ApexMechanoids.CompProperties_TerminusOverdriveCapeBurst">
-      <moteDef>APM_Mote_TerminusCapeThrown</moteDef>
-      <burstCount>1</burstCount>
-      <spawnRadius>0.06</spawnRadius>
-      <sideOffsetDistance>0.0</sideOffsetDistance>
-      <verticalOffset>0.06</verticalOffset>
-      <speedRange>2.8~3.2</speedRange>
-      <angleOffsetRange>-10~10</angleOffsetRange>
-    </li>
-  </comps>
-</AbilityDef>
-
-=======
 	<AbilityDef>
 		<defName>APM_TerminusOverdrive</defName>
 		<label>overdrive</label>
@@ -361,19 +298,19 @@
 		</comps>
 	</AbilityDef>
 	
->>>>>>> Stashed changes
 	<HediffDef>
 		<defName>APM_Hediff_TerminusOverdrive</defName>
 		<label>overdrive</label>
 		<description>Terminus is diverting a burst of power into direct combat performance, trading away its cape and restraint for a short window of overwhelming aggression.</description>
 		<hediffClass>HediffWithComps</hediffClass>
-		<defaultLabelColor>(0.95, 0.45, 0.2)</defaultLabelColor>
+		<defaultLabelColor>(0.90, 0.83, 0.50)</defaultLabelColor>
 		<isBad>false</isBad>
 		<comps>
 			<li Class="HediffCompProperties_Disappears">
 				<showRemainingTime>True</showRemainingTime>
 			</li>
 			<li Class="HediffCompProperties_DisappearsOnDeath" />
+			<li Class="ApexMechanoids.HediffCompProperties_TerminusOverdriveCapeVisibility" />
 		</comps>
 		<stages>
 			<li>
@@ -395,7 +332,7 @@
 	<AbilityDef>
 		<defName>SeveringEdge</defName>
 		<label>severing edge</label>
-		<description>PLACEHOLDER.</description>
+		<description>Utilizing the innate psychic channeling qualities of its blade, the Terminus releases a sweeping blade of energy in front of itself, cutting anything in the area.</description>
 		<iconPath>UI/SeveringEdge</iconPath>
 		<cooldownTicksRange>60</cooldownTicksRange>
 		<aiCanUse>true</aiCanUse>
@@ -403,7 +340,7 @@
 			<verbClass>Verb_CastAbility</verbClass>
 			<range>4.9</range>
 			<warmupTime>0.3</warmupTime>
-			<soundCast>PiercingSpine_Launch</soundCast>
+			<soundCast>APM_SeveringEdge</soundCast>
 			<targetParams>
 				<canTargetLocations>true</canTargetLocations>
 			</targetParams>
@@ -432,9 +369,6 @@
 			<graphicClass>VEF.Graphics.Graphic_Animated</graphicClass>
 			<drawSize>3.7</drawSize>
 			<ticksPerFrame>5</ticksPerFrame>
-<<<<<<< Updated upstream
-			<color>(163,180,187)</color>
-=======
 			<color>(68, 150, 215)</color>
 		</graphicData>
 		<projectile>
@@ -488,7 +422,6 @@
 			<drawSize>3.7</drawSize>
 			<ticksPerFrame>5</ticksPerFrame>
 			<color>(229,211,127)</color>
->>>>>>> Stashed changes
 		</graphicData>
 		<projectile>
 			<damageDef>RangedStab</damageDef>
@@ -499,5 +432,4 @@
 			<useGraphicClass>true</useGraphicClass>
 		</projectile>
 	</ThingDef>
-
 </Defs>

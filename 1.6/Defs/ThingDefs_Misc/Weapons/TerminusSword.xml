@@ -1,63 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-<<<<<<< Updated upstream
-
-  <ThingDef ParentName="BaseGun">
-    <defName>APM_Weapon_TerminusSword</defName>
-    <label>terminus' sword</label>
-    <description>PLACEHOLDER</description>
-    <techLevel>Spacer</techLevel>
-    <graphicData>
-      <texPath>Things/Item/Equipment/WeaponMelee/TerminusSword</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>1.35</drawSize>
-    </graphicData>
-    <soundInteract>Interact_ChargeRifle</soundInteract>
-    <destroyOnDrop>true</destroyOnDrop>
-    <tradeability>None</tradeability>
-    <statBases>
-      <WorkToMake>45000</WorkToMake>
-      <Mass>4.6</Mass>
-    </statBases>
-    <costList>
-      <Plasteel>50</Plasteel>
-      <ComponentSpacer>2</ComponentSpacer>
-    </costList>
-    <thingSetMakerTags>
-      <li>RewardStandardQualitySuper</li>
-    </thingSetMakerTags>
-    <weaponTags>
-      <li>APM_WeaponTerminusSword</li>
-    </weaponTags>
-    <tools>
-      <li>
-        <label>handle</label>
-        <capacities>
-          <li>Blunt</li>
-        </capacities>
-        <power>9</power>
-        <cooldownTime>2</cooldownTime>
-      </li>
-      <li>
-        <label>point</label>
-        <capacities>
-          <li>Stab</li>
-        </capacities>
-        <power>27</power>
-        <cooldownTime>2</cooldownTime>
-      </li>
-      <li>
-        <label>blade</label>
-        <capacities>
-          <li>Cut</li>
-        </capacities>
-        <power>23</power>
-        <cooldownTime>2</cooldownTime>
-      </li>
-    </tools>
-    <modExtensions>
-			<li Class="VEF.Things.ThingDefExtension">
-=======
 	<ThingDef ParentName="BaseGun">
 		<defName>APM_Weapon_TerminusApexExoblade</defName>
 		<label>terminus apex exoblade</label>
@@ -186,27 +128,25 @@
 		<modExtensions>
 			<li Class="VEF.Things.ThingDefExtension" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">
 				<usableWithShields>true</usableWithShields>
->>>>>>> Stashed changes
 				<weaponDraftedDrawOffsets>
 					<north>
-						<drawOffset>(-0.25, 0.0, 0.35)</drawOffset>
-						<angleOffset>115</angleOffset>
+						<drawOffset>(-0.55, 0.00, 0.30)</drawOffset>
+						<angleOffset>130  </angleOffset>
 					</north>
 					<east>
-						<drawOffset>(0.30, 0.0, 0.35)</drawOffset>
-						<angleOffset>-45</angleOffset>
+						<drawOffset>(0.60, 0.00, 0.30)</drawOffset>
+						<angleOffset>-50</angleOffset>
 					</east>
 					<south>
-						<drawOffset>(0.25, 0.0, 0.35)</drawOffset>
-						<angleOffset>-45</angleOffset>
+						<drawOffset>(0.55, 0.00, 0.30)</drawOffset>
+						<angleOffset>-60  </angleOffset>
 					</south>
 					<west>
-						<drawOffset>(-0.30, 0.0, 0.35)</drawOffset>
-						<angleOffset>45</angleOffset>
+						<drawOffset>(-0.60, 0.00, 0.30)</drawOffset>
+						<angleOffset>50</angleOffset>
 					</west>
 				</weaponDraftedDrawOffsets>
 			</li>
 		</modExtensions>
-  </ThingDef>
-
+	</ThingDef>
 </Defs>

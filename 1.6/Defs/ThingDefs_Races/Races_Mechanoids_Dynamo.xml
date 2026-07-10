@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Dynamo</defName>
 		<label>dynamo</label>
@@ -17,8 +16,6 @@
 			<EnergyShieldRechargeRate>0.25</EnergyShieldRechargeRate>
 			<EnergyShieldEnergyMax>1.5</EnergyShieldEnergyMax>
 		</statBases>
-<<<<<<< Updated upstream
-=======
 		<tools>
 			<li>
 				<label>head</label>
@@ -31,9 +28,8 @@
 				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
 			</li>
 		</tools>
->>>>>>> Stashed changes
 		<race>
-			<body>Pikeman</body>
+			<body>APM_Dynamo</body>
 			<baseBodySize>3.0</baseBodySize>
 			<baseHealthScale>2.82</baseHealthScale>
 			<mechWeightClass>Heavy</mechWeightClass>
@@ -93,23 +89,15 @@
 				<activeSound>BulletShield_Ambience</activeSound>
 				<hitPoints>600</hitPoints>
 				<hitPointsRestoreInstantlyAfterCharge>true</hitPointsRestoreInstantlyAfterCharge>
-<<<<<<< Updated upstream
-				<chargeDurationTicks>5400</chargeDurationTicks><!-- 90s -->
-=======
 				<chargeDurationTicks>5400</chargeDurationTicks>
 				<rechargeHitPointsIntervalTicks>120</rechargeHitPointsIntervalTicks>
->>>>>>> Stashed changes
 				<drawWithNoSelection>True</drawWithNoSelection>
 				<disarmedByEmpForTicks>1500</disarmedByEmpForTicks>
 				<gizmoTipKey>ProjectileInterceptorTip</gizmoTipKey>
 			</li>
 			<li Class="ApexMechanoids.CompProperties_MechWirelessCharger">
 				<radius>6</radius>
-<<<<<<< Updated upstream
-				<fuelPerCharge>0.009</fuelPerCharge><!-- 0.009 for chemfuel -->
-=======
 				<fuelPerCharge>0.009</fuelPerCharge>
->>>>>>> Stashed changes
 				<powerPerCharge>0.5</powerPerCharge>
 				<maxMechPerCharge>4</maxMechPerCharge>
 			</li>
@@ -132,7 +120,7 @@
 		<combatPower>380</combatPower>
 		<allowInMechClusters>false</allowInMechClusters>
 		<lifeStages>
-			<li>
+			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
 					<texPath>Things/Pawn/Mechanoid/Dynamo/Dynamo</texPath>
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Dynamo/Mech_Dynamo</maskPath>
@@ -151,7 +139,7 @@
 		</lifeStages>
 		<weaponMoney>9999~9999</weaponMoney>
 		<weaponTags>
-			<li>MechanoidGunNeedleLauncher</li>
+			<li>APM_WeaponEMPImpactor</li>
 		</weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
@@ -160,5 +148,4 @@
 			<li>APM_SwitchToPowerPlantMode</li>
 		</abilities>
 	</PawnKindDef>
-
 </Defs>

@@ -16,29 +16,40 @@ namespace ApexMechanoids
                 if (__instance.Pawn.HostFaction != null)
                 {
                     __result = true;
+                    return;
                 }
+
                 List<Pawn> ops = __instance.OverseenPawns;
                 if (ops != null && ops.Where((Pawn p) => p.TryGetComp<CompMechanitorRangeExtender>() != null)?.Count() > 0)
                 {
                     __result = true;
+                    return;
                 }
+
+                if (Utils.IsUplinkActiveFor(__instance.Pawn))
+                {
+                    __result = true;
+                    return;
+                }
+
             }
         }
     }
 
 
+
     [HarmonyPatch(typeof(Pawn_MechanitorTracker), nameof(Pawn_MechanitorTracker.CanCommandTo))]
     public static class Patch_Pawn_MechanitorTracker_CanCommandTo
     {
-        public static bool Prefix(Pawn_MechanitorTracker __instance, ref bool __result)
+        public static void Postfix(Pawn_MechanitorTracker __instance, ref bool __result)
         {
-            Pawn pawn = __instance != null ? __instance.Pawn : null;
-            if (Utils.IsUplinkActiveFor(pawn))
+            if(__result == false)
             {
-                __result = true;
-                return false;
+                if (__instance.pawn != null && Utils.IsUplinkActiveFor(__instance.Pawn))
+                {
+                    __result = true;
+                }
             }
-            return true;
         }
     }
 

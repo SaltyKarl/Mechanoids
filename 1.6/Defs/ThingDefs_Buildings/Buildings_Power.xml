@@ -1,6 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BuildingBase">
 		<defName>APM_DynamoPoweredGenerator</defName>
 		<label>Dynamo powered generator</label>
@@ -10,7 +9,7 @@
 		<graphicData>
 			<texPath>Things/Building/Dynamo/Dynamo_Building</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(2.5,1.5)</drawSize>
+			<drawSize>(2.5,2.5)</drawSize>
 			<shadowData>
 				<volume>(0.93,1,0.93)</volume>
 			</shadowData>
@@ -72,68 +71,4 @@
 		<designationCategory IsNull="True" />
 		<constructEffect>ConstructMetal</constructEffect>
 	</ThingDef>
-	<ThingDef ParentName="BaseWeaponTurret">
-		<defName>APM_GazerBeam</defName>
-		<label>Gazer Emplacement</label>
-		<description>The grazer emplacement is mainly composed of the primary ocular beam emitter of a Gazer mechanoid ripped off and attached to a reinforced metal base. While
-			extremely inefficient, it can emit a massive beam of energy in a single direction, destroying foe and fortification alike in its path. It is not capable of moving in
-			any direction.</description>
-		<graphicData>
-			<texPath>Things/Building/LaserDrill/LaserDrill</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<statBases>
-			<AccuracyTouch>0.77</AccuracyTouch>
-			<AccuracyShort>0.70</AccuracyShort>
-			<AccuracyMedium>0.45</AccuracyMedium>
-			<AccuracyLong>0.24</AccuracyLong>
-			<RangedWeapon_Cooldown>4.8</RangedWeapon_Cooldown>
-			<DeteriorationRate>0</DeteriorationRate>
-			<Mass>5</Mass>
-			<Flammability>0</Flammability>
-		</statBases>
-		<comps>
-			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>6000</basePowerConsumption>
-			</li>
-		</comps>
-		<verbs>
-			<li>
-				<verbClass>Verb_ShootBeam</verbClass>
-				<hasStandardCommand>true</hasStandardCommand>
-				<warmupTime>1.0</warmupTime>
-				<range>24.9</range>
-				<minRange>3.9</minRange>
-				<beamFullWidthRange>24.9</beamFullWidthRange>
-				<burstShotCount>5</burstShotCount>
-				<showBurstShotStats>false</showBurstShotStats>
-				<beamWidth>8</beamWidth>
-				<ticksBetweenBurstShots>22</ticksBetweenBurstShots>
-				<beamDamageDef>MegaBeam</beamDamageDef>
-				<soundCastTail>GunTail_Medium</soundCastTail>
-				<muzzleFlashScale>9</muzzleFlashScale>
-				<soundCastBeam>BeamGraser_Shooting</soundCastBeam>
-				<beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
-				<beamFleckChancePerTick>0.32</beamFleckChancePerTick>
-				<beamMaxDeviation>1.5</beamMaxDeviation>
-				<beamCurvature>0.6</beamCurvature>
-				<beamMoteDef>Mote_GraserLaserBeamBase</beamMoteDef>
-				<beamEndEffecterDef>GraserBeam_End</beamEndEffecterDef>
-				<beamChanceToStartFire>0.85</beamChanceToStartFire>
-				<beamChanceToAttachFire>0.85</beamChanceToAttachFire>
-				<beamFireSizeRange>0.55~0.85</beamFireSizeRange>
-				<beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
-				<beamStartOffset>0.8</beamStartOffset>
-				<beamLineFleckChanceCurve>
-					<points>
-						<li>(0, 0)</li>
-						<li>(0.65, 0.4)</li>
-						<li>(1, 0.75)</li>
-					</points>
-				</beamLineFleckChanceCurve>
-			</li>
-		</verbs>
-	</ThingDef>
-
 </Defs>

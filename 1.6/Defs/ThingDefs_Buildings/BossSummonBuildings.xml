@@ -39,7 +39,7 @@
 			<ChunkSlagSteel>3</ChunkSlagSteel>
 		</killedLeavings>
 		<researchPrerequisites>
-			<li>StandardMechtech</li>
+			<li>AdvancedMechtech</li>
 		</researchPrerequisites>
 		<comps>
 			<li Class="CompProperties_Usable">
@@ -105,7 +105,7 @@
 			<ChunkSlagSteel>3</ChunkSlagSteel>
 		</killedLeavings>
 		<researchPrerequisites>
-			<li>StandardMechtech</li>
+			<li>AdvancedMechtech</li>
 		</researchPrerequisites>
 		<comps>
 			<li Class="CompProperties_Usable">
@@ -171,7 +171,7 @@
 			<ChunkSlagSteel>3</ChunkSlagSteel>
 		</killedLeavings>
 		<researchPrerequisites>
-			<li>StandardMechtech</li>
+			<li>AdvancedMechtech</li>
 		</researchPrerequisites>
 		<comps>
 			<li Class="CompProperties_Usable">
@@ -237,7 +237,7 @@
 			<ChunkSlagSteel>3</ChunkSlagSteel>
 		</killedLeavings>
 		<researchPrerequisites>
-			<li>StandardMechtech</li>
+			<li>BasicMechtech</li>
 		</researchPrerequisites>
 		<comps>
 			<li Class="CompProperties_Usable">

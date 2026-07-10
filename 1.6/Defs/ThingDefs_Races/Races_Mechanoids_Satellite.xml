@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Satellite</defName>
 		<label>Satellite</label>
@@ -41,17 +40,12 @@
 			</li>
 		</tools>
 		<race>
-<<<<<<< Updated upstream
-			<body>APM_Vassal</body>
-			<baseHealthScale>1</baseHealthScale>
-=======
 			<body>APM_Satellite</body>
 			<baseHealthScale>1.0</baseHealthScale>
 			<baseBodySize>1.0</baseBodySize>
 			<hediffGiverSets>
 				<li>APM_Mech_Floating</li>
 			</hediffGiverSets>
->>>>>>> Stashed changes
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>
@@ -66,9 +60,6 @@
 			</detritusLeavings>
 		</race>
 		<statBases>
-<<<<<<< Updated upstream
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
-=======
 			<MoveSpeed>5.2</MoveSpeed>
 			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0.25</ArmorRating_Sharp>
@@ -76,20 +67,27 @@
 			<MarketValue>700</MarketValue>
 			<MechEnergyLossPerHP MayRequire="Ludeon.RimWorld.Biotech">0.66</MechEnergyLossPerHP>
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">1</BandwidthCost>
->>>>>>> Stashed changes
 		</statBases>
+		<comps Inherit="False">
+			<li Class="CompProperties_CanBeDormant" />
+			<li Class="CompProperties_WakeUpDormant">
+				<wakeUpOnDamage>true</wakeUpOnDamage>
+				<wakeUpCheckRadius>30</wakeUpCheckRadius>
+				<wakeUpSound>MechanoidsWakeUp</wakeUpSound>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_PlayerFactionMechPowerCell">
+				<totalPowerTicks>30000</totalPowerTicks>
+				<showGizmoOnNonPlayerControlled>false</showGizmoOnNonPlayerControlled>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Satellite</defName>
 		<label>satellite</label>
 		<race>APM_Mech_Satellite</race>
-<<<<<<< Updated upstream
-		<combatPower>190</combatPower>
-=======
 		<combatPower>120</combatPower>
 		<forceNoDeathNotification>true</forceNoDeathNotification>
->>>>>>> Stashed changes
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
@@ -97,7 +95,7 @@
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Satellite/Mech_Satellite</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>1.5</drawSize>
+					<drawSize>1.2</drawSize>
 					<shadowData>
 						<volume>(0.4, 0.8, 0.4)</volume>
 					</shadowData>
@@ -109,18 +107,18 @@
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Satellite/Mech_Satellite</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>1.5</drawSize>
+					<drawSize>1.2</drawSize>
 					<shadowData>
 						<volume>(0.4, 0.8, 0.4)</volume>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
+		<weaponTags>
+			<li>APM_WeaponSatellite</li>
+		</weaponTags>
+		<weaponMoney>9999~9999</weaponMoney>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 	</PawnKindDef>
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 </Defs>

@@ -27,7 +27,7 @@ namespace ApexMechanoids
         private float hpHealedSoFar;
         private static readonly int[] IntervalOptions = new int[] { 1500, 2500, 5000, 10000 };
         private static readonly Texture2D CancelIcon = ContentFinder<Texture2D>.Get("UI/Designators/Cancel");
-        public static readonly CachedTexture InsertPawnIcon = new CachedTexture("UI/Gizmos/InsertPawn");
+        public static readonly CachedTexture InsertPawnIcon = new CachedTexture("UI/Gizmos/APM_Repairstation_InsertMech");
 
         public CompRepairStation Config
         {
@@ -49,6 +49,7 @@ namespace ApexMechanoids
 
         public Pawn ContainedMech => innerContainer.FirstOrDefault() as Pawn;
         public bool PowerOn => PowerTrader != null && PowerTrader.PowerOn;
+        public bool AutoRepairEnabled => autoRepairEnabled;
         public float HeldPawnDrawPos_Y => DrawPos.y + 0.04f;
         public float HeldPawnBodyAngle => this.def.rotatable ? this.Rotation.Opposite.AsAngle : this.Rotation.AsAngle;
         public PawnPosture HeldPawnPosture => PawnPosture.LayingOnGroundFaceUp;
@@ -183,11 +184,10 @@ namespace ApexMechanoids
             foreach (Hediff injury in injuries)
             {
                 if (hpBudget <= 0f) break;
-                float amount = Mathf.Ceil(Mathf.Min(injury.Severity, hpBudget));
+                float amount = Mathf.Min(injury.Severity, hpBudget);
                 injury.Heal(amount);
                 hpHealedSoFar += amount;
                 hpBudget -= amount;
-
             }
             if (hpHealedSoFar >= totalHpToHeal && !mech.health.hediffSet.GetMissingPartsCommonAncestors().Any())
             {
@@ -300,7 +300,7 @@ namespace ApexMechanoids
             {
                 yield return new Command_Action
                 {
-                    defaultLabel = "InsertPerson".Translate() + "...",
+                    defaultLabel = "APM_InsertMech".Translate() + "...",
                     icon = InsertPawnIcon.Texture,
                     action = () =>
                     {
@@ -310,7 +310,7 @@ namespace ApexMechanoids
                             AcceptanceReport report = CanAcceptPawn(p);
                             if (report.Accepted) opts.Add(new FloatMenuOption(p.LabelCap, () => SelectPawn(p), p, Color.white));
                         }
-                        if (!opts.Any()) opts.Add(new FloatMenuOption("NoViablePawns".Translate(), null));
+                        if (!opts.Any()) opts.Add(new FloatMenuOption("APM_NoMechsAvailable".Translate(), null));
                         Find.WindowStack.Add(new FloatMenu(opts));
                     }
                 };
@@ -318,7 +318,7 @@ namespace ApexMechanoids
                 {
                     defaultLabel = "APM_Gizmo_AutoRepair".Translate(),
                     defaultDesc = "APM_Gizmo_AutoRepair_Desc".Translate(),
-                    icon = ContentFinder<Texture2D>.Get("UI/Commands/TryReconnect"),
+                    icon = ContentFinder<Texture2D>.Get("UI/Gizmos/APM_Repairstation_AutoRepair"),
                     isActive = () => autoRepairEnabled,
                     toggleAction = () => autoRepairEnabled = !autoRepairEnabled
                 };

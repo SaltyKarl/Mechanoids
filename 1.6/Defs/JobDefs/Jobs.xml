@@ -11,20 +11,23 @@
 	</JobDef>
 
 	<JobDef>
-		<defName>APM_RemoteControlUplink</defName>
-		<driverClass>ApexMechanoids.JobDriver_RemoteControlUplink</driverClass>
-		<reportString>operating remote uplink.</reportString>
-		<playerInterruptible>true</playerInterruptible>
-		<checkOverrideOnDamage>Always</checkOverrideOnDamage>
-		<alwaysShowWeapon>false</alwaysShowWeapon>
-	</JobDef>
-
-	<JobDef>
 		<defName>APM_HookPawn</defName>
 		<driverClass>ApexMechanoids.JobDriver_HookPawn</driverClass>
 		<reportString>retracting grappling hook towards TargetA.</reportString>
 		<abilityCasting>true</abilityCasting>
 		<playerInterruptible>false</playerInterruptible>
 		<casualInterruptible>false</casualInterruptible>
+	</JobDef>
+
+	<JobDef>
+		<defName>APM_SirenLureChannel</defName>
+		<driverClass>ApexMechanoids.JobDriver_SirenLureChannel</driverClass>
+		<reportString>singing.</reportString>
+		<abilityCasting>true</abilityCasting>
+		<neverShowWeapon>true</neverShowWeapon>
+		<playerInterruptible>false</playerInterruptible>
+		<casualInterruptible>false</casualInterruptible>
+		<suspendable>false</suspendable>
+		<checkOverrideOnDamage>Never</checkOverrideOnDamage>
 	</JobDef>
 </Defs>

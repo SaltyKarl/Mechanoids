@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="HeavyMechanoid">
 		<defName>APM_Mech_Aegis</defName>
 		<label>Aegis</label>
 		<description>"The Aegis is a mighty mechanoid that sacrifices offensive capabilities for defensive mastery. The phrase 'The best defense is a good offense' rings true with the Aegis' dual shields."</description>
 		<statBases>
-<<<<<<< Updated upstream
-			<MoveSpeed>1.5</MoveSpeed>
-			<ArmorRating_Blunt>0.60</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.60</ArmorRating_Sharp>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">3</BandwidthCost>
-=======
 			<MoveSpeed>1.9</MoveSpeed>
 			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0.7</ArmorRating_Sharp>
@@ -19,7 +12,6 @@
 			<MarketValue>1200</MarketValue>
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">4</BandwidthCost>
 			<MechEnergyLossPerHP>0.2</MechEnergyLossPerHP>
->>>>>>> Stashed changes
 			<WorkSpeedGlobal>1.5</WorkSpeedGlobal>
 		</statBases>
 		<race>
@@ -96,9 +88,12 @@
 				<maxDrawSize>0</maxDrawSize>
 			</li>
 			<li Class="ApexMechanoids.CompProperties_Aegis">
-				<regenerationAmount>2</regenerationAmount> <!-- Amount of HP to regenerate per interval -->
-				<regenerationDelaySeconds>60</regenerationDelaySeconds> <!-- Minimum time in seconds before regeneration starts after damage -->
-				<regenerationIntervalSeconds>30</regenerationIntervalSeconds> <!-- How often to regenerate in seconds (converted to ticks internally). Uses CompTickRare, any amount less than 4.16 seconds won't work. -->
+				<regenerationAmount>2</regenerationAmount>
+				<!-- Amount of HP to regenerate per interval -->
+				<regenerationDelaySeconds>60</regenerationDelaySeconds>
+				<!-- Minimum time in seconds before regeneration starts after damage -->
+				<regenerationIntervalSeconds>30</regenerationIntervalSeconds>
+				<!-- How often to regenerate in seconds (converted to ticks internally). Uses CompTickRare, any amount less than 4.16 seconds won't work. -->
 			</li>
 		</comps>
 	</ThingDef>
@@ -108,15 +103,11 @@
 		<label>Aegis</label>
 		<race>APM_Mech_Aegis</race>
 		<allowInMechClusters>true</allowInMechClusters>
-<<<<<<< Updated upstream
-		<combatPower>250</combatPower>
-=======
 		<combatPower>400</combatPower>
 		<weaponTags>
 			<li>APM_AegisShield</li>
 		</weaponTags>
 		<weaponMoney>9999~9999</weaponMoney>
->>>>>>> Stashed changes
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
@@ -145,9 +136,8 @@
 		</lifeStages>
 		<techHediffsChance MayRequire="Ludeon.RimWorld.Biotech">1</techHediffsChance>
 		<controlGroupPortraitZoom>1</controlGroupPortraitZoom>
-    <abilities>
-      <li>APM_ShieldCharge</li>
-    </abilities>
+		<abilities>
+			<li>APM_ShieldCharge</li>
+		</abilities>
 	</PawnKindDef>
-
 </Defs>

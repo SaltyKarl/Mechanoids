@@ -27,8 +27,6 @@
 				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
 			</li>
 		</tools>
-<<<<<<< Updated upstream
-=======
 		<comps>
 			<li Class="ApexMechanoids.CompProperties_MechanitorRangeExtender">
 				<minRange>7.9</minRange>
@@ -38,7 +36,6 @@
 		<killedLeavingsPlayerHostile>
 			<PsionicChip>1</PsionicChip>
 		</killedLeavingsPlayerHostile>
->>>>>>> Stashed changes
 		<race>
 			<body>APM_Dominus</body>
 			<baseBodySize>3</baseBodySize>
@@ -116,7 +113,7 @@
 		</lifeStages>
 		<weaponMoney>99999~99999</weaponMoney>
 		<weaponTags Inherit="False">
-			<li>APM_WeaponDominusSpear</li>
+			<li>APM_WeaponDominusMechlance</li>
 		</weaponTags>
 		<abilities>
 			<li>APM_PressTheAttack</li>
@@ -143,7 +140,8 @@
 						<volume>(0.4, 0.8, 0.4)</volume>
 					</shadowData>
 				</bodyGraphicData>
-			</li><li>
+			</li>
+			<li>
 				<bodyGraphicData>
 					<texPath>Things/Pawn/Mechanoid/Dominus/Boss/DominusBAncient</texPath>
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Dominus/Boss/Mech_DominusB</maskPath>
@@ -158,25 +156,23 @@
 		</lifeStages>
 		<weaponMoney>99999~99999</weaponMoney>
 		<weaponTags Inherit="False">
-			<li>APM_WeaponDominusSpearBoss</li>
+			<li>APM_WeaponDominusApexMechlance</li>
 		</weaponTags>
 		<abilities>
 			<li>APM_PressTheAttack</li>
-			<li>APM_Mech_Duel</li>
+			<li>APM_Mech_Duel_Boss</li>
 		</abilities>
 	</PawnKindDef>
-	
 
 	<AbilityDef>
 		<defName>APM_PressTheAttack</defName>
 		<label>Press The Attack</label>
-		<description>PLACEHOLDER</description>
+		<description>The Dominus emits a psychic pulse that influences nearby allies to ignore pain, move faster and stay in high spirits.</description>
 		<iconPath>UI/PressTheAttack</iconPath>
 		<cooldownTicksRange>180000</cooldownTicksRange>
 		<targetRequired>false</targetRequired>
 		<hostile>false</hostile>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
-		<canUseAoeToGetTargets>true</canUseAoeToGetTargets>
 		<showCastingProgressBar>true</showCastingProgressBar>
 		<statBases>
 			<Ability_EffectRadius>12</Ability_EffectRadius>
@@ -185,16 +181,17 @@
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
 			<warmupTime>1</warmupTime>
+			<soundCast>APM_PressTheAttack_Cast</soundCast>
 			<range>12.9</range>
 			<targetParams>
 				<canTargetSelf>true</canTargetSelf>
 			</targetParams>
 		</verbProperties>
 		<comps>
-			<li Class="CompProperties_AbilityGiveHediff">
-				<compClass>CompAbilityEffect_GiveHediff</compClass>
-				<hediffDef>APM_Hediff_PressTheAttack</hediffDef>
-				<applyToSelf>false</applyToSelf>
+			<li Class="ApexMechanoids.CompProperties_AbilitySteelDiscipline">
+				<radius>12</radius>
+				<buffHediff>APM_Hediff_PressTheAttack</buffHediff>
+				<buffHediffBoss>APM_Hediff_PressTheAttack_Boss</buffHediffBoss>
 			</li>
 		</comps>
 	</AbilityDef>
@@ -231,17 +228,17 @@
 				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
 				<texPath>Effects/PressTheAttack/Halo</texPath>
 				<parentTagDef>Head</parentTagDef>
-				<color>(250, 147, 19)</color>
+				<pawnType>HumanlikeOnly</pawnType>
+				<color>(68, 150, 215)</color>
 				<drawData>
 					<scale>0.7</scale>
+					<scaleOffsetByBodySize>true</scaleOffsetByBodySize>
 					<defaultData>
 						<layer>92</layer>
 						<offset>(0,0,0.5)</offset>
 					</defaultData>
 				</drawData>
 			</li>
-<<<<<<< Updated upstream
-=======
 			<li>
 				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
 				<texPath>Effects/PressTheAttack/Halo</texPath>
@@ -256,32 +253,19 @@
 					</defaultData>
 				</drawData>
 			</li>
->>>>>>> Stashed changes
 			<li Class="ApexMechanoids.PawnRenderNodeProperties_Animated">
 				<nodeClass>ApexMechanoids.PawnRenderNode_RandomAnimated</nodeClass>
 				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
 				<texPath>Effects/PressTheAttack/Wings</texPath>
 				<parentTagDef>Body</parentTagDef>
-				<color>(250, 147, 19)</color>
+				<pawnType>Any</pawnType>
+				<color>(68, 150, 215)</color>
 				<texPaths>
 					<li>Effects/PressTheAttack/Wings/WingsA</li>
 					<li>Effects/PressTheAttack/Wings/WingsB</li>
 					<li>Effects/PressTheAttack/Wings/WingsC</li>
 				</texPaths>
-<<<<<<< Updated upstream
-				
-				<!--Optional, if we want specific time for each frame-->
-				<!--
-				<ticksPerTexPaths>
-					<li>3</li>
-					<li>4</li>
-					<li>3</li>
-				</ticksPerTexPaths>
-				-->
-				<ticksPerTexture>3</ticksPerTexture> <!--Alternative way to specify each frame time-->
-=======
 				<ticksPerTexture>3</ticksPerTexture>
->>>>>>> Stashed changes
 				<drawData>
 					<scale>2.3</scale>
 					<defaultData>
@@ -293,8 +277,6 @@
 		</renderNodeProperties>
 	</HediffDef>
 
-<<<<<<< Updated upstream
-=======
 	<HediffDef>
 		<defName>APM_Hediff_PressTheAttack_Boss</defName>
 		<label>Psionic rush</label>
@@ -376,7 +358,6 @@
 		</renderNodeProperties>
 	</HediffDef>
 
->>>>>>> Stashed changes
 	<ThoughtDef>
 		<defName>APM_Thought_PressTheAttack</defName>
 		<workerClass>ThoughtWorker_Hediff</workerClass>
@@ -392,8 +373,6 @@
 		</stages>
 	</ThoughtDef>
 
-<<<<<<< Updated upstream
-=======
 	<ThoughtDef>
 		<defName>APM_Thought_PressTheAttack_Boss</defName>
 		<workerClass>ThoughtWorker_Hediff</workerClass>
@@ -409,15 +388,16 @@
 		</stages>
 	</ThoughtDef>
 
->>>>>>> Stashed changes
 	<AbilityDef>
 		<defName>APM_Mech_Duel</defName>
 		<label>the duel trial</label>
-		<description>PLACEHOLDER</description>
+		<description>A selected target is chosen for a duel and a shield is generated around the duelists. For the duration of the duel, ranged attacks, abilities and Incoming damage increased.  Additionally, if the duel does not end within a certain time frame, the duelists gain a harsh debuff. If either combatant dies or is downed, the victor gains a powerful temporary buff instead.</description>
 		<iconPath>UI/Duel</iconPath>
 		<cooldownTicksRange>1800</cooldownTicksRange>
 		<targetRequired>true</targetRequired>
 		<hostile>true</hostile>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
 			<warmupTime>1</warmupTime>
@@ -449,8 +429,6 @@
 		</comps>
 	</AbilityDef>
 
-<<<<<<< Updated upstream
-=======
 	<AbilityDef>
 		<defName>APM_Mech_Duel_Boss</defName>
 		<label>the duel trial</label>
@@ -491,5 +469,4 @@
 			</li>
 		</comps>
 	</AbilityDef>
->>>>>>> Stashed changes
 </Defs>

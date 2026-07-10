@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef Name="APM_Mech_Frostivus" ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Frostivus</defName>
 		<label>Frostivus</label>
@@ -50,7 +49,7 @@
 			</li>
 		</tools>
 		<race>
-			<body>Pikeman</body>
+			<body>APM_Frostivus</body>
 			<baseBodySize>3.0</baseBodySize>
 			<baseHealthScale>1.82</baseHealthScale>
 			<mechWeightClass>Medium</mechWeightClass>
@@ -87,22 +86,24 @@
 					<spawnChance>0.5</spawnChance>
 				</li>
 			</detritusLeavings>
+			<mechEnabledWorkTypes>
+				<li>APM_FrostivusFoodPreservation</li>
+			</mechEnabledWorkTypes>
 		</race>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_FrostivusFoodPreservation" />
+		</comps>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Frostivus</defName>
 		<label>frostivus</label>
 		<race>APM_Mech_Frostivus</race>
-<<<<<<< Updated upstream
-		<combatPower>90</combatPower>
-=======
 		<combatPower>200</combatPower>
 		<weaponTags>
 			<!--<li>APM_FrostivusWeapon</li>-->
 		</weaponTags>
 		<weaponMoney>9999~9999</weaponMoney>
->>>>>>> Stashed changes
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
@@ -129,18 +130,13 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-		<weaponMoney>9999~9999</weaponMoney>
-		<weaponTags></weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<controlGroupPortraitZoom>0.65</controlGroupPortraitZoom>
 		<abilities>
-
+			<li>APM_Ability_CryptoSwallow</li>
 		</abilities>
 	</PawnKindDef>
-<<<<<<< Updated upstream
-
-=======
 	
 	<!-- Abilities -->
 	<AbilityDef>
@@ -187,5 +183,4 @@
 			<li Class="ApexMechanoids.CompProperties_CryptoSwallow"></li>
 		</comps>
 	</AbilityDef>
->>>>>>> Stashed changes
 </Defs>

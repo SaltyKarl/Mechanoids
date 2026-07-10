@@ -2,12 +2,11 @@
 using RimWorld;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using UnityEngine;
 using Verse.AI;
 
 namespace ApexMechanoids
 {
-<<<<<<< Updated upstream
-=======
     public static class ApexMechColors
     {
         public static readonly Color DominusColor  = new Color(230f / 255f, 130f / 255f,  40f / 255f);
@@ -30,7 +29,6 @@ namespace ApexMechanoids
         }
     }
 
->>>>>>> Stashed changes
     public static class Utils
     {
         public static BodyPartRecord GetNonMissingBodyPart(Pawn pawn, BodyPartDef def, BodyPartGroupDef group = null)
@@ -98,32 +96,49 @@ namespace ApexMechanoids
             ab.QueueCastingJob(target.Pawn, target.Pawn);
         }
 
+        
         public static bool IsUplinkActiveFor(Pawn mechanitor)
         {
+
             if (mechanitor == null || mechanitor.Dead || mechanitor.mechanitor == null)
             {
                 return false;
             }
 
-            Job curJob = mechanitor.CurJob;
-            if (curJob == null || curJob.def != ApexDefsOf.APM_RemoteControlUplink)
+            if (!mechanitor.Spawned)
             {
-                return false;
+                Thing spawnedParentOrMe = mechanitor.SpawnedParentOrMe;
+                if (spawnedParentOrMe is Building_MechCommandCasket)
+                {
+                    return true;
+                }
             }
 
-            Thing building = curJob.targetA.Thing;
-            if (building == null)
-            {
-                return false;
-            }
-
-            CompRemoteControlUplink comp = building.TryGetComp<CompRemoteControlUplink>();
-            if (comp == null || comp.ManningPawn != mechanitor)
-            {
-                return false;
-            }
-
-            return true;
+            return false;
         }
+
+        public static bool IsUplinkActiveFor(Pawn mechanitor, out Building_MechCommandCasket casket)
+        {
+
+            if (mechanitor == null || mechanitor.Dead || mechanitor.mechanitor == null)
+            {
+                casket = null;
+                return false;
+            }
+
+            if (!mechanitor.Spawned)
+            {
+                Thing spawnedParentOrMe = mechanitor.SpawnedParentOrMe;
+                if (spawnedParentOrMe is Building_MechCommandCasket)
+                {
+                    casket = (Building_MechCommandCasket)spawnedParentOrMe;
+                    return true;
+                }
+            }
+            casket = null;
+            return false;
+        }
+
+
     }
 }

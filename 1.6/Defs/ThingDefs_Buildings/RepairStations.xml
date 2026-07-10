@@ -52,7 +52,7 @@
 			</li>
 			<li Class="ApexMechanoids.CompProperties_RepairStation">
 				<maxMechBodySize>2</maxMechBodySize>
-				<healHpPerSecond>3</healHpPerSecond>
+				<healHpPerSecond>0.5</healHpPerSecond>
 				<activePowerConsumption>500</activePowerConsumption>
 				<mechPositionOffsetNorth>(0.000,0.000,0.445)</mechPositionOffsetNorth>
 				<mechPositionOffsetEast>(0.276,0.000,0.120)</mechPositionOffsetEast>
@@ -137,7 +137,7 @@
 			<li Class="ApexMechanoids.CompProperties_RepairStation">
 				<maxMechBodySize>999</maxMechBodySize>
 				<minMechBodySize>2</minMechBodySize>
-				<healHpPerSecond>5</healHpPerSecond>
+				<healHpPerSecond>0.8</healHpPerSecond>
 				<activePowerConsumption>1500</activePowerConsumption>
 				<platformAnimation>
 					<ticksToMove>80</ticksToMove>

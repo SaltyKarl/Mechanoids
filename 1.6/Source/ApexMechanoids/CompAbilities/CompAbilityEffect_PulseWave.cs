@@ -6,6 +6,25 @@ using Verse.Sound;
 
 namespace ApexMechanoids
 {
+    public class Verb_CastPulseWave : Verb_CastAbility
+    {
+        public override bool TryStartCastOn(LocalTargetInfo castTarg, LocalTargetInfo destTarg, bool surpriseAttack = false, bool canHitNonTargetPawns = true, bool preventFriendlyFire = false, bool nonInterruptingSelfCast = false)
+        {
+            if (!castTarg.IsValid && caster != null)
+            {
+                castTarg = caster;
+            }
+
+            return base.TryStartCastOn(castTarg, destTarg, surpriseAttack, canHitNonTargetPawns, preventFriendlyFire, nonInterruptingSelfCast);
+        }
+
+        public override void WarmupComplete()
+        {
+            base.WarmupComplete();
+            PulseWaveUtility.TryApply(CasterPawn, PulseWaveUtility.GetProps(ability?.def));
+        }
+    }
+
     public class CompAbilityEffect_PulseWave : CompAbilityEffect
     {
         public new CompProperties_PulseWave Props => (CompProperties_PulseWave)props;
@@ -13,40 +32,134 @@ namespace ApexMechanoids
         public override void Apply(LocalTargetInfo target, LocalTargetInfo dest)
         {
             base.Apply(target, dest);
-
-            Pawn caster = parent.pawn;
-            Map map = caster?.MapHeld;
-            if (caster == null || map == null || !caster.Spawned)
-            {
-                return;
-            }
-
-            SpawnCasterFlash(caster, map);
-
-            Thing thing = ThingMaker.MakeThing(Props.emitterDef);
-            Mote_PulseWaveEmitter emitter = thing as Mote_PulseWaveEmitter;
-            if (emitter != null)
-            {
-                emitter.Initialize(caster, Props);
-                GenSpawn.Spawn(emitter, caster.PositionHeld, map);
-            }
-
-            SoundDef castSound = DefDatabase<SoundDef>.GetNamedSilentFail(Props.castSoundDefName);
-            if (castSound != null)
-            {
-                castSound.PlayOneShot(new TargetInfo(caster.PositionHeld, map));
-            }
+            PulseWaveUtility.TryApply(parent.pawn, Props);
         }
 
-        private void SpawnCasterFlash(Pawn caster, Map map)
+        public override bool AICanTargetNow(LocalTargetInfo target)
         {
-            if (Props.blindFlashThingDef == null || caster == null || map == null || !caster.PositionHeld.InBounds(map))
+            return PulseWaveUtility.HasHostileAffectedPawnInRadius(parent?.pawn, Props);
+        }
+    }
+
+    internal static class PulseWaveUtility
+    {
+        private static int lastCasterThingId = -1;
+        private static int lastApplyTick = -1;
+
+        public static CompProperties_PulseWave GetProps(AbilityDef abilityDef)
+        {
+            if (abilityDef?.comps == null)
+            {
+                return null;
+            }
+
+            for (int i = 0; i < abilityDef.comps.Count; i++)
+            {
+                if (abilityDef.comps[i] is CompProperties_PulseWave pulseProps)
+                {
+                    return pulseProps;
+                }
+            }
+
+            return null;
+        }
+
+        public static void TryApply(Pawn caster, CompProperties_PulseWave props)
+        {
+            Map map = caster?.MapHeld;
+            if (caster == null || props == null || map == null || !caster.Spawned)
             {
                 return;
             }
 
-            Thing flashThing = ThingMaker.MakeThing(Props.blindFlashThingDef);
+            int currentTick = Find.TickManager.TicksGame;
+            if (lastApplyTick == currentTick && lastCasterThingId == caster.thingIDNumber)
+            {
+                return;
+            }
+
+            lastApplyTick = currentTick;
+            lastCasterThingId = caster.thingIDNumber;
+
+            SpawnCasterFlash(caster, map, props);
+            SpawnEmitter(caster, map, props);
+            PlayExplicitCastSound(caster, map, props);
+        }
+
+        public static bool HasHostileAffectedPawnInRadius(Pawn caster, CompProperties_PulseWave props)
+        {
+            Map map = caster?.MapHeld;
+            if (caster == null || props == null || map == null || !caster.Spawned)
+            {
+                return false;
+            }
+
+            float radius = props.radius;
+            IReadOnlyList<Pawn> pawns = map.mapPawns.AllPawnsSpawned;
+            for (int i = 0; i < pawns.Count; i++)
+            {
+                Pawn pawn = pawns[i];
+                if (pawn == null || pawn == caster || pawn.Dead || pawn.Downed || !pawn.Spawned)
+                {
+                    continue;
+                }
+
+                if (!(pawn.RaceProps?.IsFlesh ?? false) || pawn.Faction == Faction.OfMechanoids)
+                {
+                    continue;
+                }
+
+                if (!pawn.HostileTo(caster))
+                {
+                    continue;
+                }
+
+                if (pawn.Position.DistanceTo(caster.Position) <= radius)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static void SpawnCasterFlash(Pawn caster, Map map, CompProperties_PulseWave props)
+        {
+            if (props.blindFlashThingDef == null || !caster.PositionHeld.InBounds(map))
+            {
+                return;
+            }
+
+            Thing flashThing = ThingMaker.MakeThing(props.blindFlashThingDef);
             GenSpawn.Spawn(flashThing, caster.PositionHeld, map, WipeMode.Vanish);
+        }
+
+        private static void SpawnEmitter(Pawn caster, Map map, CompProperties_PulseWave props)
+        {
+            if (props.emitterDef == null)
+            {
+                return;
+            }
+
+            Mote_PulseWaveEmitter emitter = ThingMaker.MakeThing(props.emitterDef) as Mote_PulseWaveEmitter;
+            if (emitter == null)
+            {
+                return;
+            }
+
+            emitter.Initialize(caster, props);
+            GenSpawn.Spawn(emitter, caster.PositionHeld, map);
+        }
+
+        private static void PlayExplicitCastSound(Pawn caster, Map map, CompProperties_PulseWave props)
+        {
+            if (props.castSoundDefName.NullOrEmpty())
+            {
+                return;
+            }
+
+            SoundDef castSound = DefDatabase<SoundDef>.GetNamedSilentFail(props.castSoundDefName);
+            castSound?.PlayOneShot(new TargetInfo(caster.PositionHeld, map));
         }
     }
 
@@ -66,7 +179,7 @@ namespace ApexMechanoids
         public int blindTicks = 480;
         public float visualScale = 0.72f;
         public string fleckDefName = "PsycastPsychicEffect";
-        public string castSoundDefName = "PsycastPsychicPulse";
+        public string castSoundDefName;
     }
 
     public class Mote_PulseWaveEmitter : Mote

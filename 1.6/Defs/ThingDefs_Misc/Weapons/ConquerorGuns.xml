@@ -22,23 +22,9 @@
 			<AccuracyLong>0.55</AccuracyLong>
 			<RangedWeapon_Cooldown>2.00</RangedWeapon_Cooldown>
 		</statBases>
-<<<<<<< Updated upstream
-		<costList>
-			<Plasteel>50</Plasteel>
-			<ComponentSpacer>2</ComponentSpacer>
-		</costList>
-		<thingSetMakerTags>
-			<li>RewardStandardQualitySuper</li>
-		</thingSetMakerTags>
-=======
->>>>>>> Stashed changes
 		<weaponTags>
-			<li>SpacerGun</li>
 			<li>APM_WeaponConquerorAR</li>
 		</weaponTags>
-		<tradeTags>
-			<li>WeaponRanged</li>
-		</tradeTags>
 		<weaponClasses>
 			<li>RangedLight</li>
 		</weaponClasses>
@@ -100,14 +86,8 @@
 			<AccuracyLong>0.80</AccuracyLong>
 			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
 		</statBases>
-		<costList>
-			<Plasteel>60</Plasteel>
-			<ComponentSpacer>3</ComponentSpacer>
-		</costList>
 		<weaponTags>
-			<li>MechanoidGunMedium</li>
 			<li>APM_WeaponConquerorDMR</li>
-			<li>SpacerGun</li>
 		</weaponTags>
 		<tradeTags>
 			<li>WeaponRanged</li>
@@ -180,7 +160,6 @@
 		</statBases>
 		<weaponTags>
 			<li>APM_WeaponConquerorLMG</li>
-			<li>SpacerGun</li>
 		</weaponTags>
 		<tradeTags>
 			<li>WeaponRanged</li>

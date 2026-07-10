@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef Name="APM_Mech_Ingestor" ParentName="MechCentipede">
 		<defName>APM_Mech_Ingestor</defName>
 		<label>Ingestor</label>
@@ -38,9 +37,6 @@
 			</li>
 		</tools>
 		<race>
-<<<<<<< Updated upstream
-			<baseHealthScale>3.0</baseHealthScale>
-=======
 			<body>APM_Ingestor</body>
 			<renderTree>APM_RenderTree_Ingestor</renderTree>
 			<baseHealthScale>4.32</baseHealthScale>
@@ -48,7 +44,6 @@
 			<mechEnabledWorkTypes>
 				<li>APM_IngestorCorpseProcessing</li>
 			</mechEnabledWorkTypes>
->>>>>>> Stashed changes
 		</race>
 	</ThingDef>
 
@@ -60,13 +55,8 @@
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
-<<<<<<< Updated upstream
-					<texPath>Things/Pawn/Mechanoid/Ingestor/Closed/IngestorC</texPath><!-- Only the Closed variant, what about Opened? -->
-					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Ingestor/Closed/Mech_IngestorC</maskPath>
-=======
 					<texPath>Things/Pawn/Mechanoid/Ingestor/Ingestor</texPath>
 					<maskPath>Things/Pawn/Mechanoid/Overlays/Ingestor_Overlay/Mech_Ingestor</maskPath>
->>>>>>> Stashed changes
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>3</drawSize>
@@ -77,13 +67,8 @@
 			</li>
 			<li>
 				<bodyGraphicData>
-<<<<<<< Updated upstream
-					<texPath>Things/Pawn/Mechanoid/Ingestor/Closed/IngestorCAncient</texPath><!-- Only the Closed variant, what about Opened? -->
-					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Ingestor/Closed/Mech_IngestorC</maskPath>
-=======
 					<texPath>Things/Pawn/Mechanoid/Ingestor/IngestorAncient</texPath>
 					<maskPath>Things/Pawn/Mechanoid/Overlays/Ingestor_Overlay/Mech_Ingestor</maskPath>
->>>>>>> Stashed changes
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>3</drawSize>
@@ -93,17 +78,11 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-		<weaponMoney>9999~9999</weaponMoney>
-		<weaponTags></weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<controlGroupPortraitZoom>0.65</controlGroupPortraitZoom>
 		<abilities>
-
+			<li>APM_Absorb</li>
 		</abilities>
 	</PawnKindDef>
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 </Defs>

@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <Defs>
-
 	<ThingDef ParentName="BaseMechanoid">
 		<defName>APM_Mech_Mantis</defName>
 		<label>Mantis</label>
 		<description>Descended from the well known and well feared scyther mechanoid, the mantis was built to rip apart foes in melee combat. Featuring a combination of mechanoid components and synthesized artificial muscles, flexible yet durable armor plates and a set of resonating plasteel cutting claws, this mechanoid well surpasses its predecessors.For targets that outrange this mechanoid, it is able to quickly dash forward in a burst of speed, unleashing a swift strike. If its physical capabilities were fearsome enough, it actively analyzes the battlefield around it, and chooses an opportune time to trigger its installed repair mechanite swarm to heal and supercharge its abilities after it has ended a sufficient amount of targets.</description>
 		<statBases>
-<<<<<<< Updated upstream
-			<MarketValue>1600</MarketValue>
-			<MoveSpeed>1.3</MoveSpeed>
-			<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
-			<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
-			<BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">5</BandwidthCost>
-=======
 			<MarketValue>1200</MarketValue>
 			<MoveSpeed>3.3</MoveSpeed>
 			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0.6</ArmorRating_Sharp>
 			<ArmorRating_Heat>2.0</ArmorRating_Heat>
 			<BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">3</BandwidthCost>
->>>>>>> Stashed changes
 			<ControlTakingTime MayRequire="Ludeon.Rimworld.Biotech">30</ControlTakingTime>
 			<ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">1</ToxicEnvironmentResistance>
 			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.2</MechEnergyLossPerHP>
@@ -40,21 +30,12 @@
 			</li>
 		</tools>
 		<race>
-<<<<<<< Updated upstream
-			<body>APM_Ravager</body>
-			<baseBodySize>3</baseBodySize>
-			<baseHealthScale>6.2</baseHealthScale>
-			<thinkTreeMain>Mechanoid</thinkTreeMain>
-			<intelligence>ToolUser</intelligence>
-			<mechWeightClass>UltraHeavy</mechWeightClass>
-=======
 			<body>APM_Mantis</body>
 			<baseBodySize>3</baseBodySize>
 			<baseHealthScale>2.82</baseHealthScale>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
 			<intelligence>ToolUser</intelligence>
 			<mechWeightClass>Heavy</mechWeightClass>
->>>>>>> Stashed changes
 			<lifeStageAges>
 				<li>
 					<def>MechanoidFullyFormed</def>
@@ -86,11 +67,7 @@
 		<defName>APM_Mech_Mantis</defName>
 		<label>mantis</label>
 		<race>APM_Mech_Mantis</race>
-<<<<<<< Updated upstream
-		<combatPower>550</combatPower>
-=======
 		<combatPower>320</combatPower>
->>>>>>> Stashed changes
 		<maxPerGroup MayRequire="Ludeon.Rimworld.Biotech">2</maxPerGroup>
 		<controlGroupPortraitZoom MayRequire="Ludeon.Rimworld.Biotech">0.48</controlGroupPortraitZoom>
 		<lifeStages>
@@ -119,9 +96,8 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-    <abilities>
-      <li>APM_Bladehopp</li>
-    </abilities>
+		<abilities>
+			<li>APM_Bladehopp</li>
+		</abilities>
 	</PawnKindDef>
-
 </Defs>

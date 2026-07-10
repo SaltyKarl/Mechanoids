@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
 	<FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
@@ -6,28 +6,28 @@
 		<randomGraphics>
 			<li>
 				<graphicClass>Graphic_Fleck</graphicClass>
-				<color>(250, 147, 19)</color>
+				<color>(68, 150, 215)</color>
 				<texPath>Things/Mote/Duel/FireOrb_a</texPath>
 				<shaderType>MoteGlow</shaderType>
 				<renderInstanced>true</renderInstanced>
 			</li>
 			<li>
 				<graphicClass>Graphic_Fleck</graphicClass>
-				<color>(250, 147, 19)</color>
+				<color>(68, 150, 215)</color>
 				<texPath>Things/Mote/Duel/FireOrb_b</texPath>
 				<shaderType>MoteGlow</shaderType>
 				<renderInstanced>true</renderInstanced>
 			</li>
 			<li>
 				<graphicClass>Graphic_Fleck</graphicClass>
-				<color>(250, 147, 19)</color>
+				<color>(68, 150, 215)</color>
 				<texPath>Things/Mote/Duel/FireOrb_c</texPath>
 				<shaderType>MoteGlow</shaderType>
 				<renderInstanced>true</renderInstanced>
 			</li>
 			<li>
 				<graphicClass>Graphic_Fleck</graphicClass>
-				<color>(250, 147, 19)</color>
+				<color>(68, 150, 215)</color>
 				<texPath>Things/Mote/Duel/FireOrb_d</texPath>
 				<shaderType>MoteGlow</shaderType>
 				<renderInstanced>true</renderInstanced>
@@ -40,6 +40,99 @@
 		<growthRate>0.04</growthRate>
 	</FleckDef>
 
+	<FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
+		<defName>APM_DuelFireOrbs_Boss</defName>
+		<randomGraphics>
+			<li>
+				<graphicClass>Graphic_Fleck</graphicClass>
+				<color>(230, 130, 40)</color>
+				<texPath>Things/Mote/Duel/FireOrb_a</texPath>
+				<shaderType>MoteGlow</shaderType>
+				<renderInstanced>true</renderInstanced>
+			</li>
+			<li>
+				<graphicClass>Graphic_Fleck</graphicClass>
+				<color>(230, 130, 40)</color>
+				<texPath>Things/Mote/Duel/FireOrb_b</texPath>
+				<shaderType>MoteGlow</shaderType>
+				<renderInstanced>true</renderInstanced>
+			</li>
+			<li>
+				<graphicClass>Graphic_Fleck</graphicClass>
+				<color>(230, 130, 40)</color>
+				<texPath>Things/Mote/Duel/FireOrb_c</texPath>
+				<shaderType>MoteGlow</shaderType>
+				<renderInstanced>true</renderInstanced>
+			</li>
+			<li>
+				<graphicClass>Graphic_Fleck</graphicClass>
+				<color>(230, 130, 40)</color>
+				<texPath>Things/Mote/Duel/FireOrb_d</texPath>
+				<shaderType>MoteGlow</shaderType>
+				<renderInstanced>true</renderInstanced>
+			</li>
+		</randomGraphics>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.50</fadeInTime>
+		<solidTime>3</solidTime>
+		<fadeOutTime>1.2</fadeOutTime>
+		<growthRate>0.04</growthRate>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
+		<defName>APM_SacrificeLightParticles</defName>
+		<randomGraphics>
+			<li>
+				<graphicClass>Graphic_Fleck</graphicClass>
+				<color>(250, 147, 19)</color>
+				<texPath>Things/Mote/UltimateSacrifice/LightParticles</texPath>
+				<shaderType>MoteGlow</shaderType>
+				<renderInstanced>true</renderInstanced>
+			</li>
+		</randomGraphics>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.50</fadeInTime>
+		<solidTime>3</solidTime>
+		<fadeOutTime>1.2</fadeOutTime>
+		<growthRate>0.02</growthRate>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
+		<defName>APM_TerminusOverdrive_SacrificeParticles</defName>
+		<randomGraphics>
+			<li>
+				<graphicClass>Graphic_Fleck</graphicClass>
+				<color>(250, 147, 19)</color>
+				<texPath>Things/Mote/UltimateSacrifice/LightParticles</texPath>
+				<shaderType>MoteGlow</shaderType>
+				<renderInstanced>true</renderInstanced>
+			</li>
+		</randomGraphics>
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<fadeInTime>0.50</fadeInTime>
+		<solidTime>3</solidTime>
+		<fadeOutTime>1.2</fadeOutTime>
+		<growthRate>0.02</growthRate>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
+		<defName>APM_TerminusOverdrive_BlueSacrificeParticles</defName>
+		<randomGraphics>
+			<li>
+				<graphicClass>Graphic_Fleck</graphicClass>
+				<color>(68, 150, 215)</color>
+				<texPath>Things/Mote/UltimateSacrifice/LightParticles</texPath>
+				<shaderType>MoteGlow</shaderType>
+				<renderInstanced>true</renderInstanced>
+			</li>
+		</randomGraphics>
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<fadeInTime>0.50</fadeInTime>
+		<solidTime>3</solidTime>
+		<fadeOutTime>1.2</fadeOutTime>
+		<growthRate>0.02</growthRate>
+	</FleckDef>
+	
 	<FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
 		<defName>APM_Fleck_SunRay_Burn</defName>
 		<altitudeLayer>MoteLow</altitudeLayer>
@@ -67,7 +160,7 @@
 			</li>
 		</randomGraphics>
 	</FleckDef>
-	
+
 	<FleckDef ParentName="FleckBase_Thrown">
 		<defName>APM_AirPuffGreen</defName>
 		<graphicData>
