@@ -54,8 +54,11 @@
 		</tools>
 		<race>
 			<body>APM_Mantis</body>
-			<baseBodySize>3</baseBodySize>
-			<baseHealthScale>6.2</baseHealthScale>
+			<baseBodySize>1.5</baseBodySize>
+			<hediffGiverSets>
+				<li>APM_Mech_HealOnKills</li>
+			</hediffGiverSets>
+			<baseHealthScale>0.88</baseHealthScale>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
 			<intelligence>ToolUser</intelligence>
 			<mechWeightClass>Medium</mechWeightClass>
@@ -80,9 +83,6 @@
 			<soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding_Generic</soundMeleeHitBuilding>
 			<soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
 		</race>
-		<hediffGiverSets>
-				<li>APM_Mech_HealOnKills</li>
-			</hediffGiverSets>
 		<butcherProducts>
 			<Steel>50</Steel>
 			<Plasteel>20</Plasteel>
