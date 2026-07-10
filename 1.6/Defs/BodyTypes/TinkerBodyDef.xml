@@ -2,8 +2,8 @@
 <Defs>
 
 	<!-- Tinker: Repair/support mech. 4-directional textures (west included). LeftHand, RightHand, HeadAttackTool.
-       Light bipedal humanoid — dextrous hands for repair work. Similar to Vassal.
-       Custom repair module part for flavour. -->
+	Light bipedal humanoid — dextrous hands for repair work. Similar to Vassal.
+	Custom repair module part for flavour. -->
 	<BodyDef>
 		<defName>APM_Tinker</defName>
 		<label>tinker</label>

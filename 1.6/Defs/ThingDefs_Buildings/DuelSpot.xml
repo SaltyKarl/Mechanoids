@@ -3,7 +3,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>APM_DuelSpot</defName>
 		<label>duel spot</label>
-		<description>A selected target is chosen for a duel and a shield is generated around the duelists. For the duration of the duel, ranged attacks, abilities and Incoming damage increased.  Additionally, if the duel does not end within a certain time frame, the duelists gain a harsh debuff. If either combatant dies or is downed, the victor gains a powerful temporary buff instead.</description>
+		<description>A selected target is chosen for a duel and a shield is generated around the duelists. For the duration of the duel, ranged attacks, abilities and Incoming damage increased. Additionally, if the duel does not end within a certain time frame, the duelists gain a harsh debuff. If either combatant dies or is downed, the victor gains a powerful temporary buff instead.</description>
 		<altitudeLayer>Filth</altitudeLayer>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<pathCost>0</pathCost>
@@ -127,7 +127,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>APM_DuelSpot_Boss</defName>
 		<label>duel spot</label>
-		<description>A selected target is chosen for a duel and a shield is generated around the duelists. For the duration of the duel, ranged attacks, abilities and Incoming damage increased.  Additionally, if the duel does not end within a certain time frame, the duelists gain a harsh debuff. If either combatant dies or is downed, the victor gains a powerful temporary buff instead.</description>
+		<description>A selected target is chosen for a duel and a shield is generated around the duelists. For the duration of the duel, ranged attacks, abilities and Incoming damage increased. Additionally, if the duel does not end within a certain time frame, the duelists gain a harsh debuff. If either combatant dies or is downed, the victor gains a powerful temporary buff instead.</description>
 		<altitudeLayer>Filth</altitudeLayer>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<pathCost>0</pathCost>

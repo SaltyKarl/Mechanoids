@@ -2,8 +2,8 @@
 <Defs>
 
 	<!-- Maul: Heavy suppressor/brawler mech. 3-directional textures. LeftHand, RightHand, HeadAttackTool.
-       Bipedal heavy-build humanoid. High health scale (3.5). Large arms, heavy fists.
-       Inherits from Lancer. Broad shoulders, no delicate fingers — powerful fist-clamps. -->
+	Bipedal heavy-build humanoid. High health scale (3.5). Large arms, heavy fists.
+	Inherits from Lancer. Broad shoulders, no delicate fingers — powerful fist-clamps. -->
 	<BodyDef>
 		<defName>APM_Maul</defName>
 		<label>maul</label>

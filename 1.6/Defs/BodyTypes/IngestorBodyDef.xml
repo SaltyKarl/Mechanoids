@@ -2,8 +2,8 @@
 <Defs>
 
 	<!-- Ingestor: Scavenger/centipede mech that refines organic matter. 3-directional textures.
-       HeadAttackTool (bite) only. No arms/hands. Centipede-like with an internal processor.
-       Has two texture variants (C=Closed, O=Open) suggesting a mouth that can open. -->
+	HeadAttackTool (bite) only. No arms/hands. Centipede-like with an internal processor.
+	Has two texture variants (C=Closed, O=Open) suggesting a mouth that can open. -->
 	<BodyDef>
 		<defName>APM_Ingestor</defName>
 		<label>ingestor</label>

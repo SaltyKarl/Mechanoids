@@ -234,7 +234,7 @@
 			<li Class="HediffCompProperties_Disappears">
 				<showRemainingTime>True</showRemainingTime>
 			</li>
-			<li Class="HediffCompProperties_DisappearsOnDeath"></li>
+			<li Class="HediffCompProperties_DisappearsOnDeath" />
 		</comps>
 		<isBad>false</isBad>
 		<stages>

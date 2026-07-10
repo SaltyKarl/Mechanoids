@@ -14,7 +14,7 @@
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">4</BandwidthCost>
 			<EMPResistance MayRequire="Ludeon.Rimworld.Biotech">0.45</EMPResistance>
 		</statBases>
-		
+
 		<tools>
 			<li>
 				<label>left fist</label>
@@ -46,15 +46,15 @@
 				<power>8.5</power>
 				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-					<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-						<chanceFactor>0.2</chanceFactor>
-					</li>
-				</tools>
-				<killedLeavingsPlayerHostile>
-					<PsyfluxChip>1</PsyfluxChip>
-				</killedLeavingsPlayerHostile>
-				<race>
-					<body>APM_Celerus</body>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+				<chanceFactor>0.2</chanceFactor>
+			</li>
+		</tools>
+		<killedLeavingsPlayerHostile>
+			<PsyfluxChip>1</PsyfluxChip>
+		</killedLeavingsPlayerHostile>
+		<race>
+			<body>APM_Celerus</body>
 			<baseHealthScale>1</baseHealthScale>
 			<baseBodySize>1.5</baseBodySize>
 			<detritusLeavings>
@@ -127,7 +127,7 @@
 			<li>APM_Ability_SmokeScreen_Boss</li>
 		</abilities>
 	</PawnKindDef>
-	
+
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Celerus</defName>
 		<label>Celerus</label>

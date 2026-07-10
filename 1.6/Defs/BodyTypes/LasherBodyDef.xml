@@ -2,8 +2,8 @@
 <Defs>
 
 	<!-- Lasher: Animal-taming / EMP whip mech. 3-directional. LeftHand, RightHand, HeadAttackTool.
-       Bipedal humanoid body. Inherits from Lancer. Agile frame, fists + whip weapon.
-       Similar to standard humanoid mech but slightly lighter build. -->
+	Bipedal humanoid body. Inherits from Lancer. Agile frame, fists + whip weapon.
+	Similar to standard humanoid mech but slightly lighter build. -->
 	<BodyDef>
 		<defName>APM_Lasher</defName>
 		<label>lasher</label>

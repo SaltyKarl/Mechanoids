@@ -23,8 +23,7 @@
 			</li>
 		</comps>
 		<stages>
-			<li>
-			</li>
+			<li />
 			<li>
 				<minSeverity>0.2</minSeverity>
 				<capMods>

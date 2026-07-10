@@ -2,8 +2,8 @@
 <Defs>
 
 	<!-- Mantis: Heavy elite melee mech descended from Scyther. 3-directional textures.
-       HeadAttackTool only (no arm weapon groups — it has blade-arms, not hands).
-       Very high health scale (6.2). Custom bladed arms instead of hands. Quad-like heavy body. -->
+	HeadAttackTool only (no arm weapon groups — it has blade-arms, not hands).
+	Very high health scale (6.2). Custom bladed arms instead of hands. Quad-like heavy body. -->
 	<BodyDef>
 		<defName>APM_Mantis</defName>
 		<label>mantis</label>

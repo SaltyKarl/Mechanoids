@@ -75,7 +75,7 @@
 				<weaponDraftedDrawOffsets>
 					<north>
 						<drawOffset>(-0.30, 0.00, 0.15)</drawOffset>
-						<angleOffset>-120  </angleOffset>
+						<angleOffset>-120 </angleOffset>
 					</north>
 					<east>
 						<drawOffset>(0.50, 0.00, 0.15)</drawOffset>
@@ -93,7 +93,7 @@
 			</li>
 		</modExtensions>
 	</ThingDef>
-	
+
 	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
 		<defName>APM_Weapon_DominusApexMechlance</defName>
 		<label>Dominus' apex mechlance</label>
@@ -162,7 +162,7 @@
 				<weaponDraftedDrawOffsets>
 					<north>
 						<drawOffset>(-0.30, 0.00, 0.15)</drawOffset>
-						<angleOffset>-120  </angleOffset>
+						<angleOffset>-120 </angleOffset>
 					</north>
 					<east>
 						<drawOffset>(0.50, 0.00, 0.15)</drawOffset>

@@ -10,7 +10,7 @@
 		<defaultLabelColor>(0, 0.7, 0.95)</defaultLabelColor>
 		<isBad>false</isBad>
 		<comps>
-			<li Class="VEF.AnimalBehaviours.HediffCompProperties_Floating"></li>
+			<li Class="VEF.AnimalBehaviours.HediffCompProperties_Floating" />
 		</comps>
 	</HediffDef>
 </Defs>

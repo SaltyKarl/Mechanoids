@@ -2,8 +2,8 @@
 <Defs>
 
 	<!-- Frostivus: Quad mech that can crypto-swallow pawns. 3-directional textures.
-       Uses FrontLeftLeg, FrontRightLeg, HeadAttackTool. Heavy quad body with a bite/capture head.
-       Similar structure to Ravager/Centipede base but with a more beast-like profile. -->
+	Uses FrontLeftLeg, FrontRightLeg, HeadAttackTool. Heavy quad body with a bite/capture head.
+	Similar structure to Ravager/Centipede base but with a more beast-like profile. -->
 	<BodyDef>
 		<defName>APM_Frostivus</defName>
 		<label>frostivus</label>

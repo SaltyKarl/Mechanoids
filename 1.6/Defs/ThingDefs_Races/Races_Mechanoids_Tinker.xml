@@ -105,10 +105,7 @@
 			<li>APM_DefenceMatrix</li>
 			<li>APM_BlindingLaser</li>
 		</abilities>
-	</PawnKindDef>
-
-=======
-	<ThingDef ParentName="BaseMechanoidWalker">
+	</PawnKindDef> ======= <ThingDef ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Tinker</defName>
 		<label>Tinker</label>
 		<description>The tinker is a mechanoid that is suited for repair. It can aid in fixing buildings, as well as assist in repair jobs for mechanitor controlled mechs. In a pinch, it can project a shield on a nearby ally as well as blind enemies in a radius around a laser it can cast.</description>

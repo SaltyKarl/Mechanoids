@@ -99,7 +99,13 @@
 		<defName>APM_Mech_Frostivus</defName>
 		<label>frostivus</label>
 		<race>APM_Mech_Frostivus</race>
-<<<<<<< Updated upstream
+		<
+		<
+		<
+		<
+		<
+		<
+		< Updated upstream
 		<combatPower>90</combatPower>
 		<weaponTags>
 			<!--<li>APM_FrostivusWeapon</li>-->
@@ -138,7 +144,7 @@
 			<li>APM_Ability_CryptoSwallow</li>
 		</abilities>
 	</PawnKindDef>
-	
+
 	<!-- Abilities -->
 	<AbilityDef>
 		<defName>APM_Ability_CryptoSwallow</defName>
@@ -181,7 +187,7 @@
 			<Ability_EffectRadius>0</Ability_EffectRadius>
 		</statBases>
 		<comps>
-			<li Class="ApexMechanoids.CompProperties_CryptoSwallow"></li>
+			<li Class="ApexMechanoids.CompProperties_CryptoSwallow" />
 		</comps>
 	</AbilityDef>
 </Defs>

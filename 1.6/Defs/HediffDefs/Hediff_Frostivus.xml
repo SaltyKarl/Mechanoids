@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<!--
-        Applied to pawns devoured and stored inside a Frostivus.
-        Purely cosmetic/informational — the actual suspension is handled by
-        ContentsInCryptosleep_Patch. This hediff just signals the state visually.
-        It does NOT disappear on its own; it is added/removed by code.
-    -->
+	Applied to pawns devoured and stored inside a Frostivus.
+	Purely cosmetic/informational — the actual suspension is handled by
+	ContentsInCryptosleep_Patch. This hediff just signals the state visually.
+	It does NOT disappear on its own; it is added/removed by code.
+	-->
 	<HediffDef>
 		<defName>APM_Hediff_Devoured</defName>
 		<label>devoured</label>
@@ -16,7 +16,7 @@
 		<initialSeverity>1</initialSeverity>
 		<maxSeverity>1</maxSeverity>
 		<comps>
-			<li Class="HediffCompProperties_DisappearsOnDeath"></li>
+			<li Class="HediffCompProperties_DisappearsOnDeath" />
 		</comps>
 	</HediffDef>
 </Defs>

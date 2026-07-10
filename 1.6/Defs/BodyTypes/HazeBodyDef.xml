@@ -2,8 +2,8 @@
 <Defs>
 
 	<!-- Haze: Toxic area-denial quad mech. 3-directional textures (no west). HeadAttackTool only.
-       Centipede-like body with gas vents/emitters built into the thorax. Four legs. No arms/hands.
-       Custom thorax with gas vent part for flavour. -->
+	Centipede-like body with gas vents/emitters built into the thorax. Four legs. No arms/hands.
+	Custom thorax with gas vent part for flavour. -->
 	<BodyDef>
 		<defName>APM_Haze</defName>
 		<label>haze</label>

@@ -136,8 +136,6 @@
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<controlGroupPortraitZoom>0.8</controlGroupPortraitZoom>
-		<abilities>
-
-		</abilities>
+		<abilities />
 	</PawnKindDef>
 </Defs>

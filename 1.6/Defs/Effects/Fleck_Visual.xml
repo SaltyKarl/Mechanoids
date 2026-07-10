@@ -132,7 +132,7 @@
 		<fadeOutTime>1.2</fadeOutTime>
 		<growthRate>0.02</growthRate>
 	</FleckDef>
-	
+
 	<FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
 		<defName>APM_Fleck_SunRay_Burn</defName>
 		<altitudeLayer>MoteLow</altitudeLayer>
@@ -186,7 +186,6 @@
 		<solidTime>0.03</solidTime>
 		<fadeOutTime>1</fadeOutTime>
 	</FleckDef>
-
 
 
 </Defs>

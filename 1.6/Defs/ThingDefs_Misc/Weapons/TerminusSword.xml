@@ -141,7 +141,7 @@
 				<weaponDraftedDrawOffsets>
 					<north>
 						<drawOffset>(-0.55, 0.00, 0.30)</drawOffset>
-						<angleOffset>130  </angleOffset>
+						<angleOffset>130 </angleOffset>
 					</north>
 					<east>
 						<drawOffset>(0.60, 0.00, 0.30)</drawOffset>
@@ -149,7 +149,7 @@
 					</east>
 					<south>
 						<drawOffset>(0.55, 0.00, 0.30)</drawOffset>
-						<angleOffset>-60  </angleOffset>
+						<angleOffset>-60 </angleOffset>
 					</south>
 					<west>
 						<drawOffset>(-0.60, 0.00, 0.30)</drawOffset>

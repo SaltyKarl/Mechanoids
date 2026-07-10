@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<!--
-        Severity is set directly by CompUnity (ThingComp on the Conqueror).
-        Formula: severity = allyCount * severityPerAlly (default 0.1 per ally)
-        So: 1 ally = 0.1 | 3 allies = 0.3 | 5 allies = 0.5 | 7+ allies = 0.7+ (capped at maxSeverity 1.0)
-    -->
+	Severity is set directly by CompUnity (ThingComp on the Conqueror).
+	Formula: severity = allyCount * severityPerAlly (default 0.1 per ally)
+	So: 1 ally = 0.1 | 3 allies = 0.3 | 5 allies = 0.5 | 7+ allies = 0.7+ (capped at maxSeverity 1.0)
+	-->
 	<HediffDef>
 		<defName>APM_Hediff_Unity</defName>
 		<label>unity uplink</label>
@@ -16,8 +16,7 @@
 		<maxSeverity>1.0</maxSeverity>
 		<stages>
 			<!-- 0 allies (severity < 0.1): no effect -->
-			<li>
-			</li>
+			<li />
 			<!-- 1 ally (severity >= 0.1) -->
 			<li>
 				<minSeverity>0.1</minSeverity>

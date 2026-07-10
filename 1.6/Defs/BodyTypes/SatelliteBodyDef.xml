@@ -2,8 +2,8 @@
 <Defs>
 
 	<!-- Satellite: Hover/flying assault mech. 3-directional textures. LeftHand, RightHand, HeadAttackTool.
-       Light combat frame with hover pack. Bipedal humanoid but lighter build than standard.
-       Inherited from APM_Vassal currently. Custom hover thruster parts for flavour. -->
+	Light combat frame with hover pack. Bipedal humanoid but lighter build than standard.
+	Inherited from APM_Vassal currently. Custom hover thruster parts for flavour. -->
 	<BodyDef>
 		<defName>APM_Satellite</defName>
 		<label>satellite</label>

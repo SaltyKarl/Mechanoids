@@ -513,7 +513,7 @@
 			<li Class="HediffCompProperties_Immunizable">
 				<severityPerDayNotImmune>-4</severityPerDayNotImmune>
 			</li>
-			<li Class="HediffCompProperties_DisappearsOnDeath"></li>
+			<li Class="HediffCompProperties_DisappearsOnDeath" />
 			<li Class="HediffCompProperties_Disappears">
 				<showRemainingTime>True</showRemainingTime>
 			</li>
