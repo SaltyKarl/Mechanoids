@@ -40,9 +40,11 @@
 			<displayPriority>710</displayPriority>
 		</recipeMaker>
 		<costList Inherit="False">
-			<Plasteel>120</Plasteel>
-			<ComponentSpacer>6</ComponentSpacer>
-			<NanostructuringChip>2</NanostructuringChip>
+			<Steel>100</Steel>
+			<Plasteel>20</Plasteel>
+			<OcularChip>1</OcularChip>
+			<ComponentSpacer>3</ComponentSpacer>
+			<ComponentIndustrial>5</ComponentIndustrial>
 		</costList>
 		<apparel>
 			<tags>

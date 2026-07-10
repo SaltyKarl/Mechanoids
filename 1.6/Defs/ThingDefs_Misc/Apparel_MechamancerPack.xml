@@ -46,23 +46,23 @@
 		</modExtensions>
 		<recipeMaker>
 			<unfinishedThingDef>UnfinishedPack</unfinishedThingDef>
-			<!-- <recipeUsers> -->
-			<!-- <li>BioferriteShaper</li> -->
-			<!-- </recipeUsers> -->
 			<useIngredientsForColor>false</useIngredientsForColor>
 			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 			<workSkill>Crafting</workSkill>
 			<effectWorking>Smith</effectWorking>
 			<soundWorking>Recipe_Smith</soundWorking>
 			<skillRequirements>
-				<Crafting>4</Crafting>
+				<Crafting>6</Crafting>
 			</skillRequirements>
 			<researchPrerequisite>ApexMechtech</researchPrerequisite>
 			<displayPriority>30</displayPriority>
 		</recipeMaker>
 		<costList>
-			<ComponentIndustrial>1</ComponentIndustrial>
-			<!-- <Bioferrite>30</Bioferrite> -->
+			<Steel>100</Steel>
+			<Plasteel>25</Plasteel>
+			<PsionicChip>1</PsionicChip>
+			<ComponentSpacer>2</ComponentSpacer>
+			<ComponentIndustrial>5</ComponentIndustrial>
 		</costList>
 		<tickerType>Normal</tickerType>
 		<statBases>
