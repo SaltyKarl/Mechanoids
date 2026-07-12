@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -28,9 +27,7 @@ namespace ApexMechanoids
             }
             if (!isAPM) return;
 
-            List<Gizmo> list = __result.ToList();
-            list.Add(new Gizmo_WeaponDrawDebug(__instance));
-            __result = list;
+            // Gizmo_WeaponDrawDebug is not present in this branch.
         }
     }
 }

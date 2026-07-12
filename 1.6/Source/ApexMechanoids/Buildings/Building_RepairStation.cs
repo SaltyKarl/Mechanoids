@@ -51,9 +51,37 @@ namespace ApexMechanoids
         public bool PowerOn => PowerTrader != null && PowerTrader.PowerOn;
         public bool AutoRepairEnabled => autoRepairEnabled;
         public float HeldPawnDrawPos_Y => DrawPos.y + 0.04f;
-        public float HeldPawnBodyAngle => this.def.rotatable ? this.Rotation.Opposite.AsAngle : this.Rotation.AsAngle;
+        public float HeldPawnBodyAngle => GetHeldPawnBodyAngle();
         public PawnPosture HeldPawnPosture => PawnPosture.LayingOnGroundFaceUp;
         public override Vector3 PawnDrawOffset => GetMechPositionOffset();
+
+        private float GetHeldPawnBodyAngle()
+        {
+            float configuredAngle = Config.HeldPawnBodyAngleFor(Rotation);
+            if (!float.IsNaN(configuredAngle))
+            {
+                return configuredAngle;
+            }
+
+            return def.rotatable ? Rotation.Opposite.AsAngle : Rotation.AsAngle;
+        }
+
+        private Rot4 GetHeldPawnBodyFacing()
+        {
+            if (!Spawned)
+            {
+                return Rotation;
+            }
+
+            Vector3 bodyDrawPos = DrawPos + PawnDrawOffset;
+            Vector3 exitDirection = InteractionCell.ToVector3Shifted() - bodyDrawPos;
+            if (exitDirection.MagnitudeHorizontalSquared() < 0.001f)
+            {
+                return Rotation;
+            }
+
+            return Rot4.FromAngleFlat(exitDirection.AngleFlat());
+        }
 
         private Vector3 GetMechPositionOffset()
         {
@@ -255,7 +283,8 @@ namespace ApexMechanoids
                     topGraphic = Config.TopGraphic.Graphic;
                 }
                 Vector3 loc = new Vector3(drawLoc.x, AltitudeLayer.BuildingOnTop.AltitudeFor(), drawLoc.z);
-                topGraphic.Draw(loc, Rotation, this);
+                Rot4 topGraphicRot = Config.TopGraphicFixedRotation ? Rot4.North : Rotation;
+                topGraphic.Draw(loc, topGraphicRot, this);
             }
         }
 
@@ -265,7 +294,7 @@ namespace ApexMechanoids
             if (ContainedMech != null)
             {
                 Vector3 elevated = drawLoc;
-                ContainedMech.Drawer.renderer.DynamicDrawPhaseAt(phase, elevated + PawnDrawOffset, null, neverAimWeapon: true);
+                ContainedMech.Drawer.renderer.DynamicDrawPhaseAt(phase, elevated + PawnDrawOffset, GetHeldPawnBodyFacing(), neverAimWeapon: true);
             }
         }
 
@@ -273,7 +302,7 @@ namespace ApexMechanoids
         {
             foreach (var g in base.GetGizmos()) yield return g;
 
-            if (Prefs.DevMode && Config.ArmsAnimation != null && Config.ArmsAnimation.arms.Count > 0)
+            if (DebugSettings.ShowDevGizmos && Config.ArmsAnimation != null && Config.ArmsAnimation.arms.Count > 0)
             {
                 yield return new Command_Action
                 {
@@ -281,6 +310,15 @@ namespace ApexMechanoids
                     action = () =>
                     {
                         Find.WindowStack.Add(new Dialog_OffsetEditor("Repair Station Offsets", BuildDialogData(), ExportXml));
+                    }
+                };
+                yield return new Command_Action
+                {
+                    defaultLabel = "APM_RepairStation_ArmEditor_GizmoLabel".Translate(),
+                    defaultDesc = "APM_RepairStation_ArmEditor_GizmoDesc".Translate(),
+                    action = () =>
+                    {
+                        Find.WindowStack.Add(new Dialog_RepairStationArmEditor(this));
                     }
                 };
             }
@@ -402,6 +440,9 @@ namespace ApexMechanoids
                     sections.Add(new SectionData("Arm " + i + " Random Reach",
                         () => arm.randomReach, v => arm.randomReach = v,
                         arm.randomReach, -1f, 1f));
+                    sections.Add(new SectionData("Arm " + i + " Random Vertical Reach",
+                        () => arm.randomVerticalReach, v => arm.randomVerticalReach = v,
+                        arm.randomVerticalReach, -1f, 1f));
                 }
             }
             
@@ -436,6 +477,14 @@ namespace ApexMechanoids
                 if (arm.randomInterval.HasValue)
                 {
                     sb.AppendLine("                    <randomInterval>" + arm.randomInterval.Value.min + "~" + arm.randomInterval.Value.max + "</randomInterval>");
+                }
+                if (arm.randomReach.HasValue)
+                {
+                    sb.AppendLine("                    <randomReach>" + arm.randomReach.Value.min.ToString("F3") + "~" + arm.randomReach.Value.max.ToString("F3") + "</randomReach>");
+                }
+                if (arm.randomVerticalReach.HasValue)
+                {
+                    sb.AppendLine("                    <randomVerticalReach>" + arm.randomVerticalReach.Value.min.ToString("F3") + "~" + arm.randomVerticalReach.Value.max.ToString("F3") + "</randomVerticalReach>");
                 }
                 sb.AppendLine("                </li>");
             }

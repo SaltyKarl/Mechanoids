@@ -15,6 +15,8 @@ namespace ApexMechanoids
         private List<int> randomAnimTicks;
         private List<int> randomAnimDuration;
         private List<float> randomAnimReach;
+        private List<float> randomAnimStartVerticalOffset;
+        private List<float> randomAnimVerticalReach;
         private List<bool> randomAnimExtending;
         private List<int> stopTicksRemaining; // Tracks how many ticks remaining for each arm to stay stopped
         private List<bool> isArmStopped; // Tracks whether each arm is currently stopped
@@ -29,6 +31,8 @@ namespace ApexMechanoids
             randomAnimTicks = new List<int>();
             randomAnimDuration = new List<int>();
             randomAnimReach = new List<float>();
+            randomAnimStartVerticalOffset = new List<float>();
+            randomAnimVerticalReach = new List<float>();
             randomAnimExtending = new List<bool>();
             stopTicksRemaining = new List<int>(); // Initialize the new list
             isArmStopped = new List<bool>(); // Initialize the new list
@@ -46,6 +50,8 @@ namespace ApexMechanoids
                 randomAnimTicks.Add(0);
                 randomAnimDuration.Add(0);
                 randomAnimReach.Add(0f);
+                randomAnimStartVerticalOffset.Add(0f);
+                randomAnimVerticalReach.Add(0f);
                 randomAnimExtending.Add(false);
                 stopTicksRemaining.Add(0);
                 isArmStopped.Add(false);
@@ -120,31 +126,55 @@ namespace ApexMechanoids
                     {
                         if (randomAnimDuration[i] == 0)
                         {
-                            randomAnimDuration[i] = armIntervals[i];
-                            randomAnimTicks[i] = 0;
-                            if (config.arms[i].randomReach.HasValue)
-                            {
-                                randomAnimReach[i] = Rand.Range(config.arms[i].randomReach.Value.min, config.arms[i].randomReach.Value.max);
-                            }
-                            else
-                            {
-                                randomAnimReach[i] = 0.2f;
-                            }
+                            StartRandomAnimation(i);
                         }
 
                         randomAnimTicks[i]++;
                         if (randomAnimTicks[i] >= randomAnimDuration[i])
                         {
-                            randomAnimDuration[i] = 0;
+                            randomAnimStartVerticalOffset[i] = randomAnimVerticalReach[i];
+                            StartRandomAnimation(i);
                         }
                     }
                     else
                     {
                         randomAnimDuration[i] = 0;
                         randomAnimTicks[i] = 0;
+                        randomAnimReach[i] = 0f;
+                        randomAnimStartVerticalOffset[i] = 0f;
+                        randomAnimVerticalReach[i] = 0f;
                     }
                 }
             }
+        }
+
+        private void StartRandomAnimation(int armIndex)
+        {
+            randomAnimDuration[armIndex] = Mathf.Max(30, armIntervals[armIndex]);
+            randomAnimTicks[armIndex] = 0;
+
+            if (config.arms[armIndex].randomReach.HasValue)
+            {
+                randomAnimReach[armIndex] = Rand.Range(config.arms[armIndex].randomReach.Value.min, config.arms[armIndex].randomReach.Value.max);
+            }
+            else
+            {
+                randomAnimReach[armIndex] = 0.2f;
+            }
+
+            randomAnimVerticalReach[armIndex] = RandomVerticalOffset(armIndex);
+        }
+
+        private float RandomVerticalOffset(int armIndex)
+        {
+            if (!config.arms[armIndex].randomVerticalReach.HasValue)
+            {
+                return 0f;
+            }
+
+            FloatRange range = config.arms[armIndex].randomVerticalReach.Value;
+            float amount = Rand.Range(range.min, range.max);
+            return Rand.Value < 0.5f ? -amount : amount;
         }
 
         private (Vector3 originOffset, Vector3 destinationOffset) GetArmOffsets(int armIndex)
@@ -159,6 +189,84 @@ namespace ApexMechanoids
             {
                 return (new Vector3(reach, 0f, 0f), new Vector3(reach * 0.5f, 0f, 0f));
             }
+        }
+
+        private Vector3 GetDrawOffset(int armIndex, Rot4 rot)
+        {
+            switch (rot.AsInt)
+            {
+                case 0:
+                    return config.arms[armIndex].drawOffsetNorth;
+                case 1:
+                    return config.arms[armIndex].drawOffsetEast;
+                case 2:
+                    return config.arms[armIndex].drawOffsetSouth;
+                case 3:
+                    return config.arms[armIndex].drawOffsetWest;
+                default:
+                    return Vector3.zero;
+            }
+        }
+
+        private Vector3 GetSurfaceMotionAxis(int armIndex, Rot4 rot)
+        {
+            if (rot.IsHorizontal)
+            {
+                return Vector3.zero;
+            }
+
+            float x = GetDrawOffset(armIndex, rot).x;
+            if (Mathf.Abs(x) > 0.001f)
+            {
+                return x > 0f ? Vector3.left : Vector3.right;
+            }
+
+            return armIndex == 0 ? Vector3.right : Vector3.left;
+        }
+
+        private Vector3 GetRandomWorkOffset(int armIndex, Rot4 rot)
+        {
+            if (randomAnimDuration[armIndex] <= 0)
+            {
+                return Vector3.zero;
+            }
+
+            float cycleProgress = Mathf.Clamp01((float)randomAnimTicks[armIndex] / randomAnimDuration[armIndex]);
+            const float extendEnd = 0.25f;
+            const float workEnd = 0.50f;
+            const float retractEnd = 0.75f;
+
+            float reachProgress = 0f;
+            float verticalOffset = randomAnimStartVerticalOffset[armIndex];
+
+            if (cycleProgress < extendEnd)
+            {
+                reachProgress = Smooth01(cycleProgress / extendEnd);
+            }
+            else if (cycleProgress < workEnd)
+            {
+                float workProgress = (cycleProgress - extendEnd) / (workEnd - extendEnd);
+                reachProgress = 1f + Mathf.Sin(workProgress * Mathf.PI * 4f) * 0.08f;
+            }
+            else if (cycleProgress < retractEnd)
+            {
+                reachProgress = Smooth01(1f - (cycleProgress - workEnd) / (retractEnd - workEnd));
+            }
+            else
+            {
+                float moveProgress = Smooth01((cycleProgress - retractEnd) / (1f - retractEnd));
+                verticalOffset = Mathf.Lerp(randomAnimStartVerticalOffset[armIndex], randomAnimVerticalReach[armIndex], moveProgress);
+            }
+
+            Vector3 surfaceOffset = GetSurfaceMotionAxis(armIndex, rot) * randomAnimReach[armIndex] * reachProgress;
+            Vector3 vertical = new Vector3(0f, 0f, verticalOffset);
+            return surfaceOffset + vertical;
+        }
+
+        private float Smooth01(float value)
+        {
+            value = Mathf.Clamp01(value);
+            return value * value * (3f - 2f * value);
         }
 
         public void Draw(Vector3 drawLoc, Rot4 rot)
@@ -177,52 +285,14 @@ namespace ApexMechanoids
 
                 if (randomAnimDuration[i] > 0)
                 {
-                    float animProgress = (float)randomAnimTicks[i] / randomAnimDuration[i];
-                    float smoothProgress = Mathf.PingPong(animProgress * 2f, 1f);
-                    Vector3 randomOffset = Vector3.Lerp(Vector3.zero, worldOffset * randomAnimReach[i], smoothProgress);
-                    armPos += randomOffset;
+                    armPos += GetRandomWorkOffset(i, rot);
                 }
 
-                Vector3 drawOffset = Vector3.zero;
-                switch (rot.AsInt)
-                {
-                    case 0:
-                        drawOffset = config.arms[i].drawOffsetNorth;
-                        break;
-                    case 1:
-                        drawOffset = config.arms[i].drawOffsetEast;
-                        break;
-                    case 2:
-                        drawOffset = config.arms[i].drawOffsetSouth;
-                        break;
-                    case 3:
-                        drawOffset = config.arms[i].drawOffsetWest;
-                        break;
-                }
-                armPos += drawOffset;
+                armPos += GetDrawOffset(i, rot);
 
-                if (graphic is Graphic_Multi multiGraphic)
-                {
-                    Material material = multiGraphic.MatAt(rot);
-                    Mesh mesh = multiGraphic.MeshAt(rot);
-                    Quaternion finalRotation = rot.AsQuat;
-                    if (rot.IsHorizontal)
-                    {
-                        if (i == 0)
-                        {
-                            finalRotation *= Quaternion.AngleAxis(-90, Vector3.up);
-                        }
-                        else
-                        {
-                            finalRotation *= Quaternion.AngleAxis(90, Vector3.up);
-                        }
-                    }
-                    Graphics.DrawMesh(mesh, Matrix4x4.TRS(armPos, finalRotation, Vector3.one), material, 0);
-                }
-                else
-                {
-                    graphic.Draw(armPos, rot, null);
-                }
+                Material material = graphic.MatAt(rot);
+                Mesh mesh = graphic.MeshAt(rot);
+                Graphics.DrawMesh(mesh, Matrix4x4.TRS(armPos, graphic.QuatFromRot(rot), Vector3.one), material, 0);
             }
         }
 
