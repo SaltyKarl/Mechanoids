@@ -211,6 +211,7 @@
 				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
 				<texPath>Effects/PressTheAttack/Halo</texPath>
 				<parentTagDef>Head</parentTagDef>
+				<color>(250, 147, 19)</color>
 				<drawData>
 					<scale>0.7</scale>
 					<defaultData>
@@ -224,6 +225,7 @@
 				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
 				<texPath>Effects/PressTheAttack/Wings</texPath>
 				<parentTagDef>Body</parentTagDef>
+				<color>(250, 147, 19)</color>
 				<texPaths>
 					<li>Effects/PressTheAttack/Wings/WingsA</li>
 					<li>Effects/PressTheAttack/Wings/WingsB</li>
