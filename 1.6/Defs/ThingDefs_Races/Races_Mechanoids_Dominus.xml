@@ -154,7 +154,7 @@
 		</weaponTags>
 		<abilities>
 			<li>APM_PressTheAttack</li>
-			<li>APM_Mech_Duel_Boss</li>
+			<li>APM_Mech_Duel</li>
 		</abilities>
 	</PawnKindDef>
 

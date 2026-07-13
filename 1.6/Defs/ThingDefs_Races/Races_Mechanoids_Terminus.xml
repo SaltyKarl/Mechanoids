@@ -73,6 +73,12 @@
 			<Steel>80</Steel>
 			<Plasteel>50</Plasteel>
 		</butcherProducts>
+		<comps>
+			<li MayRequire="Ludeon.RimWorld.Biotech" Class="ApexMechanoids.CompProperties_MechanitorRangeExtender">
+				<maxRange>30</maxRange>
+				<minRange>0</minRange>
+			</li>
+		</comps>
 	</ThingDef>
 
 
@@ -123,7 +129,7 @@
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Terminus_Boss</defName>
 		<label>terminus boss</label>
-		<race>APM_Mech_TerminusB</race>
+		<race>APM_Mech_Terminus</race>
 		<combatPower>190</combatPower>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
@@ -212,10 +218,6 @@
 				<verticalOffset>0.06</verticalOffset>
 				<speedRange>2.8~3.2</speedRange>
 				<angleOffsetRange>-10~10</angleOffsetRange>
-			</li>
-			<li Class="ApexMechanoids.CompProperties_MechanitorRangeExtender">
-				<minRange>0</minRange>
-				<maxRange>15</maxRange>
 			</li>
 		</comps>
 	</AbilityDef>
