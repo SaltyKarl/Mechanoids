@@ -23,6 +23,7 @@ namespace ApexMechanoids
                 if (kind.Contains("Dominus")) return isBoss ? DominusColor  : PlayerColor;
                 if (kind.Contains("Celerus")) return isBoss ? CelerusColor  : PlayerColor;
                 if (kind.Contains("Terminus")) return isBoss ? TerminusColor : PlayerColor;
+                if (kind.Contains("Vassal"))  return PlayerColor;
             }
             return caster?.Faction?.AllegianceColor ?? Color.white;
         }
