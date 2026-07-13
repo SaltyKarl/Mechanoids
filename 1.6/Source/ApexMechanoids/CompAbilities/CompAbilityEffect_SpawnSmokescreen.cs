@@ -1,5 +1,6 @@
 using RimWorld;
 using Verse;
+using Verse.Sound;
 
 namespace ApexMechanoids
 {
@@ -9,6 +10,7 @@ namespace ApexMechanoids
         public float radius = 5f;
         public float maxRadius = 15f;
         public int spreadIntervalTicks = 15;
+        public SoundDef castSoundDef;
 
         public CompProperties_AbilitySpawnSmokescreen()
         {
@@ -29,6 +31,8 @@ namespace ApexMechanoids
             {
                 return;
             }
+
+            Props.castSoundDef?.PlayOneShot(new TargetInfo(pawn.PositionHeld, map));
             GasSpreadManager.StartSpread(pawn.Position, map, Props.gasDef, Props.maxRadius, Props.spreadIntervalTicks);
         }
     }
