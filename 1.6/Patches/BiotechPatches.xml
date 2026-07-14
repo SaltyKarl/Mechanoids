@@ -54,11 +54,10 @@
 					<xpath>Defs/RecipeDef[defName = "ResurrectHeavyMech"]/fixedIngredientFilter/thingDefs</xpath>
 					<value>
 						<li>Corpse_APM_Mech_Aegis</li>
-						<li>Corpse_APM_Mech_Frostivus</li>
 						<li>Corpse_APM_Mech_Maul</li>
 						<li>Corpse_APM_Mech_Mantis</li>
-						<li>Corpse_APM_Mech_Dynamo</li>
 						<li>Corpse_APM_Mech_Terminus</li>
+						<li>Corpse_APM_Mech_Dynamo</li>
 					</value>
 				</li>
 

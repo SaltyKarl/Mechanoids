@@ -46,8 +46,11 @@
 		<hasInteractionCell>true</hasInteractionCell>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
 		<costList>
-			<Steel>120</Steel>
+			<Steel>150</Steel>
+			<Plasteel>40</Plasteel>
 			<ComponentIndustrial>4</ComponentIndustrial>
+			<ComponentSpacer>6</ComponentSpacer>
+			<SubcoreHigh>1</SubcoreHigh>
 		</costList>
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
 		<researchPrerequisites>

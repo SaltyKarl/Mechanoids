@@ -42,7 +42,7 @@
 		<costList>
 			<Steel>250</Steel>
 			<ComponentIndustrial>2</ComponentIndustrial>
-			<!-- should this require a signal chip, like biotechs mech gestation processor implant? -->
+			<OcularChip>1</OcularChip>
 		</costList>
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
 		<researchPrerequisites>

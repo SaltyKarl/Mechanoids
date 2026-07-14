@@ -60,7 +60,7 @@
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
 					<texPath>Things/Pawn/Mechanoid/Ingestor/Ingestor</texPath>
-					<maskPath>Things/Pawn/Mechanoid/Overlays/Ingestor_Overlay/Mech_Ingestor</maskPath>
+					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Ingestor/Mech_Ingestor</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>3</drawSize>
@@ -72,7 +72,7 @@
 			<li>
 				<bodyGraphicData>
 					<texPath>Things/Pawn/Mechanoid/Ingestor/IngestorAncient</texPath>
-					<maskPath>Things/Pawn/Mechanoid/Overlays/Ingestor_Overlay/Mech_Ingestor</maskPath>
+					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Ingestor/Mech_Ingestor</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>3</drawSize>

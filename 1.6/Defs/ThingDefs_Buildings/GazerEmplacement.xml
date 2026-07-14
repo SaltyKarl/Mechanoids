@@ -34,10 +34,12 @@
 		<uiOrder>2452</uiOrder>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<costList>
-			<Steel>100</Steel>
+			<Steel>250</Steel>
+			<Plasteel>100</Plasteel>
+			<OcularChip>1</OcularChip>
 		</costList>
 		<researchPrerequisites>
-			<li>ApexMechtech</li>
+			<li>AdvancedMechtech</li>
 		</researchPrerequisites>
 		<statBases>
 			<MaxHitPoints>400</MaxHitPoints>

@@ -60,7 +60,7 @@
 		<race>
 			<body>APM_Vassal</body>
 			<baseHealthScale>1.82</baseHealthScale>
-			<baseBodySize>1.5</baseBodySize>
+			<baseBodySize>2.5</baseBodySize>
 			<mechWeightClass>Medium</mechWeightClass>
 			<mechEnabledWorkTypes>
 				<li>Crafting</li>
