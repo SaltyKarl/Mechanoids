@@ -143,7 +143,7 @@
 		<label>pulse wave</label>
 		<description>Unleash a blinding acoustic pulse that expands out from the mech, stunning and flash-blinding living pawns caught in the wave.</description>
 		<jobDef>CastAbilityOnThingWithoutWeapon</jobDef>
-		<iconPath>UI/Icons/PulseWave</iconPath>
+		<iconPath>UI/PulseWave</iconPath>
 		<cooldownTicksRange>3600</cooldownTicksRange><!-- 1 minute -->
 		<hostile>true</hostile>
 		<writeCombatLog>true</writeCombatLog>
@@ -217,7 +217,7 @@
 		<jobDef>APM_HookPawn</jobDef>
 		<targetRequired>true</targetRequired>
 		<canUseAoeToGetTargets>False</canUseAoeToGetTargets>
-		<iconPath>UI/Icons/Hookshot</iconPath>
+		<iconPath>UI/Hookshot</iconPath>
 		<showPsycastEffects>False</showPsycastEffects>
 		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
 		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
@@ -287,7 +287,7 @@
 		<defName>APM_ShieldCharge</defName>
 		<label>Shield Charge</label>
 		<description>Charge at a pawn, stunning everything hit on the way.</description>
-		<iconPath>UI/Icons/ShieldCharge</iconPath>
+		<iconPath>UI/ShieldCharge</iconPath>
 		<cooldownTicksRange>2500</cooldownTicksRange>
 		<hostile>true</hostile>
 		<writeCombatLog>true</writeCombatLog>
@@ -329,7 +329,7 @@
 		<defName>APM_Bladehopp</defName>
 		<label>Bladehopp</label>
 		<description>Dash to a target followed by a quick attack.</description>
-		<iconPath>UI/Icons/Bladehopp</iconPath>
+		<iconPath>UI/Bladehopp</iconPath>
 		<cooldownTicksRange>2500</cooldownTicksRange>
 		<hostile>true</hostile>
 		<writeCombatLog>true</writeCombatLog>
@@ -360,7 +360,7 @@
 		<defName>APM_BlindingLaser</defName>
 		<label>Blinding Laser</label>
 		<description>Fire a laser at target, effectively blinding them for a short time.</description>
-		<iconPath>UI/Icons/Laser</iconPath>
+		<iconPath>UI/Laser</iconPath>
 		<showPsycastEffects>false</showPsycastEffects>
 		<cooldownTicksRange>850</cooldownTicksRange>
 		<displayGizmoWhileUndrafted>True</displayGizmoWhileUndrafted>
@@ -461,7 +461,7 @@
 		<label>Starfall</label>
 		<description>Ravager overcharges its artillery and launches a single heavy shell that splits into three energy blasts while still in flight.</description>
 		<jobDef>CastAbilityOnThingWithoutWeapon</jobDef>
-		<iconPath>UI/Icons/Starfall</iconPath>
+		<iconPath>UI/Starfall</iconPath>
 		<cooldownTicksRange>5000</cooldownTicksRange>
 		<hostile>true</hostile>
 		<writeCombatLog>true</writeCombatLog>
@@ -503,7 +503,7 @@
 		<jobDef>ShieldMech</jobDef>
 		<targetRequired>true</targetRequired>
 		<canUseAoeToGetTargets>False</canUseAoeToGetTargets>
-		<iconPath>UI/Icons/Matrix</iconPath>
+		<iconPath>UI/Matrix</iconPath>
 		<stunTargetWhileCasting>True</stunTargetWhileCasting>
 		<showPsycastEffects>False</showPsycastEffects>
 		<hotKey>Misc12</hotKey>
@@ -535,7 +535,7 @@
 		<defName>APM_Ability_SteelDiscipline</defName>
 		<label>Steel Discipline</label>
 		<description>In a radius around the Vassal, its allies gain a speed boost and their mental break chance is reduced if organic. The Vassal's commanding presence inspires those nearby with renewed purpose and fortitude.</description>
-		<iconPath>UI/Icons/SteelDiscipline</iconPath>
+		<iconPath>UI/SteelDiscipline</iconPath>
 		<cooldownTicksRange>9000</cooldownTicksRange><!-- 2.5 hours -->
 		<hostile>false</hostile>
 		<targetRequired>false</targetRequired>
@@ -569,7 +569,7 @@
 		<defName>APM_Ability_ToxicMist</defName>
 		<label>Toxic Mist</label>
 		<description>Similar to a tox pack, the haze releases tox gas around itself, enveloping the surrounding area in a toxic cloud.</description>
-		<iconPath>UI/Icons/ToxicMist</iconPath>
+		<iconPath>UI/ToxicMist</iconPath>
 		<cooldownTicksRange>18000</cooldownTicksRange><!-- 5 hours -->
 		<hostile>false</hostile>
 		<writeCombatLog>true</writeCombatLog>
@@ -602,4 +602,75 @@
 		</comps>
 	</AbilityDef>
 
+	<AbilityDef>
+		<defName>APM_Shockwave</defName>
+		<label>Shockwave</label>
+		<description>An explosive wave that throws enemies within a radius for a certain distance</description>
+		<iconPath>UI/Shockwave</iconPath>
+		<cooldownTicksRange>45000</cooldownTicksRange>
+		<targetRequired>false</targetRequired>
+		<canUseAoeToGetTargets>false</canUseAoeToGetTargets>
+		<hostile>false</hostile>
+		<aiCanUse>false</aiCanUse>
+		<showCastingProgressBar>true</showCastingProgressBar>
+		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+		<showPsycastEffects>false</showPsycastEffects>
+		<warmupStartSound MayRequire="Ludeon.RimWorld.Royalty">CombatCommand_Warmup</warmupStartSound>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<warmupTime>3.0</warmupTime>
+			<range>0.48</range>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetBuildings>false</canTargetBuildings>
+				<canTargetAnimals>false</canTargetAnimals>
+				<canTargetHumans>false</canTargetHumans>
+				<canTargetMechs>false</canTargetMechs>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_ShockwaveWarmup">
+				<chargeFleckDefName />
+				<sparkIntervalTicks>0</sparkIntervalTicks>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_Shockwave">
+				<damageDef>Bomb</damageDef>
+				<blastWaveDef>APM_Mote_ShockwaveBlastWave</blastWaveDef>
+				<throwFlyerDef>APM_PawnFlyer_ShockwaveThrown</throwFlyerDef>
+				<radius>8.9</radius>
+				<damageAmount>6</damageAmount>
+				<armorPenetration>0.12</armorPenetration>
+				<stunTicks>480</stunTicks>
+				<blastWaveStartScale>1.15</blastWaveStartScale>
+				<blastWaveEndScale>10.8</blastWaveEndScale>
+				<blastWaveLifetimeTicks>32</blastWaveLifetimeTicks>
+				<minThrowDistance>2</minThrowDistance>
+				<maxThrowDistance>6</maxThrowDistance>
+				<empDamageAmount>8</empDamageAmount>
+				<castSoundDefName>Explosion_EMP</castSoundDefName>
+			</li>
+		</comps>
+	</AbilityDef>
+	<ThingDef ParentName="PawnFlyerBase">
+		<defName>APM_PawnFlyer_ShockwaveThrown</defName>
+		<thingClass>ApexMechanoids.PawnFlyer_ShockwaveThrown</thingClass>
+		<drawGUIOverlay>false</drawGUIOverlay>
+		<pawnFlyer>
+			<flightDurationMin>0.3</flightDurationMin>
+			<flightSpeed>16</flightSpeed>
+			<workerClass>PawnFlyerWorker</workerClass>
+			<heightFactor>0.42</heightFactor>
+			<progressCurve>
+				<points>
+					<li>(0, 0)</li>
+					<li>(0.18, 0.2)</li>
+					<li>(0.5, 0.68)</li>
+					<li>(0.82, 0.94)</li>
+					<li>(1, 1)</li>
+				</points>
+			</progressCurve>
+		</pawnFlyer>
+	</ThingDef>
 </Defs>

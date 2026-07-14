@@ -5,8 +5,8 @@
 		<description>Three powerful mechanoid types were created by an Archotech mind in an attempt to create a central commander of all mechanoid forces. Influenced by the Old Earth region of Japan during its Sengoku period, the swift and stealthy Celerus is not any weaker for its speed. It has the ability to skip itself short distances around it as well as create a smokescreen to hinder enemies perception of it and anything around it, additionally becoming psychically imperceptible in this area. On top of those effects, enemies will receive periodic.</description>
 		<statBases>
 			<MoveSpeed>4.7</MoveSpeed>
-			<ArmorRating_Blunt>0.40</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.60</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.60</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.80</ArmorRating_Sharp>
 			<ArmorRating_Heat>2.0</ArmorRating_Heat>
 			<MarketValue>1600</MarketValue>
 			<MechEnergyLossPerHP MayRequire="Ludeon.RimWorld.Biotech">0.15</MechEnergyLossPerHP>
@@ -55,7 +55,7 @@
 		<race>
 					<body>APM_Celerus</body>
 			<baseBodySize>2</baseBodySize>
-			<baseHealthScale>2.52</baseHealthScale>
+			<baseHealthScale>4</baseHealthScale>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
 			<intelligence>ToolUser</intelligence>
 			<mechWeightClass>Medium</mechWeightClass>
@@ -255,7 +255,6 @@
 		<comps>
 			<li Class="ApexMechanoids.CompProperties_AbilitySpawnSmokescreen">
 				<gasDef>APM_Smokescreen_Boss</gasDef>
-				<castSoundDef>APM_SmokeScreen</castSoundDef>
 				<radius>3</radius>
 				<maxRadius>4.9</maxRadius>
 				<spreadIntervalTicks>15</spreadIntervalTicks>
