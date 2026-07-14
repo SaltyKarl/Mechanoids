@@ -79,7 +79,7 @@
       <fadeOutTime>0</fadeOutTime>
     </mote>
     <graphicData>
-      <texPath>Fleck/EMP_Blast</texPath>
+      <texPath>Things/Mote/Fleck/EMP_Blast</texPath>
       <graphicClass>Graphic_Mote</graphicClass>
       <shaderType>MoteGlow</shaderType>
       <drawSize>(1.0, 1.0)</drawSize>

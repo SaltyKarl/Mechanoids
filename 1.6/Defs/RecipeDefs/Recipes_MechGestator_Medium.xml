@@ -152,39 +152,42 @@
 				<count>3</count>
 			</li>
 		</ingredients>
-    <products>
-      <APM_Mech_Dominus>1</APM_Mech_Dominus>
-    </products>
-    <descriptionHyperlinks>
-      <ThingDef>APM_Mech_Dominus</ThingDef>
-    </descriptionHyperlinks>
 	</RecipeDef>
 
 	<RecipeDef ParentName="APM_ConquerorBase">
 		<defName>APM_Conqueror_DMR</defName>
-		<description>Gestate a DMR-equipped conqueror mechanoid from a regular subcore and mechanoid components.</description>
+		<description>Gestate a Charge Carbine-equipped conqueror mechanoid.</description>
 		<jobString>Gestating conqueror (DMR).</jobString>
 		<products>
 			<APM_Mech_Conqueror_DMR>1</APM_Mech_Conqueror_DMR>
 		</products>
+    <descriptionHyperlinks>
+      <ThingDef>APM_Mech_Conqueror_DMR</ThingDef>
+    </descriptionHyperlinks>
 	</RecipeDef>
 
 	<RecipeDef ParentName="APM_ConquerorBase">
 		<defName>APM_Conqueror_AR</defName>
-		<description>Gestate an AR-equipped conqueror mechanoid from a regular subcore and mechanoid components.</description>
+		<description>Gestate a Blaster rifle-equipped conqueror mechanoid.</description>
 		<jobString>Gestating conqueror (AR).</jobString>
 		<products>
 			<APM_Mech_Conqueror_AR>1</APM_Mech_Conqueror_AR>
 		</products>
+    <descriptionHyperlinks>
+      <ThingDef>APM_Mech_Conqueror_AR</ThingDef>
+    </descriptionHyperlinks>
 	</RecipeDef>
 
 	<RecipeDef ParentName="APM_ConquerorBase">
 		<defName>APM_Conqueror_LMG</defName>
-		<description>Gestate an LMG-equipped conqueror mechanoid from a regular subcore and mechanoid components.</description>
+		<description>Gestate a Charge Spitter-equipped conqueror mechanoid.</description>
 		<jobString>Gestating conqueror (LMG).</jobString>
 		<products>
 			<APM_Mech_Conqueror_LMG>1</APM_Mech_Conqueror_LMG>
 		</products>
+    <descriptionHyperlinks>
+      <ThingDef>APM_Mech_Conqueror_LMG</ThingDef>
+    </descriptionHyperlinks>
 	</RecipeDef>
 
   <RecipeDef ParentName="MediumMechanoidRecipe">

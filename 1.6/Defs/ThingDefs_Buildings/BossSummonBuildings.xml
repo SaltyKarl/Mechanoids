@@ -110,7 +110,7 @@
 		<comps>
 			<li Class="CompProperties_Usable">
 				<useJob>TriggerObject</useJob>
-				<useLabel>Summon dominus threat</useLabel>
+				<useLabel>Summon terminus threat</useLabel>
 				<useDuration>900</useDuration>
 				<floatMenuFactionIcon>Mechanoid</floatMenuFactionIcon>
 			</li>
@@ -176,7 +176,7 @@
 		<comps>
 			<li Class="CompProperties_Usable">
 				<useJob>TriggerObject</useJob>
-				<useLabel>Summon dominus threat</useLabel>
+				<useLabel>Summon celerus threat</useLabel>
 				<useDuration>900</useDuration>
 				<floatMenuFactionIcon>Mechanoid</floatMenuFactionIcon>
 			</li>
@@ -242,7 +242,7 @@
 		<comps>
 			<li Class="CompProperties_Usable">
 				<useJob>TriggerObject</useJob>
-				<useLabel>Summon dominus threat</useLabel>
+				<useLabel>Summon gazer threat</useLabel>
 				<useDuration>900</useDuration>
 				<floatMenuFactionIcon>Mechanoid</floatMenuFactionIcon>
 			</li>

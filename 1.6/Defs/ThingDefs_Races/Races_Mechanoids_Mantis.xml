@@ -36,6 +36,9 @@
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
 			<intelligence>ToolUser</intelligence>
 			<mechWeightClass>Heavy</mechWeightClass>
+			<hediffGiverSets>
+				<li>APM_Mech_HealOnKills</li>
+			</hediffGiverSets>
 			<lifeStageAges>
 				<li>
 					<def>MechanoidFullyFormed</def>

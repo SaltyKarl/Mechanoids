@@ -51,7 +51,7 @@
 		</tools>
 		<race>
 			<body>APM_Haze</body>
-			<baseBodySize>3</baseBodySize>
+			<baseBodySize>1</baseBodySize>
 			<baseHealthScale>1.32</baseHealthScale>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
 			<intelligence>ToolUser</intelligence>
@@ -96,7 +96,7 @@
 		<race>APM_Mech_Haze</race>
 		<combatPower>140</combatPower>
 		<maxPerGroup MayRequire="Ludeon.Rimworld.Biotech">2</maxPerGroup>
-		<controlGroupPortraitZoom MayRequire="Ludeon.Rimworld.Biotech">0.48</controlGroupPortraitZoom>
+		<controlGroupPortraitZoom MayRequire="Ludeon.Rimworld.Biotech">1.2</controlGroupPortraitZoom>
 		<lifeStages>
 			<li>
 				<bodyGraphicData>

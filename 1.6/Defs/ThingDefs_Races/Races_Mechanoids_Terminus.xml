@@ -6,8 +6,8 @@
 		<statBases>
 			<MarketValue>1900</MarketValue>
 			<MoveSpeed>3.3</MoveSpeed>
-			<ArmorRating_Blunt>0.54</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.72</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.84</ArmorRating_Blunt>
+			<ArmorRating_Sharp>1.12</ArmorRating_Sharp>
 			<BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">5</BandwidthCost>
 			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.15</MechEnergyLossPerHP>
 			<EMPResistance MayRequire="Ludeon.Rimworld.Biotech">0.45</EMPResistance>
@@ -60,7 +60,7 @@
 			<body>APM_Terminus</body>
 			<renderTree>APM_RenderTree_Terminus</renderTree>
 			<baseBodySize>4</baseBodySize>
-			<baseHealthScale>4.32</baseHealthScale>
+			<baseHealthScale>6.32</baseHealthScale>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
 			<intelligence>ToolUser</intelligence>
 			<mechWeightClass>Heavy</mechWeightClass>
@@ -153,7 +153,7 @@
 	
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Terminus_Boss</defName>
-		<label>terminus boss</label>
+		<label>terminus</label>
 		<race>APM_Mech_TerminusB</race>
 		<combatPower>190</combatPower>
 		<lifeStages>
@@ -199,7 +199,7 @@
 		<defName>APM_TerminusOverdrive</defName>
 		<label>overdrive</label>
 		<description>Terminus diverts power inward and briefly enters an overdriven combat state. While active, it sheds its cape, strikes harder, recovers between swings faster and becomes harder to stagger.</description>
-		<iconPath>UI/Icons/Overdrive</iconPath>
+		<iconPath>UI/Overdrive</iconPath>
 		<cooldownTicksRange>60000</cooldownTicksRange>
 		<targetRequired>false</targetRequired>
 		<hostile>false</hostile>
@@ -252,7 +252,7 @@
 		<defName>APM_TerminusOverdrive_Boss</defName>
 		<label>overdrive</label>
 		<description>Terminus diverts power inward and briefly enters an overdriven combat state. While active, it sheds its cape, strikes harder, recovers between swings faster and becomes harder to stagger.</description>
-		<iconPath>UI/Icons/Overdrive</iconPath>
+		<iconPath>UI/Overdrive</iconPath>
 		<cooldownTicksRange>90000</cooldownTicksRange>
 		<targetRequired>false</targetRequired>
 		<hostile>false</hostile>

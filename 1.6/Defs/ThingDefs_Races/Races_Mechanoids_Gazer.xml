@@ -7,8 +7,8 @@
     <statBases>
       <MarketValue>2200</MarketValue>
       <MoveSpeed>1.6</MoveSpeed>
-      <ArmorRating_Blunt>0.35</ArmorRating_Blunt>
-      <ArmorRating_Sharp>0.78</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.55</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.96</ArmorRating_Sharp>
       <ArmorRating_Heat>2.0</ArmorRating_Heat>
       <BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">6</BandwidthCost>
       <ControlTakingTime MayRequire="Ludeon.Rimworld.Biotech">30</ControlTakingTime>
@@ -55,7 +55,7 @@
     <race>
       <body>APM_Gazer</body>
       <baseBodySize>3</baseBodySize>
-      <baseHealthScale>5.42</baseHealthScale>
+      <baseHealthScale>8.42</baseHealthScale>
       <thinkTreeMain>Mechanoid</thinkTreeMain>
       <intelligence>ToolUser</intelligence>
       <mechWeightClass>UltraHeavy</mechWeightClass>

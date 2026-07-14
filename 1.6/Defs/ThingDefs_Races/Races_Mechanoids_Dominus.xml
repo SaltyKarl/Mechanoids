@@ -6,8 +6,8 @@
 		<statBases>
 			<MarketValue>1500</MarketValue>
 			<MoveSpeed>3.4</MoveSpeed>
-			<ArmorRating_Blunt>0.44</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.65</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.64</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.85</ArmorRating_Sharp>
 			<BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">5</BandwidthCost>
 			<ControlTakingTime MayRequire="Ludeon.Rimworld.Biotech">30</ControlTakingTime>
 			<ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">1</ToxicEnvironmentResistance>
@@ -39,7 +39,7 @@
 		<race>
 			<body>APM_Dominus</body>
 			<baseBodySize>3</baseBodySize>
-			<baseHealthScale>3.5</baseHealthScale>
+			<baseHealthScale>4.5</baseHealthScale>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
 			<intelligence>ToolUser</intelligence>
 			<mechWeightClass>Medium</mechWeightClass>
@@ -226,7 +226,7 @@
 		<renderNodeProperties>
 			<li>
 				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
-				<texPath>Effects/PressTheAttack/Halo</texPath>
+				<texPath>Things/Mote/PressTheAttack/Halo</texPath>
 				<parentTagDef>Head</parentTagDef>
 				<pawnType>HumanlikeOnly</pawnType>
 				<color>(68, 150, 215)</color>
@@ -241,7 +241,7 @@
 			</li>
 			<li>
 				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
-				<texPath>Effects/PressTheAttack/Halo</texPath>
+				<texPath>Things/Mote/PressTheAttack/Halo</texPath>
 				<pawnType>NonHumanlikeOnly</pawnType>
 				<color>(68, 150, 215)</color>
 				<drawData>
@@ -256,14 +256,14 @@
 			<li Class="ApexMechanoids.PawnRenderNodeProperties_Animated">
 				<nodeClass>ApexMechanoids.PawnRenderNode_RandomAnimated</nodeClass>
 				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
-				<texPath>Effects/PressTheAttack/Wings</texPath>
+				<texPath>Things/Mote/PressTheAttack/Wings</texPath>
 				<parentTagDef>Body</parentTagDef>
 				<pawnType>Any</pawnType>
 				<color>(68, 150, 215)</color>
 				<texPaths>
-					<li>Effects/PressTheAttack/Wings/WingsA</li>
-					<li>Effects/PressTheAttack/Wings/WingsB</li>
-					<li>Effects/PressTheAttack/Wings/WingsC</li>
+					<li>Things/Mote/PressTheAttack/Wings/WingsA</li>
+					<li>Things/Mote/PressTheAttack/Wings/WingsB</li>
+					<li>Things/Mote/PressTheAttack/Wings/WingsC</li>
 				</texPaths>
 				<ticksPerTexture>3</ticksPerTexture>
 				<drawData>
@@ -307,7 +307,7 @@
 		<renderNodeProperties>
 			<li>
 				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
-				<texPath>Effects/PressTheAttack/Halo</texPath>
+				<texPath>Things/Mote/PressTheAttack/Halo</texPath>
 				<parentTagDef>Head</parentTagDef>
 				<pawnType>HumanlikeOnly</pawnType>
 				<color>(230, 130, 40)</color>
@@ -322,7 +322,7 @@
 			</li>
 			<li>
 				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
-				<texPath>Effects/PressTheAttack/Halo</texPath>
+				<texPath>Things/Mote/PressTheAttack/Halo</texPath>
 				<pawnType>NonHumanlikeOnly</pawnType>
 				<color>(230, 130, 40)</color>
 				<drawData>
@@ -337,14 +337,14 @@
 			<li Class="ApexMechanoids.PawnRenderNodeProperties_Animated">
 				<nodeClass>ApexMechanoids.PawnRenderNode_RandomAnimated</nodeClass>
 				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
-				<texPath>Effects/PressTheAttack/Wings</texPath>
+				<texPath>Things/Mote/PressTheAttack/Wings</texPath>
 				<parentTagDef>Body</parentTagDef>
 				<pawnType>Any</pawnType>
 				<color>(230, 130, 40)</color>
 				<texPaths>
-					<li>Effects/PressTheAttack/Wings/WingsA</li>
-					<li>Effects/PressTheAttack/Wings/WingsB</li>
-					<li>Effects/PressTheAttack/Wings/WingsC</li>
+					<li>Things/Mote/PressTheAttack/Wings/WingsA</li>
+					<li>Things/Mote/PressTheAttack/Wings/WingsB</li>
+					<li>Things/Mote/PressTheAttack/Wings/WingsC</li>
 				</texPaths>
 				<ticksPerTexture>3</ticksPerTexture>
 				<drawData>
