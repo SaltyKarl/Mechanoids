@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+	<ThingDef ParentName="BaseGun">
 		<defName>APM_Weapon_DominusMechlance</defName>
-		<label>Dominus' mechlance</label>
+		<label>Dominus mechlance</label>
 		<description>This weapon is imbued with sharpness maintaining mechanites similar to those seen in imperial monotech. Such a technology being utilized by the mechhive allows the hive to apply it on larger and more complex applications, such as this deadly weapon.</description>
 		<possessionCount>1</possessionCount>
 		<graphicData>
@@ -20,14 +20,11 @@
 			<li>RewardStandardQualitySuper</li>
 		</thingSetMakerTags>
 		<statBases>
-			<WorkToMake>18000</WorkToMake>
 			<Mass>2</Mass>
+			<WorkToMake>30000</WorkToMake>
 		</statBases>
-		<relicChance>2</relicChance>
-		<costList>
-			<Plasteel>50</Plasteel>
-			<ComponentSpacer>2</ComponentSpacer>
-		</costList>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
 		<tools>
 			<li>
 				<label>handle</label>
@@ -54,14 +51,6 @@
 				<cooldownTime>2.6</cooldownTime>
 			</li>
 		</tools>
-		<recipeMaker>
-			<skillRequirements>
-				<Crafting>5</Crafting>
-			</skillRequirements>
-			<recipeUsers Inherit="false">
-				<li>TableMachining</li>
-			</recipeUsers>
-		</recipeMaker>
 		<comps>
 			<li Class="ApexMechanoids.CompProperties_AbilityGranter">
 				<abilities>
@@ -94,9 +83,9 @@
 		</modExtensions>
 	</ThingDef>
 	
-	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+	<ThingDef ParentName="BaseGun">
 		<defName>APM_Weapon_DominusApexMechlance</defName>
-		<label>Dominus' apex mechlance</label>
+		<label>Dominus apex mechlance</label>
 		<description>This weapon is imbued with sharpness maintaining mechanites similar to those seen in imperial monotech. Such a technology being utilized by the mechhive allows the hive to apply it on larger and more complex applications, such as this deadly weapon. In such close proximity to the Dominus, the mechanites in this mechlance have been influenced by its psychic presence, so much so that it bleeds out in a reddish hue.</description>
 		<possessionCount>1</possessionCount>
 		<graphicData>
@@ -114,14 +103,11 @@
 			<li>RewardStandardQualitySuper</li>
 		</thingSetMakerTags>
 		<statBases>
-			<WorkToMake>18000</WorkToMake>
+			<WorkToMake>30000</WorkToMake>
 			<Mass>2</Mass>
 		</statBases>
-		<relicChance>2</relicChance>
-		<costList>
-			<Plasteel>50</Plasteel>
-			<ComponentSpacer>2</ComponentSpacer>
-		</costList>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
 		<tools>
 			<li>
 				<label>handle</label>
@@ -148,14 +134,6 @@
 				<cooldownTime>2.6</cooldownTime>
 			</li>
 		</tools>
-		<recipeMaker>
-			<skillRequirements>
-				<Crafting>5</Crafting>
-			</skillRequirements>
-			<recipeUsers Inherit="false">
-				<li>TableMachining</li>
-			</recipeUsers>
-		</recipeMaker>
 		<modExtensions>
 			<li Class="VEF.Things.ThingDefExtension" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">
 				<usableWithShields>true</usableWithShields>

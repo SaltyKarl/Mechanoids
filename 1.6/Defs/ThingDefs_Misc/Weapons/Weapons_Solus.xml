@@ -8,23 +8,20 @@
 			<texPath>Things/Item/Equipment/WeaponRanged/Solus</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<techLevel>Ultra</techLevel>
+		<techLevel>Spacer</techLevel>
 		<tradeability>Sellable</tradeability>
 		<smeltable>false</smeltable>
 		<relicChance>0</relicChance>
+	    <generateCommonality>2</generateCommonality>
 		<statBases>
-			<MarketValue>9999</MarketValue>
-			<Mass>8.5</Mass>
+			<MarketValue>5000</MarketValue>
+			<Mass>9.5</Mass>
 			<AccuracyTouch>1.0</AccuracyTouch>
 			<AccuracyShort>1.0</AccuracyShort>
 			<AccuracyMedium>1.0</AccuracyMedium>
 			<AccuracyLong>1.0</AccuracyLong>
 			<RangedWeapon_Cooldown>2.0</RangedWeapon_Cooldown>
 		</statBases>
-		<costList>
-			<Plasteel>55</Plasteel>
-			<ComponentSpacer>2</ComponentSpacer>
-		</costList>
 		<weaponClasses>
 			<li>RangedHeavy</li>
 		</weaponClasses>
@@ -34,15 +31,11 @@
 		<weaponTags Inherit="False">
 			<li>APM_WeaponSolus</li>
 		</weaponTags>
-		<recipeMaker>
-			<skillRequirements>
-				<Crafting>5</Crafting>
-			</skillRequirements>
-			<recipeUsers Inherit="false">
-				<li>TableMachining</li>
-			</recipeUsers>
-			<researchPrerequisite>ApexMechtech</researchPrerequisite>
-		</recipeMaker>
+		<comps>
+			      <li>
+        <compClass>CompQuality</compClass>
+      		</li>
+		</comps>
 		<verbs>
 			<li>
 				<verbClass>Verb_Shoot</verbClass>

@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<ThingDef ParentName="BaseMechanoidWalker">
-		<defName>APM_Mech_Terminus</defName>
+	<ThingDef ParentName="BaseMechanoid" Name="APM_Mech_Terminus_Base" Abstract="True">
 		<label>Terminus</label>
 		<description>Three powerful mechanoid types were created by an Archotech mind in an attempt to create a central commander of all mechanoid forces. Influenced by the Old Earth region of Europe in medieval times, the Terminus cleaves through waves of foes and not even distance can mitigate its wrath. Its weapon has the ability to sweep through a large area in front of itself. The Terminus can also focus its psychic influence inward, enhancing its damage and stagger resistance. For foes who escape its grasp, it is also equipped with a grappling hook to draw in enemies from a distance to finish off. Additionally, mechanitors can extend their command range in a radius around this mech if under their control.</description>
+		<statBases>
+			<MarketValue>1900</MarketValue>
+			<MoveSpeed>3.3</MoveSpeed>
+			<ArmorRating_Blunt>0.54</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.72</ArmorRating_Sharp>
+			<BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">5</BandwidthCost>
+			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.15</MechEnergyLossPerHP>
+			<EMPResistance MayRequire="Ludeon.Rimworld.Biotech">0.45</EMPResistance>
+		</statBases>
 		<tools>
 			<li>
 				<label>left fist</label>
@@ -35,18 +43,43 @@
 				<power>8.5</power>
 				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-					<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-						<chanceFactor>0.2</chanceFactor>
-					</li>
-				</tools>
-				<killedLeavingsPlayerHostile>
-					<ExtraChip>1</ExtraChip>
-				</killedLeavingsPlayerHostile>
-				<race>
-					<body>APM_Terminus</body>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+				<chanceFactor>0.2</chanceFactor>
+			</li>
+		</tools>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_MechanitorRangeExtender">
+				<minRange>7.9</minRange>
+				<maxRange>15.4</maxRange>
+			</li>
+		</comps>
+		<killedLeavingsPlayerHostile>
+			<ExtraChip>1</ExtraChip>
+		</killedLeavingsPlayerHostile>
+		<race>
+			<body>APM_Terminus</body>
 			<renderTree>APM_RenderTree_Terminus</renderTree>
-			<baseHealthScale>1</baseHealthScale>
-			<baseBodySize>2.0</baseBodySize>
+			<baseBodySize>4</baseBodySize>
+			<baseHealthScale>4.32</baseHealthScale>
+			<thinkTreeMain>Mechanoid</thinkTreeMain>
+			<intelligence>ToolUser</intelligence>
+			<mechWeightClass>Heavy</mechWeightClass>
+			<lifeStageAges>
+				<li>
+					<def>MechanoidFullyFormed</def>
+					<minAge>0</minAge>
+					<soundWounded>Pawn_Mech_Centipede_Wounded</soundWounded>
+					<soundDeath>Pawn_Mech_Centipede_Death</soundDeath>
+					<soundCall>Pawn_Mech_Centipede_Call</soundCall>
+				</li>
+				<li MayRequire="Ludeon.RimWorld.Biotech">
+					<def>MechanoidFullyFormed</def>
+					<minAge>100</minAge>
+					<soundWounded>Pawn_Mech_Centipede_Wounded</soundWounded>
+					<soundDeath>Pawn_Mech_Centipede_Death</soundDeath>
+					<soundCall>Pawn_Mech_Centipede_Call</soundCall>
+				</li>
+			</lifeStageAges>
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>
@@ -60,10 +93,20 @@
 				</li>
 			</detritusLeavings>
 		</race>
-		<statBases>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
-		</statBases>
+		<butcherProducts>
+			<Steel>80</Steel>
+			<Plasteel>50</Plasteel>
+		</butcherProducts>
 	</ThingDef>
+
+	<ThingDef ParentName="APM_Mech_Terminus_Base">
+		<defName>APM_Mech_Terminus</defName>
+	</ThingDef>
+
+	<ThingDef ParentName="APM_Mech_Terminus_Base">
+		<defName>APM_Mech_TerminusB</defName>
+	</ThingDef>
+
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Terminus</defName>
 		<label>terminus</label>
@@ -107,10 +150,11 @@
 			<li>APM_HookPawn</li>
 		</abilities>
 	</PawnKindDef>
+	
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Terminus_Boss</defName>
 		<label>terminus boss</label>
-		<race>APM_Mech_Terminus</race>
+		<race>APM_Mech_TerminusB</race>
 		<combatPower>190</combatPower>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
@@ -150,12 +194,13 @@
 			<li>APM_HookPawn</li>
 		</abilities>
 	</PawnKindDef>
+
 	<AbilityDef>
 		<defName>APM_TerminusOverdrive</defName>
 		<label>overdrive</label>
 		<description>Terminus diverts power inward and briefly enters an overdriven combat state. While active, it sheds its cape, strikes harder, recovers between swings faster and becomes harder to stagger.</description>
 		<iconPath>UI/Icons/Overdrive</iconPath>
-		<cooldownTicksRange>90000</cooldownTicksRange>
+		<cooldownTicksRange>60000</cooldownTicksRange>
 		<targetRequired>false</targetRequired>
 		<hostile>false</hostile>
 		<aiCanUse>true</aiCanUse>
@@ -202,6 +247,7 @@
 			</li>
 		</comps>
 	</AbilityDef>
+
 	<AbilityDef>
 		<defName>APM_TerminusOverdrive_Boss</defName>
 		<label>overdrive</label>
@@ -254,6 +300,7 @@
 			</li>
 		</comps>
 	</AbilityDef>
+	
 	<HediffDef>
 		<defName>APM_Hediff_TerminusOverdrive</defName>
 		<label>overdrive</label>
@@ -284,12 +331,13 @@
 			</li>
 		</stages>
 	</HediffDef>
+
 	<AbilityDef>
 		<defName>SeveringEdge</defName>
 		<label>severing edge</label>
 		<description>Utilizing the innate psychic channeling qualities of its blade, the Terminus releases a sweeping blade of energy in front of itself, cutting anything in the area.</description>
 		<iconPath>UI/SeveringEdge</iconPath>
-		<cooldownTicksRange>60</cooldownTicksRange>
+		<cooldownTicksRange>800</cooldownTicksRange>
 		<aiCanUse>true</aiCanUse>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
@@ -314,6 +362,7 @@
 			</li>
 		</comps>
 	</AbilityDef>
+
 	<ThingDef ParentName="BaseBullet">
 		<defName>SeveringEdge</defName>
 		<thingClass>ApexMechanoids.SeveringEdge</thingClass>
@@ -334,12 +383,13 @@
 			<useGraphicClass>true</useGraphicClass>
 		</projectile>
 	</ThingDef>
+
 	<AbilityDef>
 		<defName>SeveringEdge_Boss</defName>
 		<label>severing edge</label>
 		<description>Utilizing the innate psychic channeling qualities of its blade, the Terminus releases a sweeping blade of energy in front of itself, cutting anything in the area.</description>
 		<iconPath>UI/SeveringEdge</iconPath>
-		<cooldownTicksRange>60</cooldownTicksRange>
+		<cooldownTicksRange>600</cooldownTicksRange>
 		<aiCanUse>true</aiCanUse>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
@@ -364,6 +414,7 @@
 			</li>
 		</comps>
 	</AbilityDef>
+
 	<ThingDef ParentName="BaseBullet">
 		<defName>SeveringEdge_Boss</defName>
 		<thingClass>ApexMechanoids.SeveringEdge</thingClass>

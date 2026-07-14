@@ -3,12 +3,15 @@
 	<ThingDef Name="APM_Mech_Maul" ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Maul</defName>
 		<label>Maul</label>
-		<description>TBD</description>
+		<description>The maul is the mechhive’s core tenet made machine, to crush and overwhelm. Impervious to small arms, this mechanoid is the bane of infantry, light vehicles, and outer defense emplacements. It is intelligent enough to know when it isn’t on the upper hand, and will continuously overlock and overheat its weapon until the job is done as it takes damage.</description>
 		<statBases>
-			<MoveSpeed>4.2</MoveSpeed>
-			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.6</ArmorRating_Sharp>
+			<MarketValue>1200</MarketValue>
+			<MoveSpeed>1.9</MoveSpeed>
+			<ArmorRating_Blunt>0.28</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.72</ArmorRating_Sharp>
+			<ArmorRating_Heat>2.0</ArmorRating_Heat>
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">4</BandwidthCost>
+			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.2</MechEnergyLossPerHP>
 		</statBases>
 		<tools>
 			<li>
@@ -48,7 +51,8 @@
 		<race>
 			<body>APM_Maul</body>
 			<baseBodySize>2.0</baseBodySize>
-			<baseHealthScale>3.5</baseHealthScale>
+			<baseHealthScale>3.82</baseHealthScale>
+			<mechWeightClass>Heavy</mechWeightClass>
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>
@@ -91,8 +95,8 @@
 			</li>
 		</comps>
 		<butcherProducts>
-			<Steel>20</Steel>
-			<Plasteel>5</Plasteel>
+			<Steel>50</Steel>
+			<Plasteel>20</Plasteel>
 		</butcherProducts>
 	</ThingDef>
 
@@ -100,7 +104,7 @@
 		<defName>APM_Mech_Maul</defName>
 		<label>maul</label>
 		<race>APM_Mech_Maul</race>
-		<combatPower>190</combatPower>
+		<combatPower>400</combatPower>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
@@ -134,8 +138,5 @@
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 		<controlGroupPortraitZoom>0.8</controlGroupPortraitZoom>
-		<abilities>
-
-		</abilities>
 	</PawnKindDef>
 </Defs>

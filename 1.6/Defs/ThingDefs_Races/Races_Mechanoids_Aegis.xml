@@ -3,19 +3,22 @@
 	<ThingDef ParentName="HeavyMechanoid">
 		<defName>APM_Mech_Aegis</defName>
 		<label>Aegis</label>
-		<description>"The Aegis is a mighty mechanoid that sacrifices offensive capabilities for defensive mastery. The phrase 'The best defense is a good offense' rings true with the Aegis' dual shields."</description>
+		<description>The Aegis is a mighty mechanoid that sacrifices offensive capabilities for defensive mastery. The phrase 'The best defense is a good offense' rings true with the Aegis' dual shields.</description>
 		<statBases>
-			<MoveSpeed>1.5</MoveSpeed>
-			<ArmorRating_Blunt>0.60</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.60</ArmorRating_Sharp>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">3</BandwidthCost>
+			<MoveSpeed>1.9</MoveSpeed>
+			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.7</ArmorRating_Sharp>
+			<ArmorRating_Heat>2.0</ArmorRating_Heat>
+			<MarketValue>1200</MarketValue>
+			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">4</BandwidthCost>
+			<MechEnergyLossPerHP>0.2</MechEnergyLossPerHP>
 			<WorkSpeedGlobal>1.5</WorkSpeedGlobal>
 		</statBases>
 		<race>
 			<body>APM_Aegis</body>
 			<baseBodySize>3.5</baseBodySize>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
-			<baseHealthScale>2</baseHealthScale>
+			<baseHealthScale>3.82</baseHealthScale>
 			<mechWeightClass>Heavy</mechWeightClass>
 			<renderTree>APM_RenderTree_Aegis</renderTree>
 			<lifeStageAges>
@@ -93,6 +96,10 @@
 				<!-- How often to regenerate in seconds (converted to ticks internally). Uses CompTickRare, any amount less than 4.16 seconds won't work. -->
 			</li>
 		</comps>
+		<butcherProducts>
+			<Steel>40</Steel>
+			<Plasteel>15</Plasteel>
+		</butcherProducts>
 	</ThingDef>
 
 	<PawnKindDef ParentName="HeavyMechanoidKind">
@@ -100,7 +107,7 @@
 		<label>Aegis</label>
 		<race>APM_Mech_Aegis</race>
 		<allowInMechClusters>true</allowInMechClusters>
-		<combatPower>250</combatPower>
+		<combatPower>400</combatPower>
 		<weaponTags>
 			<li>APM_AegisShield</li>
 		</weaponTags>
@@ -109,7 +116,7 @@
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
 					<texPath>Things/Pawn/Mechanoid/Aegis/Mechanoid/Aegis</texPath>
-					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Aegis/Mechanoid</maskPath>
+					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Aegis/Mechanoid/Mech_Aegis</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>2.5</drawSize>
@@ -121,7 +128,7 @@
 			<li>
 				<bodyGraphicData>
 					<texPath>Things/Pawn/Mechanoid/Aegis/Mechanoid/AegisAncient</texPath>
-					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Aegis/Mechanoid</maskPath>
+					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Aegis/Mechanoid/Mech_Aegis</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>2.5</drawSize>

@@ -31,6 +31,7 @@
 		<destroyOnDrop>true</destroyOnDrop>
 		<tradeability>None</tradeability>
 		<statBases>
+			<WorkToMake>30000</WorkToMake>
 			<Mass>10</Mass>
 			<AccuracyTouch>0.50</AccuracyTouch>
 			<AccuracyShort>0.60</AccuracyShort>
@@ -38,10 +39,6 @@
 			<AccuracyLong>0.30</AccuracyLong>
 			<RangedWeapon_Cooldown>2.2</RangedWeapon_Cooldown>
 		</statBases>
-		<costList>
-			<Plasteel>70</Plasteel>
-			<ComponentSpacer>5</ComponentSpacer>
-		</costList>
 		<weaponTags>
 			<li>APM_WeaponMaul</li>
 		</weaponTags>
