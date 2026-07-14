@@ -206,6 +206,7 @@
 		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
 		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<warmupStartSound>APM_SmokeScreen</warmupStartSound>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
 			<warmupTime>1</warmupTime>
@@ -239,6 +240,7 @@
 		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
 		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<warmupStartSound>APM_SmokeScreen</warmupStartSound>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
 			<warmupTime>1</warmupTime>
@@ -254,8 +256,8 @@
 			<li Class="ApexMechanoids.CompProperties_AbilitySpawnSmokescreen">
 				<gasDef>APM_Smokescreen_Boss</gasDef>
 				<castSoundDef>APM_SmokeScreen</castSoundDef>
-				<radius>5</radius>
-				<maxRadius>15</maxRadius>
+				<radius>3</radius>
+				<maxRadius>4.9</maxRadius>
 				<spreadIntervalTicks>15</spreadIntervalTicks>
 			</li>
 		</comps>
@@ -274,6 +276,7 @@
 		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
 		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<warmupStartSound>APM_CelerusBlink</warmupStartSound>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
 			<warmupTime>0.15</warmupTime>
