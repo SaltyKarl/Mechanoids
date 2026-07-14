@@ -50,7 +50,7 @@
 		<showPsycastEffects>False</showPsycastEffects>
 		<displayGizmoWhileUndrafted>True</displayGizmoWhileUndrafted>
 		<disableGizmoWhileUndrafted>False</disableGizmoWhileUndrafted>
-		<warmupStartSound MayRequire="Ludeon.RimWorld.Royalty">CombatCommand_Warmup</warmupStartSound>
+		<warmupStartSound MayRequire="Ludeon.RimWorld.Ideology">CombatCommand_Warmup</warmupStartSound>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
@@ -616,7 +616,7 @@
 		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
 		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
 		<showPsycastEffects>false</showPsycastEffects>
-		<warmupStartSound MayRequire="Ludeon.RimWorld.Royalty">CombatCommand_Warmup</warmupStartSound>
+		<warmupStartSound MayRequire="Ludeon.RimWorld.Ideology">CombatCommand_Warmup</warmupStartSound>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
 			<warmupTime>3.0</warmupTime>
