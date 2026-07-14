@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Tinker</defName>
 		<label>Tinker</label>
 		<description>The tinker is a mechanoid that is suited for repair. It can aid in fixing buildings, as well as assist in repair jobs for mechanitor controlled mechs. In a pinch, it can project a shield on a nearby ally as well as blind enemies in a radius around a laser it can cast.</description>
+		<statBases>
+			<MarketValue>1000</MarketValue>
+			<MoveSpeed>3.3</MoveSpeed>
+			<ArmorRating_Blunt>0.15</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+			<ArmorRating_Heat>2.0</ArmorRating_Heat>
+			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
+			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.66</MechEnergyLossPerHP>
+			<MechRemoteShieldDistance>9.9</MechRemoteShieldDistance>
+			<MechRemoteShieldEnergy>100</MechRemoteShieldEnergy>
+		</statBases>
 		<tools>
 			<li>
 				<label>left fist</label>
@@ -42,12 +52,13 @@
 		</tools>
 		<race>
 			<body>APM_Vassal</body>
+			<baseHealthScale>1.0</baseHealthScale>
+			<baseBodySize>1.5</baseBodySize>
+			<mechWeightClass>Medium</mechWeightClass>
 			<mechEnabledWorkTypes>
 				<li>Construction</li>
 				<li>Smithing</li>
 			</mechEnabledWorkTypes>
-			<baseHealthScale>1</baseHealthScale>
-			<baseBodySize>1.5</baseBodySize>
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>
@@ -61,18 +72,17 @@
 				</li>
 			</detritusLeavings>
 		</race>
-		<statBases>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
-			<MechRemoteShieldDistance>9.9</MechRemoteShieldDistance>
-			<MechRemoteShieldEnergy>100</MechRemoteShieldEnergy>
-		</statBases>
+		<butcherProducts>
+			<Steel>10</Steel>
+			<Plasteel>5</Plasteel>
+		</butcherProducts>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Tinker</defName>
 		<label>tinker</label>
 		<race>APM_Mech_Tinker</race>
-		<combatPower>190</combatPower>
+		<combatPower>100</combatPower>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
@@ -106,5 +116,4 @@
 			<li>APM_BlindingLaser</li>
 		</abilities>
 	</PawnKindDef>
-
 </Defs>

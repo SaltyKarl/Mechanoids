@@ -74,69 +74,6 @@
 	</AbilityDef>
 
 	<AbilityDef>
-		<defName>APM_CelerusBlink</defName>
-		<label>"Blink"</label>
-		<description>Active onboard "blink" micro skip drive, skip to target loction.</description>
-		<level>4</level>
-		<iconPath>UI/Blink</iconPath>
-		<cooldownTicksRange>300</cooldownTicksRange>
-		<writeCombatLog>True</writeCombatLog>
-		<aiCanUse>true</aiCanUse>
-		<showCastingProgressBar>true</showCastingProgressBar>
-		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
-		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
-		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
-		<verbProperties>
-			<verbClass>Verb_CastAbility</verbClass>
-			<warmupTime>0.15</warmupTime>
-			<soundCast>APM_CelerusBlink</soundCast>
-			<range>17.9</range>
-			<requireLineOfSight>True</requireLineOfSight>
-			<targetParams>
-				<canTargetSelf>False</canTargetSelf>
-				<canTargetPawns>False</canTargetPawns>
-				<canTargetBuildings>False</canTargetBuildings>
-				<canTargetAnimals>False</canTargetAnimals>
-				<canTargetItems>False</canTargetItems>
-				<canTargetLocations>True</canTargetLocations>
-				<mapObjectTargetsMustBeAutoAttackable>False</mapObjectTargetsMustBeAutoAttackable>
-			</targetParams>
-		</verbProperties>
-		<comps>
-		    <li Class="ApexMechanoids.CompProperties_BlinkWarmupVisuals">
-				<pillarMoteDef>APM_Mote_Blink_WarmupPillar</pillarMoteDef>
-				<ringMoteDef>APM_Mote_Blink_Ring</ringMoteDef>
-				<rayMoteDef>APM_Mote_Blink_WarmupRay</rayMoteDef>
-				<sparkleMoteDef>APM_Mote_Blink_Sparkle</sparkleMoteDef>
-				<spawnIntervalTicks>20</spawnIntervalTicks>
-				<sparklesPerPulse>2</sparklesPerPulse>
-			</li>
-			<li Class="ApexMechanoids.CompProperties_BlinkTeleport">
-				<destination>Selected</destination>
-				<requiresLineOfSight>True</requiresLineOfSight>
-				<range>17.9</range>
-				<clamorType>Ability</clamorType>
-				<clamorRadius>10</clamorRadius>
-				<destClamorType>Ability</destClamorType>
-				<destClamorRadius>10</destClamorRadius>
-				<ringMoteDef>APM_Mote_Blink_Ring</ringMoteDef>
-				<starAMoteDef>APM_Mote_Blink_StarA</starAMoteDef>
-				<starBMoteDef>APM_Mote_Blink_StarB</starBMoteDef>
-				<sparkleMoteDef>APM_Mote_Blink_Sparkle</sparkleMoteDef>
-				<arrivalPillarMoteDef>APM_Mote_Blink_WarmupPillar</arrivalPillarMoteDef>
-				<arrivalRayMoteDef>APM_Mote_Blink_WarmupRay</arrivalRayMoteDef>
-				<darkFragmentMoteDefs>
-					<li>APM_Mote_Blink_DarkFragment_A</li>
-					<li>APM_Mote_Blink_DarkFragment_B</li>
-					<li>APM_Mote_Blink_DarkFragment_C</li>
-					<li>APM_Mote_Blink_DarkFragment_D</li>
-				</darkFragmentMoteDefs>
-				<darkFragmentCount>1~1</darkFragmentCount>
-			</li>
-		</comps>
-	</AbilityDef>
-
-	<AbilityDef>
 		<defName>APM_SunRay</defName>
 		<label>Sun Ray</label>
 		<description>The gazer blasts a devastating beam from itself, remaining stationary to keep the beam on target. Anything within reach of the beam takes heavy damage.</description>
@@ -512,7 +449,7 @@
 			<li Class="HediffCompProperties_Immunizable">
 				<severityPerDayNotImmune>-4</severityPerDayNotImmune>
 			</li>
-			<li Class="HediffCompProperties_DisappearsOnDeath"></li>
+			<li Class="HediffCompProperties_DisappearsOnDeath" />
 			<li Class="HediffCompProperties_Disappears">
 				<showRemainingTime>True</showRemainingTime>
 			</li>
@@ -593,7 +530,7 @@
 			</targetParams>
 		</verbProperties>
 	</AbilityDef>
-	
+
 	<AbilityDef>
 		<defName>APM_Ability_SteelDiscipline</defName>
 		<label>Steel Discipline</label>
@@ -664,71 +601,5 @@
 			</li>
 		</comps>
 	</AbilityDef>
-	
-	<AbilityDef>
-		<defName>APM_Ability_SmokeScreen</defName>
-		<label>Smokescreen</label>
-		<description>Release a dense smokescreen, shrouding the Celerus and nearby allies in obscuring gas that hinders enemy perception and grants the Celerus combat bonuses while hidden.</description>
-		<iconPath>UI/Smokescreen</iconPath>
-		<cooldownTicksRange>3600</cooldownTicksRange><!-- 1 minute -->
-		<hostile>false</hostile>
-		<targetRequired>false</targetRequired>
-		<aiCanUse>true</aiCanUse>
-		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
-		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
-		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
-		<verbProperties>
-			<verbClass>Verb_CastAbility</verbClass>
-			<warmupTime>1</warmupTime>
-			<range>0.48</range>
-			<requireLineOfSight>false</requireLineOfSight>
-			<targetParams>
-				<canTargetSelf>true</canTargetSelf>
-				<canTargetPawns>false</canTargetPawns>
-				<canTargetBuildings>false</canTargetBuildings>
-			</targetParams>
-		</verbProperties>
-		<comps>
-			<li Class="ApexMechanoids.CompProperties_AbilitySpawnSmokescreen">
-				<gasDef>APM_Smokescreen</gasDef>
-				<radius>3</radius>
-				<maxRadius>4.9</maxRadius>
-				<spreadIntervalTicks>15</spreadIntervalTicks>
-			</li>
-		</comps>
-	</AbilityDef>
-	<AbilityDef>
-		<defName>APM_Ability_SmokeScreen_Boss</defName>
-		<label>Smokescreen</label>
-		<description>Release a dense smokescreen, shrouding the Celerus and nearby allies in obscuring gas that hinders enemy perception and grants the Celerus combat bonuses while hidden.</description>
-		<iconPath>UI/Smokescreen</iconPath>
-		<cooldownTicksRange>3600</cooldownTicksRange>
-		<hostile>false</hostile>
-		<targetRequired>false</targetRequired>
-		<aiCanUse>true</aiCanUse>
-		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
-		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
-		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
-		<warmupStartSound>APM_SmokeScreen</warmupStartSound>
-		<verbProperties>
-			<verbClass>Verb_CastAbility</verbClass>
-			<warmupTime>1</warmupTime>
-			<range>0.48</range>
-			<requireLineOfSight>false</requireLineOfSight>
-			<targetParams>
-				<canTargetSelf>true</canTargetSelf>
-				<canTargetPawns>false</canTargetPawns>
-				<canTargetBuildings>false</canTargetBuildings>
-			</targetParams>
-		</verbProperties>
-		<comps>
-			<li Class="ApexMechanoids.CompProperties_AbilitySpawnSmokescreen">
-				<gasDef>APM_Smokescreen_Boss</gasDef>
-				<castSoundDef>APM_SmokeScreen</castSoundDef>
-				<radius>5</radius>
-				<maxRadius>15</maxRadius>
-				<spreadIntervalTicks>15</spreadIntervalTicks>
-			</li>
-		</comps>
-	</AbilityDef>
+
 </Defs>

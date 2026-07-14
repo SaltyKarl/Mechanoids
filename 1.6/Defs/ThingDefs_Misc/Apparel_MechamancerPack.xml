@@ -5,6 +5,7 @@
 		<label>Mechamancer Pack</label>
 		<description>A backpack containing an advanced bandwidth-expansion computer andl antenna. Increases a mechanitor’s maximum total bandwidth and control groups. When fueled with steel, it can construct small mechanoids that operate independently without consuming bandwidth. Each mechanitor can deploy up to two satellite mechanoids simultaneously.</description>
 		<techLevel>Spacer</techLevel>
+		<generateCommonality>2</generateCommonality>
 		<mergeVerbGizmos>false</mergeVerbGizmos>
 		<graphicData>
 			<texPath>Things/Pawn/Humanlike/Apparel/MechamancerPack/MechamancerPack_icon</texPath>
@@ -44,22 +45,6 @@
 				<spawnedKind>APM_Mech_Satellite</spawnedKind>
 			</li>
 		</modExtensions>
-		<recipeMaker>
-			<unfinishedThingDef>UnfinishedPack</unfinishedThingDef>
-			<!-- <recipeUsers> -->
-			<!-- <li>BioferriteShaper</li> -->
-			<!-- </recipeUsers> -->
-			<useIngredientsForColor>false</useIngredientsForColor>
-			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
-			<workSkill>Crafting</workSkill>
-			<effectWorking>Smith</effectWorking>
-			<soundWorking>Recipe_Smith</soundWorking>
-			<skillRequirements>
-				<Crafting>4</Crafting>
-			</skillRequirements>
-			<researchPrerequisite>ApexMechtech</researchPrerequisite>
-			<displayPriority>30</displayPriority>
-		</recipeMaker>
 		<costList>
 			<ComponentIndustrial>1</ComponentIndustrial>
 			<!-- <Bioferrite>30</Bioferrite> -->

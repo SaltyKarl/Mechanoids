@@ -230,14 +230,14 @@
 		</statBases>
 		<size>(2,1)</size>
 		<costList>
-			<Steel>50</Steel>
-			<ComponentIndustrial>4</ComponentIndustrial>
+			<Steel>130</Steel>
+			<ComponentIndustrial>6</ComponentIndustrial>
 		</costList>
 		<killedLeavings>
 			<ChunkSlagSteel>3</ChunkSlagSteel>
 		</killedLeavings>
 		<researchPrerequisites>
-			<li>BasicMechtech</li>
+			<li>StandardMechtech</li>
 		</researchPrerequisites>
 		<comps>
 			<li Class="CompProperties_Usable">

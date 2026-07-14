@@ -5,12 +5,16 @@
 		<label>dynamo</label>
 		<description>A combat support mechanoid with a wide-range bullet shield and mid-range needle gun. Designed to support other mechanoids, the legionary is vulnerable to anyone who can get inside its shield.</description>
 		<statBases>
-			<MarketValue>1200</MarketValue>
-			<MoveSpeed>4.3</MoveSpeed>
+			<MarketValue>1600</MarketValue>
+			<MoveSpeed>2.5</MoveSpeed>
+			<ArmorRating_Blunt>0.22</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.55</ArmorRating_Sharp>
+			<ArmorRating_Heat>2.0</ArmorRating_Heat>
+			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">3</BandwidthCost>
+			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.2</MechEnergyLossPerHP>
+			<ControlTakingTime MayRequire="Ludeon.RimWorld.Biotech">18</ControlTakingTime>
 			<EnergyShieldRechargeRate>0.25</EnergyShieldRechargeRate>
 			<EnergyShieldEnergyMax>1.5</EnergyShieldEnergyMax>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
-			<ControlTakingTime MayRequire="Ludeon.RimWorld.Biotech">18</ControlTakingTime>
 		</statBases>
 		<tools>
 			<li>
@@ -18,17 +22,17 @@
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>8.5</power>
-				<cooldownTime>2</cooldownTime>
+				<power>12</power>
+				<cooldownTime>2.0</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
 				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-				<chanceFactor>0.2</chanceFactor>
 			</li>
 		</tools>
 		<race>
 			<body>APM_Dynamo</body>
 			<baseBodySize>3.0</baseBodySize>
-			<baseHealthScale>3.0</baseHealthScale>
+			<baseHealthScale>2.82</baseHealthScale>
+			<mechWeightClass>Heavy</mechWeightClass>
 			<lifeStageAges Inherit="False">
 				<li>
 					<def>MechanoidFullyFormed</def>
@@ -87,7 +91,6 @@
 				<hitPointsRestoreInstantlyAfterCharge>true</hitPointsRestoreInstantlyAfterCharge>
 				<chargeDurationTicks>5400</chargeDurationTicks>
 				<rechargeHitPointsIntervalTicks>120</rechargeHitPointsIntervalTicks>
-				<!-- 90s -->
 				<drawWithNoSelection>True</drawWithNoSelection>
 				<disarmedByEmpForTicks>1500</disarmedByEmpForTicks>
 				<gizmoTipKey>ProjectileInterceptorTip</gizmoTipKey>
@@ -95,38 +98,30 @@
 			<li Class="ApexMechanoids.CompProperties_MechWirelessCharger">
 				<radius>6</radius>
 				<fuelPerCharge>0.009</fuelPerCharge>
-				<!-- 0.009 for chemfuel -->
 				<powerPerCharge>0.5</powerPerCharge>
 				<maxMechPerCharge>4</maxMechPerCharge>
 			</li>
 			<li Class="CompProperties_WasteProducer">
 				<showContentsInInspectPane>false</showContentsInInspectPane>
 			</li>
-				<li Class="CompProperties_ThingContainer">
-						<compClass>CompThingContainer</compClass>
-						<stackLimit>30</stackLimit>
-						<drawContainedThing>false</drawContainedThing>
-						<dropEffecterDef>MechChargerWasteRemoved</dropEffecterDef>
-					</li>
-				</comps>
-				<tools>
-					<li>
-						<label>head</label>
-						<capacities>
-							<li>Blunt</li>
-						</capacities>
-						<power>12</power>
-						<cooldownTime>2.0</cooldownTime>
-						<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-					</li>
-				</tools>
-			</ThingDef>
+			<li Class="CompProperties_ThingContainer">
+				<compClass>CompThingContainer</compClass>
+				<stackLimit>30</stackLimit>
+				<drawContainedThing>false</drawContainedThing>
+				<dropEffecterDef>MechChargerWasteRemoved</dropEffecterDef>
+			</li>
+		</comps>
+		<butcherProducts>
+			<Steel>40</Steel>
+			<Plasteel>10</Plasteel>
+		</butcherProducts>
+	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Dynamo</defName>
 		<label>dynamo</label>
 		<race>APM_Mech_Dynamo</race>
-		<combatPower>150</combatPower>
+		<combatPower>380</combatPower>
 		<allowInMechClusters>false</allowInMechClusters>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">

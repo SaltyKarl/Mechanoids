@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+	<ThingDef ParentName="BaseWeapon">
 		<defName>APM_Weapon_SeveringBlade</defName>
 		<label>severing blade</label>
 		<description>A heavy combat blade integrated with Terminus-derived control matrices. Allows the wielder to channel psychic energy into wide sweeping strikes, cleaving through multiple foes at once.</description>
@@ -24,10 +24,6 @@
 			<Mass>3.5</Mass>
 		</statBases>
 		<relicChance>2</relicChance>
-		<costList>
-			<Plasteel>50</Plasteel>
-			<ComponentSpacer>2</ComponentSpacer>
-		</costList>
 		<tools>
 			<li>
 				<label>handle</label>
@@ -54,21 +50,15 @@
 				<cooldownTime>2.4</cooldownTime>
 			</li>
 		</tools>
-		<recipeMaker>
-			<skillRequirements>
-				<Crafting>7</Crafting>
-			</skillRequirements>
-			<recipeUsers Inherit="false">
-				<li>TableMachining</li>
-			</recipeUsers>
-			<researchPrerequisite>ApexMechtech</researchPrerequisite>
-		</recipeMaker>
 		<comps>
 			<li Class="ApexMechanoids.CompProperties_AbilityGranter">
 				<abilities>
 					<li>SeveringEdge</li>
 				</abilities>
 			</li>
+				<li>
+        <compClass>CompQuality</compClass>
+      		</li>
 		</comps>
 		<modExtensions>
 			<li Class="VEF.Things.ThingDefExtension" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">

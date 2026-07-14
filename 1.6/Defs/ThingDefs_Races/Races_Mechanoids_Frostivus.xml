@@ -6,8 +6,12 @@
 		<description>A very unique mechanoid, the frostivus is a mobile cryogenic chamber. It consumes organic material such as foodstuffs to store, freeze and dispense at request. It can be commanded to seal a targeted pawn inside of itself to store for the mechhive to later utilize for its twisted machinations. Not entirely for utility, the frostivus can also extend its chilling properties to its extremities, inflicting hypothermia over repeated attacks.</description>
 		<statBases>
 			<MarketValue>1200</MarketValue>
-			<MoveSpeed>2.2</MoveSpeed>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">3</BandwidthCost>
+			<MoveSpeed>3.3</MoveSpeed>
+			<ArmorRating_Blunt>0.22</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.4</ArmorRating_Sharp>
+			<ArmorRating_Heat>2.0</ArmorRating_Heat>
+			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
+			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.66</MechEnergyLossPerHP>
 		</statBases>
 		<tools>
 			<li>
@@ -47,7 +51,8 @@
 		<race>
 			<body>APM_Frostivus</body>
 			<baseBodySize>3.0</baseBodySize>
-			<baseHealthScale>3.0</baseHealthScale>
+			<baseHealthScale>1.82</baseHealthScale>
+			<mechWeightClass>Medium</mechWeightClass>
 			<lifeStageAges Inherit="False">
 				<li>
 					<def>MechanoidFullyFormed</def>
@@ -88,13 +93,17 @@
 		<comps>
 			<li Class="ApexMechanoids.CompProperties_FrostivusFoodPreservation" />
 		</comps>
+		<butcherProducts>
+			<Steel>30</Steel>
+			<Plasteel>10</Plasteel>
+		</butcherProducts>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Frostivus</defName>
 		<label>frostivus</label>
 		<race>APM_Mech_Frostivus</race>
-		<combatPower>90</combatPower>
+		<combatPower>200</combatPower>
 		<weaponTags>
 			<!--<li>APM_FrostivusWeapon</li>-->
 		</weaponTags>

@@ -73,7 +73,7 @@
 									<coverage>0.5</coverage>
 									<height>Middle</height>
 									<groups>
-										<li>APM_LeftMantisBlade</li>
+										<li>LeftBlade</li>
 									</groups>
 								</li>
 							</parts>
@@ -96,7 +96,7 @@
 									<coverage>0.5</coverage>
 									<height>Middle</height>
 									<groups>
-										<li>APM_RightMantisBlade</li>
+										<li>RightBlade</li>
 									</groups>
 								</li>
 							</parts>
