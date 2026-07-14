@@ -31,7 +31,7 @@
 		</tools>
 		<race>
 			<body>APM_Ravager</body>
-			<baseBodySize>3</baseBodySize>
+			<baseBodySize>5</baseBodySize>
 			<baseHealthScale>1.82</baseHealthScale>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
 			<intelligence>ToolUser</intelligence>

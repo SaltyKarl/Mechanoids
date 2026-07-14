@@ -30,7 +30,7 @@
 		</tools>
 		<race>
 			<body>APM_Pulse</body>
-			<baseBodySize>3</baseBodySize>
+			<baseBodySize>2</baseBodySize>
 			<baseHealthScale>1.52</baseHealthScale>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
 			<intelligence>ToolUser</intelligence>

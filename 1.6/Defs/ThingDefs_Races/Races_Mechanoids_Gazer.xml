@@ -54,7 +54,7 @@
     </killedLeavingsPlayerHostile>
     <race>
       <body>APM_Gazer</body>
-      <baseBodySize>3</baseBodySize>
+      <baseBodySize>8</baseBodySize>
       <baseHealthScale>8.42</baseHealthScale>
       <thinkTreeMain>Mechanoid</thinkTreeMain>
       <intelligence>ToolUser</intelligence>

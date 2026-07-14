@@ -39,9 +39,11 @@
 		</statBases>
 		<size>(5,5)</size>
 		<costList>
-			<Steel>200</Steel>
+			<Steel>450</Steel>
+			<Plasteel>100</Plasteel>
+			<OcularChip>1</OcularChip>
 		</costList>
-		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<constructionSkillPrerequisite>12</constructionSkillPrerequisite>
 		<specialDisplayRadius>40</specialDisplayRadius>
 		<comps>
 			<li Class="CompProperties_Power">

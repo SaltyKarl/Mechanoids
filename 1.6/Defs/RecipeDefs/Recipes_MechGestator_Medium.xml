@@ -115,7 +115,6 @@
 
 	<!-- ==================== Conqueror ==================== -->
 <RecipeDef Name="APM_ConquerorBase" ParentName="MediumMechanoidRecipe" Abstract="True">
-    <label>gestate conqueror</label>
     <researchPrerequisite>AdvancedMechtech</researchPrerequisite>
     <gestationCycles>2</gestationCycles>
 		<ingredients>
@@ -155,6 +154,7 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="APM_ConquerorBase">
+      <label>gestate rifle conqueror</label>
 		<defName>APM_Conqueror_DMR</defName>
 		<description>Gestate a Charge Carbine-equipped conqueror mechanoid.</description>
 		<jobString>Gestating conqueror (DMR).</jobString>
@@ -167,6 +167,7 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="APM_ConquerorBase">
+    <label>gestate blaster conqueror</label>
 		<defName>APM_Conqueror_AR</defName>
 		<description>Gestate a Blaster rifle-equipped conqueror mechanoid.</description>
 		<jobString>Gestating conqueror (AR).</jobString>
@@ -179,6 +180,7 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="APM_ConquerorBase">
+    <label>gestate spitter conqueror</label>
 		<defName>APM_Conqueror_LMG</defName>
 		<description>Gestate a Charge Spitter-equipped conqueror mechanoid.</description>
 		<jobString>Gestating conqueror (LMG).</jobString>

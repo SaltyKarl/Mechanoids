@@ -50,7 +50,7 @@
 		</tools>
 		<race>
 			<body>APM_Maul</body>
-			<baseBodySize>2.0</baseBodySize>
+			<baseBodySize>3.5</baseBodySize>
 			<baseHealthScale>3.82</baseHealthScale>
 			<mechWeightClass>Heavy</mechWeightClass>
 			<detritusLeavings>

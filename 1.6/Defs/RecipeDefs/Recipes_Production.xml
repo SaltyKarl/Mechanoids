@@ -159,7 +159,7 @@
     <displayPriority>242</displayPriority>
   </RecipeDef>
 
-  <RecipeDef ParentName="APM_BaseWeapon_Mechanoid">
+  <RecipeDef>
     <defName>APM_Weapon_PlasmaWhip</defName>
     <label>make plasma whip</label>
     <description>Make a plasma whip.</description>
@@ -167,6 +167,18 @@
     <descriptionHyperlinks>
       <ThingDef>APM_Weapon_PlasmaWhip</ThingDef>
     </descriptionHyperlinks>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+    <recipeUsers>
+      <li>FabricationBench</li>
+    </recipeUsers>
+    <skillRequirements>
+      <Crafting>10</Crafting>
+    </skillRequirements>
+    <researchPrerequisite>AdvancedMechtech</researchPrerequisite>
     <ingredients>
       <li>
         <filter>
@@ -174,7 +186,7 @@
             <li>Plasteel</li>
           </thingDefs>
         </filter>
-        <count>30</count>
+        <count>40</count>
       </li>
       <li>
         <filter>
@@ -182,7 +194,7 @@
             <li>Steel</li>
           </thingDefs>
         </filter>
-        <count>20</count>
+        <count>30</count>
       </li>
       <li>
         <filter>
@@ -190,15 +202,7 @@
             <li>ComponentSpacer</li>
           </thingDefs>
         </filter>
-        <count>2</count>
-      </li>
-            <li>
-        <filter>
-          <thingDefs>
-            <li>OcularChip</li>
-          </thingDefs>
-        </filter>
-        <count>1</count>
+        <count>5</count>
       </li>
     </ingredients>
     <products>

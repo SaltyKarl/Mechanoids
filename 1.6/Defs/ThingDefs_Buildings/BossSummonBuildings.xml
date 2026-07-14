@@ -7,7 +7,7 @@
 		<graphicData>
 			<texPath>Things/Building/Antenas/Dominus</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(2,2)</drawSize>
+			<drawSize>(1,1)</drawSize>
 			<shadowData>
 				<volume>(1.7, 0.75, 0.8)</volume>
 				<offset>(0.15, 0, 0)</offset>
@@ -30,7 +30,7 @@
 			<Mass>25</Mass>
 			<Flammability>0.5</Flammability>
 		</statBases>
-		<size>(2,2)</size>
+		<size>(1,1)</size>
 		<costList>
 			<Steel>50</Steel>
 			<ComponentIndustrial>4</ComponentIndustrial>
@@ -73,7 +73,7 @@
 		<graphicData>
 			<texPath>Things/Building/Antenas/Terminus</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(2,2)</drawSize>
+			<drawSize>(1,1)</drawSize>
 			<shadowData>
 				<volume>(1.7, 0.75, 0.8)</volume>
 				<offset>(0.15, 0, 0)</offset>
@@ -96,7 +96,7 @@
 			<Mass>25</Mass>
 			<Flammability>0.5</Flammability>
 		</statBases>
-		<size>(2,2)</size>
+		<size>(1,1)</size>
 		<costList>
 			<Steel>50</Steel>
 			<ComponentIndustrial>4</ComponentIndustrial>
@@ -139,7 +139,7 @@
 		<graphicData>
 			<texPath>Things/Building/Antenas/Celerus</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(2,2)</drawSize>
+			<drawSize>(1,1)</drawSize>
 			<shadowData>
 				<volume>(1.7, 0.75, 0.8)</volume>
 				<offset>(0.15, 0, 0)</offset>
@@ -162,7 +162,7 @@
 			<Mass>25</Mass>
 			<Flammability>0.5</Flammability>
 		</statBases>
-		<size>(2,2)</size>
+		<size>(1,1)</size>
 		<costList>
 			<Steel>50</Steel>
 			<ComponentIndustrial>4</ComponentIndustrial>

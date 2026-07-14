@@ -101,6 +101,8 @@
 			<li>AdvancedMechtech</li>
 		</researchPrerequisites>
 	</ThingDef>
+
+	
 	<ThingDef ParentName="APM_RepairStationBase">
 		<defName>APM_RepairStation_Advanced</defName>
 		<label>advanced repair station</label>
@@ -124,7 +126,7 @@
 			<Mass>100</Mass>
 		</statBases>
 		<costList>
-			<Steel>300</Steel>
+			<Steel>350</Steel>
 			<ComponentIndustrial>10</ComponentIndustrial>
 			<Plasteel>100</Plasteel>
 			<ComponentSpacer>2</ComponentSpacer>
