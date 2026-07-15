@@ -13,10 +13,15 @@ namespace ApexMechanoids
         public ArmsAnimationConfig armsAnimation;
         public PlatformAnimationConfig platformAnimation;
         public GraphicData topGraphic;
+        public bool topGraphicFixedRotation;
         public Vector3 mechPositionOffsetNorth = Vector3.zero;
         public Vector3 mechPositionOffsetEast = Vector3.zero;
         public Vector3 mechPositionOffsetSouth = Vector3.zero;
         public Vector3 mechPositionOffsetWest = Vector3.zero;
+        public float heldPawnBodyAngleNorth = float.NaN;
+        public float heldPawnBodyAngleEast = float.NaN;
+        public float heldPawnBodyAngleSouth = float.NaN;
+        public float heldPawnBodyAngleWest = float.NaN;
 
         public CompProperties_RepairStation()
         {
@@ -34,10 +39,28 @@ namespace ApexMechanoids
         public ArmsAnimationConfig ArmsAnimation => Props.armsAnimation;
         public PlatformAnimationConfig PlatformAnimation => Props.platformAnimation;
         public GraphicData TopGraphic => Props.topGraphic;
+        public bool TopGraphicFixedRotation => Props.topGraphicFixedRotation;
         public Vector3 MechPositionOffsetNorth => Props.mechPositionOffsetNorth;
         public Vector3 MechPositionOffsetEast => Props.mechPositionOffsetEast;
         public Vector3 MechPositionOffsetSouth => Props.mechPositionOffsetSouth;
         public Vector3 MechPositionOffsetWest => Props.mechPositionOffsetWest;
+
+        public float HeldPawnBodyAngleFor(Rot4 rot)
+        {
+            switch (rot.AsInt)
+            {
+                case 0:
+                    return Props.heldPawnBodyAngleNorth;
+                case 1:
+                    return Props.heldPawnBodyAngleEast;
+                case 2:
+                    return Props.heldPawnBodyAngleSouth;
+                case 3:
+                    return Props.heldPawnBodyAngleWest;
+                default:
+                    return float.NaN;
+            }
+        }
     }
 
     public class ArmConfig
@@ -50,6 +73,7 @@ namespace ApexMechanoids
         public Vector3 drawOffsetWest;
         public IntRange? randomInterval;
         public FloatRange? randomReach;
+        public FloatRange? randomVerticalReach;
         
         // New parameters for random stops and faster retraction
         public int fastRetractionSpeed = 2; // Speed multiplier for retraction
