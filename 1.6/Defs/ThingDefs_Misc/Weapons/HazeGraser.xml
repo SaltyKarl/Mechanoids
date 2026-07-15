@@ -126,10 +126,6 @@
 			<AccuracyLong>0.6</AccuracyLong>
 			<RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
 		</statBases>
-		<costList>
-			<Plasteel>50</Plasteel>
-			<ComponentSpacer>2</ComponentSpacer>
-		</costList>
 		<weaponClasses>
 			<li>RangedHeavy</li>
 		</weaponClasses>

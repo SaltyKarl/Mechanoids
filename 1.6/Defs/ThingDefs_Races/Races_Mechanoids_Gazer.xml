@@ -5,11 +5,12 @@
     <label>Gazer</label>
     <description>A different application of hellsphere technology resulted in the Gazer, a mechanoid clearly identified by its primary ocular beam emitter. This weapon is strong enough that the gazer must lock itself in place and divert all motor functions to stabilizing itself when firing. Even then, a significant charge time is required. The resultant beam can obliterate anything in front of it, even doing decent damage to structures. When pressed in close quarters, the Gazer can instead discharge the accumulated energy outward as a violent shockwave that hurls attackers back and disrupts nearby mechanized targets.</description>
     <statBases>
-      <MarketValue>1600</MarketValue>
-      <MoveSpeed>0.45</MoveSpeed>
-      <ArmorRating_Blunt>1.2</ArmorRating_Blunt>
-      <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
-      <BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">5</BandwidthCost>
+      <MarketValue>2200</MarketValue>
+      <MoveSpeed>1.6</MoveSpeed>
+      <ArmorRating_Blunt>0.55</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.96</ArmorRating_Sharp>
+      <ArmorRating_Heat>2.0</ArmorRating_Heat>
+      <BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">6</BandwidthCost>
       <ControlTakingTime MayRequire="Ludeon.Rimworld.Biotech">30</ControlTakingTime>
       <ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">1</ToxicEnvironmentResistance>
       <MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.15</MechEnergyLossPerHP>
@@ -53,8 +54,8 @@
     </killedLeavingsPlayerHostile>
     <race>
       <body>APM_Gazer</body>
-      <baseBodySize>3</baseBodySize>
-      <baseHealthScale>6.2</baseHealthScale>
+      <baseBodySize>8</baseBodySize>
+      <baseHealthScale>8.42</baseHealthScale>
       <thinkTreeMain>Mechanoid</thinkTreeMain>
       <intelligence>ToolUser</intelligence>
       <mechWeightClass>UltraHeavy</mechWeightClass>
@@ -92,11 +93,12 @@
       </li>
     </comps>
   </ThingDef>
+
   <PawnKindDef ParentName="BaseMechanoidKind">
     <defName>APM_Mech_Gazer</defName>
     <label>gazer</label>
     <race>APM_Mech_Gazer</race>
-    <combatPower>550</combatPower>
+    <combatPower>750</combatPower>
     <maxPerGroup MayRequire="Ludeon.Rimworld.Biotech">2</maxPerGroup>
     <controlGroupPortraitZoom MayRequire="Ludeon.Rimworld.Biotech">0.48</controlGroupPortraitZoom>
     <lifeStages>

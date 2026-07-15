@@ -4,6 +4,15 @@
 		<defName>APM_Mech_Siren</defName>
 		<label>Siren</label>
 		<description>Taking advantage of the fact that mechanoids have a psychic presence, the siren mechanoid has the ability to lure colonists toward itself, exposing them to the heat of battle. When controlled via a mechanitor, this mech can provide a mood and recreation boost to those nearby.</description>
+		<statBases>
+			<MarketValue>1000</MarketValue>
+			<MoveSpeed>4.3</MoveSpeed>
+			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.4</ArmorRating_Sharp>
+			<ArmorRating_Heat>2.0</ArmorRating_Heat>
+			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">3</BandwidthCost>
+			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.2</MechEnergyLossPerHP>
+		</statBases>
 		<tools>
 			<li>
 				<label>left fist</label>
@@ -41,12 +50,13 @@
 		</tools>
 		<race>
 			<body>APM_Siren</body>
+			<baseHealthScale>1.32</baseHealthScale>
+			<baseBodySize>2.5</baseBodySize>
+			<mechWeightClass>Medium</mechWeightClass>
 			<mechEnabledWorkTypes>
 				<li>APM_SirenWarden</li>
 			</mechEnabledWorkTypes>
 			<mechFixedSkillLevel>10</mechFixedSkillLevel>
-			<baseHealthScale>1</baseHealthScale>
-			<baseBodySize>2.0</baseBodySize>
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>
@@ -60,16 +70,17 @@
 				</li>
 			</detritusLeavings>
 		</race>
-		<statBases>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
-		</statBases>
+		<butcherProducts>
+			<Steel>25</Steel>
+			<Plasteel>15</Plasteel>
+		</butcherProducts>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Siren</defName>
 		<label>siren</label>
 		<race>APM_Mech_Siren</race>
-		<combatPower>190</combatPower>
+		<combatPower>220</combatPower>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>

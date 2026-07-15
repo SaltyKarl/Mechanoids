@@ -5,8 +5,13 @@
 		<label>Ingestor</label>
 		<description>While mechtech devices typically rely on internal power cells, provided electricity and incendiary fuel are still needed. The ingestor scourers the remains of battlefields for survivors to finish off and organic material including corpses, to automatically refine into chemfuel within its chassis.</description>
 		<statBases>
-			<MoveSpeed>2.2</MoveSpeed>
+			<MarketValue>1600</MarketValue>
+			<MoveSpeed>1.9</MoveSpeed>
+			<ArmorRating_Blunt>0.30</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.80</ArmorRating_Sharp>
+			<ArmorRating_Heat>2.0</ArmorRating_Heat>
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">3</BandwidthCost>
+			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.2</MechEnergyLossPerHP>
 		</statBases>
 		<tools Inherit="False">
 			<li>
@@ -34,23 +39,28 @@
 		<race>
 			<body>APM_Ingestor</body>
 			<renderTree>APM_RenderTree_Ingestor</renderTree>
-			<baseHealthScale>3.0</baseHealthScale>
+			<baseHealthScale>4.32</baseHealthScale>
+			<mechWeightClass>UltraHeavy</mechWeightClass>
 			<mechEnabledWorkTypes>
 				<li>APM_IngestorCorpseProcessing</li>
 			</mechEnabledWorkTypes>
 		</race>
+		<butcherProducts>
+			<Steel>45</Steel>
+			<Plasteel>25</Plasteel>
+		</butcherProducts>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Ingestor</defName>
 		<label>ingestor</label>
 		<race>APM_Mech_Ingestor</race>
-		<combatPower>250</combatPower>
+		<combatPower>320</combatPower>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
-					<texPath>Things/Pawn/Mechanoid/Ingestor/Ingestor</texPath><!-- Only the Closed variant, what about Opened? -->
-					<maskPath>Things/Pawn/Mechanoid/Overlays/Ingestor_Overlay/Mech_Ingestor</maskPath>
+					<texPath>Things/Pawn/Mechanoid/Ingestor/Ingestor</texPath>
+					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Ingestor/Mech_Ingestor</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>3</drawSize>
@@ -61,8 +71,8 @@
 			</li>
 			<li>
 				<bodyGraphicData>
-					<texPath>Things/Pawn/Mechanoid/Ingestor/IngestorAncient</texPath><!-- Only the Closed variant, what about Opened? -->
-					<maskPath>Things/Pawn/Mechanoid/Overlays/Ingestor_Overlay/Mech_Ingestor</maskPath>
+					<texPath>Things/Pawn/Mechanoid/Ingestor/IngestorAncient</texPath>
+					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Ingestor/Mech_Ingestor</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>3</drawSize>

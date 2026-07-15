@@ -25,6 +25,8 @@
 			<li>
 				<statOffsets>
 					<MoveSpeed>0.4</MoveSpeed>
+					<ShootingAccuracyPawn>1</ShootingAccuracyPawn>
+					<MeleeHitChance>1</MeleeHitChance>
 					<!-- Reduce mental break threshold by 25% -->
 					<MentalBreakThreshold>-0.05</MentalBreakThreshold>
 				</statOffsets>
@@ -36,12 +38,12 @@
 				<workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
 				<pawnType>Any</pawnType>
 				<color>(163, 180, 187)</color>
-				<texPath>Effects/PressTheAttack/Wings</texPath>
+				<texPath>Things/Mote/PressTheAttack/Wings</texPath>
 				<parentTagDef>Body</parentTagDef>
 				<texPaths>
-					<li>Effects/PressTheAttack/Wings/WingsA</li>
-					<li>Effects/PressTheAttack/Wings/WingsB</li>
-					<li>Effects/PressTheAttack/Wings/WingsC</li>
+					<li>Things/Mote/PressTheAttack/Wings/WingsA</li>
+					<li>Things/Mote/PressTheAttack/Wings/WingsB</li>
+					<li>Things/Mote/PressTheAttack/Wings/WingsC</li>
 				</texPaths>
 				<ticksPerTexture>3</ticksPerTexture>
 				<drawData>

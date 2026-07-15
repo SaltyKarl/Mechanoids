@@ -41,8 +41,8 @@
 		</tools>
 		<race>
 			<body>APM_Satellite</body>
-			<baseHealthScale>1</baseHealthScale>
-			<baseBodySize>1.0</baseBodySize>
+			<baseHealthScale>1.0</baseHealthScale>
+			<baseBodySize>1</baseBodySize>
 			<hediffGiverSets>
 				<li>APM_Mech_Floating</li>
 			</hediffGiverSets>
@@ -60,6 +60,12 @@
 			</detritusLeavings>
 		</race>
 		<statBases>
+			<MoveSpeed>5.2</MoveSpeed>
+			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.25</ArmorRating_Sharp>
+			<ArmorRating_Heat>2.0</ArmorRating_Heat>
+			<MarketValue>700</MarketValue>
+			<MechEnergyLossPerHP MayRequire="Ludeon.RimWorld.Biotech">0.66</MechEnergyLossPerHP>
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">1</BandwidthCost>
 		</statBases>
 		<comps Inherit="False">
@@ -74,13 +80,16 @@
 				<showGizmoOnNonPlayerControlled>false</showGizmoOnNonPlayerControlled>
 			</li>
 		</comps>
+		<butcherProducts>
+			<Steel>20</Steel>
+		</butcherProducts>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Satellite</defName>
 		<label>satellite</label>
 		<race>APM_Mech_Satellite</race>
-		<combatPower>190</combatPower>
+		<combatPower>120</combatPower>
 		<forceNoDeathNotification>true</forceNoDeathNotification>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">

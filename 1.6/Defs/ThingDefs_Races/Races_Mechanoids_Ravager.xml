@@ -6,13 +6,14 @@
 		<description>The dreaded auto mortar was not enough to sate the mechanoids’ hunger for destruction. Their solution? The ravager, a mobile artillery emplacement. Able to charge excess energy in its reserve power cells, it can temporarily overcharge its cannon and launch a shell that splits into three destructive blasts while still in flight.</description>
 		<statBases>
 			<MarketValue>1600</MarketValue>
-			<MoveSpeed>1.3</MoveSpeed>
-			<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
-			<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
-			<BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">5</BandwidthCost>
+			<MoveSpeed>1.6</MoveSpeed>
+			<ArmorRating_Blunt>0.25</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+			<ArmorRating_Heat>2.0</ArmorRating_Heat>
+			<BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">4</BandwidthCost>
 			<ControlTakingTime MayRequire="Ludeon.Rimworld.Biotech">30</ControlTakingTime>
 			<ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">1</ToxicEnvironmentResistance>
-			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.15</MechEnergyLossPerHP>
+			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.2</MechEnergyLossPerHP>
 			<WastepacksPerRecharge MayRequire="Ludeon.Rimworld.Biotech">8</WastepacksPerRecharge>
 			<EMPResistance MayRequire="Ludeon.Rimworld.Biotech">0.35</EMPResistance>
 		</statBases>
@@ -30,8 +31,8 @@
 		</tools>
 		<race>
 			<body>APM_Ravager</body>
-			<baseBodySize>3</baseBodySize>
-			<baseHealthScale>6.2</baseHealthScale>
+			<baseBodySize>5</baseBodySize>
+			<baseHealthScale>1.82</baseHealthScale>
 			<thinkTreeMain>Mechanoid</thinkTreeMain>
 			<intelligence>ToolUser</intelligence>
 			<mechWeightClass>UltraHeavy</mechWeightClass>
@@ -57,7 +58,7 @@
 			<soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
 		</race>
 		<butcherProducts>
-			<Steel>50</Steel>
+			<Steel>60</Steel>
 			<Plasteel>20</Plasteel>
 		</butcherProducts>
 	</ThingDef>
@@ -66,7 +67,7 @@
 		<defName>APM_Mech_Ravager</defName>
 		<label>ravager</label>
 		<race>APM_Mech_Ravager</race>
-		<combatPower>550</combatPower>
+		<combatPower>400</combatPower>
 		<weaponMoney>99999~99999</weaponMoney>
 		<weaponTags Inherit="False">
 			<li>APM_WeaponRavagerArtillery</li>

@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<ThingDef Abstract="True" Name="APM_Mech_ConquerorBase" ParentName="BaseMechanoidWalker">
+		<statBases>
+			<MarketValue>900</MarketValue>
+			<MoveSpeed>4.3</MoveSpeed>
+			<ArmorRating_Blunt>0.24</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.50</ArmorRating_Sharp>
+			<BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">2</BandwidthCost>
+			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.20</MechEnergyLossPerHP>
+			<EMPResistance MayRequire="Ludeon.Rimworld.Biotech">0.45</EMPResistance>
+		</statBases>
 		<tools>
 			<li>
 				<label>left fist</label>
@@ -40,6 +49,8 @@
 			<body>APM_Conqueror</body>
 			<baseHealthScale>1</baseHealthScale>
 			<baseBodySize>1.5</baseBodySize>
+			<thinkTreeMain>Mechanoid</thinkTreeMain>
+			<intelligence>ToolUser</intelligence>
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>
@@ -53,9 +64,6 @@
 				</li>
 			</detritusLeavings>
 		</race>
-		<statBases>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
-		</statBases>
 		<comps>
 			<li Class="ApexMechanoids.CompProperties_Unity">
 				<hediff>APM_Hediff_Unity</hediff>
@@ -66,17 +74,21 @@
 				<range>0</range>
 			</li>
 		</comps>
+		<butcherProducts>
+			<Steel>20</Steel>
+			<Plasteel>5</Plasteel>
+		</butcherProducts>
 	</ThingDef>
 
 	<ThingDef ParentName="APM_Mech_ConquerorBase">
 		<defName>APM_Mech_Conqueror_DMR</defName>
-		<label>conqueror</label>
+		<label>rifle conqueror</label>
 		<description>The conqueror is an all around infantry mechanoid created to balance out the specializations of the existing scyther and lancer type mechanoids. They have additional strength in numbers though, their systems able to link between other allied conquerors in range, increasing their processing power and in turn, their effectiveness together. Additionally, one unit in a group can choose to overclock their shared processing unit, giving nearby conquerors a larger boost, at the cost of entirely frying the overlocked unit’s physical components.\nThis one is armed with a highly powered Charge Carbine.</description>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Conqueror_DMR</defName>
-		<label>conqueror</label>
+		<label>rifle conqueror</label>
 		<race>APM_Mech_Conqueror_DMR</race>
 		<combatPower>190</combatPower>
 		<lifeStages>
@@ -118,13 +130,13 @@
 
 	<ThingDef ParentName="APM_Mech_ConquerorBase">
 		<defName>APM_Mech_Conqueror_AR</defName>
-		<label>conqueror</label>
+		<label>blaster conqueror</label>
 		<description>The conqueror is an all around infantry mechanoid created to balance out the specializations of the existing scyther and lancer type mechanoids. They have additional strength in numbers though, their systems able to link between other allied conquerors in range, increasing their processing power and in turn, their effectiveness together. Additionally, one unit in a group can choose to overclock their shared processing unit, giving nearby conquerors a larger boost, at the cost of entirely frying the overlocked unit’s physical components.\nThis one is armed with a powerful Charge Blaster.</description>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Conqueror_AR</defName>
-		<label>conqueror</label>
+		<label>blaster conqueror</label>
 		<race>APM_Mech_Conqueror_AR</race>
 		<combatPower>190</combatPower>
 		<lifeStages>
@@ -166,13 +178,13 @@
 
 	<ThingDef ParentName="APM_Mech_ConquerorBase">
 		<defName>APM_Mech_Conqueror_LMG</defName>
-		<label>conqueror</label>
+		<label>spitter conqueror</label>
 		<description>The conqueror is an all around infantry mechanoid created to balance out the specializations of the existing scyther and lancer type mechanoids. They have additional strength in numbers though, their systems able to link between other allied conquerors in range, increasing their processing power and in turn, their effectiveness together. Additionally, one unit in a group can choose to overclock their shared processing unit, giving nearby conquerors a larger boost, at the cost of entirely frying the overlocked unit’s physical components.\nThis one is armed with a powerful Charge Spitter.</description>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Conqueror_LMG</defName>
-		<label>conqueror</label>
+		<label>spitter conqueror</label>
 		<race>APM_Mech_Conqueror_LMG</race>
 		<combatPower>190</combatPower>
 		<lifeStages>
@@ -215,9 +227,9 @@
 	<AbilityDef>
 		<defName>APM_UltimateSacrifice</defName>
 		<label>ultimate sacrifice</label>
-		<description>One conqueror can sacrifice himself to give a powerful buff to all allied conquerors in radius</description>
+		<description>By rapidly performing complex aiming, movement and logic calculations until its processing units liquify from the heat, this mechanoid grants its nearby allies a temporary stat buff</description>
 		<iconPath>UI/Sacrifice</iconPath>
-		<cooldownTicksRange>900000</cooldownTicksRange><!-- 15 days -->
+		<cooldownTicksRange>900000</cooldownTicksRange>
 		<targetRequired>false</targetRequired>
 		<hostile>false</hostile>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
@@ -259,7 +271,7 @@
 	<HediffDef>
 		<defName>APM_Hediff_UltimateSacrifice</defName>
 		<label>ultimate sacrifice</label>
-		<description>Ultimate Sacrifice - One conqueror can sacrifice himself to give a powerful buff to all allied conquerors in radius.</description>
+		<description>Ultimate Sacrifice - One conqueror sacrifice himself to give a powerful buff to all allied conquerors in radius.</description>
 		<hediffClass>HediffWithComps</hediffClass>
 		<comps>
 			<li Class="HediffCompProperties_Disappears">
