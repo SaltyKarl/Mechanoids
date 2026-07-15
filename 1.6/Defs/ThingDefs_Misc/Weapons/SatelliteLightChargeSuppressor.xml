@@ -49,7 +49,7 @@
                 <hasStandardCommand>true</hasStandardCommand>
                 <defaultProjectile>APM_Bullet_SatelliteBlaster</defaultProjectile>
                 <warmupTime>0.9</warmupTime>
-                <range>20.9</range>
+                <range>11.9</range>
                 <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
                 <burstShotCount>3</burstShotCount>
                 <soundCast>Shot_ChargeBlaster</soundCast>

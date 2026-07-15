@@ -154,7 +154,7 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="APM_ConquerorBase">
-      <label>gestate rifle conqueror</label>
+      <label>gestate carabine conqueror</label>
 		<defName>APM_Conqueror_DMR</defName>
 		<description>Gestate a Charge Carbine-equipped conqueror mechanoid.</description>
 		<jobString>Gestating conqueror (DMR).</jobString>

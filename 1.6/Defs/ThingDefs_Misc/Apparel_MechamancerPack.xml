@@ -47,18 +47,21 @@
 		</modExtensions>
 		<costList>
 			<ComponentIndustrial>1</ComponentIndustrial>
-			<!-- <Bioferrite>30</Bioferrite> -->
 		</costList>
 		<tickerType>Normal</tickerType>
 		<statBases>
 			<WorkToMake>7200</WorkToMake>
 			<Mass>3</Mass>
 			<Flammability>0.4</Flammability>
-			<EquipDelay>2</EquipDelay>
+			<EquipDelay>6</EquipDelay>
 		</statBases>
 		<thingCategories>
 			<li>ApparelUtility</li>
 		</thingCategories>
+		<equippedStatOffsets>
+			<MechControlGroups>1</MechControlGroups>
+			<MechBandwidth>18</MechBandwidth>
+		</equippedStatOffsets>
 		<apparel>
 			<countsAsClothingForNudity>false</countsAsClothingForNudity>
 			<careIfWornByCorpse>false</careIfWornByCorpse>

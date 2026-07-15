@@ -82,13 +82,13 @@
 
 	<ThingDef ParentName="APM_Mech_ConquerorBase">
 		<defName>APM_Mech_Conqueror_DMR</defName>
-		<label>rifle conqueror</label>
+		<label>carabine conqueror</label>
 		<description>The conqueror is an all around infantry mechanoid created to balance out the specializations of the existing scyther and lancer type mechanoids. They have additional strength in numbers though, their systems able to link between other allied conquerors in range, increasing their processing power and in turn, their effectiveness together. Additionally, one unit in a group can choose to overclock their shared processing unit, giving nearby conquerors a larger boost, at the cost of entirely frying the overlocked unit’s physical components.\nThis one is armed with a highly powered Charge Carbine.</description>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Conqueror_DMR</defName>
-		<label>rifle conqueror</label>
+		<label>carabine conqueror</label>
 		<race>APM_Mech_Conqueror_DMR</race>
 		<combatPower>190</combatPower>
 		<lifeStages>
@@ -100,7 +100,8 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>1.5</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.5, 0.8, 0.5)</volume>
+						<offset>(0, 0, -0.4)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
@@ -112,7 +113,8 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>1.5</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.5, 0.8, 0.5)</volume>
+						<offset>(0, 0, -0.4)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
@@ -148,7 +150,8 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>1.5</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.5, 0.8, 0.5)</volume>
+						<offset>(0, 0, -0.4)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
@@ -160,7 +163,8 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>1.5</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.5, 0.8, 0.5)</volume>
+						<offset>(0, 0, -0.4)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
@@ -196,7 +200,8 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>1.5</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.5, 0.8, 0.5)</volume>
+						<offset>(0, 0, -0.4)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
@@ -208,7 +213,8 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>1.5</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.5, 0.8, 0.5)</volume>
+						<offset>(0, 0, -0.4)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>

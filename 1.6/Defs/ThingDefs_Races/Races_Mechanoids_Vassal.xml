@@ -100,9 +100,10 @@
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Vassal/Mech_Vassal</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>1.8</drawSize>
+					<drawSize>1.9</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.5, 1.2, 0.5)</volume>
+						<offset>(0, 0, -0.6)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
@@ -112,9 +113,10 @@
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Vassal/Mech_Vassal</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>1.8</drawSize>
+					<drawSize>1.9</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.5, 1.2, 0.5)</volume>
+						<offset>(0, 0, -0.6)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>

@@ -9,7 +9,7 @@
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(1,1)</drawSize>
 			<shadowData>
-				<volume>(1.7, 0.75, 0.8)</volume>
+				<volume>(0.8, 0.75, 0.8)</volume>
 				<offset>(0.15, 0, 0)</offset>
 			</shadowData>
 		</graphicData>
@@ -75,7 +75,7 @@
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(1,1)</drawSize>
 			<shadowData>
-				<volume>(1.7, 0.75, 0.8)</volume>
+				<volume>(0.8, 0.75, 0.8)</volume>
 				<offset>(0.15, 0, 0)</offset>
 			</shadowData>
 		</graphicData>
@@ -141,7 +141,7 @@
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(1,1)</drawSize>
 			<shadowData>
-				<volume>(1.7, 0.75, 0.8)</volume>
+				<volume>(0.8, 0.75, 0.8)</volume>
 				<offset>(0.15, 0, 0)</offset>
 			</shadowData>
 		</graphicData>
@@ -208,7 +208,7 @@
 			<drawSize>(2,2)</drawSize>
 			<shadowData>
 				<volume>(1.7, 0.75, 0.8)</volume>
-				<offset>(0.15, 0, 0)</offset>
+				<offset>(0, 0, 0)</offset>
 			</shadowData>
 		</graphicData>
 		<altitudeLayer>Building</altitudeLayer>
@@ -248,6 +248,74 @@
 			</li>
 			<li Class="CompProperties_Useable_CallBossgroup">
 				<bossgroupDef>APM_Group_Gazer</bossgroupDef>
+				<effecterDef>BurnoutMechlinkBoosterUsed</effecterDef>
+				<prepareEffecterDef>MechBandAntennaPrepared</prepareEffecterDef>
+				<unlockedLetterLabelKey>LetterLabelBossgroupCallerUnlocked</unlockedLetterLabelKey>
+				<unlockedLetterTextKey>LetterBossgroupCallerUnlocked</unlockedLetterTextKey>
+				<delayTicks>120</delayTicks>
+			</li>
+			<li Class="CompProperties_UseEffectDestroySelf">
+				<delayTicks>120</delayTicks>
+				<spawnKilledLeavings>true</spawnKilledLeavings>
+				<effecterDef>MechbandBuildingDestroyed</effecterDef>
+			</li>
+		</comps>
+		<tickerType>Normal</tickerType>
+		<filthLeaving>Filth_MachineBits</filthLeaving>
+
+
+	</ThingDef>
+		<ThingDef ParentName="BuildingBase">
+		<defName>APM_MechbandAntenna_United</defName>
+		<label>Mechband Invoker</label>
+		<description>A mech-band signaling device more powerful than the mechband array. When activated, it puts out an 3-fold apex level mech signal pulse, which will attract a mechanoid commander to attack with its escorts. If you defeat it, you can collect special technology from its corpse. The signal pulse burns out the dish, so this building can only be used once. This particular mechband device sends out 3 simultaneous signals, be warned.</description>
+		<graphicData>
+			<texPath>Things/Building/Antenas/United</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<shadowData>
+				<volume>(2, 1, 2)</volume>
+				<offset>(0, 0, -0.33)</offset>
+			</shadowData>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.3</fillPercent>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<buildingTags>
+				<li>Biotech</li>
+			</buildingTags>
+		</building>
+		<designationCategory>Biotech</designationCategory>
+		<uiOrder>2451</uiOrder>
+		<statBases>
+			<MaxHitPoints>80</MaxHitPoints>
+			<WorkToBuild>16000</WorkToBuild>
+			<Mass>80</Mass>
+			<Flammability>0.5</Flammability>
+		</statBases>
+		<size>(3,3)</size>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>6</ComponentIndustrial>
+			<ComponentSpacer>2</ComponentSpacer>
+		</costList>
+		<killedLeavings>
+			<ChunkSlagSteel>3</ChunkSlagSteel>
+		</killedLeavings>
+		<researchPrerequisites>
+			<li>ApexMechtech</li>
+		</researchPrerequisites>
+		<comps>
+			<li Class="CompProperties_Usable">
+				<useJob>TriggerObject</useJob>
+				<useLabel>Summon Three Lords threat</useLabel>
+				<useDuration>900</useDuration>
+				<floatMenuFactionIcon>Mechanoid</floatMenuFactionIcon>
+			</li>
+			<li Class="CompProperties_Useable_CallBossgroup">
+				<bossgroupDef>APM_Group_Trio</bossgroupDef>
 				<effecterDef>BurnoutMechlinkBoosterUsed</effecterDef>
 				<prepareEffecterDef>MechBandAntennaPrepared</prepareEffecterDef>
 				<unlockedLetterLabelKey>LetterLabelBossgroupCallerUnlocked</unlockedLetterLabelKey>
