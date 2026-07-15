@@ -21,17 +21,19 @@
 		    <WorkToMake>60000</WorkToMake>
       		<MaxHitPoints>400</MaxHitPoints>
       		<Mass>12</Mass>
-			<ArmorRating_Sharp>1.07</ArmorRating_Sharp>
-			<ArmorRating_Blunt>0.9</ArmorRating_Blunt>
-			<ArmorRating_Heat>0.70</ArmorRating_Heat>
-			<Insulation_Cold>50</Insulation_Cold>
-			<Insulation_Heat>30</Insulation_Heat>
-			<EquipDelay>25</EquipDelay>
+			<ArmorRating_Sharp>1.20</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.57</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.68</ArmorRating_Heat>
+			<Insulation_Cold>55</Insulation_Cold>
+			<Insulation_Heat>38</Insulation_Heat>
+			<EquipDelay>20</EquipDelay>
+			<EnergyShieldRechargeRate>0.02</EnergyShieldRechargeRate>
+			<EnergyShieldEnergyMax>0.4</EnergyShieldEnergyMax>
 			<EnergyShieldRechargeRate MayRequire="Ludeon.RimWorld.Royalty">0.12</EnergyShieldRechargeRate>
 			<EnergyShieldEnergyMax MayRequire="Ludeon.RimWorld.Royalty">1.2</EnergyShieldEnergyMax>
 		</statBases>
     	<costList>
-      	<ComponentSpacer>4</ComponentSpacer>
+      	<ComponentSpacer>6</ComponentSpacer>
       	<Plasteel>100</Plasteel>
       	<Uranium>20</Uranium>
     	</costList>
@@ -41,10 +43,9 @@
 			</li>
 		</comps>
 		<equippedStatOffsets>
-			<MechBandwidth>26</MechBandwidth>
 			<MechControlGroups>2</MechControlGroups>
-			<ShootingAccuracyPawn>-4</ShootingAccuracyPawn>
-			<MeleeHitChance>-0.6</MeleeHitChance>
+			<MechBandwidth>24</MechBandwidth>
+			<PainShockThreshold>0.05</PainShockThreshold>
 			<VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.4</VacuumResistance>
 		</equippedStatOffsets>
 		<apparel>
@@ -125,14 +126,16 @@
 			<drawSize>(0.75, 0.75)</drawSize>
 		</graphicData>
 		<statBases>
-      		<WorkToMake>30000</WorkToMake>
-      		<MaxHitPoints>290</MaxHitPoints>
-      		<Mass>4</Mass>
-			<ArmorRating_Sharp>0.78</ArmorRating_Sharp>
-			<ArmorRating_Blunt>0.43</ArmorRating_Blunt>
-			<ArmorRating_Heat>0.42</ArmorRating_Heat>
-			<Insulation_Cold>5</Insulation_Cold>
+			<MaxHitPoints>300</MaxHitPoints>
+			<WorkToMake>35250</WorkToMake>
+			<Mass>2.5</Mass>
+			<Flammability>0.4</Flammability>
+			<ArmorRating_Sharp>0.98</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.47</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.48</ArmorRating_Heat>
+			<Insulation_Cold>4</Insulation_Cold>
 			<Insulation_Heat>2</Insulation_Heat>
+			<EquipDelay>6</EquipDelay>
 		</statBases>
     	<costList>
       	<ComponentSpacer>4</ComponentSpacer>
@@ -140,9 +143,7 @@
       	<Uranium>20</Uranium>
     	</costList>
 		<equippedStatOffsets>
-			<MechBandwidth>12</MechBandwidth>
-			<ShootingAccuracyPawn>-5</ShootingAccuracyPawn>
-			<MeleeHitChance>-0.5</MeleeHitChance>
+			<MechBandwidth>14</MechBandwidth>
 			<VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.67</VacuumResistance>
 		</equippedStatOffsets>
 		<apparel>

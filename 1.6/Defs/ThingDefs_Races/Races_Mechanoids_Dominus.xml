@@ -94,7 +94,8 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>2</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.7, 1, 0.7)</volume>
+						<offset>(0, 0, -0.4)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
@@ -106,7 +107,8 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>2</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.7, 1, 0.7)</volume>
+						<offset>(0, 0, -0.4)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
@@ -137,7 +139,8 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>2</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.7, 1, 0.7)</volume>
+						<offset>(0, 0, -0.4)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
@@ -149,7 +152,8 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>2</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.7, 1, 0.7)</volume>
+						<offset>(0, 0, -0.4)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>

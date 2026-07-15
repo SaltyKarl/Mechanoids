@@ -12,6 +12,10 @@
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(7,7)</drawSize>
 			<drawOffset>(0,0,1)</drawOffset>
+			<shadowData>
+				<volume>(4, 3, 4)</volume>
+				<offset>(0, 0, 0)</offset>
+			</shadowData>
 		</graphicData>
 		<thingCategories>
 			<li>BuildingsMisc</li>

@@ -81,9 +81,10 @@
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Ravager/Mech_Ravager</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>3</drawSize>
+					<drawSize>3.3</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.6, 0.8, 0.6)</volume>
+						<offset>(0, 0, -0.15)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
@@ -93,9 +94,10 @@
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Ravager/Mech_Ravager</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>3</drawSize>
+					<drawSize>3.3</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.6, 0.8, 0.6)</volume>
+						<offset>(0, 0, -0.15)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>

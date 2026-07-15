@@ -54,7 +54,7 @@
             <li>PsionicChip</li>
           </thingDefs>
         </filter>
-        <count>2</count>
+        <count>1</count>
       </li>
     </ingredients>
     <products>
@@ -102,7 +102,7 @@
             <li>ExtraChip</li>
           </thingDefs>
         </filter>
-        <count>2</count>
+        <count>1</count>
       </li>
     </ingredients>
     <products>
@@ -150,7 +150,7 @@
             <li>PsyfluxChip</li>
           </thingDefs>
         </filter>
-        <count>2</count>
+        <count>1</count>
       </li>
     </ingredients>
     <products>
@@ -250,7 +250,7 @@
             <li>OcularChip</li>
           </thingDefs>
         </filter>
-        <count>2</count>
+        <count>1</count>
       </li>
     </ingredients>
     <products>
@@ -355,7 +355,7 @@
             <li>Plasteel</li>
           </thingDefs>
         </filter>
-        <count>160</count>
+        <count>180</count>
       </li>
       <li>
         <filter>
@@ -379,7 +379,7 @@
             <li>ComponentSpacer</li>
           </thingDefs>
         </filter>
-        <count>5</count>
+        <count>8</count>
       </li>
             <li>
         <filter>
@@ -387,15 +387,7 @@
             <li>PsionicChip</li>
           </thingDefs>
         </filter>
-        <count>1</count>
-      </li>
-      <li>
-        <filter>
-          <thingDefs>
-            <li>PsyfluxChip</li>
-          </thingDefs>
-        </filter>
-        <count>1</count>
+        <count>2</count>
       </li>
       <li>
         <filter>
@@ -403,7 +395,7 @@
             <li>ExtraChip</li>
           </thingDefs>
         </filter>
-        <count>1</count>
+        <count>2</count>
       </li>
     </ingredients>
     <products>
@@ -452,7 +444,7 @@
             <li>ComponentSpacer</li>
           </thingDefs>
         </filter>
-        <count>8</count>
+        <count>4</count>
       </li>
             <li>
         <filter>
@@ -465,18 +457,10 @@
       <li>
         <filter>
           <thingDefs>
-            <li>PowerfocusChip</li>
+            <li>PsyfluxChip</li>
           </thingDefs>
         </filter>
-        <count>1</count>
-      </li>
-      <li>
-        <filter>
-          <thingDefs>
-            <li>NanostructuringChip</li>
-          </thingDefs>
-        </filter>
-        <count>1</count>
+        <count>2</count>
       </li>
     </ingredients>
     <products>

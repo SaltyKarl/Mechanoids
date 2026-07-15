@@ -13,6 +13,10 @@
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(3,2)</drawSize>
 			<drawOffset>(0,0,0)</drawOffset>
+			<shadowData>
+				<volume>(2.70, 1, 1.70)</volume>
+				<offset>(0, 0, 0)</offset>
+			</shadowData>
 		</graphicData>
 		<thingCategories>
 			<li>BuildingsMisc</li>

@@ -130,6 +130,10 @@
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Dynamo/Mech_Dynamo</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<drawSize>3</drawSize>
+					<shadowData>
+						<volume>(0.6, 0.8, 0.6)</volume>
+						<offset>(0, 0, -0.3)</offset>
+					</shadowData>
 				</bodyGraphicData>
 			</li>
 			<li>
@@ -138,6 +142,10 @@
 					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Dynamo/Mech_Dynamo</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<drawSize>3</drawSize>
+					<shadowData>
+						<volume>(0.6, 0.8, 0.6)</volume>
+						<offset>(0, 0, -0.3)</offset>
+					</shadowData>
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
