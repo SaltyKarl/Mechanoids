@@ -45,6 +45,133 @@
 		</root>
 	</PawnRenderTreeDef>
 	<PawnRenderTreeDef>
+		<defName>APM_RenderTree_Aegis</defName>
+		<root Class="PawnRenderNodeProperties_Parent">
+			<debugLabel>Root</debugLabel>
+			<tagDef>Root</tagDef>
+			<children>
+				<li>
+					<debugLabel>Body</debugLabel>
+					<tagDef>Body</tagDef>
+					<nodeClass>PawnRenderNode_AnimalPart</nodeClass>
+					<useRottenColor>true</useRottenColor>
+					<children>
+						<!-- Left Shield -->
+						<li Class="ApexMechanoids.PawnRenderNodeProperties_BodyPartShield">
+							<debugLabel>Left Shield</debugLabel>
+							<nodeClass>ApexMechanoids.PawnRenderNode_BodyPartShield</nodeClass>
+							<workerClass>ApexMechanoids.PawnRenderNodeWorker_BodyPartShield</workerClass>
+							<linkedBodyPartsGroup>APM_LeftAegisShield</linkedBodyPartsGroup>
+							<texPath>Things/Pawn/Mechanoid/Aegis/LeftShield/AegisLS</texPath>
+							<maskPath>Things/Pawn/Mechanoid/AllegienceOverlays/Aegis/LeftShield/Mech_AegisLS</maskPath>
+							<baseLayer>15</baseLayer>
+							<drawData>
+								<scale>1.7</scale>
+								<defaultData>
+									<layer>15</layer>
+								</defaultData>
+								<dataNorth>
+									<layer>-1</layer>
+								</dataNorth>
+								<dataEast>
+									<layer>-1</layer>
+								</dataEast>
+							</drawData>
+						</li>
+						<!-- Right Shield -->
+						<li Class="ApexMechanoids.PawnRenderNodeProperties_BodyPartShield">
+							<debugLabel>Right Shield</debugLabel>
+							<nodeClass>ApexMechanoids.PawnRenderNode_BodyPartShield</nodeClass>
+							<workerClass>ApexMechanoids.PawnRenderNodeWorker_BodyPartShield</workerClass>
+							<linkedBodyPartsGroup>APM_RightAegisShield</linkedBodyPartsGroup>
+							<texPath>Things/Pawn/Mechanoid/Aegis/RightShield/AegisRS</texPath>
+							<maskPath>Things/Pawn/Mechanoid/AllegienceOverlays/Aegis/RightShield/Mech_AegisRS</maskPath>
+							<baseLayer>15</baseLayer>
+							<drawData>
+								<scale>1.7</scale>
+								<defaultData>
+									<layer>15</layer>
+								</defaultData>
+								<dataNorth>
+									<layer>-1</layer>
+								</dataNorth>
+								<dataWest>
+									<layer>-1</layer>
+								</dataWest>
+							</drawData>
+						</li>
+						<li>
+							<debugLabel>Wounds</debugLabel>
+							<nodeClass>PawnRenderNode_AnimalPart</nodeClass>
+							<workerClass>PawnRenderNodeWorker_OverlayWounds</workerClass>
+							<overlayLayer>Body</overlayLayer>
+							<useGraphic>false</useGraphic>
+							<baseLayer>20</baseLayer>
+						</li>
+						<li>
+							<debugLabel>Firefoam</debugLabel>
+							<nodeClass>PawnRenderNode_AnimalPart</nodeClass>
+							<workerClass>PawnRenderNodeWorker_OverlayFirefoam</workerClass>
+							<overlayLayer>Body</overlayLayer>
+							<useGraphic>false</useGraphic>
+							<baseLayer>25</baseLayer>
+						</li>
+					</children>
+				</li>
+				<li Class="PawnRenderNodeProperties_Carried">
+					<debugLabel>Carried thing</debugLabel>
+					<workerClass>PawnRenderNodeWorker_Carried</workerClass>
+				</li>
+			</children>
+		</root>
+	</PawnRenderTreeDef>
+	<AnimationDef>
+		<defName>APM_EatingIngestor</defName>
+		<durationTicks>80</durationTicks>
+		<keyframeParts>
+			<li>
+				<key>APM_Ingestor_Mouth</key>
+				<value>
+					<keyframes>
+						<li>
+							<tick>60</tick>
+							<graphicState>APM_EatingIngestor_Closed</graphicState>
+						</li>
+						<li>
+							<tick>80</tick>
+							<graphicState>APM_EatingIngestor_Opened</graphicState>
+						</li>
+					</keyframes>
+				</value>
+			</li>
+		</keyframeParts>
+	</AnimationDef>
+	<AnimationDef ParentName="APM_EatingIngestor">
+		<defName>APM_EatingIngestorOneLoop</defName>
+		<loopMode>End</loopMode>
+		<keyframeParts Inherit="False">
+			<li>
+				<key>APM_Ingestor_Mouth</key>
+				<value>
+					<keyframes>
+						<li>
+							<tick>25</tick>
+							<graphicState>APM_EatingIngestor_Opened</graphicState>
+						</li>
+						<li>
+							<tick>10</tick>
+							<graphicState>APM_EatingIngestor_Closed</graphicState>
+						</li>
+						<li>
+							<tick>25</tick>
+							<graphicState>APM_EatingIngestor_Opened</graphicState>
+						</li>
+					</keyframes>
+				</value>
+			</li>
+		</keyframeParts>
+	</AnimationDef>
+	<PawnRenderTreeDef>
 		<defName>APM_RenderTree_Ingestor</defName>
 		<root Class="PawnRenderNodeProperties_Parent">
 			<debugLabel>Root</debugLabel>
@@ -182,27 +309,6 @@
 			</children>
 		</root>
 	</PawnRenderTreeDef>
-	<AnimationDef>
-		<defName>APM_EatingIngestor</defName>
-		<durationTicks>80</durationTicks>
-		<keyframeParts>
-			<li>
-				<key>APM_Ingestor_Mouth</key>
-				<value>
-					<keyframes>
-						<li>
-							<tick>60</tick>
-							<graphicState>APM_EatingIngestor_Closed</graphicState>
-						</li>
-						<li>
-							<tick>80</tick>
-							<graphicState>APM_EatingIngestor_Opened</graphicState>
-						</li>
-					</keyframes>
-				</value>
-			</li>
-		</keyframeParts>
-	</AnimationDef>
 	<PawnRenderNodeTagDef>
 		<defName>APM_Ingestor_Mouth</defName>
 	</PawnRenderNodeTagDef>
