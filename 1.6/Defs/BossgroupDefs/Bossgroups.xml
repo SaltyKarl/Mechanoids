@@ -480,7 +480,7 @@
 					<APM_Mech_Dominus_Boss>1</APM_Mech_Dominus_Boss>
 					<APM_Mech_Celerus_Boss>1</APM_Mech_Celerus_Boss>
 					<APM_Mech_Satellite>3</APM_Mech_Satellite>
-					<APM_Mech_Conqueror_AR>1</APM_Mech_Conqueror_AR>
+					<APM_Mech_Vassal>1</APM_Mech_Vassal>
 				</escorts>
 			</li>
 			<li> <!-- Wave 1 -->
@@ -489,6 +489,7 @@
 					<APM_Mech_Dominus_Boss>1</APM_Mech_Dominus_Boss>
 					<APM_Mech_Celerus_Boss>1</APM_Mech_Celerus_Boss>
 					<APM_Mech_Satellite>4</APM_Mech_Satellite>
+					<APM_Mech_Vassal>1</APM_Mech_Vassal>
 					<APM_Mech_Conqueror_AR>2</APM_Mech_Conqueror_AR>
 					<APM_Mech_Tinker>1</APM_Mech_Tinker>
 				</escorts>
@@ -503,6 +504,7 @@
 					<APM_Mech_Conqueror_DMR>1</APM_Mech_Conqueror_DMR>
 					<APM_Mech_Conqueror_LMG>1</APM_Mech_Conqueror_LMG>
 					<APM_Mech_Dynamo>1</APM_Mech_Dynamo>
+					<APM_Mech_Vassal>1</APM_Mech_Vassal>
 				</escorts>
 			</li>
 			<li> <!-- Wave 3 -->
@@ -510,12 +512,13 @@
 				<escorts>
 					<APM_Mech_Dominus_Boss>2</APM_Mech_Dominus_Boss>
 					<APM_Mech_Celerus_Boss>2</APM_Mech_Celerus_Boss>
-					<APM_Mech_Satellite>2</APM_Mech_Satellite>
+					<APM_Mech_Mantis>1</APM_Mech_Mantis>
 					<APM_Mech_Conqueror_AR>3</APM_Mech_Conqueror_AR>
 					<APM_Mech_Conqueror_DMR>2</APM_Mech_Conqueror_DMR>
 					<APM_Mech_Conqueror_LMG>2</APM_Mech_Conqueror_LMG>
 					<APM_Mech_Dynamo>1</APM_Mech_Dynamo>
 					<APM_Mech_Tinker>1</APM_Mech_Tinker>
+					<APM_Mech_Vassal>1</APM_Mech_Vassal>
 				</escorts>
 			</li>
 			<li> <!-- Wave 4 -->
@@ -529,6 +532,8 @@
 					<APM_Mech_Dynamo>1</APM_Mech_Dynamo>
 					<APM_Mech_Aegis>1</APM_Mech_Aegis>
 					<APM_Mech_Tinker>1</APM_Mech_Tinker>
+					<APM_Mech_Mantis>1</APM_Mech_Mantis>
+					<APM_Mech_Vassal>1</APM_Mech_Vassal>
 				</escorts>
 			</li>
 			<li> <!-- Wave 5 -->
@@ -541,7 +546,9 @@
 					<APM_Mech_Conqueror_LMG>4</APM_Mech_Conqueror_LMG>
 					<APM_Mech_Dynamo>2</APM_Mech_Dynamo>
 					<APM_Mech_Aegis>1</APM_Mech_Aegis>
+					<APM_Mech_Mantis>1</APM_Mech_Mantis>
 					<APM_Mech_Tinker>2</APM_Mech_Tinker>
+					<APM_Mech_Vassal>1</APM_Mech_Vassal>
 				</escorts>
 			</li>
 			<li> <!-- Wave 6 -->
@@ -554,7 +561,9 @@
 					<APM_Mech_Conqueror_LMG>5</APM_Mech_Conqueror_LMG>
 					<APM_Mech_Dynamo>2</APM_Mech_Dynamo>
 					<APM_Mech_Aegis>2</APM_Mech_Aegis>
+					<APM_Mech_Mantis>2</APM_Mech_Mantis>
 					<APM_Mech_Tinker>2</APM_Mech_Tinker>
+					<APM_Mech_Vassal>1</APM_Mech_Vassal>
 				</escorts>
 			</li>
 			<li> <!-- Wave 7 -->
@@ -566,8 +575,10 @@
 					<APM_Mech_Conqueror_DMR>6</APM_Mech_Conqueror_DMR>
 					<APM_Mech_Conqueror_LMG>6</APM_Mech_Conqueror_LMG>
 					<APM_Mech_Dynamo>2</APM_Mech_Dynamo>
+					<APM_Mech_Mantis>3</APM_Mech_Mantis>
 					<APM_Mech_Aegis>3</APM_Mech_Aegis>
 					<APM_Mech_Tinker>2</APM_Mech_Tinker>
+					<APM_Mech_Vassal>1</APM_Mech_Vassal>
 				</escorts>
 			</li>
 		</waves>
