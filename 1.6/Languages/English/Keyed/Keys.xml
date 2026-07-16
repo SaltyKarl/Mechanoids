@@ -17,5 +17,22 @@
 	<APM_CommandCancelRepairDesc>Stop repairing and eject the mechanoid.</APM_CommandCancelRepairDesc>
 	<APM_InsertMech>Insert mech</APM_InsertMech>
 	<APM_NoMechsAvailable>No mechs available.</APM_NoMechsAvailable>
+	<APM_RepairStation_ArmEditor_GizmoLabel>Dev: arm live editor</APM_RepairStation_ArmEditor_GizmoLabel>
+	<APM_RepairStation_ArmEditor_GizmoDesc>Open a live editor for repair station arm offsets.</APM_RepairStation_ArmEditor_GizmoDesc>
+	<APM_RepairStation_ArmEditor_Title>Repair station arm editor</APM_RepairStation_ArmEditor_Title>
+	<APM_RepairStation_ArmEditor_NoStation>No repair station arms are available.</APM_RepairStation_ArmEditor_NoStation>
+	<APM_RepairStation_ArmEditor_CurrentRotation>Station rotation: {0}</APM_RepairStation_ArmEditor_CurrentRotation>
+	<APM_RepairStation_ArmEditor_LivePreviewOn>Live preview is active for this view.</APM_RepairStation_ArmEditor_LivePreviewOn>
+	<APM_RepairStation_ArmEditor_LivePreviewOff>Editing {0}; live preview requires a station facing that way.</APM_RepairStation_ArmEditor_LivePreviewOff>
+	<APM_RepairStation_ArmEditor_Arm>Arm</APM_RepairStation_ArmEditor_Arm>
+	<APM_RepairStation_ArmEditor_View>View</APM_RepairStation_ArmEditor_View>
+	<APM_RepairStation_ArmEditor_UseCurrent>Use current view</APM_RepairStation_ArmEditor_UseCurrent>
+	<APM_RepairStation_ArmEditor_Step>Step</APM_RepairStation_ArmEditor_Step>
+	<APM_RepairStation_ArmEditor_SelectedOffset>{0} offset for arm {1}</APM_RepairStation_ArmEditor_SelectedOffset>
+	<APM_RepairStation_ArmEditor_ResetView>Reset view</APM_RepairStation_ArmEditor_ResetView>
+	<APM_RepairStation_ArmEditor_CopyArmXml>Copy arm XML</APM_RepairStation_ArmEditor_CopyArmXml>
+	<APM_RepairStation_ArmEditor_CopyAllXml>Copy all arms XML</APM_RepairStation_ArmEditor_CopyAllXml>
+	<APM_RepairStation_ArmEditor_Copied>Repair station arm XML copied.</APM_RepairStation_ArmEditor_Copied>
+	<APM_RepairStation_ArmEditor_Footer>Changes are applied live to this station's current in-memory def. Copy XML when the offsets look right.</APM_RepairStation_ArmEditor_Footer>
 	<APM_UnityTooltip_Current>Current stats (with unity uplink):</APM_UnityTooltip_Current>
 </LanguageData>

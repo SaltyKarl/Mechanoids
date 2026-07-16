@@ -5,6 +5,11 @@
 		<label>Mechamancer Pack</label>
 		<description>A backpack containing an advanced bandwidth-expansion computer andl antenna. Increases a mechanitor’s maximum total bandwidth and control groups. When fueled with steel, it can construct small mechanoids that operate independently without consuming bandwidth. Each mechanitor can deploy up to two satellite mechanoids simultaneously.</description>
 		<techLevel>Spacer</techLevel>
+		<tradeability>Sellable</tradeability>
+		<relicChance>0</relicChance>
+		<thingCategories>
+      		<li>ApparelUtility</li>
+    	</thingCategories>
 		<generateCommonality>2</generateCommonality>
 		<mergeVerbGizmos>false</mergeVerbGizmos>
 		<graphicData>
@@ -12,11 +17,16 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(1.4,1.4)</drawSize>
 		</graphicData>
+		<costList>
+      	<ComponentSpacer>6</ComponentSpacer>
+      	<Plasteel>100</Plasteel>
+      	<Uranium>20</Uranium>
+    	</costList>
 		<comps>
 			<li Class="CompProperties_ApparelReloadable">
 				<maxCharges>2</maxCharges>
-				<ammoDef>Steel</ammoDef>
-				<ammoCountPerCharge>40</ammoCountPerCharge>
+				<ammoDef>Plasteel</ammoDef>
+				<ammoCountPerCharge>30</ammoCountPerCharge>
 				<baseReloadTicks>60</baseReloadTicks>
 				<soundReload>Standard_Reload</soundReload>
 				<hotKey>Misc4</hotKey>
@@ -45,19 +55,14 @@
 				<spawnedKind>APM_Mech_Satellite</spawnedKind>
 			</li>
 		</modExtensions>
-		<costList>
-			<ComponentIndustrial>1</ComponentIndustrial>
-		</costList>
 		<tickerType>Normal</tickerType>
 		<statBases>
+			<MarketValue>5000</MarketValue>
 			<WorkToMake>7200</WorkToMake>
 			<Mass>3</Mass>
 			<Flammability>0.4</Flammability>
 			<EquipDelay>6</EquipDelay>
 		</statBases>
-		<thingCategories>
-			<li>ApparelUtility</li>
-		</thingCategories>
 		<equippedStatOffsets>
 			<MechControlGroups>1</MechControlGroups>
 			<MechBandwidth>18</MechBandwidth>

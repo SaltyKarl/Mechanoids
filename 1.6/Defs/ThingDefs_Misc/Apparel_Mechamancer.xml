@@ -33,9 +33,12 @@
 			<EnergyShieldEnergyMax MayRequire="Ludeon.RimWorld.Royalty">1.2</EnergyShieldEnergyMax>
 		</statBases>
     	<costList>
-      	<ComponentSpacer>6</ComponentSpacer>
-      	<Plasteel>100</Plasteel>
-      	<Uranium>20</Uranium>
+      		<ComponentSpacer>8</ComponentSpacer>
+      		<Plasteel>180</Plasteel>
+			<Steel>40</Steel>
+      		<Uranium>20</Uranium>
+      		<PsionicChip>2</PsionicChip>
+      		<ExtraChip>2</ExtraChip>
     	</costList>
 		<comps>
 			<li Class="CompProperties_Shield" MayRequire="Ludeon.RimWorld.Royalty">
@@ -138,9 +141,12 @@
 			<EquipDelay>6</EquipDelay>
 		</statBases>
     	<costList>
-      	<ComponentSpacer>4</ComponentSpacer>
-      	<Plasteel>100</Plasteel>
-      	<Uranium>20</Uranium>
+      		<ComponentSpacer>4</ComponentSpacer>
+      		<Plasteel>120</Plasteel>
+			<Steel>20</Steel>
+      		<Uranium>40</Uranium>
+      		<OcularChip>2</OcularChip>
+      		<PsyfluxChip>1</PsyfluxChip>
     	</costList>
 		<equippedStatOffsets>
 			<MechBandwidth>14</MechBandwidth>
