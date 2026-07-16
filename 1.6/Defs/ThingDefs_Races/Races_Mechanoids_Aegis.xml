@@ -83,10 +83,10 @@
 			</li>
 		</tools>
 		<comps>
-			<li Class="CompProperties_Shield">
+			<!--<li Class="CompProperties_Shield">
 				<minDrawSize>0</minDrawSize>
 				<maxDrawSize>0</maxDrawSize>
-			</li>
+			</li>-->
 			<li Class="ApexMechanoids.CompProperties_Aegis">
 				<regenerationAmount>2</regenerationAmount>
 				<!-- Amount of HP to regenerate per interval -->

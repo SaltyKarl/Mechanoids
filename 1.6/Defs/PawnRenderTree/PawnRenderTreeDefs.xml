@@ -125,7 +125,8 @@
 			</children>
 		</root>
 	</PawnRenderTreeDef>
-	<AnimationDef>
+
+	<AnimationDef Name="APM_EatingIngestor">
 		<defName>APM_EatingIngestor</defName>
 		<durationTicks>80</durationTicks>
 		<keyframeParts>
@@ -146,6 +147,7 @@
 			</li>
 		</keyframeParts>
 	</AnimationDef>
+
 	<AnimationDef ParentName="APM_EatingIngestor">
 		<defName>APM_EatingIngestorOneLoop</defName>
 		<loopMode>End</loopMode>
