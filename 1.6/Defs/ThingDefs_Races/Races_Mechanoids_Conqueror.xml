@@ -66,6 +66,11 @@
 		</race>
 		<comps>
 			<li Class="ApexMechanoids.CompProperties_Unity">
+				<kindDefs>
+					<li>APM_Mech_Conqueror_DMR</li>
+					<li>APM_Mech_Conqueror_AR</li>
+					<li>APM_Mech_Conqueror_LMG</li>
+				</kindDefs>
 				<hediff>APM_Hediff_Unity</hediff>
 				<checkInterval>250</checkInterval>
 				<severityPerAlly>0.1</severityPerAlly>

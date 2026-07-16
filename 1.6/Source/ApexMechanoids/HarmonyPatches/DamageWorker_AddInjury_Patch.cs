@@ -1,5 +1,4 @@
 ﻿using Verse;
-using Verse.Noise;
 
 namespace ApexMechanoids
 {
@@ -7,13 +6,15 @@ namespace ApexMechanoids
     {
         public static bool pickShield;
         public static BodyPartGroupDef whichShield;
-        private const float DAMAGE_SIDE_CHANCE = 0.2f;
+        public static BodyPartDef whichShieldPart;
+
         [HarmonyLib.HarmonyPatch(typeof(DamageWorker_AddInjury), "GetExactPartFromDamageInfo")]
         internal static class GetExactPartFromDamageInfo
         {
             private static void Prefix(DamageInfo dinfo, Pawn pawn)
             {
-                if (!(dinfo.Instigator is Pawn pawn2) || pawn.kindDef != ApexDefsOf.APM_Mech_Aegis)
+                ModExtension_Aegis ext = pawn?.def?.GetModExtension<ModExtension_Aegis>();
+                if (ext == null || ext.shieldPart == null || !(dinfo.Instigator is Pawn pawn2))
                 {
                     return;
                 }
@@ -23,42 +24,51 @@ namespace ApexMechanoids
 
                 if (rot == pawn.Rotation)
                 {
-                    TryPickShieldForFrontAttack(pawn);
+                    TryPickShieldForFrontAttack(pawn, ext);
                 }
-                else if (IsSideAttack(rot, pawn.Rotation) && Rand.Chance(DAMAGE_SIDE_CHANCE))
+                else if (IsSideAttack(rot, pawn.Rotation) && Rand.Chance(ext.sideDamageChance))
                 {
-                    TryPickShieldForSideAttack(pawn, rot);
+                    TryPickShieldForSideAttack(pawn, ext, rot);
                 }
             }
 
-            private static void TryPickShieldForFrontAttack(Pawn pawn)
+            private static void TryPickShieldForFrontAttack(Pawn pawn, ModExtension_Aegis ext)
             {
                 bool checkRightFirst = Rand.Chance(0.5f);
-                var firstShield = checkRightFirst ? ApexDefsOf.APM_RightAegisShield : ApexDefsOf.APM_LeftAegisShield;
-                var secondShield = checkRightFirst ? ApexDefsOf.APM_LeftAegisShield : ApexDefsOf.APM_RightAegisShield;
+                var firstShield = checkRightFirst ? ext.rightShieldGroup : ext.leftShieldGroup;
+                var secondShield = checkRightFirst ? ext.leftShieldGroup : ext.rightShieldGroup;
 
-                if (TryPickShield(pawn, firstShield) || TryPickShield(pawn, secondShield))
+                if (TryPickShield(pawn, ext, firstShield))
                 {
                     return;
                 }
+
+                TryPickShield(pawn, ext, secondShield);
             }
 
-            private static void TryPickShieldForSideAttack(Pawn pawn, Rot4 attackRot)
+            private static void TryPickShieldForSideAttack(Pawn pawn, ModExtension_Aegis ext, Rot4 attackRot)
             {
                 bool isRightSide = IsRightSideAttack(attackRot, pawn.Rotation);
-                var shieldDef = isRightSide ? ApexDefsOf.APM_RightAegisShield : ApexDefsOf.APM_LeftAegisShield;
-                TryPickShield(pawn, shieldDef);
+                var shieldGroup = isRightSide ? ext.rightShieldGroup : ext.leftShieldGroup;
+                TryPickShield(pawn, ext, shieldGroup);
             }
 
-            private static bool TryPickShield(Pawn pawn, BodyPartGroupDef shieldDef)
+            private static bool TryPickShield(Pawn pawn, ModExtension_Aegis ext, BodyPartGroupDef shieldGroup)
             {
-                var targetBodyPart = Utils.GetNonMissingBodyPart(pawn, ApexDefsOf.APM_AegisShield, shieldDef);
+                if (shieldGroup == null)
+                {
+                    return false;
+                }
+
+                var targetBodyPart = Utils.GetNonMissingBodyPart(pawn, ext.shieldPart, shieldGroup);
                 if (targetBodyPart != null)
                 {
-                    whichShield = shieldDef;
+                    whichShield = shieldGroup;
+                    whichShieldPart = ext.shieldPart;
                     pickShield = true;
                     return true;
                 }
+
                 return false;
             }
 

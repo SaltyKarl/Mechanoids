@@ -1,260 +1,222 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Verse;
-using Verse.AI;
-using static RimWorld.MechClusterSketch;
 
 namespace ApexMechanoids
 {
     public class CompAegis : ThingComp
     {
-        private bool shieldsDamaged = false;
-        private int ticksSinceDamage = 0;
-        private int ticksSinceRegen = 0;
-        public int steelDeliveredForRepair = 0;
+        private int ticksSinceDamage;
+        private int ticksSinceRegen;
         private const int CompTickRareInterval = 250;
 
-        public CompProperties_Aegis Props => (CompProperties_Aegis)props;
+        public ModExtension_Aegis Ext => parent.def.GetModExtension<ModExtension_Aegis>();
+        public Pawn Pawn => parent as Pawn;
 
-        private int RegenerationIntervalTicks => (int)(Props.regenerationIntervalSeconds * 60f);
-        private int RegenerationDelayTicks => (int)(Props.regenerationDelaySeconds * 60f);
+        private int RegenerationDelayTicks => (int)(Ext.regenerationDelaySeconds * 60f);
+        private int RegenerationIntervalTicks => (int)(Ext.regenerationIntervalSeconds * 60f);
+
+        // ---- Shield HP accounting (used by the gizmo bar and the repair energy patch) ----
+
+        public IEnumerable<BodyPartRecord> ShieldParts()
+        {
+            if (Pawn == null || Ext?.shieldPart == null)
+            {
+                yield break;
+            }
+
+            foreach (BodyPartRecord part in Pawn.RaceProps.body.AllParts)
+            {
+                if (part.def == Ext.shieldPart)
+                {
+                    yield return part;
+                }
+            }
+        }
+
+        public float MaxShieldHP
+        {
+            get
+            {
+                float sum = 0f;
+                foreach (BodyPartRecord part in ShieldParts())
+                {
+                    sum += part.def.GetMaxHealth(Pawn);
+                }
+                return sum;
+            }
+        }
+
+        public float CurShieldHP
+        {
+            get
+            {
+                float sum = 0f;
+                foreach (BodyPartRecord part in ShieldParts())
+                {
+                    sum += Pawn.health.hediffSet.GetPartHealth(part);
+                }
+                return sum;
+            }
+        }
+
+        public float ShieldHPPercent
+        {
+            get
+            {
+                float max = MaxShieldHP;
+                return max > 0f ? Mathf.Clamp01(CurShieldHP / max) : 0f;
+            }
+        }
+
+        // ---- Save/load ----
 
         public override void PostExposeData()
         {
             base.PostExposeData();
-            Scribe_Values.Look(ref shieldsDamaged, "shieldsDamaged", false);
             Scribe_Values.Look(ref ticksSinceDamage, "ticksSinceDamage", 0);
             Scribe_Values.Look(ref ticksSinceRegen, "ticksSinceRegen", 0);
-            Scribe_Values.Look(ref steelDeliveredForRepair, "steelDeliveredForRepair", 0);
         }
+
+        // ---- Damage tracking ----
 
         public override void PostPostApplyDamage(DamageInfo dinfo, float totalDamageDealt)
         {
             base.PostPostApplyDamage(dinfo, totalDamageDealt);
 
-            if (totalDamageDealt <= 0f)
-                return;
-
-            CheckShieldDamage(parent as Pawn);
-        }
-
-        private void CheckShieldDamage(Pawn pawn)
-        {
-            if (ShieldsDamaged(pawn) || ShieldsMissing(pawn))
+            if (totalDamageDealt <= 0f || Pawn == null || Ext == null)
             {
-                shieldsDamaged = true;
+                return;
+            }
+
+            if (AnyShieldsMissingOrDamaged())
+            {
+                // Restart the peace timer; do not reset the regen throttle so occasional chip
+                // damage cannot stall regeneration forever.
                 ticksSinceDamage = 0;
-                ticksSinceRegen = 0;
             }
         }
+
+        // ---- Slow regeneration ----
 
         public override void CompTickRare()
         {
             base.CompTickRare();
 
-            Pawn pawn = parent as Pawn;
-
-            UpdateShieldStatus(pawn);
-
-            if (shieldsDamaged)
+            if (Pawn == null || Ext == null)
             {
-                ticksSinceRegen += CompTickRareInterval;
-                ticksSinceDamage += CompTickRareInterval;
-                if (ticksSinceDamage >= RegenerationDelayTicks && ticksSinceRegen >= RegenerationIntervalTicks)
-                {
-                    if (RegenerateShields(pawn))
-                    {
-                        shieldsDamaged = false;
-                        ticksSinceDamage = 0;
-                        ticksSinceRegen = 0;
-                    }
-                    else
-                    {
-                        ticksSinceRegen = 0;
-                    }
-                }
+                return;
             }
-        }
 
-        private void UpdateShieldStatus(Pawn pawn)
-        {
-            if (!ShieldsDamaged(pawn) && !ShieldsMissing(pawn))
+            if (!AnyShieldsMissingOrDamaged())
             {
-                shieldsDamaged = false;
                 ticksSinceDamage = 0;
+                ticksSinceRegen = 0;
+                return;
+            }
+
+            ticksSinceDamage += CompTickRareInterval;
+            ticksSinceRegen += CompTickRareInterval;
+
+            if (ticksSinceDamage >= RegenerationDelayTicks && ticksSinceRegen >= RegenerationIntervalTicks)
+            {
+                RegenerateOneShieldStep();
                 ticksSinceRegen = 0;
             }
         }
 
-        private bool RegenerateShields(Pawn pawn)
+        // Heals a small amount of HP on every damaged shield, and slowly rebuilds destroyed ones.
+        private void RegenerateOneShieldStep()
         {
-            var shieldParts = pawn.RaceProps.body.AllParts.Where(part => part.def == ApexDefsOf.APM_AegisShield);
+            bool changed = false;
 
-            foreach (var shieldPart in shieldParts)
+            foreach (BodyPartRecord part in ShieldParts())
             {
-                if (ShieldMissing(pawn, shieldPart))
+                if (Pawn.health.hediffSet.PartIsMissing(part))
                 {
-                    pawn.health.RemoveHediff(pawn.health.hediffSet.GetMissingPartFor(shieldPart));
-
-                    float maxHealth = shieldPart.def.hitPoints;
-                    float damageAmount = maxHealth * 0.95f;
-
-                    HediffDef hediffDefFromDamage = HealthUtility.GetHediffDefFromDamage(DamageDefOf.Crush, pawn, shieldPart);
-                    Hediff_Injury injury = (Hediff_Injury)HediffMaker.MakeHediff(hediffDefFromDamage, pawn, shieldPart);
-                    injury.Severity = damageAmount;
-                    pawn.health.AddHediff(injury, shieldPart);
-
-                    FleckMaker.ThrowMetaIcon(pawn.Position, pawn.Map, FleckDefOf.HealingCross);
-
-                    break;
+                    RebuildMissingShield(part);
+                    changed = true;
                 }
-
-                if (ShieldDamaged(pawn, shieldPart))
+                else if (Pawn.health.hediffSet.GetInjuredParts().Contains(part))
                 {
-                    var injuries = pawn.health.hediffSet.hediffs
-                    .OfType<Hediff_Injury>()
-                    .Where(injury => injury.Part == shieldPart)
-                    .ToList();
-
-                    var selectedInjury = injuries.First();
-                    float healAmount = Props.regenerationAmount;
-                    selectedInjury.Heal(healAmount);
-
-                    FleckMaker.ThrowMetaIcon(pawn.Position, pawn.Map, FleckDefOf.HealingCross);
-                    break;
+                    HealShieldInjury(part);
+                    changed = true;
                 }
             }
 
-            return !ShieldsDamaged(pawn) && !ShieldsMissing(pawn);
+            if (changed && Pawn.Spawned)
+            {
+                FleckMaker.ThrowMetaIcon(Pawn.Position, Pawn.Map, FleckDefOf.HealingCross);
+            }
         }
 
-        private List<Thing> FindAvailableSteel(Pawn pawn, int neededAmount)
+        private void RebuildMissingShield(BodyPartRecord part)
         {
-            List<Thing> foundSteel = new List<Thing>();
-            int totalFound = 0;
-
-            List<Thing> allSteel = pawn.Map.listerThings.ThingsOfDef(ThingDefOf.Steel)
-                .Where(t => !t.IsForbidden(pawn) && pawn.CanReserve(t))
-                .OrderBy(t => t.Position.DistanceTo(pawn.Position))
-                .ToList();
-
-            foreach (Thing steel in allSteel)
+            // Restore the part, then re-add it as an almost-destroyed injury so that the HP-based
+            // regen heals it back up gradually rather than instantly.
+            Hediff missing = Pawn.health.hediffSet.GetMissingPartFor(part);
+            if (missing != null)
             {
-                if (totalFound >= neededAmount)
-                    break;
-
-                foundSteel.Add(steel);
-                totalFound += steel.stackCount;
+                Pawn.health.RemoveHediff(missing);
             }
 
-            return foundSteel;
+            float maxHP = part.def.GetMaxHealth(Pawn);
+            if (HediffMaker.MakeHediff(HediffDefOf.Cut, Pawn, part) is Hediff_Injury injury)
+            {
+                injury.Severity = Mathf.Max(1f, maxHP - Ext.regenerationHPPerStep);
+                Pawn.health.AddHediff(injury, part);
+            }
         }
 
-        private bool ShieldsMissing(Pawn pawn)
+        private void HealShieldInjury(BodyPartRecord part)
         {
-            var shieldParts = pawn.RaceProps.body.AllParts.Where(part => part.def == ApexDefsOf.APM_AegisShield);
-            return shieldParts.Any(shieldPart => pawn.health.hediffSet.PartIsMissing(shieldPart));
+            Hediff_Injury injury = Pawn.health.hediffSet.hediffs
+                .OfType<Hediff_Injury>()
+                .FirstOrDefault(h => h.Part == part);
+
+            injury?.Heal(Ext.regenerationHPPerStep);
         }
 
-        private bool ShieldsDamaged(Pawn pawn)
+        private bool AnyShieldsMissingOrDamaged()
         {
-            var shieldParts = Utils.GetNonMissingBodyParts(pawn, ApexDefsOf.APM_AegisShield);
-            var injuredParts = pawn.health.hediffSet.GetInjuredParts();
+            foreach (BodyPartRecord part in ShieldParts())
+            {
+                if (Pawn.health.hediffSet.PartIsMissing(part))
+                {
+                    return true;
+                }
 
-            return shieldParts.Any(shieldPart => injuredParts.Contains(shieldPart));
+                if (Pawn.health.hediffSet.GetInjuredParts().Contains(part))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
-        private bool ShieldDamaged(Pawn pawn, BodyPartRecord shield)
+        // ---- Gizmo bar ----
+
+        public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
-            return pawn.health.hediffSet.GetInjuredParts().Contains(shield);
+            foreach (Gizmo gizmo in base.CompGetGizmosExtra())
+            {
+                yield return gizmo;
+            }
+
+            if (Pawn == null || Ext == null || Pawn.Faction != Faction.OfPlayer)
+            {
+                yield break;
+            }
+
+            if (MaxShieldHP <= 0f)
+            {
+                yield break;
+            }
+
+            yield return new Gizmo_ShieldHP { comp = this };
         }
-
-        private bool ShieldMissing(Pawn pawn, BodyPartRecord shield)
-        {
-            return pawn.health.hediffSet.PartIsMissing(shield);
-        }
-        
-        /*public override IEnumerable<Gizmo> CompGetGizmosExtra()
-        {
-       Pawn pawn = parent as Pawn;
-
-       if (pawn != null && pawn.Faction == Faction.OfPlayer && shieldsDamaged)
-       {
-           Command_Action repairCommand = new Command_Action
-           {
-               defaultLabel = "APM.RepairAegisShields.Label".Translate(),
-               defaultDesc = "APM.RepairAegisShields.Desc".Translate(Props.steelRequiredForRepair),
-               icon = Assets.shieldRepairIcon,
-               action = delegate
-               {
-                   List<FloatMenuOption> options = new List<FloatMenuOption>();
-
-                   foreach (Pawn colonist in pawn.Map.mapPawns.FreeColonistsSpawned)
-                   {
-                       if (colonist.workSettings != null && colonist.workSettings.WorkIsActive(WorkTypeDefOf.Crafting))
-                       {
-                           Pawn localColonist = colonist;
-                           Pawn localMech = pawn;
-
-                           if (!colonist.CanReach(pawn, PathEndMode.Touch, Danger.Deadly))
-                           {
-                               options.Add(new FloatMenuOption(colonist.LabelShort + " " + "APM.CannotReach".Translate(), null));
-                               continue;
-                           }
-
-                           List<Thing> availableSteel = FindAvailableSteel(localColonist, Props.steelRequiredForRepair);
-                           int totalAvailable = availableSteel.Sum(t => t.stackCount);
-
-                           if (totalAvailable < Props.steelRequiredForRepair)
-                           {
-                               options.Add(new FloatMenuOption(
-                                   colonist.LabelShort + " " + "APM.NeedSteel".Translate(Props.steelRequiredForRepair, totalAvailable),
-                                   null
-                               ));
-                               continue;
-                           }
-
-                           options.Add(new FloatMenuOption(colonist.LabelShort, delegate
-                           {
-                               List<Thing> steelToHaul = FindAvailableSteel(localColonist, Props.steelRequiredForRepair);
-
-                               if (steelToHaul.Count == 0)
-                               {
-                                   Messages.Message("APM.NoSteelAvailable".Translate(), MessageTypeDefOf.RejectInput);
-                                   return;
-                               }
-
-                               Job repairJob = JobMaker.MakeJob(ApexDefsOf.APM_RepairAegisShields, localMech);
-                               repairJob.count = Props.steelRequiredForRepair;
-
-                               repairJob.targetQueueA = new List<LocalTargetInfo>();
-                               foreach (Thing steel in steelToHaul)
-                               {
-                                   repairJob.targetQueueA.Add(steel);
-                                   localColonist.Reserve(steel, repairJob);
-                               }
-
-                               localColonist.jobs.TryTakeOrderedJob(repairJob, JobTag.Misc);
-
-                               Job waitJob = JobMaker.MakeJob(JobDefOf.Wait_Combat);
-                               waitJob.expiryInterval = 99999;
-                               localMech.jobs.TryTakeOrderedJob(waitJob, JobTag.Misc);
-                           }));
-                       }
-                   }
-
-                   if (options.Count == 0)
-                   {
-                       options.Add(new FloatMenuOption("APM.NoAvailableColonists".Translate(), null));
-                   }
-
-                   Find.WindowStack.Add(new FloatMenu(options));
-               }
-           };
-
-           yield return repairCommand;
-       }
-   }*/
     }
 }
