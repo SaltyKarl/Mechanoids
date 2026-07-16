@@ -35,4 +35,6 @@
 	<APM_RepairStation_ArmEditor_Copied>Repair station arm XML copied.</APM_RepairStation_ArmEditor_Copied>
 	<APM_RepairStation_ArmEditor_Footer>Changes are applied live to this station's current in-memory def. Copy XML when the offsets look right.</APM_RepairStation_ArmEditor_Footer>
 	<APM_UnityTooltip_Current>Current stats (with unity uplink):</APM_UnityTooltip_Current>
+
+	<APM_ShieldIntegrity>Shield integrity</APM_ShieldIntegrity>
 </LanguageData>
