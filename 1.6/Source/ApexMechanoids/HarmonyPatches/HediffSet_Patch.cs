@@ -9,12 +9,16 @@ namespace ApexMechanoids.HarmonyPatches
         {
             private static void Postfix(HediffSet __instance, ref BodyPartRecord __result)
             {
-                if (!DamageWorker_AddInjury_Patch.pickShield)
+                if (!DamageWorker_AddInjury_Patch.pickShield || DamageWorker_AddInjury_Patch.whichShieldPart == null)
                 {
                     return;
                 }
 
-                var nonMissingBodyPart = Utils.GetNonMissingBodyPart(__instance.pawn, ApexDefsOf.APM_AegisShield, DamageWorker_AddInjury_Patch.whichShield);
+                var nonMissingBodyPart = Utils.GetNonMissingBodyPart(
+                    __instance.pawn,
+                    DamageWorker_AddInjury_Patch.whichShieldPart,
+                    DamageWorker_AddInjury_Patch.whichShield);
+
                 if (nonMissingBodyPart != null)
                 {
                     __result = nonMissingBodyPart;

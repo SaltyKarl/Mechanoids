@@ -82,18 +82,23 @@
 				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
 			</li>
 		</tools>
-		<comps>
-			<!--<li Class="CompProperties_Shield">
-				<minDrawSize>0</minDrawSize>
-				<maxDrawSize>0</maxDrawSize>
-			</li>-->
-			<li Class="ApexMechanoids.CompProperties_Aegis">
+		<modExtensions>
+			<li Class="ApexMechanoids.ModExtension_Aegis">
+				<shieldPart>APM_AegisShield</shieldPart>
+				<leftShieldGroup>APM_LeftAegisShield</leftShieldGroup>
+				<rightShieldGroup>APM_RightAegisShield</rightShieldGroup>
+				<!-- Minimum time in seconds of peace before regeneration starts after damage -->
 				<regenerationDelaySeconds>60</regenerationDelaySeconds>
-				<!-- Minimum time in seconds before regeneration starts after damage -->
+				<!-- How often to regenerate, in seconds. Uses CompTickRare, so values below ~4.16s won't work. -->
 				<regenerationIntervalSeconds>30</regenerationIntervalSeconds>
-				<!-- How often to regenerate in seconds (converted to ticks internally). Uses CompTickRare, any amount less than 4.16 seconds won't work. -->
+				<!-- Shield HP restored per regeneration step (kept very slow) -->
+				<regenerationHPPerStep>1</regenerationHPPerStep>
+				<!-- Chance a side attack is caught by that side's shield -->
+				<sideDamageChance>0.2</sideDamageChance>
+				<!-- Extra mech energy drained per shield HP restored during repair (x MechEnergyLossPerHP) -->
+				<repairEnergyCostMultiplier>3</repairEnergyCostMultiplier>
 			</li>
-		</comps>
+		</modExtensions>
 		<butcherProducts>
 			<Steel>40</Steel>
 			<Plasteel>15</Plasteel>

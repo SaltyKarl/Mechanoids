@@ -1,168 +1,222 @@
 ﻿using RimWorld;
+using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Verse;
 
 namespace ApexMechanoids
 {
     public class CompAegis : ThingComp
     {
-        // Whether shields are currently damaged/missing and being tracked for regeneration.
-        // Scribed under the legacy key "shieldsDamaged" for save compatibility.
-        private bool shieldsNeedRepair = false;
-        private int ticksSinceDamage = 0;
-        private int ticksSinceRegen = 0;
+        private int ticksSinceDamage;
+        private int ticksSinceRegen;
         private const int CompTickRareInterval = 250;
 
-        public CompProperties_Aegis Props => (CompProperties_Aegis)props;
+        public ModExtension_Aegis Ext => parent.def.GetModExtension<ModExtension_Aegis>();
+        public Pawn Pawn => parent as Pawn;
 
-        private int RegenerationDelayTicks => (int)(Props.regenerationDelaySeconds * 60f);
-        private int RegenerationIntervalTicks => (int)(Props.regenerationIntervalSeconds * 60f);
+        private int RegenerationDelayTicks => (int)(Ext.regenerationDelaySeconds * 60f);
+        private int RegenerationIntervalTicks => (int)(Ext.regenerationIntervalSeconds * 60f);
+
+        // ---- Shield HP accounting (used by the gizmo bar and the repair energy patch) ----
+
+        public IEnumerable<BodyPartRecord> ShieldParts()
+        {
+            if (Pawn == null || Ext?.shieldPart == null)
+            {
+                yield break;
+            }
+
+            foreach (BodyPartRecord part in Pawn.RaceProps.body.AllParts)
+            {
+                if (part.def == Ext.shieldPart)
+                {
+                    yield return part;
+                }
+            }
+        }
+
+        public float MaxShieldHP
+        {
+            get
+            {
+                float sum = 0f;
+                foreach (BodyPartRecord part in ShieldParts())
+                {
+                    sum += part.def.GetMaxHealth(Pawn);
+                }
+                return sum;
+            }
+        }
+
+        public float CurShieldHP
+        {
+            get
+            {
+                float sum = 0f;
+                foreach (BodyPartRecord part in ShieldParts())
+                {
+                    sum += Pawn.health.hediffSet.GetPartHealth(part);
+                }
+                return sum;
+            }
+        }
+
+        public float ShieldHPPercent
+        {
+            get
+            {
+                float max = MaxShieldHP;
+                return max > 0f ? Mathf.Clamp01(CurShieldHP / max) : 0f;
+            }
+        }
+
+        // ---- Save/load ----
 
         public override void PostExposeData()
         {
             base.PostExposeData();
-            Scribe_Values.Look(ref shieldsNeedRepair, "shieldsDamaged", false);
             Scribe_Values.Look(ref ticksSinceDamage, "ticksSinceDamage", 0);
             Scribe_Values.Look(ref ticksSinceRegen, "ticksSinceRegen", 0);
         }
+
+        // ---- Damage tracking ----
 
         public override void PostPostApplyDamage(DamageInfo dinfo, float totalDamageDealt)
         {
             base.PostPostApplyDamage(dinfo, totalDamageDealt);
 
-            if (totalDamageDealt <= 0f)
-                return;
-
-            Pawn pawn = parent as Pawn;
-            if (pawn == null)
-                return;
-
-            if (AnyShieldsMissingOrDamaged(pawn))
+            if (totalDamageDealt <= 0f || Pawn == null || Ext == null)
             {
-                shieldsNeedRepair = true;
-                // Require a fresh peace period before regeneration may resume, but do NOT
-                // reset ticksSinceRegen: occasional chip damage during regeneration must not
-                // stall progress indefinitely (it previously prevented regen from ever advancing).
+                return;
+            }
+
+            if (AnyShieldsMissingOrDamaged())
+            {
+                // Restart the peace timer; do not reset the regen throttle so occasional chip
+                // damage cannot stall regeneration forever.
                 ticksSinceDamage = 0;
             }
         }
+
+        // ---- Slow regeneration ----
 
         public override void CompTickRare()
         {
             base.CompTickRare();
 
-            Pawn pawn = parent as Pawn;
-            if (pawn == null)
-                return;
-
-            // Shields fully intact (possibly healed by other means): stop tracking and reset timers.
-            if (!AnyShieldsMissingOrDamaged(pawn))
+            if (Pawn == null || Ext == null)
             {
-                shieldsNeedRepair = false;
+                return;
+            }
+
+            if (!AnyShieldsMissingOrDamaged())
+            {
                 ticksSinceDamage = 0;
                 ticksSinceRegen = 0;
                 return;
             }
 
-            shieldsNeedRepair = true;
             ticksSinceDamage += CompTickRareInterval;
             ticksSinceRegen += CompTickRareInterval;
 
-            // Wait for the post-damage delay, then regenerate at most one step per interval.
             if (ticksSinceDamage >= RegenerationDelayTicks && ticksSinceRegen >= RegenerationIntervalTicks)
             {
-                if (RegenerateOneShieldStep(pawn))
-                {
-                    // All shields restored.
-                    shieldsNeedRepair = false;
-                    ticksSinceDamage = 0;
-                    ticksSinceRegen = 0;
-                }
-                else
-                {
-                    // One step done; more remain. Only the interval throttle resets,
-                    // so subsequent parts are fixed every interval without re-waiting the full delay.
-                    ticksSinceRegen = 0;
-                }
+                RegenerateOneShieldStep();
+                ticksSinceRegen = 0;
             }
         }
 
-        /// <summary>
-        /// Performs a single regeneration step: rebuilds every missing shield as a fresh injury
-        /// and heals every injured shield by a fixed HP amount. Returns true once every shield
-        /// is intact.
-        /// </summary>
-        private bool RegenerateOneShieldStep(Pawn pawn)
+        // Heals a small amount of HP on every damaged shield, and slowly rebuilds destroyed ones.
+        private void RegenerateOneShieldStep()
         {
-            bool allIntact = true;
+            bool changed = false;
 
-            foreach (BodyPartRecord shieldPart in pawn.RaceProps.body.AllParts)
+            foreach (BodyPartRecord part in ShieldParts())
             {
-                if (shieldPart.def != ApexDefsOf.APM_AegisShield)
-                    continue;
-
-                if (pawn.health.hediffSet.PartIsMissing(shieldPart))
+                if (Pawn.health.hediffSet.PartIsMissing(part))
                 {
-                    RebuildMissingShield(pawn, shieldPart);
-                    FleckMaker.ThrowMetaIcon(pawn.Position, pawn.Map, FleckDefOf.HealingCross);
-                    allIntact = false;
+                    RebuildMissingShield(part);
+                    changed = true;
                 }
-                else if (pawn.health.hediffSet.GetInjuredParts().Contains(shieldPart))
+                else if (Pawn.health.hediffSet.GetInjuredParts().Contains(part))
                 {
-                    HealShieldInjury(pawn, shieldPart);
-                    FleckMaker.ThrowMetaIcon(pawn.Position, pawn.Map, FleckDefOf.HealingCross);
-                    if (pawn.health.hediffSet.GetInjuredParts().Contains(shieldPart))
-                        allIntact = false;
+                    HealShieldInjury(part);
+                    changed = true;
                 }
             }
 
-            return allIntact;
+            if (changed && Pawn.Spawned)
+            {
+                FleckMaker.ThrowMetaIcon(Pawn.Position, Pawn.Map, FleckDefOf.HealingCross);
+            }
         }
 
-        private void RebuildMissingShield(Pawn pawn, BodyPartRecord part)
+        private void RebuildMissingShield(BodyPartRecord part)
         {
-            // Restore the missing part, then add a full-severity injury so the HP-based regen
-            // heals it back up gradually (one step at a time) rather than instantly.
-            Hediff missing = pawn.health.hediffSet.GetMissingPartFor(part);
+            // Restore the part, then re-add it as an almost-destroyed injury so that the HP-based
+            // regen heals it back up gradually rather than instantly.
+            Hediff missing = Pawn.health.hediffSet.GetMissingPartFor(part);
             if (missing != null)
             {
-                pawn.health.RemoveHediff(missing);
+                Pawn.health.RemoveHediff(missing);
             }
 
-            float maxHP = part.def.GetMaxHealth(pawn);
-            Hediff_Injury injury = HediffMaker.MakeHediff(HediffDefOf.Cut, pawn, part) as Hediff_Injury;
-            if (injury != null)
+            float maxHP = part.def.GetMaxHealth(Pawn);
+            if (HediffMaker.MakeHediff(HediffDefOf.Cut, Pawn, part) is Hediff_Injury injury)
             {
-                injury.Severity = maxHP;
-                pawn.health.AddHediff(injury, part);
+                injury.Severity = Mathf.Max(1f, maxHP - Ext.regenerationHPPerStep);
+                Pawn.health.AddHediff(injury, part);
             }
         }
 
-        private void HealShieldInjury(Pawn pawn, BodyPartRecord part)
+        private void HealShieldInjury(BodyPartRecord part)
         {
-            Hediff_Injury injury = pawn.health.hediffSet.hediffs
+            Hediff_Injury injury = Pawn.health.hediffSet.hediffs
                 .OfType<Hediff_Injury>()
                 .FirstOrDefault(h => h.Part == part);
 
-            // Heal a fixed amount of HP per step so regeneration is gradual and HP-based.
-            injury?.Heal(Props.regenerationHPPerStep);
+            injury?.Heal(Ext.regenerationHPPerStep);
         }
 
-        private bool AnyShieldsMissingOrDamaged(Pawn pawn)
+        private bool AnyShieldsMissingOrDamaged()
         {
-            foreach (BodyPartRecord part in pawn.RaceProps.body.AllParts)
+            foreach (BodyPartRecord part in ShieldParts())
             {
-                if (part.def != ApexDefsOf.APM_AegisShield)
-                    continue;
-
-                if (pawn.health.hediffSet.PartIsMissing(part))
+                if (Pawn.health.hediffSet.PartIsMissing(part))
+                {
                     return true;
+                }
 
-                if (pawn.health.hediffSet.GetInjuredParts().Contains(part))
+                if (Pawn.health.hediffSet.GetInjuredParts().Contains(part))
+                {
                     return true;
+                }
             }
 
             return false;
+        }
+
+        // ---- Gizmo bar ----
+
+        public override IEnumerable<Gizmo> CompGetGizmosExtra()
+        {
+            foreach (Gizmo gizmo in base.CompGetGizmosExtra())
+            {
+                yield return gizmo;
+            }
+
+            if (Pawn == null || Ext == null || Pawn.Faction != Faction.OfPlayer)
+            {
+                yield break;
+            }
+
+            if (MaxShieldHP <= 0f)
+            {
+                yield break;
+            }
+
+            yield return new Gizmo_ShieldHP { comp = this };
         }
     }
 }
