@@ -4,14 +4,14 @@ namespace ApexMechanoids
 {
     public class CompProperties_Aegis : CompProperties
     {
-        // Amount of HP to regenerate per interval
-        public float regenerationAmount = 1f;
-
-        // Minimum time in seconds before regeneration starts after damage
+        // Minimum time in seconds of peace (no damage taken) before regeneration may begin.
         public int regenerationDelaySeconds = 20;
 
         // How often to regenerate in seconds (converted to ticks internally)
         public int regenerationIntervalSeconds = 5;
+
+        // How much shield HP to restore per regeneration step.
+        public float regenerationHPPerStep = 2f;
 
         public CompProperties_Aegis()
         {

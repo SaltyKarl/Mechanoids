@@ -88,8 +88,6 @@
 				<maxDrawSize>0</maxDrawSize>
 			</li>-->
 			<li Class="ApexMechanoids.CompProperties_Aegis">
-				<regenerationAmount>2</regenerationAmount>
-				<!-- Amount of HP to regenerate per interval -->
 				<regenerationDelaySeconds>60</regenerationDelaySeconds>
 				<!-- Minimum time in seconds before regeneration starts after damage -->
 				<regenerationIntervalSeconds>30</regenerationIntervalSeconds>
