@@ -8,6 +8,10 @@ namespace ApexMechanoids
         public AbilityDef abilityDef;
         public int checkIntervalTicks = 300;
         public bool autoCastForPlayer = false;
+        public float threatRadius = 4.9f;
+        public int minHostilesToTrigger = 1;
+        public bool requireFleshThreat = true;
+        public bool blockIfAlliesInRadius = true;
 
         public CompProperties_HazeToxicMistController()
         {
@@ -50,6 +54,11 @@ namespace ApexMechanoids
 
             EnsureAbility();
 
+            if (!ShouldAutoCast(pawn))
+            {
+                return;
+            }
+
             Ability ability = pawn.abilities?.GetAbility(Props.abilityDef);
             if (ability == null || !ability.CanCast)
             {
@@ -68,6 +77,56 @@ namespace ApexMechanoids
             }
 
             ability.QueueCastingJob(selfTarget, selfTarget);
+        }
+
+        private bool ShouldAutoCast(Pawn pawn)
+        {
+            if (pawn?.Map == null)
+            {
+                return false;
+            }
+
+            float radius = Props.threatRadius > 0f ? Props.threatRadius : 4.9f;
+            int requiredHostiles = Props.minHostilesToTrigger > 0 ? Props.minHostilesToTrigger : 1;
+            int hostiles = 0;
+            var pawns = pawn.Map.mapPawns.AllPawnsSpawned;
+
+            for (int i = 0; i < pawns.Count; i++)
+            {
+                Pawn other = pawns[i];
+                if (other == null || other == pawn || other.Dead || other.Downed || !other.Spawned)
+                {
+                    continue;
+                }
+
+                if (other.Position.DistanceTo(pawn.Position) > radius)
+                {
+                    continue;
+                }
+
+                if (!other.HostileTo(pawn))
+                {
+                    if (Props.blockIfAlliesInRadius && other.Faction == pawn.Faction)
+                    {
+                        return false;
+                    }
+
+                    continue;
+                }
+
+                if (Props.requireFleshThreat && !(other.RaceProps?.IsFlesh ?? false))
+                {
+                    continue;
+                }
+
+                hostiles++;
+                if (hostiles >= requiredHostiles)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private void EnsureAbility()

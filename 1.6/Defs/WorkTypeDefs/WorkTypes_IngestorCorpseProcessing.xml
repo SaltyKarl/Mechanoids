@@ -8,6 +8,7 @@
     <gerundLabel>ingesting corpses</gerundLabel>
     <description>Process organic corpses into chemfuel.</description>
     <verb>Ingest</verb>
+    <visible>false</visible>
     <naturalPriority>940</naturalPriority>
     <workTags>
       <li>Commoner</li>

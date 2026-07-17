@@ -21,6 +21,7 @@
 				<effectDelay>240~480</effectDelay>
 				<immuneThingDefs>
 					<li>APM_Mech_Celerus</li>
+					<li>APM_Mech_CelerusB</li>
 				</immuneThingDefs>
 				<hediffToImmunePawn>APM_CelerusSmokescreenBuff</hediffToImmunePawn>
 				<fleckDefs>
@@ -54,6 +55,7 @@
 				<effectDelay>240~480</effectDelay>
 				<immuneThingDefs>
 					<li>APM_Mech_Celerus</li>
+					<li>APM_Mech_CelerusB</li>
 				</immuneThingDefs>
 				<hediffToImmunePawn>APM_CelerusSmokescreenBuff</hediffToImmunePawn>
 				<fleckDefs>

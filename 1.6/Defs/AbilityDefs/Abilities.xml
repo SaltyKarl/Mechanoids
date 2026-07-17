@@ -373,10 +373,8 @@
 			<Ability_EffectRadius>3.9</Ability_EffectRadius>
 		</statBases>
 		<comps>
-			<li Class="CompProperties_AbilityGiveHediff">
-				<compClass>CompAbilityEffect_GiveHediff</compClass>
+			<li Class="ApexMechanoids.CompProperties_BlindingLaser">
 				<hediffDef>APM_LaserBlind</hediffDef>
-				<onlyBrain>false</onlyBrain>
 			</li>
 			<li Class="ApexMechanoids.CompProperties_AbilityMoteDualAttachedOnTarget">
 				<preCastTicks>1</preCastTicks>
@@ -392,7 +390,7 @@
 			<targetParams>
 				<canTargetSelf>false</canTargetSelf>
 				<canTargetBuildings>false</canTargetBuildings>
-				<canTargetMechs>true</canTargetMechs>
+				<canTargetMechs>false</canTargetMechs>
 				<canTargetLocations>true</canTargetLocations>
 			</targetParams>
 		</verbProperties>
@@ -573,7 +571,7 @@
 		<cooldownTicksRange>18000</cooldownTicksRange><!-- 5 hours -->
 		<hostile>false</hostile>
 		<writeCombatLog>true</writeCombatLog>
-		<aiCanUse>true</aiCanUse>
+		<aiCanUse>false</aiCanUse>
 		<targetRequired>false</targetRequired>
 		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
 		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>

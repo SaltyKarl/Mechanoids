@@ -182,6 +182,46 @@
 			</children>
 		</root>
 	</PawnRenderTreeDef>
+	<PawnRenderTreeDef>
+		<defName>APM_RenderTree_SatelliteHover</defName>
+		<root Class="PawnRenderNodeProperties_Parent">
+			<debugLabel>Root</debugLabel>
+			<tagDef>Root</tagDef>
+			<children>
+				<li Class="ApexMechanoids.PawnRenderNodeProperties_SatelliteHover">
+					<debugLabel>Body</debugLabel>
+					<tagDef>Body</tagDef>
+					<useRottenColor>true</useRottenColor>
+					<hoverAmplitude>0.055</hoverAmplitude>
+					<hoverPeriodTicks>120</hoverPeriodTicks>
+					<children>
+						<li>
+							<debugLabel>Wounds</debugLabel>
+							<nodeClass>PawnRenderNode_AnimalPart</nodeClass>
+							<workerClass>PawnRenderNodeWorker_OverlayWounds</workerClass>
+							<overlayLayer>Body</overlayLayer>
+							<useGraphic>false</useGraphic>
+							<baseLayer>3</baseLayer>
+						</li>
+						<li>
+							<debugLabel>Firefoam</debugLabel>
+							<nodeClass>PawnRenderNode_AnimalPart</nodeClass>
+							<workerClass>PawnRenderNodeWorker_OverlayFirefoam</workerClass>
+							<overlayLayer>Body</overlayLayer>
+							<useGraphic>false</useGraphic>
+							<baseLayer>10</baseLayer>
+						</li>
+						<li Class="ApexMechanoids.PawnRenderNodeProperties_SatelliteCarriedHover">
+							<debugLabel>Carried thing</debugLabel>
+							<workerClass>ApexMechanoids.PawnRenderNodeWorker_SatelliteCarriedHover</workerClass>
+							<hoverAmplitude>0.055</hoverAmplitude>
+							<hoverPeriodTicks>120</hoverPeriodTicks>
+						</li>
+					</children>
+				</li>
+			</children>
+		</root>
+	</PawnRenderTreeDef>
 	<AnimationDef>
 		<defName>APM_EatingIngestor</defName>
 		<durationTicks>80</durationTicks>

@@ -57,7 +57,6 @@
 			<mechWeightClass>Medium</mechWeightClass>
 			<mechEnabledWorkTypes>
 				<li>Construction</li>
-				<li>Smithing</li>
 			</mechEnabledWorkTypes>
 			<detritusLeavings>
 				<li>
