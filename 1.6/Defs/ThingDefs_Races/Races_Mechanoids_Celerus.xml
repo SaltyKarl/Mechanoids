@@ -56,7 +56,7 @@
 					<body>APM_Celerus</body>
 			<baseBodySize>2</baseBodySize>
 			<baseHealthScale>4</baseHealthScale>
-			<thinkTreeMain>Mechanoid</thinkTreeMain>
+			<thinkTreeMain>APM_CelerusMechanoid</thinkTreeMain>
 			<intelligence>ToolUser</intelligence>
 			<mechWeightClass>Medium</mechWeightClass>
 			<lifeStageAges>
@@ -198,14 +198,14 @@
 		</abilities>
 	</PawnKindDef>
 
-		<AbilityDef>
+	<AbilityDef>
 		<defName>APM_Ability_SmokeScreen</defName>
 		<label>Smokescreen</label>
 		<description>Release a dense smokescreen, shrouding the Celerus and nearby allies in obscuring gas that hinders enemy perception and grants the Celerus combat bonuses while hidden.</description>
 		<iconPath>UI/Smokescreen</iconPath>
 		<cooldownTicksRange>3600</cooldownTicksRange><!-- 1 minute -->
-		<hostile>false</hostile>
-		<targetRequired>false</targetRequired>
+		<hostile>true</hostile>
+		<targetRequired>true</targetRequired>
 		<aiCanUse>true</aiCanUse>
 		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
 		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
@@ -214,20 +214,22 @@
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
 			<warmupTime>1</warmupTime>
-			<range>0.48</range>
-			<requireLineOfSight>false</requireLineOfSight>
+			<range>20</range>
+			<requireLineOfSight>true</requireLineOfSight>
 			<targetParams>
-				<canTargetSelf>true</canTargetSelf>
-				<canTargetPawns>false</canTargetPawns>
+				<canTargetSelf>false</canTargetSelf>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetHumans>true</canTargetHumans>
+				<canTargetMechs>false</canTargetMechs>
+				<canTargetAnimals>false</canTargetAnimals>
 				<canTargetBuildings>false</canTargetBuildings>
+				<canTargetLocations>true</canTargetLocations>
+				<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
 			</targetParams>
 		</verbProperties>
 		<comps>
-			<li Class="ApexMechanoids.CompProperties_AbilitySpawnSmokescreen">
-				<gasDef>APM_Smokescreen</gasDef>
-				<radius>3</radius>
-				<maxRadius>4.9</maxRadius>
-				<spreadIntervalTicks>15</spreadIntervalTicks>
+			<li Class="CompProperties_AbilityLaunchProjectile">
+				<projectileDef>APM_Projectile_CelerusSmokescreen</projectileDef>
 			</li>
 		</comps>
 	</AbilityDef>
@@ -238,8 +240,8 @@
 		<description>Release a dense smokescreen, shrouding the Celerus and nearby allies in obscuring gas that hinders enemy perception and grants the Celerus combat bonuses while hidden.</description>
 		<iconPath>UI/Smokescreen</iconPath>
 		<cooldownTicksRange>3600</cooldownTicksRange>
-		<hostile>false</hostile>
-		<targetRequired>false</targetRequired>
+		<hostile>true</hostile>
+		<targetRequired>true</targetRequired>
 		<aiCanUse>true</aiCanUse>
 		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
 		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
@@ -248,23 +250,77 @@
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
 			<warmupTime>1</warmupTime>
-			<range>0.48</range>
-			<requireLineOfSight>false</requireLineOfSight>
+			<range>20</range>
+			<requireLineOfSight>true</requireLineOfSight>
 			<targetParams>
-				<canTargetSelf>true</canTargetSelf>
-				<canTargetPawns>false</canTargetPawns>
+				<canTargetSelf>false</canTargetSelf>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetHumans>true</canTargetHumans>
+				<canTargetMechs>false</canTargetMechs>
+				<canTargetAnimals>false</canTargetAnimals>
 				<canTargetBuildings>false</canTargetBuildings>
+				<canTargetLocations>true</canTargetLocations>
+				<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
 			</targetParams>
 		</verbProperties>
 		<comps>
-			<li Class="ApexMechanoids.CompProperties_AbilitySpawnSmokescreen">
-				<gasDef>APM_Smokescreen_Boss</gasDef>
-				<radius>3</radius>
-				<maxRadius>4.9</maxRadius>
-				<spreadIntervalTicks>15</spreadIntervalTicks>
+			<li Class="CompProperties_AbilityLaunchProjectile">
+				<projectileDef>APM_Projectile_CelerusSmokescreen_Boss</projectileDef>
 			</li>
 		</comps>
 	</AbilityDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>APM_Projectile_CelerusSmokescreen</defName>
+		<thingClass>ApexMechanoids.Projectile_CelerusSmokescreen</thingClass>
+		<label>smokescreen grenade</label>
+		<graphicData>
+			<texPath>Things/Projectile/LauncherShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<color>(68,150,215)</color>
+		</graphicData>
+		<projectile>
+			<speed>40</speed>
+			<damageDef>Smoke</damageDef>
+			<arcHeightFactor>0.2</arcHeightFactor>
+			<shadowSize>0.6</shadowSize>
+			<soundExplode>Explosion_Smoke</soundExplode>
+		</projectile>
+		<modExtensions>
+			<li Class="ApexMechanoids.DefModExtension_CelerusSmokescreenProjectile">
+				<gasDef>APM_Smokescreen</gasDef>
+				<maxRadius>4.9</maxRadius>
+				<spreadIntervalTicks>15</spreadIntervalTicks>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>APM_Projectile_CelerusSmokescreen_Boss</defName>
+		<thingClass>ApexMechanoids.Projectile_CelerusSmokescreen</thingClass>
+		<label>smokescreen grenade</label>
+		<graphicData>
+			<texPath>Things/Projectile/LauncherShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<color>(68,150,215)</color>
+		</graphicData>
+		<projectile>
+			<speed>40</speed>
+			<damageDef>Smoke</damageDef>
+			<arcHeightFactor>0.2</arcHeightFactor>
+			<shadowSize>0.6</shadowSize>
+			<soundExplode>Explosion_Smoke</soundExplode>
+		</projectile>
+		<modExtensions>
+			<li Class="ApexMechanoids.DefModExtension_CelerusSmokescreenProjectile">
+				<gasDef>APM_Smokescreen_Boss</gasDef>
+				<maxRadius>4.9</maxRadius>
+				<spreadIntervalTicks>15</spreadIntervalTicks>
+			</li>
+		</modExtensions>
+	</ThingDef>
 
 	<AbilityDef>
 		<defName>APM_CelerusBlink</defName>

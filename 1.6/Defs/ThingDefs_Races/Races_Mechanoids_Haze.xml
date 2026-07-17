@@ -82,6 +82,10 @@
 				<abilityDef>APM_Ability_ToxicMist</abilityDef>
 				<checkIntervalTicks>300</checkIntervalTicks>
 				<autoCastForPlayer>false</autoCastForPlayer>
+				<threatRadius>4.9</threatRadius>
+				<minHostilesToTrigger>1</minHostilesToTrigger>
+				<requireFleshThreat>true</requireFleshThreat>
+				<blockIfAlliesInRadius>true</blockIfAlliesInRadius>
 			</li>
 		</comps>
 		<butcherProducts>

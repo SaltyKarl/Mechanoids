@@ -48,6 +48,7 @@ namespace ApexMechanoids
                             spawnedThing.Remove(pawn);
                         }
                         Pawn innerSpawnedOne = PawnGenerator.GeneratePawn(modExtension.spawnedKind);
+                        InitializeSpawnedMech(innerSpawnedOne);
                         innerSpawnedOne.mindState.mentalStateHandler.ClearMentalStateDirect();
                         innerSpawnedOne.SetFaction(Caster.Faction);
                         GenSpawn.Spawn(innerSpawnedOne, CurrentTarget.Cell, Caster.MapHeld);
@@ -99,6 +100,7 @@ namespace ApexMechanoids
             }
 
             Pawn spawnedOne = PawnGenerator.GeneratePawn(modExtension.spawnedKind);
+            InitializeSpawnedMech(spawnedOne);
             spawnedOne.mindState.mentalStateHandler.ClearMentalStateDirect();
             if (Caster?.Faction != null)
             {
@@ -166,6 +168,17 @@ namespace ApexMechanoids
                 && !cell.Fogged(map)
                 && cell.Standable(map)
                 && cell.GetFirstPawn(map) == null;
+        }
+
+        private static void InitializeSpawnedMech(Pawn pawn)
+        {
+            if (pawn?.ageTracker == null)
+            {
+                return;
+            }
+
+            pawn.ageTracker.AgeBiologicalTicks = 0L;
+            pawn.ageTracker.AgeChronologicalTicks = 0L;
         }
 
         private static void AssignGuardLord(Pawn satellite, Pawn caster, Map map)
