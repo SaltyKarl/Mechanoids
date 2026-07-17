@@ -12,9 +12,10 @@
 				<disappearsAfterTicks>120</disappearsAfterTicks>
 				<showRemainingTime>true</showRemainingTime>
 			</li>
-			<li MayRequire="ludeon.rimworld.royalty" Class="HediffCompProperties_Invisibility">
+			<li Class="ApexMechanoids.HediffCompProperties_CelerusInvisibility">
 				<visibleToPlayer>false</visibleToPlayer>
 				<fadeDurationTicks>60</fadeDurationTicks>
+				<affectedByDisruptor>false</affectedByDisruptor>
 			</li>
 		</comps>
 		<stages>

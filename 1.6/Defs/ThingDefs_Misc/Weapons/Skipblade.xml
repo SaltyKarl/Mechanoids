@@ -13,17 +13,19 @@
 		</graphicData>
 		<uiIconScale>0.5</uiIconScale>
 		<techLevel>Spacer</techLevel>
+		<tradeability>Sellable</tradeability>
+		<relicChance>0</relicChance>
+		<thingCategories>
+      		<li>WeaponsMelee</li>
+    	</thingCategories>
 		<weaponTags>
 			<li>APM_WeaponSkipblade</li>
 		</weaponTags>
-		<thingSetMakerTags>
-			<li>RewardStandardQualitySuper</li>
-		</thingSetMakerTags>
 		<statBases>
+			<MarketValue>3400</MarketValue>
 			<WorkToMake>22000</WorkToMake>
 			<Mass>1.8</Mass>
 		</statBases>
-		<relicChance>2</relicChance>
 		<tools>
 			<li>
 				<label>handle</label>

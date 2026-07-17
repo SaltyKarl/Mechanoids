@@ -8,6 +8,7 @@
     <gerundLabel>handling</gerundLabel>
     <description>Tame, train, harvest resources from and slaughter animals.</description>
     <verb>Handle</verb>
+    <visible>false</visible>
     <naturalPriority>1050</naturalPriority>
     <relevantSkills>
       <li>Animals</li>

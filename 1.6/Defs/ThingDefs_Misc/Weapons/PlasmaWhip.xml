@@ -10,13 +10,14 @@
 			<drawSize>(0.9, 0.9)</drawSize>
 		</graphicData>
 		<techLevel>Spacer</techLevel>
+		<tradeability>Sellable</tradeability>
+		<relicChance>0</relicChance>
+		<thingCategories>
+      		<li>WeaponsMelee</li>
+    	</thingCategories>
 		<weaponTags>
 			<li>APM_WeaponPlasmaWhip</li>
 		</weaponTags>
-		<thingSetMakerTags>
-			<li>RewardStandardQualitySuper</li>
-		</thingSetMakerTags>
-		<relicChance>2</relicChance>
 		<statBases>
 			<MarketValue>1800</MarketValue>
 			<Mass>1.2</Mass>

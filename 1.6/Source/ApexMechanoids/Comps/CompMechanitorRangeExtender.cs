@@ -16,8 +16,6 @@ namespace ApexMechanoids
         public CompProperties_MechanitorRangeExtender Props => (CompProperties_MechanitorRangeExtender)props;
         private Pawn Pawn => parent as Pawn;
 
-        private float cachedDistance;
-
         public float currentRange;
 
         public float SquaredDistance => GetEffectiveSquaredDistance();
@@ -26,25 +24,29 @@ namespace ApexMechanoids
         {
             float range = GetEffectiveRange();
             if (range <= 0f) return 0f;
-            if (cachedDistance == 0f) cachedDistance = Mathf.Pow(range, 2f);
-            return cachedDistance;
+            return range * range;
         }
 
         public float GetEffectiveRange()
         {
-            Pawn overseer = Pawn.GetOverseer();
-            if (overseer == null) return 0f;
-            if (overseer.MapHeld == Pawn.MapHeld) return Props.maxRange;
-            return Props.minRange;
+            Pawn pawn = Pawn;
+            Pawn overseer = pawn?.GetOverseer();
+            if (overseer == null)
+            {
+                currentRange = 0f;
+                return 0f;
+            }
+
+            currentRange = overseer.MapHeld == pawn.MapHeld ? Props.maxRange : Props.minRange;
+            return currentRange;
         }
 
-        public override void PostDraw()
+        public override void PostDrawExtraSelectionOverlays()
         {
-            base.PostDraw();
-            if (!Pawn.Drafted) return;
+            base.PostDrawExtraSelectionOverlays();
+            Pawn pawn = Pawn;
+            if (pawn == null || !pawn.Drafted) return;
             float range = GetEffectiveRange();
-            cachedDistance = 0f; // invalidate cache each draw tick
-            currentRange = range;
             if (range > 0f)
             {
                 GenDraw.DrawRadiusRing(parent.Position, range, Color.cyan);

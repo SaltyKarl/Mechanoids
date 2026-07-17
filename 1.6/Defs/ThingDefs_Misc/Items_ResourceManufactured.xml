@@ -8,7 +8,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>
-			<MarketValue>2000</MarketValue>
+			<MarketValue>1000</MarketValue>
 		</statBases>
 		<comps>
 			<li Class="CompProperties_CompAnalyzableUnlockResearch">
@@ -41,7 +41,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>
-			<MarketValue>2000</MarketValue>
+			<MarketValue>1000</MarketValue>
 		</statBases>
 		<comps>
 			<li Class="CompProperties_CompAnalyzableUnlockResearch">
@@ -74,7 +74,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>
-			<MarketValue>2000</MarketValue>
+			<MarketValue>1000</MarketValue>
 		</statBases>
 		<comps>
 			<li Class="CompProperties_CompAnalyzableUnlockResearch">
@@ -107,7 +107,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>
-			<MarketValue>2000</MarketValue>
+			<MarketValue>1000</MarketValue>
 		</statBases>
 		<comps>
 			<li Class="CompProperties_CompAnalyzableUnlockResearch">
