@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<AbilityDef>
 		<defName>APM_Absorb</defName>
 		<label>Recycle Biomass</label>
 		<jobDef>APM_Absorb</jobDef>
-		<description>Grind up target corpse, and slowly process them into chem fuel.</description>
+		<description>Grind up a fresh organic corpse or ingestible material, and slowly process it into chemfuel.</description>
 		<iconPath>UI/Absorb</iconPath>
 		<cooldownTicksRange>60000</cooldownTicksRange>
 		<!-- 1 days -->
@@ -13,15 +13,16 @@
 		<showCastingProgressBar>true</showCastingProgressBar>
 		<displayGizmoWhileUndrafted>True</displayGizmoWhileUndrafted>
 		<disableGizmoWhileUndrafted>False</disableGizmoWhileUndrafted>
-		<aiCanUse>true</aiCanUse>
+		<aiCanUse>false</aiCanUse>
 		<verbProperties>
-			<verbClass>ApexMechanoids.Verb_Ingest</verbClass>
+			<verbClass>Verb_CastAbilityTouch</verbClass>
 			<warmupTime>5</warmupTime>
 			<drawAimPie>false</drawAimPie>
 			<range>-1</range>
 			<targetParams>
 				<canTargetCorpses>true</canTargetCorpses>
 				<canTargetItems>true</canTargetItems>
+				<canTargetMechs>false</canTargetMechs>
 				<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
 				<canTargetSelf>false</canTargetSelf>
 				<canTargetPawns>false</canTargetPawns>
