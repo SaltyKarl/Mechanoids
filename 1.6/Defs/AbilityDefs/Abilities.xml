@@ -95,6 +95,7 @@
 		<description>The gazer blasts a devastating beam from itself, remaining stationary to keep the beam on target. Anything within reach of the beam takes heavy damage.</description>
 		<iconPath>UI/SunRay</iconPath>
 		<cooldownTicksRange>3500</cooldownTicksRange>
+		<aiCanUse>true</aiCanUse>
 		<sendMessageOnCooldownComplete>true</sendMessageOnCooldownComplete>
 		<modExtensions>
 			<li Class="ApexMechanoids.DefModExtension_SunRayAbility">
