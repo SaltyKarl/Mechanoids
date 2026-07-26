@@ -382,6 +382,7 @@
 		<displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
 		<disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
 		<aiCanUse>true</aiCanUse>
+		<canUseAoeToGetTargets>false</canUseAoeToGetTargets>
 		<comps>
 			<li Class="CompProperties_AbilityGiveMentalState">
 				<compClass>CompAbilityEffect_GiveMentalState</compClass>
@@ -401,6 +402,9 @@
 			</li>-->
 			<li Class="ApexMechanoids.CompProperties_AbilityAIRequiresOverpower">
 				<maximalMeleeDPSDifference>10</maximalMeleeDPSDifference> <!--Default-->
+			</li>
+			<li Class="CompProperties_AbilityEffect">
+				<compClass>ApexMechanoids.CompAbilityEffect_AICheckTargetingParams</compClass>
 			</li>
 		</comps>
 		<verbProperties>
