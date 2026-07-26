@@ -50,7 +50,7 @@
       </li>
     </tools>
     <killedLeavingsPlayerHostile>
-      <OcularChip>1</OcularChip>
+      <APM_OcularChip>1</APM_OcularChip>
     </killedLeavingsPlayerHostile>
     <race>
       <body>APM_Gazer</body>
@@ -99,6 +99,11 @@
     <label>gazer</label>
     <race>APM_Mech_Gazer</race>
     <combatPower>750</combatPower>
+    <isGoodBreacher>true</isGoodBreacher> 
+    <maxPerGroup>3</maxPerGroup>
+    <isBoss>true</isBoss>
+  	<allowInMechClusters>false</allowInMechClusters>
+    <skipResistant>true</skipResistant>
     <maxPerGroup MayRequire="Ludeon.Rimworld.Biotech">2</maxPerGroup>
     <controlGroupPortraitZoom MayRequire="Ludeon.Rimworld.Biotech">0.48</controlGroupPortraitZoom>
     <lifeStages>
@@ -108,7 +113,7 @@
           <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Gazer/Mech_Gazer</maskPath>
           <shaderType>CutoutWithOverlay</shaderType>
           <graphicClass>Graphic_Multi</graphicClass>
-          <drawSize>3</drawSize>
+          <drawSize>3.5</drawSize>
           <shadowData>
 						<volume>(1, 1.5, 1)</volume>
 						<offset>(0, 0, -0.3)</offset>
@@ -130,6 +135,7 @@
       </li>
     </lifeStages>
     <weaponMoney>99999~99999</weaponMoney>
+    <controlGroupPortraitZoom>0.70</controlGroupPortraitZoom>
     <weaponTags Inherit="False">
       <li>APM_WeaponGazerLaser</li>
     </weaponTags>

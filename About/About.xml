@@ -4,15 +4,16 @@
 	<packageId>Mortis.ApexMechanoids</packageId>
 	<authors>
 		<li>Mortis</li>
-		<li>MrHydralisk</li>
-		<li>Aqued</li>
-		<li>Airo</li>
 		<li>Aelflead Wayne</li>
-		<li>Xaro</li>
 		<li>Elseud</li>
+		<li>DemonRoka</li>
+		<li>MrHydralisk</li>
+		<li>BlackMarket420</li>
+		<li>Veltaris</li>
 		<li>B4ttl3m3d</li>
+		<li>GoGaTio</li>
 	</authors>
-	<url>https://github.com/aquiles-11/Mechanoids</url>
+	<url>https://github.com/Klon501/Mechanoids</url>
 	<supportedVersions>
 		<li>1.6</li>
 	</supportedVersions>
@@ -21,22 +22,18 @@
 		<li>
 			<packageId>brrainz.harmony</packageId>
 			<displayName>Harmony</displayName>
-			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopUrl>
+			<downloadUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</downloadUrl>
 		</li>
 		<li>
 			<packageId>Ludeon.RimWorld.Biotech</packageId>
 			<displayName>Biotech</displayName>
-			<steamWorkshopUrl>https://store.steampowered.com/app/1826140</steamWorkshopUrl>
+			<downloadUrl>https://store.steampowered.com/app/1826140</downloadUrl>
 		</li>
 		<li>
 			<packageId>OskarPotocki.VanillaFactionsExpanded.Core</packageId>
 			<displayName>Vanilla Expanded Framework</displayName>
-			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2023507013</steamWorkshopUrl>
+			<downloadUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2023507013</downloadUrl>
 		</li>
-		<!-- <li> -->
-		<!-- <packageId>EBSG.Framework</packageId> -->
-		<!-- <displayName>EBSG Framework</displayName> -->
-		<!-- </li> -->
 	</modDependencies>
 	<loadAfter>
 		<li>brrainz.harmony</li>
