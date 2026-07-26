@@ -33,7 +33,6 @@ namespace ApexMechanoids
         private static readonly int[] IntervalOptions = new int[] { 1500, 2500, 5000, 10000 };
         private static readonly Texture2D CancelIcon = ContentFinder<Texture2D>.Get("UI/Designators/Cancel");
         public static readonly CachedTexture InsertPawnIcon = new CachedTexture("UI/Gizmos/APM_Repairstation_InsertMech");
-        private const string SatelliteDefName = "APM_Mech_Satellite";
 
         public CompRepairStation Config
         {
@@ -434,15 +433,9 @@ namespace ApexMechanoids
             RemoveHealedInjuries(mech);
             if (!HasRepairableHealthDamage(mech))
             {
-                if (MechRepairUtility.IsMissingWeapon(mech))
-                {
-                    MechRepairUtility.GenerateWeapon(mech);
-                }
-                else
-                {
-                    Messages.Message("APM_MechRepaired".Translate(mech.LabelShort), mech, MessageTypeDefOf.PositiveEvent);
-                    EjectContents();
-                }
+                MechRepairUtility.GenerateWeapon(mech);
+                Messages.Message("APM_MechRepaired".Translate(mech.LabelShort), mech, MessageTypeDefOf.PositiveEvent);
+                EjectContents();
             }
         }
 
@@ -485,7 +478,7 @@ namespace ApexMechanoids
         public override AcceptanceReport CanAcceptPawn(Pawn p)
         {
             if (!p.RaceProps.IsMechanoid) return "APM_NotMechanoid".Translate();
-            if (p.def?.defName == SatelliteDefName) return "APM_RepairStation_CannotRepairSatellite".Translate();
+            if (p.def.comps.Any(c => c is CompProperties_MechPowerCell)) return "APM_RepairStation_CannotRepairSatellite".Translate();
             if (p.Faction != Faction.OfPlayer) return "APM_NotPlayerFaction".Translate();
 
             float size = p.BodySize;
