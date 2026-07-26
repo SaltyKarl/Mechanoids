@@ -397,9 +397,6 @@
 			<li Class="CompProperties_AbilityEffect">
 				<compClass>ApexMechanoids.CompAbilityEffect_AICheckTargetingParams</compClass>
 			</li>
-			<li Class="CompProperties_AbilityEffect">
-				<compClass>ApexMechanoids.CompAbilityEffect_AICheckTargetingParams</compClass>
-			</li>
 		</comps>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
