@@ -5,9 +5,9 @@ using Verse.AI;
 
 namespace ApexMechanoids
 {
-    public class WorkGiver_TinkerRepairMech : WorkGiver_Scanner
+    public class WorkGiver_TinkerRepairBuilding : WorkGiver_Scanner
     {
-        public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForGroup(ThingRequestGroup.Pawn);
+        public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForGroup(ThingRequestGroup.BuildingArtificial);
 
         public override PathEndMode PathEndMode => PathEndMode.Touch;
 
@@ -18,12 +18,10 @@ namespace ApexMechanoids
                 yield break;
             }
 
-            foreach (Pawn candidate in pawn.Map.mapPawns.SpawnedPawnsInFaction(pawn.Faction))
+            List<Thing> repairableBuildings = pawn.Map.listerBuildingsRepairable.RepairableBuildings(pawn.Faction);
+            for (int i = 0; i < repairableBuildings.Count; i++)
             {
-                if (candidate != pawn)
-                {
-                    yield return candidate;
-                }
+                yield return repairableBuildings[i];
             }
         }
 
@@ -34,17 +32,18 @@ namespace ApexMechanoids
 
         public override bool ShouldSkip(Pawn pawn, bool forced = false)
         {
-            return !TinkerRepairUtility.CanDoTinkerRepair(pawn);
+            return !TinkerRepairUtility.CanDoTinkerRepair(pawn)
+                || pawn.Map.listerBuildingsRepairable.RepairableBuildings(pawn.Faction).Count == 0;
         }
 
         public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
-            return !pawn.Drafted && TinkerRepairUtility.CanRepairMechNow(pawn, t, forced);
+            return TinkerRepairUtility.CanRepairBuildingNow(pawn, t, forced);
         }
 
         public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
-            return JobMaker.MakeJob(JobDefOf.RepairMech, t);
+            return JobMaker.MakeJob(JobDefOf.Repair, t);
         }
     }
 }

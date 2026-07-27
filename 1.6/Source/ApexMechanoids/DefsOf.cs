@@ -10,6 +10,8 @@ namespace ApexMechanoids
 		public static ThingDef APM_Mech_Tinker;
 		public static ThingDef APM_Mech_Frostivus;
         public static ThingDef APM_Mech_Ingestor;
+        public static AbilityDef APM_DefenceMatrix;
+        public static AbilityDef APM_BlindingLaser;
         public static ThingDef APM_Mech_Celerus;
         public static ThingDef APM_Mech_CelerusB;
         public static ThingDef APM_Smokescreen;

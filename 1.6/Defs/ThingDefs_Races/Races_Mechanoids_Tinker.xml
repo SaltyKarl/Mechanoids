@@ -3,7 +3,7 @@
 	<ThingDef ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Tinker</defName>
 		<label>Tinker</label>
-		<description>The tinker is a mechanoid that is suited for repair. It can aid in fixing buildings, as well as assist in repair jobs for mechanitor controlled mechs. In a pinch, it can project a shield on a nearby ally as well as blind enemies in a radius around a laser it can cast.</description>
+		<description>The tinker is a support mechanoid built to repair same-faction buildings and mechanoids. It cannot construct new structures, but it can project a defensive matrix onto allies and blind enemies with a targeted laser.</description>
 		<statBases>
 			<MarketValue>1000</MarketValue>
 			<MoveSpeed>3.3</MoveSpeed>
@@ -51,12 +51,13 @@
 			</li>
 		</tools>
 		<race>
-			<body>APM_Vassal</body>
+			<body>APM_Tinker</body>
+			<thinkTreeMain>APM_TinkerMechanoid</thinkTreeMain>
 			<baseHealthScale>1.0</baseHealthScale>
 			<baseBodySize>1.5</baseBodySize>
 			<mechWeightClass>Medium</mechWeightClass>
 			<mechEnabledWorkTypes>
-				<li>Construction</li>
+				<li>APM_TinkerRepair</li>
 			</mechEnabledWorkTypes>
 			<detritusLeavings>
 				<li>
