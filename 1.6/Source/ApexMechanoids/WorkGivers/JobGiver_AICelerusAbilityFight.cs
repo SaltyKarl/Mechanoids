@@ -175,6 +175,7 @@ namespace ApexMechanoids
                 && pawn.Map != null
                 && !pawn.Dead
                 && !pawn.Downed
+                && pawn.Awake()
                 && !pawn.IsPlayerControlled
                 && (pawn.def == ApexDefsOf.APM_Mech_Celerus || pawn.def == ApexDefsOf.APM_Mech_CelerusB)
                 && pawn.abilities != null
