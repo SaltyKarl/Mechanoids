@@ -17,6 +17,12 @@ namespace ApexMechanoids
         {
         }
 
+        public override bool CanApplyOn(LocalTargetInfo target)
+        {
+            LocalTargetInfo targetCell = StarfallTargetingUtility.FreezePawnTargetToCell(target);
+            return base.CanApplyOn(targetCell) && RavagerArtilleryUtility.CanFireAtCell(pawn, targetCell, verb);
+        }
+
         public override Job GetJob(LocalTargetInfo target, LocalTargetInfo destination)
         {
             return base.GetJob(StarfallTargetingUtility.FreezePawnTargetToCell(target), StarfallTargetingUtility.FreezePawnTargetToCell(destination));
@@ -27,7 +33,15 @@ namespace ApexMechanoids
     {
         public override bool TryStartCastOn(LocalTargetInfo castTarg, LocalTargetInfo destTarg, bool surpriseAttack = false, bool canHitNonTargetPawns = true, bool preventFriendlyFire = false, bool nonInterruptingSelfCast = false)
         {
-            return base.TryStartCastOn(StarfallTargetingUtility.FreezePawnTargetToCell(castTarg), StarfallTargetingUtility.FreezePawnTargetToCell(destTarg), surpriseAttack, canHitNonTargetPawns, preventFriendlyFire, nonInterruptingSelfCast);
+            LocalTargetInfo targetCell = StarfallTargetingUtility.FreezePawnTargetToCell(castTarg);
+            LocalTargetInfo destinationCell = destTarg.IsValid ? StarfallTargetingUtility.FreezePawnTargetToCell(destTarg) : targetCell;
+            LocalTargetInfo validationTarget = targetCell.IsValid ? targetCell : destinationCell;
+            if (CasterIsPawn && !RavagerArtilleryUtility.CanFireAtCell(CasterPawn, validationTarget, this))
+            {
+                return false;
+            }
+
+            return base.TryStartCastOn(targetCell, destinationCell, surpriseAttack, canHitNonTargetPawns, preventFriendlyFire, nonInterruptingSelfCast);
         }
 
         public override void WarmupComplete()

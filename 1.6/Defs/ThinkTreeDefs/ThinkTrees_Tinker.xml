@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
 	<ThinkTreeDef>
-		<defName>APM_CelerusMechanoid</defName>
+		<defName>APM_TinkerMechanoid</defName>
 		<thinkRoot Class="ThinkNode_Priority">
 			<subNodes>
 				<!-- Despawned -->
@@ -30,19 +30,6 @@
 				</li>
 
 				<!-- Mental state -->
-				<li Class="ThinkNode_ConditionalMentalState">
-					<state>APM_Duel</state>
-					<subNodes>
-						<li Class="ThinkNode_Priority">
-							<subNodes>
-								<li Class="ApexMechanoids.JobGiver_Duel" />
-								<li Class="JobGiver_WanderAnywhere">
-									<maxDanger>Deadly</maxDanger>
-								</li>
-							</subNodes>
-						</li>
-					</subNodes>
-				</li>
 				<li Class="ThinkNode_ConditionalMentalState">
 					<state>BerserkMechanoid</state>
 					<subNodes>
@@ -73,12 +60,19 @@
 					</subNodes>
 				</li>
 
-				<!-- Celerus combat abilities -->
-				<li Class="ThinkNode_ConditionalCanDoConstantThinkTreeJobNow">
+				<!-- Non-player Tinkers use support combat before generic lord orders -->
+				<li Class="ThinkNode_ConditionalPlayerControlledMech">
+					<invert>true</invert>
 					<subNodes>
-						<li Class="ApexMechanoids.JobGiver_AICelerusAbilityFight">
-							<targetAcquireRadius>65</targetAcquireRadius>
-							<targetKeepRadius>72</targetKeepRadius>
+						<li Class="ApexMechanoids.JobGiver_AITinkerCombat">
+							<targetAcquireRadius>30</targetAcquireRadius>
+							<targetKeepRadius>35</targetKeepRadius>
+							<fleeEnemyDistance>7.9</fleeEnemyDistance>
+							<fleeDistance>16</fleeDistance>
+							<shieldSearchRadius>11</shieldSearchRadius>
+							<repairSearchRadius>18</repairSearchRadius>
+							<repairTargetMinEnemyDistance>8</repairTargetMinEnemyDistance>
+							<maxRepositionDistance>12</maxRepositionDistance>
 						</li>
 					</subNodes>
 				</li>
@@ -114,9 +108,9 @@
 										<li Class="ThinkNode_ConditionalWorkMech">
 											<invert>true</invert>
 											<subNodes>
-												<li Class="JobGiver_AIFightEnemies">
-													<targetAcquireRadius>65</targetAcquireRadius>
-													<targetKeepRadius>72</targetKeepRadius>
+												<li Class="ApexMechanoids.JobGiver_AITinkerCombat">
+													<targetAcquireRadius>30</targetAcquireRadius>
+													<targetKeepRadius>35</targetKeepRadius>
 												</li>
 												<li Class="ThinkNode_Tagger">
 													<tagToGive>MiscWork</tagToGive>
@@ -164,18 +158,11 @@
 					</subNodes>
 				</li>
 
-				<!-- Non player controlled mechs fight nearby hostiles -->
+				<!-- Non-player fallback -->
 				<li Class="ThinkNode_ConditionalPlayerControlledMech">
 					<invert>true</invert>
 					<subNodes>
-						<li Class="ThinkNode_ConditionalCanDoConstantThinkTreeJobNow">
-							<subNodes>
-								<li Class="JobGiver_AIFightEnemies">
-									<targetAcquireRadius>30</targetAcquireRadius>
-									<targetKeepRadius>35</targetKeepRadius>
-								</li>
-							</subNodes>
-						</li>
+						<li Class="ApexMechanoids.JobGiver_Tinker" />
 					</subNodes>
 				</li>
 

@@ -210,6 +210,11 @@ namespace ApexMechanoids
             }
 
             LocalTargetInfo targetCell = RavagerArtilleryUtility.TargetCell(castTarg);
+            if (CasterIsPawn && !RavagerArtilleryUtility.CanFireAtCell(CasterPawn, targetCell, this))
+            {
+                return false;
+            }
+
             LocalTargetInfo destinationCell = destTarg.IsValid ? RavagerArtilleryUtility.TargetCell(destTarg) : targetCell;
             return base.TryStartCastOn(targetCell, destinationCell, surpriseAttack, canHitNonTargetPawns, preventFriendlyFire, nonInterruptingSelfCast);
         }

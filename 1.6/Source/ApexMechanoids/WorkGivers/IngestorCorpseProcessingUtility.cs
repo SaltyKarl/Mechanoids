@@ -234,6 +234,7 @@ namespace ApexMechanoids
 
             if (staleDesignation != null)
             {
+                UnregisterAbsorbDesignation(staleDesignation.target.Thing as Corpse);
                 pawn.Map.designationManager.RemoveDesignation(staleDesignation);
             }
 
@@ -270,6 +271,27 @@ namespace ApexMechanoids
         public static bool IsMarkedForAbsorb(Corpse corpse)
         {
             return corpse?.Map?.designationManager.DesignationOn(corpse, ApexDefsOf.APM_IngestorAbsorbCorpse) != null;
+        }
+
+        public static void RegisterAbsorbDesignation(Corpse corpse)
+        {
+            corpse?.Map?.GetComponent<MapComponent_IngestorAbsorbDesignationCleaner>()?.Register(corpse);
+        }
+
+        public static void UnregisterAbsorbDesignation(Corpse corpse)
+        {
+            corpse?.Map?.GetComponent<MapComponent_IngestorAbsorbDesignationCleaner>()?.Unregister(corpse);
+        }
+
+        public static void TryRemoveAbsorbDesignation(Corpse corpse)
+        {
+            if (corpse?.Map == null)
+            {
+                return;
+            }
+
+            corpse.Map.designationManager.TryRemoveDesignationOn(corpse, ApexDefsOf.APM_IngestorAbsorbCorpse);
+            UnregisterAbsorbDesignation(corpse);
         }
 
         public static bool CanAutoProcessCorpse(Pawn pawn, Corpse corpse)
