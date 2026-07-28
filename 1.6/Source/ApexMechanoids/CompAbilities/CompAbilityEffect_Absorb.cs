@@ -65,10 +65,9 @@ namespace ApexMechanoids
                     continue;
                 }
 
-                Map targetMap = thing.Map ?? map;
                 if (thing is Corpse corpse)
                 {
-                    targetMap?.designationManager.TryRemoveDesignationOn(corpse, ApexDefsOf.APM_IngestorAbsorbCorpse);
+                    IngestorCorpseProcessingUtility.TryRemoveAbsorbDesignation(corpse);
                     if (IngestorCorpseProcessingUtility.ShouldStripCorpseBeforeAbsorb(pawn, corpse))
                     {
                         corpse.Strip(false);
