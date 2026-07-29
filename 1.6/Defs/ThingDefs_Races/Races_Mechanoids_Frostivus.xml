@@ -3,7 +3,7 @@
 	<ThingDef Name="APM_Mech_Frostivus" ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Frostivus</defName>
 		<label>Frostivus</label>
-		<description>A mobile cryogenic chamber mechanoid that stores vulnerable food and can seal humanlike pawns or corpses in suspended animation until released.</description>
+		<description>A very unique mechanoid, the frostivus is a mobile cryogenic chamber. It consumes organic material such as foodstuffs to store, freeze and dispense at request. It can be commanded to seal a targeted pawn inside of itself to store for the mechhive to later utilize for its twisted machinations.</description>
 		<statBases>
 			<MarketValue>1200</MarketValue>
 			<MoveSpeed>3.3</MoveSpeed>

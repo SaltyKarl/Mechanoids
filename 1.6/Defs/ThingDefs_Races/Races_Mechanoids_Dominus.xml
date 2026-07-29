@@ -66,6 +66,15 @@
 			<soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding_Generic</soundMeleeHitBuilding>
 			<soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
 		</race>
+		<modExtensions>
+			<li Class="ApexMechanoids.DefModExtension_SearchAndDestroyMech">
+				<disabledAutoUseAbilitiesWhenSearchAndDestroy>
+					<li>APM_Mech_Duel</li>
+					<li>APM_PressTheAttack</li>
+					<li>APM_Mech_Duel_Boss</li>
+				</disabledAutoUseAbilitiesWhenSearchAndDestroy>
+			</li>
+		</modExtensions>
 		<butcherProducts>
 			<Steel>50</Steel>
 			<Plasteel>20</Plasteel>

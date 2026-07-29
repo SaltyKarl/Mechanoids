@@ -65,6 +65,11 @@
 				<animation>APM_EatingIngestorOneLoop</animation>
 				<maneuver>Bite</maneuver>
 			</li>
+			<li Class="ApexMechanoids.DefModExtension_SearchAndDestroyMech">
+				<disabledAutoUseAbilitiesWhenSearchAndDestroy>
+					<li>APM_Absorb</li>
+				</disabledAutoUseAbilitiesWhenSearchAndDestroy>
+			</li>
 		</modExtensions>
 	</ThingDef>
 

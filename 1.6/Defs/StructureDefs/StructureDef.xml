@@ -238,7 +238,7 @@
     <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
   </terrainGrid>
   <spawnAt>
-    <li>0,25</li>
+    <li>100,100</li>
   </spawnAt>
   <modRequirements>
     <li>ludeon.rimworld.biotech</li>

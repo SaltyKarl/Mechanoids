@@ -92,6 +92,14 @@
         <minHostilesToTrigger>2</minHostilesToTrigger>
       </li>
     </comps>
+    <modExtensions>
+			<li Class="ApexMechanoids.DefModExtension_SearchAndDestroyMech">
+				<disabledAutoUseAbilitiesWhenSearchAndDestroy>
+					<li>APM_SunRay</li>
+					<li>APM_Shockwave</li>
+				</disabledAutoUseAbilitiesWhenSearchAndDestroy>
+			</li>
+		</modExtensions>
   </ThingDef>
 
   <PawnKindDef ParentName="BaseMechanoidKind">
