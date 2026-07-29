@@ -1,4 +1,5 @@
 using RimWorld;
+using RimWorld.Planet;
 using System.Collections.Generic;
 using Verse;
 using Verse.AI;
@@ -11,6 +12,10 @@ namespace ApexMechanoids
         public const int PickupDelayTicks = 120;
 
         private static readonly List<Thing> TmpInventoryFood = new List<Thing>();
+        private static readonly List<Thing> TmpDevouredContents = new List<Thing>();
+        private static Caravan cachedCaravan;
+        private static int cachedCaravanTick = -1;
+        private static bool cachedCaravanHasWorkingFrostivus;
 
         public static bool IsFrostivus(Pawn pawn)
         {
@@ -19,6 +24,11 @@ namespace ApexMechanoids
 
         public static bool CanDoFoodPreservation(Pawn pawn)
         {
+            return CanUseFrostivusMapCommand(pawn);
+        }
+
+        public static bool CanUseFrostivusMapCommand(Pawn pawn)
+        {
             return IsFrostivus(pawn)
                 && !pawn.Destroyed
                 && !pawn.Dead
@@ -26,33 +36,61 @@ namespace ApexMechanoids
                 && pawn.Spawned
                 && pawn.Map != null
                 && pawn.inventory != null
+                && HasFoodPreservationControl(pawn)
                 && pawn.health?.capacities != null
-                && pawn.health.capacities.CapableOf(PawnCapacityDefOf.Moving)
-                && pawn.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation);
+                && pawn.health.capacities.CapableOf(PawnCapacityDefOf.Moving);
+        }
+
+        public static bool HasPlayerFoodPreservationControl(Pawn pawn)
+        {
+            return IsFrostivus(pawn)
+                && pawn.Faction == Faction.OfPlayer
+                && pawn.IsColonyMechPlayerControlled
+                && pawn.GetOverseer() != null
+                && pawn.GetMechControlGroup() != null;
+        }
+
+        public static bool HasFoodPreservationControl(Pawn pawn)
+        {
+            if (!IsFrostivus(pawn))
+            {
+                return false;
+            }
+
+            if (pawn.Faction != Faction.OfPlayer)
+            {
+                return true;
+            }
+
+            return HasPlayerFoodPreservationControl(pawn);
         }
 
         public static bool IsPreservableFoodOnMap(Thing thing)
         {
-            if (!IsFoodWithRotComp(thing) || !thing.Spawned)
+            if (!IsPreservableFoodThing(thing) || !thing.Spawned)
             {
                 return false;
             }
 
             CompRottable rottable = thing.TryGetComp<CompRottable>();
-            return rottable.Active
-                && rottable.Stage == RotStage.Fresh
-                && GenTemperature.RotRateAtTemperature(thing.AmbientTemperature) > 0f;
+            return (rottable == null || rottable.Stage == RotStage.Fresh)
+                && !IsInColdFoodStorage(thing);
         }
 
         public static bool IsInventoryFood(Thing thing)
         {
-            if (!IsFoodWithRotComp(thing))
+            if (!IsPreservableFoodThing(thing))
             {
                 return false;
             }
 
             CompRottable rottable = thing.TryGetComp<CompRottable>();
-            return rottable.Stage == RotStage.Fresh;
+            return rottable == null || rottable.Stage == RotStage.Fresh;
+        }
+
+        public static bool IsCaravanPreservableFood(Thing thing)
+        {
+            return IsPreservableFoodThing(thing);
         }
 
         public static Thing FirstInventoryFood(Pawn pawn)
@@ -80,6 +118,38 @@ namespace ApexMechanoids
             return FirstInventoryFood(pawn) != null;
         }
 
+        public static bool IsDevouredContent(Thing thing)
+        {
+            return thing != null
+                && !thing.Destroyed
+                && FrostivusUtility.HasDevouredHediff(thing);
+        }
+
+        public static Thing FirstDevouredContent(Pawn pawn)
+        {
+            if (pawn?.inventory?.innerContainer == null)
+            {
+                return null;
+            }
+
+            List<Thing> innerList = pawn.inventory.innerContainer.InnerListForReading;
+            for (int i = 0; i < innerList.Count; i++)
+            {
+                Thing thing = innerList[i];
+                if (IsDevouredContent(thing))
+                {
+                    return thing;
+                }
+            }
+
+            return null;
+        }
+
+        public static bool HasDevouredContent(Pawn pawn)
+        {
+            return FirstDevouredContent(pawn) != null;
+        }
+
         public static int CountToPickUp(Pawn pawn, Thing thing)
         {
             if (pawn == null || thing == null)
@@ -94,7 +164,7 @@ namespace ApexMechanoids
         {
             return CanDoFoodPreservation(pawn)
                 && IsPreservableFoodOnMap(thing)
-                && !thing.IsForbidden(pawn)
+                && (forced || !thing.IsForbidden(pawn))
                 && !thing.IsBurning()
                 && CountToPickUp(pawn, thing) > 0
                 && pawn.CanReserveAndReach(thing, PathEndMode.ClosestTouch, Danger.Deadly, 1, -1, null, forced);
@@ -112,6 +182,91 @@ namespace ApexMechanoids
             {
                 if (CanRescueFoodNow(pawn, things[i]))
                 {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static bool TryFindBestRescuableFood(Pawn pawn, out Thing bestFood, float maxDistance = 9999f)
+        {
+            bestFood = null;
+            if (!CanDoFoodPreservation(pawn))
+            {
+                return false;
+            }
+
+            int bestDistance = int.MaxValue;
+            int maxDistanceSquared = maxDistance >= 9999f ? int.MaxValue : (int)System.Math.Ceiling(maxDistance * maxDistance);
+            List<Thing> things = pawn.Map.listerThings.ThingsInGroup(ThingRequestGroup.HaulableEver);
+            for (int i = 0; i < things.Count; i++)
+            {
+                Thing thing = things[i];
+                if (!CanRescueFoodNow(pawn, thing))
+                {
+                    continue;
+                }
+
+                int distance = pawn.Position.DistanceToSquared(thing.Position);
+                if (distance <= maxDistanceSquared && (bestFood == null || distance < bestDistance))
+                {
+                    bestFood = thing;
+                    bestDistance = distance;
+                }
+            }
+
+            return bestFood != null;
+        }
+
+        public static Job MakeTakeFoodJob(Pawn pawn, Thing food, int expiryInterval = 500, bool forced = false, int requestedCount = -1)
+        {
+            if (!CanRescueFoodNow(pawn, food, forced))
+            {
+                return null;
+            }
+
+            int count = CountToPickUp(pawn, food);
+            if (requestedCount > 0)
+            {
+                count = System.Math.Min(count, requestedCount);
+            }
+
+            if (count <= 0)
+            {
+                return null;
+            }
+
+            Job job = JobMaker.MakeJob(ApexDefsOf.APM_FrostivusTakeFoodToInventory, food);
+            job.count = count;
+            job.expiryInterval = expiryInterval;
+            job.checkOverrideOnExpire = true;
+            return job;
+        }
+
+        public static bool TryFindBestInventoryFoodStorageJob(Pawn pawn, int expiryInterval, out Job job)
+        {
+            job = null;
+            if (!CanDoFoodPreservation(pawn) || !HasInventoryFood(pawn))
+            {
+                return false;
+            }
+
+            List<Thing> innerList = pawn.inventory.innerContainer.InnerListForReading;
+            for (int i = 0; i < innerList.Count; i++)
+            {
+                Thing food = innerList[i];
+                if (!IsInventoryFood(food))
+                {
+                    continue;
+                }
+
+                if (TryFindColdStorageCell(pawn, food, out IntVec3 cell))
+                {
+                    job = JobMaker.MakeJob(ApexDefsOf.APM_FrostivusUnloadFoodToStorage, food, cell);
+                    job.count = System.Math.Min(food.stackCount, cell.GetItemStackSpaceLeftFor(pawn.Map, food.def));
+                    job.expiryInterval = expiryInterval;
+                    job.checkOverrideOnExpire = true;
                     return true;
                 }
             }
@@ -168,11 +323,16 @@ namespace ApexMechanoids
 
         public static bool CanReachManualUnloadCell(Pawn pawn, IntVec3 cell)
         {
-            return CanDoFoodPreservation(pawn)
+            return CanUseFrostivusMapCommand(pawn)
                 && cell.IsValid
                 && cell.InBounds(pawn.Map)
                 && !cell.Fogged(pawn.Map)
                 && pawn.CanReach(cell, PathEndMode.ClosestTouch, Danger.Deadly);
+        }
+
+        public static bool CanReachReleaseCell(Pawn pawn, IntVec3 cell)
+        {
+            return CanReachManualUnloadCell(pawn, cell);
         }
 
         public static bool CanUnloadInventoryFoodToColdStorageCell(Pawn pawn, Thing food, IntVec3 cell)
@@ -188,7 +348,8 @@ namespace ApexMechanoids
                 && slotGroup.parent.HaulDestinationEnabled
                 && slotGroup.parent.Accepts(food)
                 && cell.GetTemperature(map) < ColdStorageMaxTemperature
-                && cell.GetItemStackSpaceLeftFor(map, food.def) > 0;
+                && cell.GetItemStackSpaceLeftFor(map, food.def) > 0
+                && StoreUtility.IsGoodStoreCell(cell, map, food, pawn, pawn.Faction);
         }
 
         public static bool TryDropInventoryFoodToColdStorageCell(Pawn pawn, Thing food, IntVec3 cell)
@@ -224,7 +385,7 @@ namespace ApexMechanoids
 
         public static void DropAllInventoryFoodForbidden(Pawn pawn, IntVec3 cell)
         {
-            if (!CanDoFoodPreservation(pawn) || !cell.IsValid || !cell.InBounds(pawn.Map))
+            if (!CanUseFrostivusMapCommand(pawn) || !cell.IsValid || !cell.InBounds(pawn.Map))
             {
                 return;
             }
@@ -273,7 +434,160 @@ namespace ApexMechanoids
             TmpInventoryFood.Clear();
         }
 
-        private static bool IsFoodWithRotComp(Thing thing)
+        public static void DropAllDevouredContents(Pawn pawn, IntVec3 cell)
+        {
+            if (!CanUseFrostivusMapCommand(pawn) || !cell.IsValid || !cell.InBounds(pawn.Map))
+            {
+                return;
+            }
+
+            TmpDevouredContents.Clear();
+            List<Thing> innerList = pawn.inventory.innerContainer.InnerListForReading;
+            for (int i = 0; i < innerList.Count; i++)
+            {
+                Thing thing = innerList[i];
+                if (IsDevouredContent(thing))
+                {
+                    TmpDevouredContents.Add(thing);
+                }
+            }
+
+            for (int i = 0; i < TmpDevouredContents.Count; i++)
+            {
+                Thing thing = TmpDevouredContents[i];
+                if (thing.Destroyed || !pawn.inventory.innerContainer.Contains(thing))
+                {
+                    continue;
+                }
+
+                bool dropped = pawn.inventory.innerContainer.TryDrop(
+                    thing,
+                    cell,
+                    pawn.Map,
+                    ThingPlaceMode.Near,
+                    thing.stackCount,
+                    out Thing resultingThing,
+                    null,
+                    delegate (IntVec3 dropCell)
+                    {
+                        return dropCell.InBounds(pawn.Map) && !dropCell.Fogged(pawn.Map);
+                    });
+
+                if (dropped)
+                {
+                    FrostivusUtility.RemoveDevouredHediff(resultingThing ?? thing);
+                }
+            }
+
+            TmpDevouredContents.Clear();
+        }
+
+        public static bool IsRotPreservedByFrostivus(Thing thing)
+        {
+            if (thing == null || thing.Destroyed)
+            {
+                return false;
+            }
+
+            Pawn holderPawn = (thing.ParentHolder as Pawn_InventoryTracker)?.pawn;
+            if (holderPawn == null)
+            {
+                return false;
+            }
+
+            if (IsFrostivus(holderPawn))
+            {
+                return true;
+            }
+
+            if (!IsPreservableFoodThing(thing))
+            {
+                return false;
+            }
+
+            Caravan caravan = holderPawn.GetCaravan();
+            return caravan != null && CaravanHasWorkingFrostivus(caravan);
+        }
+
+        public static bool IsFrostivusInventoryHolder(IThingHolder holder)
+        {
+            return IsFrostivus((holder as Pawn_InventoryTracker)?.pawn);
+        }
+
+        private static bool CaravanHasWorkingFrostivus(Caravan caravan)
+        {
+            if (caravan == null)
+            {
+                return false;
+            }
+
+            int ticksGame = Find.TickManager?.TicksGame ?? -1;
+            if (cachedCaravan == caravan && cachedCaravanTick == ticksGame)
+            {
+                return cachedCaravanHasWorkingFrostivus;
+            }
+
+            cachedCaravan = caravan;
+            cachedCaravanTick = ticksGame;
+            cachedCaravanHasWorkingFrostivus = false;
+
+            List<Pawn> pawns = caravan.PawnsListForReading;
+            for (int i = 0; i < pawns.Count; i++)
+            {
+                if (CanPreserveCaravanFood(pawns[i]))
+                {
+                    cachedCaravanHasWorkingFrostivus = true;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static bool CanPreserveCaravanFood(Pawn pawn)
+        {
+            return IsFrostivus(pawn)
+                && !pawn.Destroyed
+                && !pawn.Dead
+                && !pawn.Downed
+                && pawn.inventory != null
+                && HasFoodPreservationControlInCaravan(pawn)
+                && pawn.health?.capacities != null
+                && pawn.health.capacities.CapableOf(PawnCapacityDefOf.Moving);
+        }
+
+        private static bool HasFoodPreservationControlInCaravan(Pawn pawn)
+        {
+            if (!IsFrostivus(pawn))
+            {
+                return false;
+            }
+
+            if (pawn.Faction != Faction.OfPlayer)
+            {
+                return true;
+            }
+
+            return pawn.OverseerSubject?.State == OverseerSubjectState.Overseen
+                && pawn.GetOverseer() != null
+                && pawn.GetMechControlGroup() != null;
+        }
+
+        private static bool IsInColdFoodStorage(Thing thing)
+        {
+            if (thing?.Map == null || !thing.Spawned)
+            {
+                return false;
+            }
+
+            SlotGroup slotGroup = thing.Map.haulDestinationManager.SlotGroupAt(thing.Position);
+            return slotGroup?.parent != null
+                && slotGroup.parent.HaulDestinationEnabled
+                && slotGroup.parent.Accepts(thing)
+                && thing.Position.GetTemperature(thing.Map) < ColdStorageMaxTemperature;
+        }
+
+        private static bool IsPreservableFoodThing(Thing thing)
         {
             return thing != null
                 && !thing.Destroyed
@@ -282,7 +596,7 @@ namespace ApexMechanoids
                 && thing.def.ingestible != null
                 && thing.def.IsNutritionGivingIngestible
                 && !thing.def.IsCorpse
-                && thing.TryGetComp<CompRottable>() != null;
+                && (thing.TryGetComp<CompRottable>() != null || thing.def.useHitPoints);
         }
 
         private static bool IsColdStoreCellFor(Pawn pawn, Thing food, IntVec3 cell)
