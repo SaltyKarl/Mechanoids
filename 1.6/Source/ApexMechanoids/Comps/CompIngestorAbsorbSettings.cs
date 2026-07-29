@@ -41,8 +41,8 @@ namespace ApexMechanoids
 
             yield return new Command_Toggle
             {
-                defaultLabel = (stripCorpseBeforeAbsorb ? "APM_Ingestor_StripMode_On_Label" : "APM_Ingestor_StripMode_Off_Label").Translate(),
-                defaultDesc = (stripCorpseBeforeAbsorb ? "APM_Ingestor_StripMode_On_Desc" : "APM_Ingestor_StripMode_Off_Desc").Translate(),
+                defaultLabel = (stripCorpseBeforeAbsorb ? "APM_Ingestor_StripMode_Disable_Label" : "APM_Ingestor_StripMode_Enable_Label").Translate(),
+                defaultDesc = (stripCorpseBeforeAbsorb ? "APM_Ingestor_StripMode_Disable_Desc" : "APM_Ingestor_StripMode_Enable_Desc").Translate(),
                 icon = ContentFinder<Texture2D>.Get(Props.stripIconPath),
                 isActive = () => stripCorpseBeforeAbsorb,
                 toggleAction = delegate
@@ -53,8 +53,8 @@ namespace ApexMechanoids
 
             yield return new Command_Toggle
             {
-                defaultLabel = (onlyProcessMarkedCorpses ? "APM_Ingestor_ProcessMode_Marked_Label" : "APM_Ingestor_ProcessMode_All_Label").Translate(),
-                defaultDesc = (onlyProcessMarkedCorpses ? "APM_Ingestor_ProcessMode_Marked_Desc" : "APM_Ingestor_ProcessMode_All_Desc").Translate(),
+                defaultLabel = (onlyProcessMarkedCorpses ? "APM_Ingestor_ProcessMode_All_Label" : "APM_Ingestor_ProcessMode_Marked_Label").Translate(),
+                defaultDesc = (onlyProcessMarkedCorpses ? "APM_Ingestor_ProcessMode_All_Desc" : "APM_Ingestor_ProcessMode_Marked_Desc").Translate(),
                 icon = ContentFinder<Texture2D>.Get(Props.processModeIconPath),
                 isActive = () => onlyProcessMarkedCorpses,
                 toggleAction = delegate

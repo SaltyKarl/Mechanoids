@@ -57,7 +57,7 @@
 				<extraMeleeDamages>
 				<li>
 					<def>EMP</def>
-					<chance>10</chance>
+					<chance>0.15</chance>
 					<amount>15</amount>
 				</li>
 				</extraMeleeDamages>

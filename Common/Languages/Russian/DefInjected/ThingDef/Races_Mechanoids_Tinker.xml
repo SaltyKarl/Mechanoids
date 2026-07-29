@@ -2,7 +2,7 @@
 <LanguageData>
 
  <APM_Mech_Tinker.label>Механик</APM_Mech_Tinker.label>
-  <APM_Mech_Tinker.description>Механик — это механоид, предназначенный для ремонта. Он может помогать в починке зданий, а также в ремонте мехов под контролем мехамастера. В крайнем случае он может создать щит на ближайшем союзнике, а также ослеплять врагов в радиусе вокруг лазера, который он способен применять.</APM_Mech_Tinker.description>
+  <APM_Mech_Tinker.description>Механик — вспомогательный механоид для ремонта зданий и мехов своей фракции. Он не возводит новые конструкции, но может создавать защитную матрицу на союзниках и ослеплять врагов направленным лазером.</APM_Mech_Tinker.description>
   <APM_Mech_Tinker.tools.0.label>левая кисть</APM_Mech_Tinker.tools.0.label>
   <APM_Mech_Tinker.tools.1.label>правая кисть</APM_Mech_Tinker.tools.1.label>
   <APM_Mech_Tinker.tools.2.label>голова</APM_Mech_Tinker.tools.2.label>
