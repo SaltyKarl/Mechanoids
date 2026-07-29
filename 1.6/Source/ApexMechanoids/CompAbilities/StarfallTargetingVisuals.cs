@@ -7,6 +7,15 @@ namespace ApexMechanoids
 {
     public class Ability_Starfall : Ability
     {
+        public Ability_Starfall()
+        {
+        }
+
+        public Ability_Starfall(Pawn pawn)
+            : base(pawn)
+        {
+        }
+
         public Ability_Starfall(Pawn pawn, AbilityDef def)
             : base(pawn, def)
         {
