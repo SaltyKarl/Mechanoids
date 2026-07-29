@@ -139,6 +139,8 @@
 			<ComponentSpacer>2</ComponentSpacer>
 		</costList>
 		<comps>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>100</basePowerConsumption>
@@ -147,7 +149,7 @@
 				<maxMechBodySize>999</maxMechBodySize>
 				<minMechBodySize>2</minMechBodySize>
 				<healHpPerSecond>0.8</healHpPerSecond>
-				<activePowerConsumption>1500</activePowerConsumption>
+				<activePowerConsumption>1000</activePowerConsumption>
 				<heldPawnBodyAngleNorth>0</heldPawnBodyAngleNorth>
 				<heldPawnBodyAngleEast>0</heldPawnBodyAngleEast>
 				<heldPawnBodyAngleSouth>0</heldPawnBodyAngleSouth>

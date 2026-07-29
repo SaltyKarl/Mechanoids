@@ -385,7 +385,7 @@
 		<canUseAoeToGetTargets>false</canUseAoeToGetTargets>
 		<comps>
 			<li Class="CompProperties_AbilityGiveMentalState">
-				<compClass>CompAbilityEffect_GiveMentalState</compClass>
+				<compClass>ApexMechanoids.CompAbilityEffect_GiveMentalState</compClass>
 				<stateDef>APM_Duel</stateDef>
 				<stateDefForMechs>APM_Duel</stateDefForMechs>
 				<applyToSelf>false</applyToSelf>

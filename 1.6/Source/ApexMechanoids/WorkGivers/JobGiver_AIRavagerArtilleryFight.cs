@@ -25,6 +25,12 @@ namespace ApexMechanoids
                 return null;
             }
 
+            LocalTargetInfo targetCell = new LocalTargetInfo(enemyTarget.Position);
+            if (!RavagerArtilleryUtility.CanFireAtCell(pawn, targetCell))
+            {
+                return null;
+            }
+
             bool allowManualCastWeapons = !pawn.IsColonist && !pawn.IsColonySubhuman;
             if (allowManualCastWeapons)
             {
@@ -36,7 +42,6 @@ namespace ApexMechanoids
             }
 
             Verb verb = pawn.TryGetAttackVerb(enemyTarget, allowManualCastWeapons, allowTurrets);
-            LocalTargetInfo targetCell = new LocalTargetInfo(enemyTarget.Position);
             if (!RavagerArtilleryUtility.CanFireAtCell(pawn, targetCell, verb))
             {
                 return null;

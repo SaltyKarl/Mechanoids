@@ -3,4 +3,7 @@
   <APM_TinkerRepairMech.label>ремонтировать меха</APM_TinkerRepairMech.label>
   <APM_TinkerRepairMech.verb>ремонтировать</APM_TinkerRepairMech.verb>
   <APM_TinkerRepairMech.gerund>ремонтируя</APM_TinkerRepairMech.gerund>
+  <APM_TinkerRepairBuilding.label>ремонтировать здание</APM_TinkerRepairBuilding.label>
+  <APM_TinkerRepairBuilding.verb>ремонтировать</APM_TinkerRepairBuilding.verb>
+  <APM_TinkerRepairBuilding.gerund>ремонтируя</APM_TinkerRepairBuilding.gerund>
 </LanguageData>
