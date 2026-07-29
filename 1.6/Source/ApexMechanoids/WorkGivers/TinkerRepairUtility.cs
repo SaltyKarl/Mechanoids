@@ -23,9 +23,15 @@ namespace ApexMechanoids
                 && pawn.Spawned
                 && pawn.Map != null
                 && pawn.Faction != null
+                && HasRepairControl(pawn)
                 && pawn.health?.capacities != null
                 && pawn.health.capacities.CapableOf(PawnCapacityDefOf.Moving)
                 && pawn.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation);
+        }
+
+        private static bool HasRepairControl(Pawn pawn)
+        {
+            return pawn.Faction != Faction.OfPlayer || pawn.IsColonyMechPlayerControlled;
         }
 
         public static Thing FindRepairableBuilding(Pawn pawn, float maxDistance = MaxRepairSearchDistance)
