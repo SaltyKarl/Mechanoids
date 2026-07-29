@@ -385,7 +385,7 @@
 		<aiCanUse>true</aiCanUse>
 		<uiOrder>2</uiOrder>
 		<showWhenDrafted>true</showWhenDrafted>
-		<hostile>false</hostile>
+		<hostile>true</hostile>
 		<statBases>
 			<Ability_Duration>500</Ability_Duration>
 			<Ability_EffectRadius>3.9</Ability_EffectRadius>
@@ -393,6 +393,7 @@
 		<comps>
 			<li Class="ApexMechanoids.CompProperties_BlindingLaser">
 				<hediffDef>APM_LaserBlind</hediffDef>
+				<replaceExisting>true</replaceExisting>
 			</li>
 			<li Class="ApexMechanoids.CompProperties_AbilityMoteDualAttachedOnTarget">
 				<preCastTicks>1</preCastTicks>
@@ -446,7 +447,7 @@
 		<defName>APM_LaserBlind</defName>
 		<label>blinded by laser</label>
 		<description>Vastly reduced sight capacity due to been blinded by laser.</description>
-		<isBad>false</isBad>
+		<isBad>true</isBad>
 		<defaultLabelColor>(0.82, 0.6, 0.44)</defaultLabelColor>
 		<initialSeverity>1</initialSeverity>
 		<maxSeverity>1</maxSeverity>
@@ -516,13 +517,14 @@
 	<AbilityDef>
 		<defName>APM_DefenceMatrix</defName>
 		<label>Defence Matrix</label>
-		<description>Remotely project a personal defense shield onto a friendly pawn. The shield stops incoming damage, but also prevents shooting out, so this can be useful even when cast on enemies. The tinker will be focused on projecting the shield.</description>
+		<description>Remotely project a personal defense shield onto a same-faction pawn. The shield stops incoming damage, but also prevents shooting out. The tinker will be focused on projecting the shield.</description>
 		<jobDef>ShieldMech</jobDef>
 		<targetRequired>true</targetRequired>
 		<canUseAoeToGetTargets>False</canUseAoeToGetTargets>
 		<iconPath>UI/Matrix</iconPath>
 		<stunTargetWhileCasting>True</stunTargetWhileCasting>
 		<aiCanUse>true</aiCanUse>
+		<ai_IsOffensive>false</ai_IsOffensive>
 		<showPsycastEffects>False</showPsycastEffects>
 		<hotKey>Misc12</hotKey>
 		<uiOrder>3</uiOrder>
@@ -531,8 +533,11 @@
 		<cooldownTicksRange>300</cooldownTicksRange>
 		<waitForJobEnd>true</waitForJobEnd>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_AbilitySameFactionTarget" />
+		</comps>
 		<verbProperties>
-			<verbClass>Verb_CastAbility</verbClass>
+			<verbClass>ApexMechanoids.Verb_CastSameFactionAbility</verbClass>
 			<range>7.9</range>
 			<rangeStat>MechRemoteShieldDistance</rangeStat>
 			<drawAimPie>true</drawAimPie>
