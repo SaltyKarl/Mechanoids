@@ -8,7 +8,7 @@ namespace ApexMechanoids
     {
         public override Job TryGiveJob(Pawn pawn)
         {
-            if (!RavagerArtilleryUtility.CanUseArtillery(pawn) || !RavagerArtilleryUtility.AutoFireEnabled(pawn))
+            if (!CanRunFor(pawn))
             {
                 return null;
             }
@@ -53,7 +53,7 @@ namespace ApexMechanoids
 
         public override Thing FindAttackTarget(Pawn pawn)
         {
-            if (!RavagerArtilleryUtility.CanUseArtillery(pawn) || !RavagerArtilleryUtility.AutoFireEnabled(pawn))
+            if (!CanRunFor(pawn))
             {
                 return null;
             }
@@ -81,7 +81,7 @@ namespace ApexMechanoids
 
         public override bool ShouldLoseTarget(Pawn pawn)
         {
-            if (!RavagerArtilleryUtility.CanUseArtillery(pawn) || !RavagerArtilleryUtility.AutoFireEnabled(pawn))
+            if (!CanRunFor(pawn))
             {
                 return true;
             }
@@ -118,6 +118,13 @@ namespace ApexMechanoids
             }
 
             return !pawn.CanReach(enemyTarget, PathEndMode.Touch, Danger.Deadly);
+        }
+
+        private static bool CanRunFor(Pawn pawn)
+        {
+            return RavagerArtilleryUtility.CanUseArtillery(pawn)
+                && pawn.Awake()
+                && RavagerArtilleryUtility.AutoFireEnabled(pawn);
         }
     }
 }
