@@ -91,6 +91,9 @@
 					<li>APM_CasketBandwidthAmplifier</li>
 				</linkableFacilities>
 			</li>
+			<li  MayRequire="VanillaExpanded.VNutrientE" Class="PipeSystem.CompProperties_Resource">
+				<pipeNet>VNPE_NutrientPasteNet</pipeNet>
+			</li>
 		</comps>
 		<placeWorkers>
 			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
