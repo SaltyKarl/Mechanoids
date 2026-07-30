@@ -173,7 +173,7 @@ namespace ApexMechanoids
                     if (thingAsCasket != null)
                     {
                         thingAsCasket.Finish();
-                        thingAsCasket.innerContainer.TryDropAll(thingAsCasket.InteractionCell, thingAsCasket.Map, ThingPlaceMode.Near);
+                        //thingAsCasket.innerContainer.TryDropAll(thingAsCasket.InteractionCell, thingAsCasket.Map, ThingPlaceMode.Near);
                         abilityComp.EndAction();
                     }
                 }

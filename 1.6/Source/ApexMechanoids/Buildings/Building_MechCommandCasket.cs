@@ -8,13 +8,14 @@ using UnityEngine;
 using Verse;
 using Verse.AI;
 using Verse.Sound;
+using PipeSystem;
 
 namespace ApexMechanoids
 {
     [StaticConstructorOnStartup]
     public class Building_MechCommandCasket : Building_Enterable, IStoreSettingsParent, IThingHolderWithDrawnPawn, IThingHolder
     {
-        private float containedNutrition;
+        private float containedNutritionNotInItems = 0f;
 
 
         private StorageSettings allowedNutritionSettings;
@@ -24,6 +25,9 @@ namespace ApexMechanoids
 
         [Unsaved(false)]
         private CompRemoteMechCasketAbilities cachedAbilityComp;
+
+        [Unsaved(false)]
+        private CompResource cachedResourceComp;
 
         public static readonly Texture2D CancelLoadingIcon = ContentFinder<Texture2D>.Get("UI/Designators/Cancel");
 
@@ -35,25 +39,39 @@ namespace ApexMechanoids
 
         private const float BasePawnConsumedNutritionPerDay = 2.0f; //1.6 is the normal rate for a pawn
 
-        public const float NutritionBuffer = 10f;
+        public const float NutritionBuffer = 10f;   //maximum nutrition inside
 
         private float minimumContainedNutrition = 1f;
 
-        public bool StorageTabVisible => true;
+        public float NutritionPercent
+        { 
+            get
+            {
+                if (containedNutritionNotInItems <= 0f)
+                {
+                    return 0f;
+                }
+
+                return (1f / NutritionBuffer) * NutritionStored;
+            }
+        }
+
+        #region Needed from parent IStoreSettingsParent
+
+         public bool StorageTabVisible => true;
 
         public float HeldPawnDrawPos_Y => DrawPos.y + 0.03658537f;
 
         public float HeldPawnBodyAngle => base.Rotation.AsAngle;
 
-        public float NutritionPercent => NutritionBuffer / 100 * containedNutrition;  //   NutritionBuffer / 100 *   containedNutrition           10 / 0.2 ->
-
-
         public PawnPosture HeldPawnPosture => PawnPosture.LayingOnGroundFaceUp;
 
+        public override Vector3 PawnDrawOffset => CompBiosculpterPod.FloatingOffset(Find.TickManager.TicksGame);
+
+
+        #endregion
 
         public bool PowerOn => PowerTraderComp.PowerOn;
-
-        public override Vector3 PawnDrawOffset => CompBiosculpterPod.FloatingOffset(Find.TickManager.TicksGame);
 
         private CompPowerTrader PowerTraderComp
         {
@@ -75,7 +93,7 @@ namespace ApexMechanoids
                 {
                     return 0f;
                 }
-                if (!PowerOn || containedNutrition <= 0f)
+                if (!PowerOn || containedNutritionNotInItems <= 0f)
                 {
                     return BiostarvationGainPerDayNoFoodOrPower;
                 }
@@ -117,11 +135,15 @@ namespace ApexMechanoids
         {
             get
             {
-                float num = containedNutrition;
+                float num = containedNutritionNotInItems;
                 for (int i = 0; i < innerContainer.Count; i++)
                 {
                     Thing thing = innerContainer[i];
-                    num += (float)thing.stackCount * thing.GetStatValue(StatDefOf.Nutrition);
+
+                    if(thing != selectedPawn)
+                    {
+                        num += (float)thing.stackCount * thing.GetStatValue(StatDefOf.Nutrition);
+                    }
                 }
                 return num;
             }
@@ -144,7 +166,7 @@ namespace ApexMechanoids
                 return NutritionBuffer - NutritionStored;
             }
         }
-
+        
 
         public override void PostMake()
         {
@@ -160,7 +182,6 @@ namespace ApexMechanoids
         {
             base.SpawnSetup(map, respawningAfterLoad);
         }
-
 
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
         {
@@ -185,8 +206,8 @@ namespace ApexMechanoids
             if (this.IsHashIntervalTick(250))
             {
                 PowerTraderComp.PowerOutput = (base.Working ? (0f - base.PowerComp.Props.PowerConsumption) : (0f - base.PowerComp.Props.idlePowerDraw));
+                GetNutritionFromNetwork();
             }
-            Pawn pawn = selectedPawn;
 
             if (base.Working)
             {
@@ -219,18 +240,46 @@ namespace ApexMechanoids
                     Fail();
                     return;
                 }
-                containedNutrition = Mathf.Clamp(containedNutrition - NutritionConsumedPerDay / 60000f, 0f, 2.14748365E+09f);
-                if (containedNutrition <= 0f)
+                containedNutritionNotInItems = Mathf.Clamp(containedNutritionNotInItems - NutritionConsumedPerDay / 60000f, 0f, 2.14748365E+09f);   // same as Building_GrowthVat
+                if (containedNutritionNotInItems <= 0f)
                 {
-                    TryAbsorbNutritiousThing();
+                    TryAbsorbNutritiousThing(); //destroys an nutriton item and adds that nutrition to containedNutritionNotInItems
                 }
             }
         }
 
+        private void GetNutritionFromNetwork()
+        {
+           // CompResource comp =  GetComp(__instance);
+            if (CompResource == null)
+            {
+                return;
+            }
+
+            PipeNet pipeNet = CompResource.PipeNet;
+            
+            if (pipeNet != null)
+            {
+                float stored = pipeNet.Stored;
+                while (NutritionNeeded > NutritionFromPaste && stored > 0f)
+                {
+                    Thing paste = ThingMaker.MakeThing(ThingDefOf.MealNutrientPaste);
+                    paste.stackCount = 1;
+                    innerContainer.TryAdd(paste);
+                    pipeNet.DrawAmongStorage(1f, pipeNet.storages);
+                }
+            }
+        }
+
+        private float NutritionFromPaste => ThingDefOf.MealNutrientPaste.GetStatValueAbstract(StatDefOf.Nutrition);
+
+
+
+
 
         public override AcceptanceReport CanAcceptPawn(Pawn pawn)
         {
-            if (base.Working)
+            if (base.Working && selectedPawn != null && innerContainer.Contains(selectedPawn))
             {
                 return "Occupied".Translate();
             }
@@ -271,6 +320,18 @@ namespace ApexMechanoids
             }
         }
 
+        private CompResource CompResource
+        {
+            get
+            {
+                if (cachedResourceComp == null)
+                {
+                    cachedResourceComp = this.TryGetComp<CompResource>();
+                }
+                return cachedResourceComp;
+            }
+        }
+
         public override void TryAcceptPawn(Pawn pawn)
         {
             if (selectedPawn == null || !CanAcceptPawn(pawn))
@@ -305,7 +366,7 @@ namespace ApexMechanoids
                     float statValue = innerContainer[i].GetStatValue(StatDefOf.Nutrition);
                     if (statValue > 0f)
                     {
-                        containedNutrition += statValue;
+                        containedNutritionNotInItems += statValue;
                         innerContainer[i].SplitOff(1).Destroy();
                         break;
                     }
@@ -405,7 +466,6 @@ namespace ApexMechanoids
                         Action action = delegate
                         {
                             Finish();
-                            innerContainer.TryDropAll(InteractionCell, base.Map, ThingPlaceMode.Near);
                         };
                         action();
                     };
@@ -413,20 +473,37 @@ namespace ApexMechanoids
 
                 }
 
+                /*
                 yield return new Command_Action
                 {
-                    defaultLabel = "DEV: Fill nutrition",
+                    defaultLabel = "DEV: Fill fake nutrition",
                     action = delegate
                     {
-                        containedNutrition = NutritionBuffer;
+                        containedNutritionNotInItems = NutritionBuffer;
                     }
                 };
+                */
                 yield return new Command_Action
                 {
-                    defaultLabel = "DEV: Empty nutrition",
+                    defaultLabel = "DEV: Empty ALL",
                     action = delegate
                     {
-                        containedNutrition = 0f;
+                        innerContainer.TryDropAll(InteractionCell, base.Map, ThingPlaceMode.Near);
+                    }
+                };
+                
+
+                yield return new Command_Action
+                {
+                    defaultLabel = "DEV: Write Nutrition Debug Log",
+                    action = delegate
+                    {
+                        Log.Message("containedNutritionNotInItems = " + containedNutritionNotInItems);
+                        Log.Message("NutritionStored = " + NutritionStored);
+                        Log.Message("NutritionNeeded = " + NutritionNeeded);
+                        Log.Message("NutritionConsumedPerDay = " + NutritionConsumedPerDay);
+                        Log.Message("NutritionPercent = " + (NutritionPercent * 100f) + "%");
+                        Log.Message("NutritionFromPaste = " + NutritionFromPaste);
                     }
                 };
             }
@@ -469,6 +546,7 @@ namespace ApexMechanoids
             }
             stringBuilder.AppendLineIfNotEmpty().Append("Nutrition".Translate()).Append(": ")
                 .Append(NutritionStored.ToStringByStyle(ToStringStyle.FloatMaxOne));
+            stringBuilder.Append("/" + NutritionBuffer);
             if (base.Working)
             {
                 stringBuilder.Append(" (-").Append("PerDay".Translate(NutritionConsumedPerDay.ToString("F1"))).Append(")");
@@ -504,7 +582,7 @@ namespace ApexMechanoids
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look(ref containedNutrition, "containedNutrition", 0f);
+            Scribe_Values.Look(ref containedNutritionNotInItems, "containedNutrition", 0f);
             Scribe_Deep.Look(ref allowedNutritionSettings, "allowedNutritionSettings", this);
             if (allowedNutritionSettings == null)
             {
