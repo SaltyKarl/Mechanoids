@@ -17,6 +17,7 @@
 				<fadeDurationTicks>60</fadeDurationTicks>
 				<affectedByDisruptor>false</affectedByDisruptor>
 			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath" />
 		</comps>
 		<stages>
 			<li>
