@@ -30,10 +30,19 @@
             <li>APM_MechanitorDomain1</li>
           </chooseFrom>
         </li>
-        <li Class="ScenPart_PlayerPawnsArriveMethod">
-					<def>PlayerPawnsArriveMethod</def>
-					<method>Standing</method>
-				</li>
+        <li Class="ApexMechanoids.ScenPart_SpawnScenarioCorpses">
+          <def>APM_SpawnScenarioCorpses</def>
+          <targets>
+            <li>
+              <pawnKind>APM_Mechanitor_Ancient</pawnKind>
+              <rotStage>Dessicated</rotStage>
+            </li>
+            <li>
+              <pawnKind>Slave</pawnKind>
+              <rotStage>Dessicated</rotStage>
+            </li>
+          </targets>
+        </li>
         <li Class="ScenPart_StartingThing_Defined">
           <def>StartingThing_Defined</def>
           <thingDef>Silver</thingDef>
