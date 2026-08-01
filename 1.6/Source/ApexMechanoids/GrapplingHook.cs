@@ -165,7 +165,6 @@ namespace ApexMechanoids
 
 		public override void Tick()
 		{
-			Log.Message("Tick");
 			base.Tick();
 			TargetInfo other = (target == null || !target.Spawned) ? new TargetInfo(DestinationPos.ToIntVec3(), this.Map) : new TargetInfo(target);
 			if (mote == null)

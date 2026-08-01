@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef Name="APM_Mech_Lasher" ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Lasher</defName>
 		<label>Lasher</label>
@@ -41,11 +40,13 @@
 			</li>
 		</tools>
 		<race>
-			<body>Lancer</body>
+			<body>APM_Lasher</body>
+			<mechFixedSkillLevel>10</mechFixedSkillLevel>
 			<mechEnabledWorkTypes>
-				<li>Handling</li>
+				<li>APM_LasherHandling</li>
 			</mechEnabledWorkTypes>
-			<baseHealthScale>1</baseHealthScale>
+			<baseHealthScale>1.32</baseHealthScale>
+			<baseBodySize>1.5</baseBodySize>
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>
@@ -60,15 +61,25 @@
 			</detritusLeavings>
 		</race>
 		<statBases>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">3</BandwidthCost>
+			<MarketValue>900</MarketValue>
+			<MoveSpeed>4.7</MoveSpeed>
+			<ArmorRating_Blunt>0.20</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.40</ArmorRating_Sharp>
+			<ArmorRating_Heat>2.0</ArmorRating_Heat>
+			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
+			<MechEnergyLossPerHP MayRequire="Ludeon.RimWorld.Biotech">0.20</MechEnergyLossPerHP>
 		</statBases>
+		<butcherProducts>
+			<Steel>15</Steel>
+			<Plasteel>5</Plasteel>
+		</butcherProducts>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Lasher</defName>
 		<label>lasher</label>
 		<race>APM_Mech_Lasher</race>
-		<combatPower>190</combatPower>
+		<combatPower>180</combatPower>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
@@ -78,7 +89,8 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>1.5</drawSize>
 					<shadowData>
-						<volume>(0.5, 0.8, 0.4)</volume>
+						<volume>(0.5, 0.8, 0.5)</volume>
+						<offset>(0, 0, -0.3)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
@@ -90,17 +102,18 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>1.5</drawSize>
 					<shadowData>
-						<volume>(0.5, 0.8, 0.4)</volume>
+						<volume>(0.5, 0.8, 0.5)</volume>
+						<offset>(0, 0, -0.3)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
 		<weaponMoney>9999~9999</weaponMoney>
+		<controlGroupPortraitZoom>1</controlGroupPortraitZoom>
 		<weaponTags>
-			<li>APM_WeaponWhip</li>
+			<li>APM_MechanoidWhip</li>
 		</weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
 	</PawnKindDef>
-
 </Defs>

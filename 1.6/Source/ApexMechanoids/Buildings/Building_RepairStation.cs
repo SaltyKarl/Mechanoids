@@ -21,13 +21,18 @@ namespace ApexMechanoids
         private bool autoRepairEnabled;
         private int autoRepairIntervalTicks = 2500;
         private int autoRepairTimer;
+        private bool selectedPawnAutoRepair;
+        private int selectedPawnClaimTick = -1;
         private Effecter progressBar;
         private Effecter mechRepairEffecter;
-        private float totalHpToHeal;
-        private float hpHealedSoFar;
+        private int totalHpToHeal;
+        private int hpHealedSoFar;
+        private float hpHealedFraction;
+        private const int QueuedRepairGraceTicks = 120;
+        private const int QueuedRepairTimeoutTicks = 15000;
         private static readonly int[] IntervalOptions = new int[] { 1500, 2500, 5000, 10000 };
         private static readonly Texture2D CancelIcon = ContentFinder<Texture2D>.Get("UI/Designators/Cancel");
-        public static readonly CachedTexture InsertPawnIcon = new CachedTexture("UI/Gizmos/InsertPawn");
+        public static readonly CachedTexture InsertPawnIcon = new CachedTexture("UI/Gizmos/APM_Repairstation_InsertMech");
 
         public CompRepairStation Config
         {
@@ -49,10 +54,39 @@ namespace ApexMechanoids
 
         public Pawn ContainedMech => innerContainer.FirstOrDefault() as Pawn;
         public bool PowerOn => PowerTrader != null && PowerTrader.PowerOn;
+        public bool AutoRepairEnabled => autoRepairEnabled;
         public float HeldPawnDrawPos_Y => DrawPos.y + 0.04f;
-        public float HeldPawnBodyAngle => this.def.rotatable ? this.Rotation.Opposite.AsAngle : this.Rotation.AsAngle;
+        public float HeldPawnBodyAngle => GetHeldPawnBodyAngle();
         public PawnPosture HeldPawnPosture => PawnPosture.LayingOnGroundFaceUp;
         public override Vector3 PawnDrawOffset => GetMechPositionOffset();
+
+        private float GetHeldPawnBodyAngle()
+        {
+            float configuredAngle = Config.HeldPawnBodyAngleFor(Rotation);
+            if (!float.IsNaN(configuredAngle))
+            {
+                return configuredAngle;
+            }
+
+            return def.rotatable ? Rotation.Opposite.AsAngle : Rotation.AsAngle;
+        }
+
+        private Rot4 GetHeldPawnBodyFacing()
+        {
+            if (!Spawned)
+            {
+                return Rotation;
+            }
+
+            Vector3 bodyDrawPos = DrawPos + PawnDrawOffset;
+            Vector3 exitDirection = InteractionCell.ToVector3Shifted() - bodyDrawPos;
+            if (exitDirection.MagnitudeHorizontalSquared() < 0.001f)
+            {
+                return Rotation;
+            }
+
+            return Rot4.FromAngleFlat(exitDirection.AngleFlat());
+        }
 
         private Vector3 GetMechPositionOffset()
         {
@@ -85,17 +119,18 @@ namespace ApexMechanoids
         public override void Tick()
         {
             base.Tick();
+            Pawn containedMech = ContainedMech;
             if (PowerTrader != null)
             {
-                PowerTrader.PowerOutput = (base.Working && ContainedMech != null)
+                PowerTrader.PowerOutput = (base.Working && containedMech != null)
                     ? -Config.ActivePowerConsumption
                     : -PowerTrader.Props.basePowerConsumption;
             }
-            if (base.Working && ContainedMech != null)
+            if (base.Working && containedMech != null)
             {
                 if (PowerOn && !this.IsBrokenDown())
                 {
-                    DoRepairTick(ContainedMech);
+                    DoRepairTick(containedMech);
                     armsAnim?.Update(true);
                     platformAnim?.Update(true);
                     if (mechRepairEffecter == null) mechRepairEffecter = EffecterDefOf.MechRepairing.Spawn(this, Map, PawnDrawOffset);
@@ -105,7 +140,7 @@ namespace ApexMechanoids
                     MoteProgressBar mote = ((SubEffecter_ProgressBar)progressBar.children[0]).mote;
                     if (mote != null)
                     {
-                        mote.progress = totalHpToHeal > 0f ? hpHealedSoFar / totalHpToHeal : 1f;
+                        mote.progress = totalHpToHeal > 0 ? (float)hpHealedSoFar / totalHpToHeal : 1f;
                         mote.offsetZ = -0.8f;
                     }
                 }
@@ -138,6 +173,11 @@ namespace ApexMechanoids
                     progressBar = null;
                 }
 
+                if (selectedPawn != null)
+                {
+                    ValidateQueuedRepairPawn();
+                }
+
                 if (autoRepairEnabled && selectedPawn == null && PowerOn)
                 {
                     autoRepairTimer--;
@@ -152,53 +192,293 @@ namespace ApexMechanoids
 
         private void TryFindAutoRepairCandidate()
         {
-            Pawn bestCandidate = Map.mapPawns.AllPawnsSpawned
-                .Where(p => p.Faction == Faction.OfPlayer && p.RaceProps.IsMechanoid)
-                .Where(p => !p.Drafted)
-                .Where(p => p.CanReach(this, PathEndMode.InteractionCell, Danger.Deadly))
-                .Where(p => CanAcceptPawn(p).Accepted)
-                .Where(p => p.CurJobDef != JobDefOf.EnterBuilding)
-                .OrderBy(p => p.health.summaryHealth.SummaryHealthPercent)
-                .FirstOrDefault();
-
-            if (bestCandidate != null)
+            Pawn bestCandidate = null;
+            float bestHealth = float.MaxValue;
+            IReadOnlyList<Pawn> pawns = Map.mapPawns.AllPawnsSpawned;
+            for (int i = 0; i < pawns.Count; i++)
             {
-                SelectPawn(bestCandidate);
-                Messages.Message("APM_AutoRepairOrdered".Translate(bestCandidate.LabelShort), bestCandidate, MessageTypeDefOf.NeutralEvent);
+                Pawn pawn = pawns[i];
+                if (!CanAutoRepairCallPawn(pawn))
+                {
+                    continue;
+                }
+
+                float health = pawn.health.summaryHealth.SummaryHealthPercent;
+                if (bestCandidate == null || health < bestHealth)
+                {
+                    bestCandidate = pawn;
+                    bestHealth = health;
+                }
+            }
+
+            if (bestCandidate != null && QueuePawnForRepair(bestCandidate, autoRepair: true))
+            {
+                if (ApexMechanoidsSettings.ShowRepairStationAutoRepairMessages)
+                {
+                    Messages.Message("APM_AutoRepairOrdered".Translate(bestCandidate.LabelShort), bestCandidate, MessageTypeDefOf.NeutralEvent);
+                }
+            }
+        }
+
+        private bool CanAutoRepairCallPawn(Pawn pawn)
+        {
+            if (pawn == null || pawn.Destroyed || pawn.Dead || pawn.Downed || !pawn.Spawned || pawn.Map != Map)
+            {
+                return false;
+            }
+            if (pawn.Faction != Faction.OfPlayer || !pawn.RaceProps.IsMechanoid || !pawn.IsColonyMechPlayerControlled || pawn.GetMechControlGroup() == null)
+            {
+                return false;
+            }
+            if (pawn.Drafted || HasEnterBuildingJobForThis(pawn) || IsPawnClaimedByAnyRepairStation(pawn, this) || IsPawnBeingRepairedByPlayerColonist(pawn))
+            {
+                return false;
+            }
+
+            CompMechRepairable repairable = pawn.TryGetComp<CompMechRepairable>();
+            if (repairable == null || !repairable.autoRepair)
+            {
+                return false;
+            }
+
+            return pawn.CanReach(this, PathEndMode.InteractionCell, Danger.Deadly)
+                && pawn.CanReserve(this)
+                && CanAcceptPawn(pawn).Accepted;
+        }
+
+        public static bool IsPawnClaimedByAnyRepairStation(Pawn pawn, Building_RepairStation ignoredStation = null)
+        {
+            if (pawn == null || pawn.Map == null)
+            {
+                return false;
+            }
+
+            List<Thing> buildings = pawn.Map.listerThings.ThingsInGroup(ThingRequestGroup.BuildingArtificial);
+            for (int i = 0; i < buildings.Count; i++)
+            {
+                if (buildings[i] is Building_RepairStation station && station != ignoredStation && station.SelectedPawn == pawn)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool HasEnterBuildingJobForThis(Pawn pawn)
+        {
+            if (pawn?.jobs == null)
+            {
+                return false;
+            }
+
+            if (IsEnterBuildingJobForThis(pawn.CurJob))
+            {
+                return true;
+            }
+
+            foreach (QueuedJob queuedJob in pawn.jobs.jobQueue)
+            {
+                if (IsEnterBuildingJobForThis(queuedJob.job))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool IsEnterBuildingJobForThis(Job job)
+        {
+            return job != null && job.def == JobDefOf.EnterBuilding && job.targetA.Thing == this;
+        }
+
+        private void ValidateQueuedRepairPawn()
+        {
+            if (base.Working || selectedPawn == null)
+            {
+                return;
+            }
+
+            Pawn pawn = selectedPawn;
+            int ticksQueued = selectedPawnClaimTick >= 0 ? Find.TickManager.TicksGame - selectedPawnClaimTick : QueuedRepairTimeoutTicks + 1;
+            if (ticksQueued > QueuedRepairTimeoutTicks || pawn.Destroyed || pawn.Dead || !pawn.Spawned || pawn.Map != Map)
+            {
+                ClearQueuedRepair(interruptJob: false);
+                return;
+            }
+            if (!CanAcceptPawn(pawn).Accepted)
+            {
+                ClearQueuedRepair(interruptJob: true);
+                return;
+            }
+            if (selectedPawnAutoRepair && !CanAutoRepairStillValid(pawn))
+            {
+                ClearQueuedRepair(interruptJob: true);
+                return;
+            }
+            if (ticksQueued > QueuedRepairGraceTicks && !HasEnterBuildingJobForThis(pawn))
+            {
+                ClearQueuedRepair(interruptJob: false);
+            }
+        }
+
+        private bool CanAutoRepairStillValid(Pawn pawn)
+        {
+            if (pawn == null || pawn.Destroyed || pawn.Dead || pawn.Downed || !pawn.Spawned || pawn.Map != Map)
+            {
+                return false;
+            }
+            if (pawn.Faction != Faction.OfPlayer || !pawn.RaceProps.IsMechanoid || !pawn.IsColonyMechPlayerControlled || pawn.GetMechControlGroup() == null || pawn.Drafted)
+            {
+                return false;
+            }
+
+            CompMechRepairable repairable = pawn.TryGetComp<CompMechRepairable>();
+            return repairable != null && repairable.autoRepair && !IsPawnBeingRepairedByPlayerColonist(pawn);
+        }
+
+        private static bool IsPawnBeingRepairedByPlayerColonist(Pawn pawn)
+        {
+            if (pawn == null || pawn.Map == null)
+            {
+                return false;
+            }
+
+            IReadOnlyList<Pawn> playerPawns = pawn.Map.mapPawns.SpawnedPawnsInFaction(Faction.OfPlayer);
+            for (int i = 0; i < playerPawns.Count; i++)
+            {
+                Pawn worker = playerPawns[i];
+                if (worker == null || worker == pawn || worker.Dead || worker.Downed || !worker.IsColonist)
+                {
+                    continue;
+                }
+
+                Job job = worker.CurJob;
+                if (job != null && job.def == JobDefOf.RepairMech && job.targetA.Thing == pawn)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public override void SelectPawn(Pawn pawn)
+        {
+            QueuePawnForRepair(pawn, autoRepair: false);
+        }
+
+        private bool QueuePawnForRepair(Pawn pawn, bool autoRepair)
+        {
+            selectedPawn = pawn;
+            selectedPawnAutoRepair = autoRepair;
+            selectedPawnClaimTick = Find.TickManager.TicksGame;
+
+            if (pawn.IsPrisonerOfColony || pawn.Downed)
+            {
+                return true;
+            }
+
+            Job job = JobMaker.MakeJob(JobDefOf.EnterBuilding, this);
+            if (!pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc))
+            {
+                selectedPawn = null;
+                selectedPawnAutoRepair = false;
+                selectedPawnClaimTick = -1;
+                return false;
+            }
+            return true;
+        }
+
+        private void ClearQueuedRepair(bool interruptJob)
+        {
+            Pawn pawn = selectedPawn;
+            selectedPawn = null;
+            selectedPawnAutoRepair = false;
+            selectedPawnClaimTick = -1;
+
+            if (interruptJob && pawn?.jobs != null)
+            {
+                pawn.jobs.jobQueue.RemoveAll(pawn, IsEnterBuildingJobForThis);
+                if (IsEnterBuildingJobForThis(pawn.CurJob))
+                {
+                    pawn.jobs.EndCurrentJob(JobCondition.InterruptForced);
+                }
             }
         }
 
         private void DoRepairTick(Pawn mech)
         {
-            if (mech.health.hediffSet.GetMissingPartsCommonAncestors().Any())
+            var hediffSet = mech.health.hediffSet;
+            RemoveHealedInjuries(mech);
+            var missingParts = hediffSet.GetMissingPartsCommonAncestors();
+            if (missingParts.Count > 0)
             {
-                var part = mech.health.hediffSet.GetMissingPartsCommonAncestors().First();
-                mech.health.RestorePart(part.Part);
+                mech.health.RestorePart(missingParts[0].Part);
             }
             float hpBudget = Config.HealHpPerTick;
-            List<Hediff> injuries = mech.health.hediffSet.hediffs
-                .Where(h => h is Hediff_Injury)
-                .ToList();
-
-            foreach (Hediff injury in injuries)
+            var hediffs = hediffSet.hediffs;
+            for (int i = hediffs.Count - 1; i >= 0; i--)
             {
                 if (hpBudget <= 0f) break;
-                float amount = Mathf.Ceil(Mathf.Min(injury.Severity, hpBudget));
+                Hediff_Injury injury = hediffs[i] as Hediff_Injury;
+                if (injury == null) continue;
+                float amount = Mathf.Min(injury.Severity, hpBudget);
                 injury.Heal(amount);
-                hpHealedSoFar += amount;
+                hpHealedFraction += amount;
+                int whole = (int)hpHealedFraction;
+                hpHealedSoFar += whole;
+                hpHealedFraction -= whole;
                 hpBudget -= amount;
-
             }
-            if (hpHealedSoFar >= totalHpToHeal && !mech.health.hediffSet.GetMissingPartsCommonAncestors().Any())
+            RemoveHealedInjuries(mech);
+            if (!HasRepairableHealthDamage(mech))
             {
+                MechRepairUtility.GenerateWeapon(mech);
                 Messages.Message("APM_MechRepaired".Translate(mech.LabelShort), mech, MessageTypeDefOf.PositiveEvent);
                 EjectContents();
             }
         }
 
+        private static void RemoveHealedInjuries(Pawn mech)
+        {
+            if (mech?.health?.hediffSet == null)
+            {
+                return;
+            }
+
+            List<Hediff> hediffs = mech.health.hediffSet.hediffs;
+            for (int i = hediffs.Count - 1; i >= 0; i--)
+            {
+                if (hediffs[i] is Hediff_Injury injury && injury.Severity <= 0.001f)
+                {
+                    mech.health.RemoveHediff(injury);
+                }
+            }
+        }
+
+        private static bool HasRepairableHealthDamage(Pawn mech)
+        {
+            if (mech?.health?.hediffSet == null)
+            {
+                return false;
+            }
+
+            List<Hediff> hediffs = mech.health.hediffSet.hediffs;
+            for (int i = 0; i < hediffs.Count; i++)
+            {
+                if (hediffs[i] is Hediff_Injury injury && injury.Severity > 0.001f)
+                {
+                    return true;
+                }
+            }
+
+            return mech.health.hediffSet.GetMissingPartsCommonAncestors().Count > 0;
+        }
+
         public override AcceptanceReport CanAcceptPawn(Pawn p)
         {
             if (!p.RaceProps.IsMechanoid) return "APM_NotMechanoid".Translate();
+            if (p.def.comps.Any(c => c is CompProperties_MechPowerCell)) return "APM_RepairStation_CannotRepairSatellite".Translate();
             if (p.Faction != Faction.OfPlayer) return "APM_NotPlayerFaction".Translate();
 
             float size = p.BodySize;
@@ -209,7 +489,9 @@ namespace ApexMechanoids
             if (selectedPawn != null && selectedPawn != p) return "Occupied".Translate();
             if (!PowerOn) return "NoPower".Translate();
 
-            bool damaged = p.health.hediffSet.hediffs.Any(h => h is Hediff_Injury) || p.health.hediffSet.GetMissingPartsCommonAncestors().Any();
+            bool damaged = p.health.hediffSet.hediffs.Any(h => h is Hediff_Injury)
+                || p.health.hediffSet.GetMissingPartsCommonAncestors().Any()
+                || MechRepairUtility.IsMissingWeapon(p);
             if (!damaged) return "APM_FullHealth".Translate();
 
             return true;
@@ -225,8 +507,11 @@ namespace ApexMechanoids
                 if (innerContainer.TryAddOrTransfer(p))
                 {
                     startTick = Find.TickManager.TicksGame;
-                    totalHpToHeal = p.health.hediffSet.hediffs.Where(h => h is Hediff_Injury).Sum(h => h.Severity);
-                    hpHealedSoFar = 0f;
+                    selectedPawnAutoRepair = false;
+                    selectedPawnClaimTick = -1;
+                    totalHpToHeal = Mathf.Max(1, Mathf.CeilToInt(p.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(h => h.Severity > 0.001f).Sum(h => h.Severity)));
+                    hpHealedSoFar = 0;
+                    hpHealedFraction = 0f;
                 }
 
                 if (deSpawned) Find.Selector.Select(p, false, false);
@@ -237,9 +522,12 @@ namespace ApexMechanoids
         {
             innerContainer.TryDropAll(InteractionCell, Map, ThingPlaceMode.Near);
             selectedPawn = null;
+            selectedPawnAutoRepair = false;
+            selectedPawnClaimTick = -1;
             startTick = -1;
-            totalHpToHeal = 0f;
-            hpHealedSoFar = 0f;
+            totalHpToHeal = 0;
+            hpHealedSoFar = 0;
+            hpHealedFraction = 0f;
             SoundDefOf.Building_Complete.PlayOneShot(SoundInfo.InMap(this));
         }
 
@@ -255,7 +543,8 @@ namespace ApexMechanoids
                     topGraphic = Config.TopGraphic.Graphic;
                 }
                 Vector3 loc = new Vector3(drawLoc.x, AltitudeLayer.BuildingOnTop.AltitudeFor(), drawLoc.z);
-                topGraphic.Draw(loc, Rotation, this);
+                Rot4 topGraphicRot = Config.TopGraphicFixedRotation ? Rot4.North : Rotation;
+                topGraphic.Draw(loc, topGraphicRot, this);
             }
         }
 
@@ -265,7 +554,7 @@ namespace ApexMechanoids
             if (ContainedMech != null)
             {
                 Vector3 elevated = drawLoc;
-                ContainedMech.Drawer.renderer.DynamicDrawPhaseAt(phase, elevated + PawnDrawOffset, null, neverAimWeapon: true);
+                ContainedMech.Drawer.renderer.DynamicDrawPhaseAt(phase, elevated + PawnDrawOffset, GetHeldPawnBodyFacing(), neverAimWeapon: true);
             }
         }
 
@@ -273,7 +562,7 @@ namespace ApexMechanoids
         {
             foreach (var g in base.GetGizmos()) yield return g;
 
-            if (Prefs.DevMode && Config.ArmsAnimation != null && Config.ArmsAnimation.arms.Count > 0)
+            if (DebugSettings.ShowDevGizmos && Config.ArmsAnimation != null && Config.ArmsAnimation.arms.Count > 0)
             {
                 yield return new Command_Action
                 {
@@ -283,24 +572,43 @@ namespace ApexMechanoids
                         Find.WindowStack.Add(new Dialog_OffsetEditor("Repair Station Offsets", BuildDialogData(), ExportXml));
                     }
                 };
+                yield return new Command_Action
+                {
+                    defaultLabel = "APM_RepairStation_ArmEditor_GizmoLabel".Translate(),
+                    defaultDesc = "APM_RepairStation_ArmEditor_GizmoDesc".Translate(),
+                    action = () =>
+                    {
+                        Find.WindowStack.Add(new Dialog_RepairStationArmEditor(this));
+                    }
+                };
             }
 
-            if (base.Working)
+            if (base.Working || selectedPawn != null)
             {
                 yield return new Command_Action
                 {
                     defaultLabel = "APM_CommandCancelRepair".Translate(),
                     defaultDesc = "APM_CommandCancelRepairDesc".Translate(),
                     icon = CancelIcon,
-                    action = EjectContents,
+                    action = () =>
+                    {
+                        if (base.Working)
+                        {
+                            EjectContents();
+                        }
+                        else
+                        {
+                            ClearQueuedRepair(interruptJob: true);
+                        }
+                    },
                     activateSound = SoundDefOf.Designate_Cancel
                 };
             }
-            else if (selectedPawn == null)
+            else
             {
                 yield return new Command_Action
                 {
-                    defaultLabel = "InsertPerson".Translate() + "...",
+                    defaultLabel = "APM_InsertMech".Translate() + "...",
                     icon = InsertPawnIcon.Texture,
                     action = () =>
                     {
@@ -310,24 +618,28 @@ namespace ApexMechanoids
                             AcceptanceReport report = CanAcceptPawn(p);
                             if (report.Accepted) opts.Add(new FloatMenuOption(p.LabelCap, () => SelectPawn(p), p, Color.white));
                         }
-                        if (!opts.Any()) opts.Add(new FloatMenuOption("NoViablePawns".Translate(), null));
+                        if (!opts.Any()) opts.Add(new FloatMenuOption("APM_NoMechsAvailable".Translate(), null));
                         Find.WindowStack.Add(new FloatMenu(opts));
                     }
                 };
+            }
+
+            if (!base.Working)
+            {
                 yield return new Command_Toggle
                 {
                     defaultLabel = "APM_Gizmo_AutoRepair".Translate(),
                     defaultDesc = "APM_Gizmo_AutoRepair_Desc".Translate(),
-                    icon = ContentFinder<Texture2D>.Get("UI/Commands/TryReconnect"),
+                    icon = ContentFinder<Texture2D>.Get("UI/Gizmos/APM_Repairstation_AutoRepair"),
                     isActive = () => autoRepairEnabled,
                     toggleAction = () => autoRepairEnabled = !autoRepairEnabled
                 };
 
-                if (autoRepairEnabled)
+                if (DebugSettings.ShowDevGizmos)
                 {
                     yield return new Command_Action
                     {
-                        defaultLabel = "APM_Gizmo_SetInterval".Translate(autoRepairIntervalTicks.ToStringTicksToPeriod()),
+                        defaultLabel = "DEV: " + "APM_Gizmo_SetInterval".Translate(autoRepairIntervalTicks.ToStringTicksToPeriod()),
                         action = () =>
                         {
                             int idx = System.Array.IndexOf(IntervalOptions, autoRepairIntervalTicks);
@@ -355,8 +667,11 @@ namespace ApexMechanoids
             Scribe_Values.Look(ref autoRepairEnabled, "autoRepairEnabled", false);
             Scribe_Values.Look(ref autoRepairIntervalTicks, "autoRepairIntervalTicks", 2500);
             Scribe_Values.Look(ref autoRepairTimer, "autoRepairTimer", 0);
-            Scribe_Values.Look(ref totalHpToHeal, "totalHpToHeal", 0f);
-            Scribe_Values.Look(ref hpHealedSoFar, "hpHealedSoFar", 0f);
+            Scribe_Values.Look(ref selectedPawnAutoRepair, "selectedPawnAutoRepair", false);
+            Scribe_Values.Look<int>(ref selectedPawnClaimTick, "selectedPawnClaimTick", -1);
+            Scribe_Values.Look<int>(ref totalHpToHeal, "totalHpToHeal", 0);
+            Scribe_Values.Look<int>(ref hpHealedSoFar, "hpHealedSoFar", 0);
+            Scribe_Values.Look(ref hpHealedFraction, "hpHealedFraction", 0f);
         }
 
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
@@ -371,6 +686,8 @@ namespace ApexMechanoids
                 progressBar.Cleanup();
                 progressBar = null;
             }
+            selectedPawnAutoRepair = false;
+            selectedPawnClaimTick = -1;
             base.DeSpawn(mode);
         }
 
@@ -382,7 +699,7 @@ namespace ApexMechanoids
                 () => Config.MechPositionOffsetEast, v => Config.Props.mechPositionOffsetEast = v,
                 () => Config.MechPositionOffsetSouth, v => Config.Props.mechPositionOffsetSouth = v,
                 () => Config.MechPositionOffsetWest, v => Config.Props.mechPositionOffsetWest = v));
-            
+
             if (Config.ArmsAnimation != null)
             {
                 for (int i = 0; i < Config.ArmsAnimation.arms.Count; i++)
@@ -402,9 +719,12 @@ namespace ApexMechanoids
                     sections.Add(new SectionData("Arm " + i + " Random Reach",
                         () => arm.randomReach, v => arm.randomReach = v,
                         arm.randomReach, -1f, 1f));
+                    sections.Add(new SectionData("Arm " + i + " Random Vertical Reach",
+                        () => arm.randomVerticalReach, v => arm.randomVerticalReach = v,
+                        arm.randomVerticalReach, -1f, 1f));
                 }
             }
-            
+
             return sections;
         }
 
@@ -436,6 +756,14 @@ namespace ApexMechanoids
                 if (arm.randomInterval.HasValue)
                 {
                     sb.AppendLine("                    <randomInterval>" + arm.randomInterval.Value.min + "~" + arm.randomInterval.Value.max + "</randomInterval>");
+                }
+                if (arm.randomReach.HasValue)
+                {
+                    sb.AppendLine("                    <randomReach>" + arm.randomReach.Value.min.ToString("F3") + "~" + arm.randomReach.Value.max.ToString("F3") + "</randomReach>");
+                }
+                if (arm.randomVerticalReach.HasValue)
+                {
+                    sb.AppendLine("                    <randomVerticalReach>" + arm.randomVerticalReach.Value.min.ToString("F3") + "~" + arm.randomVerticalReach.Value.max.ToString("F3") + "</randomVerticalReach>");
                 }
                 sb.AppendLine("                </li>");
             }

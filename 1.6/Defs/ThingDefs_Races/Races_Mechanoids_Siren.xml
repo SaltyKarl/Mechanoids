@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Siren</defName>
 		<label>Siren</label>
 		<description>Taking advantage of the fact that mechanoids have a psychic presence, the siren mechanoid has the ability to lure colonists toward itself, exposing them to the heat of battle. When controlled via a mechanitor, this mech can provide a mood and recreation boost to those nearby.</description>
+		<statBases>
+			<MarketValue>1000</MarketValue>
+			<MoveSpeed>4.3</MoveSpeed>
+			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.4</ArmorRating_Sharp>
+			<ArmorRating_Heat>2.0</ArmorRating_Heat>
+			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">3</BandwidthCost>
+			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.2</MechEnergyLossPerHP>
+		</statBases>
 		<tools>
 			<li>
 				<label>left fist</label>
@@ -41,8 +49,14 @@
 			</li>
 		</tools>
 		<race>
-			<body>APM_Vassal</body>
-			<baseHealthScale>1</baseHealthScale>
+			<body>APM_Siren</body>
+			<baseHealthScale>1.32</baseHealthScale>
+			<baseBodySize>2.5</baseBodySize>
+			<mechWeightClass>Medium</mechWeightClass>
+			<mechEnabledWorkTypes>
+				<li>APM_SirenWarden</li>
+			</mechEnabledWorkTypes>
+			<mechFixedSkillLevel>10</mechFixedSkillLevel>
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>
@@ -56,16 +70,25 @@
 				</li>
 			</detritusLeavings>
 		</race>
-		<statBases>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
-		</statBases>
+		<butcherProducts>
+			<Steel>25</Steel>
+			<Plasteel>15</Plasteel>
+		</butcherProducts>
+		<modExtensions>
+			<li Class="ApexMechanoids.DefModExtension_SearchAndDestroyMech">
+				<disabledAutoUseAbilitiesWhenSearchAndDestroy>
+					<li>APM_Ability_SirenSong</li>
+					<li>APM_Ability_SirenLure</li>
+				</disabledAutoUseAbilitiesWhenSearchAndDestroy>
+			</li>
+		</modExtensions>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Siren</defName>
 		<label>siren</label>
 		<race>APM_Mech_Siren</race>
-		<combatPower>190</combatPower>
+		<combatPower>220</combatPower>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
@@ -75,7 +98,8 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>2</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.5, 0.9, 0.5)</volume>
+						<offset>(0, 0, -0.6)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
@@ -87,24 +111,33 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>2</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.5, 0.9, 0.5)</volume>
+						<offset>(0, 0, -0.6)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
+		<weaponMoney>99999~99999</weaponMoney>
+		<controlGroupPortraitZoom>0.9</controlGroupPortraitZoom>
+		<weaponTags>
+			<li>APM_WeaponSirenChargeEmitter</li>
+		</weaponTags>
 		<abilities>
-			<li>APM_SirenSong</li>
+			<li>APM_Ability_SirenSong</li>
+			<li>APM_Ability_SirenLure</li>
 		</abilities>
 	</PawnKindDef>
 
+	<!-- Abilities -->
 	<AbilityDef>
-		<defName>APM_SirenSong</defName>
+		<defName>APM_Ability_SirenSong</defName>
 		<label>siren's song</label>
 		<description>The Siren emits a pleasant tune that lifts the spirits of nearby organic allies and briefly helps them recover recreation.</description>
 		<iconPath>UI/SirenSong</iconPath>
-		<cooldownTicksRange>900000</cooldownTicksRange> <!-- 15 days -->
+		<cooldownTicksRange>900000</cooldownTicksRange>
+		<!-- 15 days -->
 		<targetRequired>false</targetRequired>
 		<hostile>false</hostile>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
@@ -117,6 +150,7 @@
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
 			<warmupTime>1</warmupTime>
+			<soundCast>APM_SirenSong_Cast</soundCast>
 			<range>12.9</range>
 			<drawAimPie>false</drawAimPie>
 			<targetParams>
@@ -151,6 +185,66 @@
 		</comps>
 	</AbilityDef>
 
+	<AbilityDef>
+		<defName>APM_Ability_SirenLure</defName>
+		<label>Aluring Song</label>
+		<description>Sing a aluring song to compel the target pawn to walk towards the caster.</description>
+		<iconPath>UI/Call</iconPath>
+		<jobDef>CastAbilityOnThingWithoutWeapon</jobDef>
+		<cooldownTicksRange>600</cooldownTicksRange>
+		<hostile>true</hostile>
+		<writeCombatLog>true</writeCombatLog>
+		<aiCanUse>true</aiCanUse>
+		<canUseAoeToGetTargets>false</canUseAoeToGetTargets>
+		<showCastingProgressBar>true</showCastingProgressBar>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<range>29.9</range>
+			<warmupTime>0.5</warmupTime>
+			<requireLineOfSight>False</requireLineOfSight>
+			<soundCast>APM_SirenLure_Cast</soundCast>
+			<targetParams>
+				<canTargetSelf>False</canTargetSelf>
+				<canTargetBuildings>False</canTargetBuildings>
+				<canTargetLocations>False</canTargetLocations>
+				<canTargetAnimals>False</canTargetAnimals>
+				<canTargetMechs>False</canTargetMechs>
+				<onlyTargetPsychicSensitive>true</onlyTargetPsychicSensitive>
+			</targetParams>
+		</verbProperties>
+		<statBases>
+			<Ability_Duration>10</Ability_Duration>
+			<Ability_EffectRadius>0.9</Ability_EffectRadius>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_AbilityForceJob">
+				<compClass>CompAbilityEffect_ForceJob</compClass>
+				<jobDef>GotoMindControlled</jobDef>
+				<destination>Caster</destination>
+				<range>0.9</range>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_SpawnSirenSongNotes">
+				<fleckDef>APM_SirenSongNote</fleckDef>
+				<noteCount>2</noteCount>
+				<extraNoteChance>0.25</extraNoteChance>
+				<spawnIntervalTicks>25</spawnIntervalTicks>
+				<horizontalJitter>0.2</horizontalJitter>
+				<minVerticalOffset>0.3</minVerticalOffset>
+				<maxVerticalOffset>1</maxVerticalOffset>
+				<scaleRange>0.32~0.9</scaleRange>
+				<speedRange>0.52~0.74</speedRange>
+				<velocityAngle>-10~10</velocityAngle>
+				<rotation>0</rotation>
+				<rotationRate>0</rotationRate>
+				<channelJobDef>APM_SirenLureChannel</channelJobDef>
+			</li>
+			<li Class="ApexMechanoids.CompProperties_SirenLureChannel">
+				<jobDef>APM_SirenLureChannel</jobDef>
+			</li>
+		</comps>
+	</AbilityDef>
+
+	<!-- Effects from abilities -->
 	<HediffDef>
 		<defName>APM_Hediff_SirenSong</defName>
 		<label>siren's song</label>
@@ -160,7 +254,7 @@
 			<li Class="HediffCompProperties_Disappears">
 				<showRemainingTime>True</showRemainingTime>
 			</li>
-			<li Class="HediffCompProperties_DisappearsOnDeath" />
+			<li Class="HediffCompProperties_DisappearsOnDeath"></li>
 		</comps>
 		<isBad>false</isBad>
 		<stages>
@@ -178,7 +272,6 @@
 			</li>
 		</stages>
 	</HediffDef>
-
 	<ThoughtDef>
 		<defName>APM_Thought_SirenSong</defName>
 		<workerClass>ThoughtWorker_Hediff</workerClass>
@@ -193,5 +286,4 @@
 			</li>
 		</stages>
 	</ThoughtDef>
-
 </Defs>

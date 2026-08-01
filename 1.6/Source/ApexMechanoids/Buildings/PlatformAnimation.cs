@@ -78,9 +78,7 @@ namespace ApexMechanoids
             float offsetAmount = Mathf.Sin(angle) * (config.animationEnd - config.animationStart);
             Vector3 offset = new Vector3(0, AltitudeLayer.BuildingOnTop.AltitudeFor(), offsetAmount);
             Vector3 worldOffset = offset.RotatedBy(rot);
-            Material material = graphic.MatAt(rot);
-            Mesh mesh = graphic.MeshAt(rot);
-            Graphics.DrawMesh(mesh, Matrix4x4.TRS(drawLoc + worldOffset, rot.AsQuat, Vector3.one), material, 0);
+            graphic.DrawWorker(drawLoc + worldOffset, rot, null, null, 0f);
         }
     }
 }

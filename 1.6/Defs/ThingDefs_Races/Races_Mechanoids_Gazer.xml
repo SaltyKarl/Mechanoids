@@ -5,11 +5,12 @@
     <label>Gazer</label>
     <description>A different application of hellsphere technology resulted in the Gazer, a mechanoid clearly identified by its primary ocular beam emitter. This weapon is strong enough that the gazer must lock itself in place and divert all motor functions to stabilizing itself when firing. Even then, a significant charge time is required. The resultant beam can obliterate anything in front of it, even doing decent damage to structures. When pressed in close quarters, the Gazer can instead discharge the accumulated energy outward as a violent shockwave that hurls attackers back and disrupts nearby mechanized targets.</description>
     <statBases>
-      <MarketValue>1600</MarketValue>
-      <MoveSpeed>0.45</MoveSpeed>
-      <ArmorRating_Blunt>1.2</ArmorRating_Blunt>
-      <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
-      <BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">5</BandwidthCost>
+      <MarketValue>2200</MarketValue>
+      <MoveSpeed>1.6</MoveSpeed>
+      <ArmorRating_Blunt>0.55</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.96</ArmorRating_Sharp>
+      <ArmorRating_Heat>2.0</ArmorRating_Heat>
+      <BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">6</BandwidthCost>
       <ControlTakingTime MayRequire="Ludeon.Rimworld.Biotech">30</ControlTakingTime>
       <ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">1</ToxicEnvironmentResistance>
       <MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.15</MechEnergyLossPerHP>
@@ -48,10 +49,13 @@
         <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
       </li>
     </tools>
+    <killedLeavingsPlayerHostile>
+      <APM_OcularChip>1</APM_OcularChip>
+    </killedLeavingsPlayerHostile>
     <race>
       <body>APM_Gazer</body>
-      <baseBodySize>3</baseBodySize>
-      <baseHealthScale>6.2</baseHealthScale>
+      <baseBodySize>8</baseBodySize>
+      <baseHealthScale>8.42</baseHealthScale>
       <thinkTreeMain>Mechanoid</thinkTreeMain>
       <intelligence>ToolUser</intelligence>
       <mechWeightClass>UltraHeavy</mechWeightClass>
@@ -88,12 +92,26 @@
         <minHostilesToTrigger>2</minHostilesToTrigger>
       </li>
     </comps>
+    <modExtensions>
+			<li Class="ApexMechanoids.DefModExtension_SearchAndDestroyMech">
+				<disabledAutoUseAbilitiesWhenSearchAndDestroy>
+					<li>APM_SunRay</li>
+					<li>APM_Shockwave</li>
+				</disabledAutoUseAbilitiesWhenSearchAndDestroy>
+			</li>
+		</modExtensions>
   </ThingDef>
+
   <PawnKindDef ParentName="BaseMechanoidKind">
     <defName>APM_Mech_Gazer</defName>
     <label>gazer</label>
     <race>APM_Mech_Gazer</race>
-    <combatPower>550</combatPower>
+    <combatPower>750</combatPower>
+    <isGoodBreacher>true</isGoodBreacher> 
+    <maxPerGroup>3</maxPerGroup>
+    <isBoss>true</isBoss>
+  	<allowInMechClusters>false</allowInMechClusters>
+    <skipResistant>true</skipResistant>
     <maxPerGroup MayRequire="Ludeon.Rimworld.Biotech">2</maxPerGroup>
     <controlGroupPortraitZoom MayRequire="Ludeon.Rimworld.Biotech">0.48</controlGroupPortraitZoom>
     <lifeStages>
@@ -103,10 +121,11 @@
           <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Gazer/Mech_Gazer</maskPath>
           <shaderType>CutoutWithOverlay</shaderType>
           <graphicClass>Graphic_Multi</graphicClass>
-          <drawSize>3</drawSize>
+          <drawSize>3.5</drawSize>
           <shadowData>
-            <volume>(0.4, 0.8, 0.4)</volume>
-          </shadowData>
+						<volume>(1, 1.5, 1)</volume>
+						<offset>(0, 0, -0.3)</offset>
+					</shadowData>
         </bodyGraphicData>
       </li>
       <li>
@@ -117,12 +136,14 @@
           <graphicClass>Graphic_Multi</graphicClass>
           <drawSize>3</drawSize>
           <shadowData>
-            <volume>(0.4, 0.8, 0.4)</volume>
-          </shadowData>
+						<volume>(1, 1.5, 1)</volume>
+						<offset>(0, 0, -0.3)</offset>
+					</shadowData>
         </bodyGraphicData>
       </li>
     </lifeStages>
     <weaponMoney>99999~99999</weaponMoney>
+    <controlGroupPortraitZoom>0.70</controlGroupPortraitZoom>
     <weaponTags Inherit="False">
       <li>APM_WeaponGazerLaser</li>
     </weaponTags>

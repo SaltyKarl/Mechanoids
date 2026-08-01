@@ -2,6 +2,7 @@ using RimWorld;
 using System.Collections.Generic;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 
 namespace ApexMechanoids
 {
@@ -20,6 +21,10 @@ namespace ApexMechanoids
         public float activationFlashScale = 0.8f;
         public EffecterDef impactEffecterDef;
         public float impactFlashScale = 2.1f;
+        public SoundDef flightSustainSoundDef;
+        public SoundDef activationSoundDef;
+        public SoundDef arcStrikeSoundDef;
+        public SoundDef impactSoundDef;
         public int totalArcStrikeBudget = 60;
         public int maxLifetimeTicks = 500;
         public float orbSpinDegreesPerTick = 2.4f;
@@ -46,6 +51,7 @@ namespace ApexMechanoids
         private Dictionary<int, Material[]> orbFrameFadedMaterials;
         private Vector3 launchOrigin;
         private Vector3 finalDestination;
+        private Sustainer flightSustainer;
 
         private DefModExtension_Orb Props => def.GetModExtension<DefModExtension_Orb>();
 
@@ -91,6 +97,8 @@ namespace ApexMechanoids
                 Destroy(DestroyMode.Vanish);
                 return;
             }
+
+            MaintainFlightSustainer(props);
 
             if (!plasmaActivated)
             {
@@ -277,6 +285,7 @@ namespace ApexMechanoids
         private void StrikeTarget(Thing target, DefModExtension_Orb props)
         {
             SpawnLightningOverlay(target, props);
+            PlaySoundAt(props.arcStrikeSoundDef, target.PositionHeld);
             ApplyArcDamage(target, props, 1f);
             ApplyCollateralDamage(target, props);
             remainingArcStrikes--;
@@ -321,6 +330,7 @@ namespace ApexMechanoids
 
         private void SpawnActivationVisuals(DefModExtension_Orb props)
         {
+            PlaySoundAt(props.activationSoundDef, PositionHeld);
             FleckMaker.ThrowLightningGlow(ExactPosition, Map, props.activationFlashScale);
             if (Rand.Chance(0.6f))
             {
@@ -336,6 +346,8 @@ namespace ApexMechanoids
                 return;
             }
 
+            PlaySoundAt(props.impactSoundDef, PositionHeld);
+
             if (props.impactEffecterDef != null)
             {
                 Effecter effecter = props.impactEffecterDef.Spawn(PositionHeld, Map);
@@ -348,6 +360,31 @@ namespace ApexMechanoids
 
             FleckMaker.Static(ExactPosition, Map, FleckDefOf.ExplosionFlash, props.impactFlashScale);
             FleckMaker.ThrowLightningGlow(ExactPosition, Map, props.impactFlashScale * 0.55f);
+        }
+
+        private void MaintainFlightSustainer(DefModExtension_Orb props)
+        {
+            if (props.flightSustainSoundDef == null || Map == null)
+            {
+                return;
+            }
+
+            if (flightSustainer == null)
+            {
+                flightSustainer = props.flightSustainSoundDef.TrySpawnSustainer(SoundInfo.InMap(this, MaintenanceType.PerTick));
+            }
+
+            flightSustainer?.Maintain();
+        }
+
+        private void PlaySoundAt(SoundDef soundDef, IntVec3 cell)
+        {
+            if (soundDef == null || Map == null || !cell.InBounds(Map))
+            {
+                return;
+            }
+
+            soundDef.PlayOneShot(SoundInfo.InMap(new TargetInfo(cell, Map)));
         }
 
         private void DestroyWithImpactVisuals()

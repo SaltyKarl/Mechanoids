@@ -1,4 +1,4 @@
-﻿using Verse;
+using Verse;
 using Verse.AI;
 using RimWorld;
 
@@ -10,12 +10,16 @@ namespace ApexMechanoids
 
         public override bool ShouldSkip(Pawn pawn, bool forced = false)
         {
-            return !pawn.RaceProps.IsMechanoid;
+            if (!pawn.RaceProps.IsMechanoid) return true;
+            if (pawn.Faction != Faction.OfPlayer) return true;
+            return false;
         }
 
         public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
-            if (!(t is Building_RepairStation)) return false;
+            if (!(t is Building_RepairStation station)) return false;
+            if (station.SelectedPawn != pawn) return false;
+
             return base.HasJobOnThing(pawn, t, forced);
         }
     }

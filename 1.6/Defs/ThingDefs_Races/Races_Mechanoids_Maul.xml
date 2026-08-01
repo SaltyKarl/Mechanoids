@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef Name="APM_Mech_Maul" ParentName="BaseMechanoidWalker">
 		<defName>APM_Mech_Maul</defName>
 		<label>Maul</label>
-		<description>TBD</description>
+		<description>The maul is the mechhive’s core tenet made machine, to crush and overwhelm. Impervious to small arms, this mechanoid is the bane of infantry, light vehicles, and outer defense emplacements. It is intelligent enough to know when it isn’t on the upper hand, and will continuously overclock and overheat its weapon until the job is done as it takes damage.</description>
 		<statBases>
-			<MoveSpeed>4.2</MoveSpeed>
-			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.6</ArmorRating_Sharp>
+			<MarketValue>1400</MarketValue>
+			<MoveSpeed>2.1</MoveSpeed>
+			<ArmorRating_Blunt>0.30</ArmorRating_Blunt> 
+			<ArmorRating_Sharp>0.72</ArmorRating_Sharp>
+			<ArmorRating_Heat>2.0</ArmorRating_Heat>
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">4</BandwidthCost>
+			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.2</MechEnergyLossPerHP>
 		</statBases>
 		<tools>
 			<li>
@@ -18,8 +20,8 @@
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>20.0</power>
-				<cooldownTime>2</cooldownTime>
+				<power>12.0</power>
+				<cooldownTime>2.0</cooldownTime>
 				<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
 				<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
 			</li>
@@ -29,8 +31,8 @@
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>20.0</power>
-				<cooldownTime>2</cooldownTime>
+				<power>12.0</power>
+				<cooldownTime>2.0</cooldownTime>
 				<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
 				<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
 			</li>
@@ -39,17 +41,18 @@
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>10.0</power>
-				<cooldownTime>2</cooldownTime>
+				<power>12.0</power>
+				<cooldownTime>2.0</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
 				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
 				<chanceFactor>0.2</chanceFactor>
 			</li>
 		</tools>
 		<race>
-			<body>Lancer</body>
-			<baseBodySize>2.0</baseBodySize>
-			<baseHealthScale>3.5</baseHealthScale>
+			<body>APM_Maul</body>
+			<baseBodySize>3.5</baseBodySize>
+			<baseHealthScale>3.82</baseHealthScale>
+			<mechWeightClass>Heavy</mechWeightClass>
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>
@@ -67,13 +70,20 @@
 			<li Class="ApexMechanoids.CompProperties_StatFactorsFromHealth">
 				<statFactors>
 					<li>
+						<stat>MeleeCooldownFactor</stat>
+						<curve>
+							<points>
+								<li>(0.0, 0.67)</li>
+								<li>(1.0, 1.00)</li>
+							</points>
+						</curve>
+					</li>
+					<li>
 						<stat>RangedCooldownFactor</stat>
 						<curve>
 							<points>
-								<li>(0, 0.25)</li>
-								<li>(0.5, 0.5)</li>
-								<li>(1.0, 1)</li>
-								<li>(2.0, 2)</li>
+								<li>(0.0, 0.67)</li>  
+								<li>(1.0, 1.00)</li>
 							</points>
 						</curve>
 					</li>
@@ -81,19 +91,17 @@
 						<stat>AimingDelayFactor</stat>
 						<curve>
 							<points>
-								<li>(0, 0.25)</li>
-								<li>(0.5, 0.5)</li>
-								<li>(1.0, 1)</li>
-								<li>(2.0, 2)</li>
+								<li>(0.0, 0.67)</li>  
+								<li>(1.0, 1.00)</li>
 							</points>
 						</curve>
 					</li>
 				</statFactors>
 			</li>
-		</comps>		
+		</comps>
 		<butcherProducts>
-			<Steel>20</Steel>
-			<Plasteel>5</Plasteel>
+			<Steel>60</Steel>
+			<Plasteel>25</Plasteel>
 		</butcherProducts>
 	</ThingDef>
 
@@ -101,7 +109,7 @@
 		<defName>APM_Mech_Maul</defName>
 		<label>maul</label>
 		<race>APM_Mech_Maul</race>
-		<combatPower>190</combatPower>
+		<combatPower>480</combatPower>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
@@ -111,7 +119,8 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>2.5</drawSize>
 					<shadowData>
-						<volume>(0.5, 0.8, 0.5)</volume>
+						<volume>(0.8, 1.5, 0.8)</volume>
+						<offset>(0, 0, -0.6)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
@@ -123,7 +132,8 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>2.5</drawSize>
 					<shadowData>
-						<volume>(0.5, 0.8, 0.5)</volume>
+						<volume>(0.8, 1.5, 0.8)</volume>
+						<offset>(0, 0, -0.6)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
@@ -134,10 +144,6 @@
 		</weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
-		<controlGroupPortraitZoom>0.8</controlGroupPortraitZoom>
-		<abilities>
-
-		</abilities>
+		<controlGroupPortraitZoom>0.9</controlGroupPortraitZoom>
 	</PawnKindDef>
-
 </Defs>

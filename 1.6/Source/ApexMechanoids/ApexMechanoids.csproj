@@ -24,7 +24,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4633" GeneratePathProperty="true" />
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4871" GeneratePathProperty="true" />
     <PackageReference Include="Lib.Harmony" Version="2.4.2" ExcludeAssets="runtime">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>compile</IncludeAssets>
@@ -36,6 +36,10 @@
   <ItemGroup>
     <Reference Include="VEF">
       <HintPath>.\ReferenceAssembly\VEF-reference.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+	 <Reference Include="PipeSystem">
+      <HintPath>.\ReferenceAssembly\PipeSystem.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

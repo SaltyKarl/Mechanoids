@@ -16,29 +16,41 @@ namespace ApexMechanoids
         public CompProperties_MechanitorRangeExtender Props => (CompProperties_MechanitorRangeExtender)props;
         private Pawn Pawn => parent as Pawn;
 
-        private float cachedDistance;
-
         public float currentRange;
 
-        public float SquaredDistance => cachedDistance == 0f ? GetCacheDistance() : cachedDistance;
+        public float SquaredDistance => GetEffectiveSquaredDistance();
 
-        private float GetCacheDistance() => cachedDistance = Mathf.Pow(currentRange, 2f);
-
-        public override void PostDraw()
+        private float GetEffectiveSquaredDistance()
         {
-            base.PostDraw();
-            if (!Pawn.Drafted) return;
-            Pawn overseer = Pawn.GetOverseer();
-            if (overseer == null) return;
-            if (overseer.MapHeld == Pawn.MapHeld)
+            float range = GetEffectiveRange();
+            if (range <= 0f) return 0f;
+            return range * range;
+        }
+
+        public float GetEffectiveRange()
+        {
+            Pawn pawn = Pawn;
+            Pawn overseer = pawn?.GetOverseer();
+            if (overseer == null)
             {
-                currentRange = Props.maxRange;
+                currentRange = 0f;
+                return 0f;
             }
-            else if (!overseer.Spawned)
+
+            currentRange = overseer.MapHeld == pawn.MapHeld ? Props.maxRange : Props.minRange;
+            return currentRange;
+        }
+
+        public override void PostDrawExtraSelectionOverlays()
+        {
+            base.PostDrawExtraSelectionOverlays();
+            Pawn pawn = Pawn;
+            if (pawn == null || !pawn.Drafted) return;
+            float range = GetEffectiveRange();
+            if (range > 0f)
             {
-                currentRange = Props.minRange;
+                GenDraw.DrawRadiusRing(parent.Position, range, Color.cyan);
             }
-            GenDraw.DrawRadiusRing(parent.Position, currentRange, Color.cyan);
         }
     }
 }

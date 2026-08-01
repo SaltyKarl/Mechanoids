@@ -1,4 +1,4 @@
-﻿using RimWorld;
+using RimWorld;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -42,12 +42,9 @@ namespace ApexMechanoids
 				zeroPos = false;
 			}
 			direction = Target.CenterVector3 - exactPos;
-			Log.Message(direction.ToString());
-			direction = direction.normalized;
-			Log.Message(direction.ToString());
-			direction = direction.Yto0() * moveSpeed;
-			base.Notify_Starting();
-			Log.Message(direction.ToString());
+				direction = direction.normalized;
+				direction = direction.Yto0();
+				base.Notify_Starting();
 		}
 
 		public override IEnumerable<Toil> MakeNewToils()
@@ -57,7 +54,7 @@ namespace ApexMechanoids
 			{
 				toil1.actor.rotationTracker.FaceCell(Target.Cell);
 				IntVec3 pos1 = exactPos.ToIntVec3();
-				exactPos += direction;
+				exactPos += direction * moveSpeed;
 				IntVec3 pos2 = exactPos.ToIntVec3();
 				if (pos1 != pos2)
 				{
@@ -85,7 +82,12 @@ namespace ApexMechanoids
 
 		protected virtual void TryEnterNextPathCell(Pawn pawn, IntVec3 nextCell)
 		{
-			if(Mathf.DeltaAngle((Target.CenterVector3 - exactPos).AngleFlat(), direction.AngleFlat()) > 60f || Target.Cell.DistanceTo(pawn.Position) <= 1.1f)
+			if (nextCell.GetEdificeSafe(pawn.Map)?.def.Fillage == FillCategory.Full)
+			{
+				pawn.jobs.curDriver.ReadyForNextToil();
+				return;
+			}
+			if (Mathf.DeltaAngle((Target.CenterVector3 - exactPos).AngleFlat(), direction.AngleFlat()) > 60f || Target.Cell.DistanceTo(pawn.Position) <= 1.1f)
 			{
 				pawn.Position = TargetA.Cell;
 				pawn.jobs.curDriver.ReadyForNextToil();
@@ -132,10 +134,11 @@ namespace ApexMechanoids
 			{
 				foreach(Thing t in cell.GetThingList(pawn.Map).ToList())
 				{
-					if(t != pawn)
+					if (t == pawn || (t.Faction != null && !t.HostileTo(pawn) && t != TargetThingB))
 					{
-						t.TakeDamage(dinfo);
+						continue;
 					}
+					t.TakeDamage(dinfo);
 				}
 			}
 		}

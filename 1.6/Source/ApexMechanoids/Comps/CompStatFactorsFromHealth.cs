@@ -114,14 +114,13 @@ namespace ApexMechanoids
 			foreach(CompProperties_StatFactorsFromHealth.StatFactorFromHealth item in Props.statFactors)
 			{
 				if(item.stat == null)
-				{
-					Log.Error("E");
-				}
+					{
+						Log.Error("[ApexMechanoids] CompStatFactorsFromHealth: statFactor has null stat def.");
+					}
 				if(item.stat == stat)
 				{
 					float num2 = Pawn.health.summaryHealth.SummaryHealthPercent;
 					num = item.curve.Evaluate(num2);
-					Log.Warning(num2.ToStringPercentEmptyZero() + "/" +num.ToStringPercentEmptyZero() + "/" + item.curve.Evaluate(0.1f));
 					return num;
 				}
 			}

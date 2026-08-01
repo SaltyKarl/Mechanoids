@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <ThingDef ParentName="BuildingBase">
+	<ThingDef ParentName="BuildingBase">
   <defName>APM_GazerEmplacement</defName>
   <label>gazer emplacement</label>
   <description>A reinforced fixed laser emplacement built around a salvaged Gazer ocular emitter. It cannot traverse after deployment. When manually aimed within its frontal firing arc, it releases the same devastating Sun Ray beam used by a Gazer and burns through everything caught in its path, at an extreme power cost.</description>
@@ -10,6 +10,10 @@
     <texPath>Things/Building/GazerEmplacement/GazerEmplacement</texPath>
     <graphicClass>Graphic_Multi</graphicClass>
     <drawSize>4</drawSize>
+    <shadowData>
+      <volume>(1.6, 1.5, 2.8)</volume>
+      <offset>(0, 0, 0)</offset>
+    </shadowData>
   </graphicData>
   <uiIconPath>Things/Building/GazerEmplacement/GazerEmplacement_north</uiIconPath>
   <uiIconScale>0.95</uiIconScale>
@@ -34,16 +38,18 @@
   <uiOrder>2452</uiOrder>
   <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
   <costList>
-    <Steel>100</Steel>
+    <Steel>250</Steel>
+    <Plasteel>100</Plasteel>
+    <APM_OcularChip>1</APM_OcularChip>
   </costList>
   <researchPrerequisites>
-    <li>ApexMechtech</li>
+    <li>AdvancedMechtech</li>
   </researchPrerequisites>
   <statBases>
     <MaxHitPoints>400</MaxHitPoints>
     <Flammability>0</Flammability>
     <WorkToBuild>4000</WorkToBuild>
-    <Mass>120</Mass>
+    <Mass>220</Mass>
     <Beauty>-18</Beauty>
   </statBases>
   <comps>
@@ -80,10 +86,12 @@
     <combatPower>260</combatPower>
     <ai_combatDangerous>true</ai_combatDangerous>
     <ai_chillDestination>false</ai_chillDestination>
+    <forcedCostLeavings>
+      <li>APM_OcularChip</li>
+    </forcedCostLeavings>
     <buildingTags>
       <li>Biotech</li>
       <li>Artillery</li>
-      <li>Artillery_BaseDestroyer</li>
     </buildingTags>
   </building>
   <modExtensions>
@@ -91,6 +99,7 @@
       <firingArcHalfAngle>18</firingArcHalfAngle>
       <firingPowerConsumption>20000</firingPowerConsumption>
       <cooldownTicks>2400</cooldownTicks>
+      <minRange>1</minRange>
     </li>
   </modExtensions>
 </ThingDef>

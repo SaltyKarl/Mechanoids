@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef Abstract="True" Name="APM_Mech_ConquerorBase" ParentName="BaseMechanoidWalker">
+		<statBases>
+			<MarketValue>900</MarketValue>
+			<MoveSpeed>4.3</MoveSpeed>
+			<ArmorRating_Blunt>0.24</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.50</ArmorRating_Sharp>
+			<BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">2</BandwidthCost>
+			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.20</MechEnergyLossPerHP>
+			<EMPResistance MayRequire="Ludeon.Rimworld.Biotech">0.45</EMPResistance>
+		</statBases>
 		<tools>
 			<li>
 				<label>left fist</label>
@@ -9,7 +17,7 @@
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>12.0</power>
+				<power>10.0</power>
 				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
 				<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
@@ -20,7 +28,7 @@
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>12.0</power>
+				<power>10.0</power>
 				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
 				<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
@@ -30,7 +38,7 @@
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>8.5</power>
+				<power>5</power>
 				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
 				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
@@ -40,6 +48,9 @@
 		<race>
 			<body>APM_Conqueror</body>
 			<baseHealthScale>1</baseHealthScale>
+			<baseBodySize>1.5</baseBodySize>
+			<thinkTreeMain>Mechanoid</thinkTreeMain>
+			<intelligence>ToolUser</intelligence>
 			<detritusLeavings>
 				<li>
 					<def>ChunkMechanoidSlag</def>
@@ -53,20 +64,47 @@
 				</li>
 			</detritusLeavings>
 		</race>
-		<statBases>
-			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
-		</statBases>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_Unity">
+				<kindDefs>
+					<li>APM_Mech_Conqueror_DMR</li>
+					<li>APM_Mech_Conqueror_AR</li>
+					<li>APM_Mech_Conqueror_LMG</li>
+				</kindDefs>
+				<hediff>APM_Hediff_Unity</hediff>
+				<checkInterval>250</checkInterval>
+				<severityPerAlly>0.1</severityPerAlly>
+				<maxSeverity>1.0</maxSeverity>
+				<!-- 0 = mapwide; other positive integer numbers indicate the tile radius -->
+				<range>0</range>
+			</li>
+		</comps>
+		<modExtensions>
+			<li Class="ApexMechanoids.DefModExtension_SearchAndDestroyMech">
+				<disabledAutoUseAbilitiesWhenSearchAndDestroy>
+					<li>APM_UltimateSacrifice</li>
+				</disabledAutoUseAbilitiesWhenSearchAndDestroy>
+			</li>
+		</modExtensions>
+		<butcherProducts>
+			<Steel>20</Steel>
+			<Plasteel>5</Plasteel>
+		</butcherProducts>
 	</ThingDef>
 
 	<ThingDef ParentName="APM_Mech_ConquerorBase">
 		<defName>APM_Mech_Conqueror_DMR</defName>
-		<label>DMR Conqueror</label>
+		<label>carabine conqueror</label>
 		<description>The conqueror is an all around infantry mechanoid created to balance out the specializations of the existing scyther and lancer type mechanoids. They have additional strength in numbers though, their systems able to link between other allied conquerors in range, increasing their processing power and in turn, their effectiveness together. Additionally, one unit in a group can choose to overclock their shared processing unit, giving nearby conquerors a larger boost, at the cost of entirely frying the overlocked unit’s physical components.\nThis one is armed with a highly powered Charge Carbine.</description>
+		<statBases>
+			<ArmorRating_Blunt>0.22</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+		</statBases>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Conqueror_DMR</defName>
-		<label>DMR conqueror</label>
+		<label>carabine conqueror</label>
 		<race>APM_Mech_Conqueror_DMR</race>
 		<combatPower>190</combatPower>
 		<lifeStages>
@@ -78,7 +116,8 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>1.5</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.5, 0.8, 0.5)</volume>
+						<offset>(0, 0, -0.4)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
@@ -90,12 +129,14 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>1.5</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.5, 0.8, 0.5)</volume>
+						<offset>(0, 0, -0.4)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
 		<weaponMoney>9999~9999</weaponMoney>
+		<controlGroupPortraitZoom>1</controlGroupPortraitZoom>
 		<weaponTags>
 			<li>APM_WeaponConquerorDMR</li>
 		</weaponTags>
@@ -108,13 +149,13 @@
 
 	<ThingDef ParentName="APM_Mech_ConquerorBase">
 		<defName>APM_Mech_Conqueror_AR</defName>
-		<label>AR Conqueror</label>
+		<label>blaster conqueror</label>
 		<description>The conqueror is an all around infantry mechanoid created to balance out the specializations of the existing scyther and lancer type mechanoids. They have additional strength in numbers though, their systems able to link between other allied conquerors in range, increasing their processing power and in turn, their effectiveness together. Additionally, one unit in a group can choose to overclock their shared processing unit, giving nearby conquerors a larger boost, at the cost of entirely frying the overlocked unit’s physical components.\nThis one is armed with a powerful Charge Blaster.</description>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Conqueror_AR</defName>
-		<label>AR onqueror</label>
+		<label>blaster conqueror</label>
 		<race>APM_Mech_Conqueror_AR</race>
 		<combatPower>190</combatPower>
 		<lifeStages>
@@ -126,7 +167,8 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>1.5</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.5, 0.8, 0.5)</volume>
+						<offset>(0, 0, -0.4)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
@@ -138,12 +180,14 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>1.5</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.5, 0.8, 0.5)</volume>
+						<offset>(0, 0, -0.4)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
 		<weaponMoney>9999~9999</weaponMoney>
+		<controlGroupPortraitZoom>1</controlGroupPortraitZoom>
 		<weaponTags>
 			<li>APM_WeaponConquerorAR</li>
 		</weaponTags>
@@ -156,13 +200,17 @@
 
 	<ThingDef ParentName="APM_Mech_ConquerorBase">
 		<defName>APM_Mech_Conqueror_LMG</defName>
-		<label>LMG Conqueror</label>
+		<label>spitter conqueror</label>
 		<description>The conqueror is an all around infantry mechanoid created to balance out the specializations of the existing scyther and lancer type mechanoids. They have additional strength in numbers though, their systems able to link between other allied conquerors in range, increasing their processing power and in turn, their effectiveness together. Additionally, one unit in a group can choose to overclock their shared processing unit, giving nearby conquerors a larger boost, at the cost of entirely frying the overlocked unit’s physical components.\nThis one is armed with a powerful Charge Spitter.</description>
+		<statBases>
+			<ArmorRating_Blunt>0.28</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.55</ArmorRating_Sharp>
+		</statBases>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Conqueror_LMG</defName>
-		<label>LMG conqueror</label>
+		<label>spitter conqueror</label>
 		<race>APM_Mech_Conqueror_LMG</race>
 		<combatPower>190</combatPower>
 		<lifeStages>
@@ -174,7 +222,8 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>1.5</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.5, 0.8, 0.5)</volume>
+						<offset>(0, 0, -0.4)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
@@ -186,12 +235,14 @@
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>1.5</drawSize>
 					<shadowData>
-						<volume>(0.4, 0.8, 0.4)</volume>
+						<volume>(0.5, 0.8, 0.5)</volume>
+						<offset>(0, 0, -0.4)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
 		<weaponMoney>9999~9999</weaponMoney>
+		<controlGroupPortraitZoom>1</controlGroupPortraitZoom>
 		<weaponTags>
 			<li>APM_WeaponConquerorLMG</li>
 		</weaponTags>
@@ -205,23 +256,26 @@
 	<AbilityDef>
 		<defName>APM_UltimateSacrifice</defName>
 		<label>ultimate sacrifice</label>
-		<description>One conqueror can sacrifice himself to give a powerful buff to all allied conquerors in radius</description>
+		<description>By rapidly performing complex aiming, movement and logic calculations until its processing units liquify from the heat, this mechanoid grants its nearby allies a temporary stat buff</description>
 		<iconPath>UI/Sacrifice</iconPath>
-		<cooldownTicksRange>900000</cooldownTicksRange><!-- 15 days -->
+		<cooldownTicksRange>900000</cooldownTicksRange>
 		<targetRequired>false</targetRequired>
 		<hostile>false</hostile>
 		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
 		<canUseAoeToGetTargets>true</canUseAoeToGetTargets>
 		<showCastingProgressBar>true</showCastingProgressBar>
+		<warmupMote>APM_Mote_UltimateSacrifice_Pilar</warmupMote>
+		<warmupEffecter>APM_UltitmateSacrifice</warmupEffecter>
 		<statBases>
 			<Ability_EffectRadius>12</Ability_EffectRadius>
 			<Ability_Duration>150</Ability_Duration>
 		</statBases>
 		<verbProperties>
 			<verbClass>Verb_CastAbility</verbClass>
-			<warmupTime>1</warmupTime>
+			<warmupTime>5</warmupTime>
 			<range>12.9</range>
 			<drawAimPie>false</drawAimPie>
+			<soundCast>APM_UltimateSacrifice</soundCast>
 			<targetParams>
 				<canTargetSelf>true</canTargetSelf>
 			</targetParams>
@@ -236,13 +290,17 @@
 			<li Class="ApexMechanoids.CompProperties_KillCaster">
 				<destroy>false</destroy>
 			</li>
+			<li Class="ApexMechanoids.CompProperties_AbilityWarmupMote">
+				<moteDef>APM_Mote_UltimateSacrifice_Wave</moteDef>
+				<rotation>3</rotation>
+			</li>
 		</comps>
 	</AbilityDef>
 
 	<HediffDef>
 		<defName>APM_Hediff_UltimateSacrifice</defName>
 		<label>ultimate sacrifice</label>
-		<description>Ultimate Sacrifice - One conqueror can sacrifice himself to give a powerful buff to all allied conquerors in radius.</description>
+		<description>Ultimate Sacrifice - One conqueror sacrifice himself to give a powerful buff to all allied conquerors in radius.</description>
 		<hediffClass>HediffWithComps</hediffClass>
 		<comps>
 			<li Class="HediffCompProperties_Disappears">
@@ -267,5 +325,4 @@
 			</li>
 		</stages>
 	</HediffDef>
-
 </Defs>

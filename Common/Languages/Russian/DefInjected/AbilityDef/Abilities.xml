@@ -63,4 +63,7 @@
   on enemies. The tinker will be focused on projecting the shield. -->
   <APM_DefenceMatrix.description>Удалённо спроецировать персональный защитный щит на дружественного персонажа. Щит останавливает входящий урон, но при этом не позволяет вести огонь изнутри. Это может быть полезно, даже если щит наложен на врага. При этом Мастер при этом будет полностью сосредоточен на поддержании щита.</APM_DefenceMatrix.description>
 
+  <APM_DefenceMatrix.label>Защитная матрица</APM_DefenceMatrix.label>
+  <APM_DefenceMatrix.description>Создать персональный защитный щит на пешке своей фракции. Щит блокирует входящий урон и не даёт цели стрелять наружу.</APM_DefenceMatrix.description>
+
 </LanguageData>

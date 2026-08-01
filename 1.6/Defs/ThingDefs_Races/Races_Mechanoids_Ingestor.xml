@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef Name="APM_Mech_Ingestor" ParentName="MechCentipede">
 		<defName>APM_Mech_Ingestor</defName>
 		<label>Ingestor</label>
 		<description>While mechtech devices typically rely on internal power cells, provided electricity and incendiary fuel are still needed. The ingestor scourers the remains of battlefields for survivors to finish off and organic material including corpses, to automatically refine into chemfuel within its chassis.</description>
 		<statBases>
-			<MoveSpeed>2.2</MoveSpeed>
+			<MarketValue>1600</MarketValue>
+			<MoveSpeed>1.9</MoveSpeed>
+			<ArmorRating_Blunt>0.30</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.80</ArmorRating_Sharp>
+			<ArmorRating_Heat>2.0</ArmorRating_Heat>
 			<BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">3</BandwidthCost>
+			<MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.2</MechEnergyLossPerHP>
 		</statBases>
 		<tools Inherit="False">
 			<li>
@@ -15,8 +19,8 @@
 				<capacities>
 					<li>Bite</li>
 				</capacities>
-				<power>15</power>
-				<cooldownTime>2</cooldownTime>
+				<power>25</power>
+				<cooldownTime>3.2</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
 				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
 			</li>
@@ -33,49 +37,80 @@
 			</li>
 		</tools>
 		<race>
-			<baseHealthScale>3.0</baseHealthScale>
+			<body>APM_Ingestor</body>
+			<renderTree>APM_RenderTree_Ingestor</renderTree>
+			<thinkTreeMain>APM_IngestorMechanoid</thinkTreeMain>
+			<baseHealthScale>4.32</baseHealthScale>
+			<mechWeightClass>UltraHeavy</mechWeightClass>
+			<mechEnabledWorkTypes>
+				<li>APM_IngestorCorpseProcessing</li>
+			</mechEnabledWorkTypes>
+			<mechWorkTypePriorities>
+				<APM_IngestorCorpseProcessing>2</APM_IngestorCorpseProcessing>
+			</mechWorkTypePriorities>
 		</race>
+		<comps>
+			<li Class="ApexMechanoids.CompProperties_IngestorAbsorbSettings">
+				<stripIconPath>UI/Ingestor/StripMode</stripIconPath>
+				<processModeIconPath>UI/Ingestor/ProcessMode</processModeIconPath>
+				<markIconPath>UI/Ingestor/MarkCorpse</markIconPath>
+			</li>
+		</comps>
+		<butcherProducts>
+			<Steel>45</Steel>
+			<Plasteel>25</Plasteel>
+		</butcherProducts>
+		<modExtensions>
+			<li Class="ApexMechanoids.DefModExtension_AnimationOnAttack">
+				<animation>APM_EatingIngestorOneLoop</animation>
+				<maneuver>Bite</maneuver>
+			</li>
+			<li Class="ApexMechanoids.DefModExtension_SearchAndDestroyMech">
+				<disabledAutoUseAbilitiesWhenSearchAndDestroy>
+					<li>APM_Absorb</li>
+				</disabledAutoUseAbilitiesWhenSearchAndDestroy>
+			</li>
+		</modExtensions>
 	</ThingDef>
 
 	<PawnKindDef ParentName="BaseMechanoidKind">
 		<defName>APM_Mech_Ingestor</defName>
 		<label>ingestor</label>
 		<race>APM_Mech_Ingestor</race>
-		<combatPower>250</combatPower>
+		<combatPower>320</combatPower>
 		<lifeStages>
 			<li MayRequire="Ludeon.RimWorld.Biotech">
 				<bodyGraphicData>
-					<texPath>Things/Pawn/Mechanoid/Ingestor/Closed/IngestorC</texPath><!-- Only the Closed variant, what about Opened? -->
-					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Ingestor/Closed/Mech_IngestorC</maskPath>
+					<texPath>Things/Pawn/Mechanoid/Ingestor/Ingestor</texPath>
+					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Ingestor/Mech_Ingestor</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>3</drawSize>
 					<shadowData>
-						<volume>(0.6, 0.8, 0.6)</volume>
+						<volume>(1, 1.5, 1)</volume>
+						<offset>(0, 0, -0.3)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
-					<texPath>Things/Pawn/Mechanoid/Ingestor/Closed/IngestorCAncient</texPath><!-- Only the Closed variant, what about Opened? -->
-					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Ingestor/Closed/Mech_IngestorC</maskPath>
+					<texPath>Things/Pawn/Mechanoid/Ingestor/IngestorAncient</texPath>
+					<maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Ingestor/Mech_Ingestor</maskPath>
 					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>3</drawSize>
 					<shadowData>
-						<volume>(0.6, 0.8, 0.6)</volume>
+						<volume>(1, 1.5, 1)</volume>
+						<offset>(0, 0, -0.3)</offset>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-		<weaponMoney>9999~9999</weaponMoney>
-		<weaponTags></weaponTags>
 		<techHediffsChance>1</techHediffsChance>
 		<techHediffsMoney>9999~9999</techHediffsMoney>
-		<controlGroupPortraitZoom>0.65</controlGroupPortraitZoom>
+		<controlGroupPortraitZoom>0.75</controlGroupPortraitZoom>
 		<abilities>
-
+			<li>APM_Absorb</li>
 		</abilities>
 	</PawnKindDef>
-
 </Defs>
